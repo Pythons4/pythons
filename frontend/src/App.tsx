@@ -1,23 +1,31 @@
 import React from 'react';
+import Homepage from './Components/Homepage/Homepage';
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
+import { AppState } from './store/rootStore'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { login, notlogin } from './store/login/loginAction'
+
+interface AppProps {
+  userlogin: () => void;
+  usernotlogin: () => void;
 }
 
-export default App;
+const mapStateToPropes = (state: AppState) => ({
+  login: state.loginReduser.login
+})
+
+const mapDispatchToPropes = (dispatch: Dispatch): AppProps => ({
+  userlogin: () => dispatch(login()),
+  usernotlogin: () => dispatch(notlogin())
+})
+
+class App extends React.Component<AppProps, AppState>{
+  render(): JSX.Element {
+    return (
+      <Homepage {...this.props}></Homepage>
+    );
+  }
+}
+
+export default connect(mapStateToPropes, mapDispatchToPropes)(App);
