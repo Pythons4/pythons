@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 
-export default class Homepage extends Component {
-    render() {
-        return (
-            <div>
-                Hello from HomePage
-            </div>
-        )
-    }
+const Homepage = (props: any) => {
+    return (
+        <div>
+            Hello from HomePage
+        </div>
+    )
+
 }
+
+export default Homepage
