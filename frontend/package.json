@@ -53,4 +53,6 @@
     "@types/react-redux": "^7.1.11",
     "@types/react-router-dom": "^5.1.6"
   }
+  ,
+  "proxy": "http://localhost:8000"
 }
