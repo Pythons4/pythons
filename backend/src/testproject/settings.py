@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'testfolder'
-    ]
+    'fEnd'
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,12 +86,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         "CLIENT": {
-           "name": 'sparkles',
-           "host": 'mongodb+srv://qamar:1234@cluster0.f2xx4.mongodb.net/sparkles?retryWrites=true&w=majority',
-           "username": 'qamar',
-           "password": '1234',
-           "authMechanism": "SCRAM-SHA-1",
-        }, 
+            "name": 'sparkles',
+            "host": 'mongodb+srv://qamar:1234@cluster0.f2xx4.mongodb.net/sparkles?retryWrites=true&w=majority',
+            "username": 'qamar',
+            "password": '1234',
+            "authMechanism": "SCRAM-SHA-1",
+        },
     }
 }
 
