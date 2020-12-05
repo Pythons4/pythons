@@ -6,7 +6,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
     path('addtip/', views.addtip),
-    path('showtip/', views.showtips),
-
-
+    path('showtips/', views.showtips),
 ]

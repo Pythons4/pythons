@@ -8,18 +8,18 @@ import 'antd/dist/antd.css';
 // import { Dispatch } from 'redux'
 // import { AppState } from './store/rootStore'
 // import 'reset-css'
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import Homepage from './Components/Homepage/Homepage';
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    padding: theme.spacing(3),
-  }
-}))
+// const useStyles = makeStyles((theme) => ({
+//   container: {
+//     padding: theme.spacing(3),
+//   }
+// }))
 
 
 const App = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   return (
     // <Homepage />
     <div className='App'>
