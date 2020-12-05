@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import { Layout, Menu, Breadcrumb } from 'antd';
+=======
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+
+
+
+import Navbar from './Navbar/Navbar'
+>>>>>>> cedb8a63c01e9f03ddf2596d2c9d9c457501e5ee
 
 const { Header, Content, Footer } = Layout;
 const Homepage = (props: any) => {
     return (
+<<<<<<< HEAD
         <Layout className="layout">
             <Header>
                 <div className="logo" />
@@ -15,6 +24,15 @@ const Homepage = (props: any) => {
             </Header>
 
         </Layout>
+=======
+
+
+
+        <div className="homepage">
+            <Navbar />
+        </div>
+
+>>>>>>> cedb8a63c01e9f03ddf2596d2c9d9c457501e5ee
     )
 
 }
