@@ -38,10 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'tips'
-    ]
+    'fEnd',
+    'corsheaders'
+
+
+]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -86,12 +90,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         "CLIENT": {
-           "name": 'sparkles',
-           "host": 'mongodb+srv://qamar:1234@cluster0.f2xx4.mongodb.net/sparkles?retryWrites=true&w=majority',
-           "username": 'qamar',
-           "password": '1234',
-           "authMechanism": "SCRAM-SHA-1",
-        }, 
+            "name": 'sparkles',
+            "host": 'mongodb+srv://qamar:1234@cluster0.f2xx4.mongodb.net/sparkles?retryWrites=true&w=majority',
+            "username": 'qamar',
+            "password": '1234',
+            "authMechanism": "SCRAM-SHA-1",
+        },
     }
 }
 
@@ -140,3 +144,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+CORS_ORIGIN_WHITELIST = (
+     'http://localhost:3000',
+ )

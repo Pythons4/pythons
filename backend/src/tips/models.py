@@ -1,6 +1,17 @@
 from djongo import models
 
 # Create your models here.
+class Users(models.Model):
+    user_id=models.ObjectIdField()
+    user_name = models.TextField()
+    user_email = models.TextField()
+    user_password = models.TextField()
+    user_phon = models.TextField()
+    user_img = models.TextField()
+    user_bio = models.TextField()
+    objects=models.DjongoManager()
+
+
 
 class Tips(models.Model):
     tip_id=models.ObjectIdField()
