@@ -1,16 +1,28 @@
 from django.shortcuts import render
-from rest_framework import viewsets          
-from .serializers import TipsSerializer ,UsersSerializer    
-from .models import Tips ,Users                   
+from rest_framework import viewsets
+from .serializers import TipsSerializer, UsersSerializer, AdminSerializer
+from .serializers import ServiceSerializer
+from .models import Tips, Users, Admin, Service
 
-class TipsView(viewsets.ModelViewSet):       
-  serializer_class = TipsSerializer          
-  queryset = Tips.objects.all()   
 
-class UsersView(viewsets.ModelViewSet):       
-  serializer_class = UsersSerializer          
-  queryset = Users.objects.all()   
+class TipsView(viewsets.ModelViewSet):
+    serializer_class = TipsSerializer
+    queryset = Tips.objects.all()
 
+
+class UsersView(viewsets.ModelViewSet):
+    serializer_class = UsersSerializer
+    queryset = Users.objects.all()
+
+
+class AdminView(viewsets.ModelViewSet):
+    serializer_class = AdminSerializer
+    queryset = Admin.objects.all()
+
+
+class ServiceView(viewsets.ModelViewSet):
+    serializer_class = ServiceSerializer
+    queryset = Service.objects.all()
 # # from django.shortcuts import render
 
 

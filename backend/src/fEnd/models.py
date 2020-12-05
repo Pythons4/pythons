@@ -2,6 +2,7 @@ from djongo import models
 
 # Create your models here.
 
+# user table
 class Users(models.Model):
     user_id=models.ObjectIdField()
     user_name = models.TextField()
@@ -12,6 +13,21 @@ class Users(models.Model):
     user_bio = models.TextField()
     objects=models.DjongoManager()
 
+# admin table
+class Admin(models.Model):
+    admin_id=models.ObjectIdField()
+    admin_name = models.TextField()
+    admin_email = models.TextField()
+    admin_password = models.TextField()
+
+# services table
+class Service(models.Model):
+    service_id = models.ObjectIdField()
+    service_name = models.IntegerField()
+    service_img = models.IntegerField()
+    service_price=models.IntegerField()
+
+# tips table
 class Tips(models.Model):
     tip_id = models.ObjectIdField()
     tip_title = models.CharField(max_length=40)

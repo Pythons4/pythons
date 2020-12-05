@@ -6,6 +6,8 @@ from fEnd import views
 router = routers.DefaultRouter()                      
 router.register(r'users', views.UsersView, 'users')  
 router.register(r'tips', views.TipsView, 'tips')  
+router.register(r'admins', views.AdminView, 'admins')  
+router.register(r'services', views.ServiceView, 'services')  
 
 
 urlpatterns = [
