@@ -1,5 +1,8 @@
 import React from 'react';
 import Homepage from './Components/Homepage/Homepage';
+import Footer from './Components/Homepage/Footer';
+
+
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { AppState } from './store/rootStore'
@@ -23,7 +26,10 @@ const mapDispatchToPropes = (dispatch: Dispatch): AppProps => ({
 class App extends React.Component<AppProps, AppState>{
   render(): JSX.Element {
     return (
-      <Homepage {...this.props}></Homepage>
+      // <Homepage {...this.props}></Homepage>
+      <Footer {...this.props}></Footer>
+
+
     );
   }
 }
