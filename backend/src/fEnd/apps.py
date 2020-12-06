@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class TipsConfig(AppConfig):
-    name = 'tips'
+# class TipsConfig(AppConfig):
+#     name = 'tips'
