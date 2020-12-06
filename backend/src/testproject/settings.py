@@ -145,6 +145,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
 )

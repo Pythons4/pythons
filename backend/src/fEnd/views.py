@@ -5,73 +5,45 @@ from django.http import HttpResponse
 # from fEnd.models import Fav
 from django.shortcuts import render
 from rest_framework import viewsets
-# from .models import TipCommints
-from django.views.decorators.csrf import csrf_exempt
-from .serializers import TipsSerializer, UsersSerializer
-from .models import Tips, Users
+from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, FavSerializer, ProductsSerializer, UserProductsSerializer
+from .models import Tips, Users, Admin, Service, UserService, TipCommints, Fav, Products, UserProducts
 
 
 class TipsView(viewsets.ModelViewSet):
     serializer_class = TipsSerializer
     queryset = Tips.objects.all()
 
+class TipCommintsView(viewsets.ModelViewSet):
+    serializer_class = TipCommintsSerializer
+    queryset = TipCommints.objects.all()
 
 class UsersView(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
     queryset = Users.objects.all()
 
-# # from django.shortcuts import render
 
-# @csrf_exempt
-# # work like the controller in node.js
-# # add anew tip
-# def addtip(request):
-#     tip = Tips(tip_title=request.POST.get('tip_title'),
-#                user_id=request.POST.get('user_id'),
-#                tip_img=request.POST.get('tip_img'),
-#                tip_text=request.POST.get('tip_text'))
-#     tip.save()
-#     return HttpResponse('Inserted')
-
-# # git all tips in database
+class AdminView(viewsets.ModelViewSet):
+    serializer_class = AdminSerializer
+    queryset = Admin.objects.all()
 
 
-# def showtips(request):
-#     tips = Tips.objects.all()
-#     tipstittle = ""
-#     for tip in tips:
-#         tipstittle += tip.tip_title
-#     return HttpResponse(tipstittle)
+class ServiceView(viewsets.ModelViewSet):
+    serializer_class = ServiceSerializer
+    queryset = Service.objects.all()
 
-# # Create your views here.
-# from django.http import HttpResponse
-# from fEnd.models import Tips
-# from fEnd.models import Fav
-# from fEnd.models import TipCommints
+class UserServiceView(viewsets.ModelViewSet):
+    serializer_class = UserServiceSerializer
+    queryset = UserService.objects.all()
 
-# from django.views.decorators.csrf import csrf_exempt
+class FavView(viewsets.ModelViewSet):
+    serializer_class = FavSerializer
+    queryset = Fav.objects.all()
 
-class TipsView(viewsets.ModelViewSet):       # add this
-    serializer_class = TipsSerializer          # add this
-    queryset = Tips.objects.all()
+class ProductsView(viewsets.ModelViewSet):
+    serializer_class = ProductsSerializer
+    queryset = Products.objects.all()
 
-# @csrf_exempt
-# # work like the controller in node.js
-# # add anew tip
-# def addtip(request):
-#     tip = Tips(tip_title=request.POST.get('tip_title'),
-#                user_id=request.POST.get('user_id'),
-#                tip_img=request.POST.get('tip_img'),
-#                tip_text=request.POST.get('tip_text'))
-#     tip.save()
-#     return HttpResponse('Inserted')
+class UserProductsView(viewsets.ModelViewSet):
+    serializer_class = UserProductsSerializer
+    queryset = UserProducts.objects.all()
 
-# # git all tips in database
-
-
-# def showtips(request):
-#     tips = Tips.objects.all()
-#     tipstittle = ""
-#     for tip in tips:
-#         tipstittle += tip.tip_title
-#     return HttpResponse(tipstittle)
