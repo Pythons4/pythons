@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Tips, Users, Admin, Service
+from .models import Tip, Users, Admin, Service
 
 
 class TipsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Tips
+        model = Tip
         fields = ('_id', 'tip_title', 'tip_text',  'tip_img', 'user_id')
 
 

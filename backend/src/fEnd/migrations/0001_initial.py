@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Tips',
             fields=[
-                ('tip_id', djongo.models.fields.ObjectIdField(auto_created=True, primary_key=True, serialize=False)),
+                ('tip_id', djongo.models.fields.ObjectIdField(
+                    auto_created=True, primary_key=True, serialize=False)),
                 ('tip_title', models.CharField(max_length=40)),
                 ('tip_text', models.TextField()),
                 ('tip_img', models.TextField()),

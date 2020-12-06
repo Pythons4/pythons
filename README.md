@@ -23,4 +23,8 @@ pip install -r requirements.txt
 ```
 cd src/
 python manage.py runserver
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 2e55a4e7b83fd5c5b8e0992a0928e7198abc1927

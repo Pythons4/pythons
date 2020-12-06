@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Tips, Users, Admin, Service
+from .models import Tip, Users, Admin, Service
 
 
 class UsersAdmin(admin.ModelAdmin):
@@ -21,7 +21,7 @@ class TipssAdmin(admin.ModelAdmin):
                     'tip_text', 'user_id')
 
 
-admin.site.register(Tips, TipssAdmin)
+admin.site.register(Tip, TipssAdmin)
 admin.site.register(Users, UsersAdmin)
 admin.site.register(Admin, AdminsAdmin)
 admin.site.register(Service, ServicesAdmin)

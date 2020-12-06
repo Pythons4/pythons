@@ -9,5 +9,6 @@
         "pylint_django"
     ],
     "python.linting.pylintEnabled": true,
-    "python.venvPath": "${workspaceFolder}/backend/env/Scripts/python"
+    "python.venvPath": "${workspaceFolder}/backend/env/Scripts/python",
+    "git.ignoreLimitWarning": true
 }

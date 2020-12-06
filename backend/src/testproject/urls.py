@@ -13,7 +13,7 @@ router.register(r'services', views.ServiceView, 'services')
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
-    # path('addtip/', views.addtip),
-    # path('showtips/', views.showtips),
+    path('api/', include(router.urls)),
+    path('addtip/', views.addtip),
+    path('showtips/', views.TipsView),
 ]
