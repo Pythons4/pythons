@@ -153,6 +153,7 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
+    # 'https://api.cloudinary.com/v1_1/dve46qnma/image/upload',
 )
 
 cloudinary.config(
@@ -162,6 +163,7 @@ cloudinary.config(
 )
 
 USE_TZ = False
+CORS_ORIGIN_ALLOW_ALL=True
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': (

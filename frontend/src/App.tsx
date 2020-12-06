@@ -7,7 +7,6 @@ import Product from './Components/Homepage/Products/product';
 import ProductTools from './Components/Homepage/Products/tools';
 import ProductMaterials from './Components/Homepage/Products/materials';
 import axios from "axios";
-import jQuery from 'jquery'
 import AddTip from './Components/Tips/addtip.js'
 
 
@@ -29,24 +28,17 @@ class App extends React.Component<{}, any>{
     this.state = { x: '' }
 
   }
-  // componentDidMount() {
-  //   var csrftoken = getCookie('csrftoken')
-  //   const config = {
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'X-CSRFToken': csrftoken
-  //     }
-  //   }
-  //   var data = {
-  //     tip_title: 'hello cleaner', tip_text: 'make it shime', tip_img: 'somelink', user_id: '0poi9'
-  //   }
-  //   axios
-  //     .post("/api/tips/", (data), config)
-  //     .then(res => {
-  //       console.log(res)
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  componentDidMount() {
+    axios
+      .get("/api/tips/")
+      .then(res => {
+        console.log(res.data[0].tip_img)
+        this.setState({
+          x: res.data[0].tip_img
+        })
+      })
+      .catch(err => console.log(err));
+  };
 
 
   // const classes = useStyles();
@@ -74,18 +66,3 @@ class App extends React.Component<{}, any>{
 
 export default App;
 
-function getCookie(name: string | any[]) {
-  var cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = jQuery.trim(cookies[i]);
-      // Does this cookie string begin with the name we want?
-      if (cookie.substring(0, name.length + 1) === (name + '=')) {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
-}
