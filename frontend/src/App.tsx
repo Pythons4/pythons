@@ -23,14 +23,21 @@ import axios from "axios";
 
 
 class App extends React.Component {
-
+  componentDidMount() {
+   
+    axios
+      .get("http://localhost:8000/api/users/")
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
+  };
+  
 
   // const classes = useStyles();
   render() {
     return (
       // <Homepage />
       <div >
-        <Router>
+            <Router>
           <Switch>
             <Route exact path="/" render={() => <Homepage />} />
 
