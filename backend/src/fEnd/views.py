@@ -5,12 +5,12 @@ from django.http import HttpResponse
 # from fEnd.models import Fav
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import TipsSerializer, UsersSerializer, AdminSerializer
-from .serializers import ServiceSerializer
-from .models import Tip, Users, Admin, Service
+from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, FavSerializer, ProductsSerializer, UserProductsSerializer
 from cloudinary.forms import cl_init_js_callbacks
 from django.views.decorators.csrf import csrf_exempt
 import json
+from .models import Tip, Users, Admin, Service, UserService, TipCommints, Fav, Products, UserProducts
+
 
 
 @csrf_exempt
@@ -18,6 +18,9 @@ class TipsView(viewsets.ModelViewSet):
     serializer_class = TipsSerializer
     queryset = Tip.objects.all()
 
+class TipCommintsView(viewsets.ModelViewSet):
+    serializer_class = TipCommintsSerializer
+    queryset = TipCommints.objects.all()
 
 class UsersView(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
@@ -52,6 +55,9 @@ def addtip(request):
 
 # # git all tips in database
 
+class UserServiceView(viewsets.ModelViewSet):
+    serializer_class = UserServiceSerializer
+    queryset = UserService.objects.all()
 
 # def showtips(request):
 #     tips = Tips.objects.all()
@@ -82,9 +88,17 @@ class TipsView(viewsets.ModelViewSet):       # add this
 #                tip_text=request.POST.get('tip_text'))
 #     tip.save()
 #     return HttpResponse('Inserted')
+class FavView(viewsets.ModelViewSet):
+    serializer_class = FavSerializer
+    queryset = Fav.objects.all()
 
-# # git all tips in database
+class ProductsView(viewsets.ModelViewSet):
+    serializer_class = ProductsSerializer
+    queryset = Products.objects.all()
 
+class UserProductsView(viewsets.ModelViewSet):
+    serializer_class = UserProductsSerializer
+    queryset = UserProducts.objects.all()
 
 # def showtips(request):
 #     tips = Tips.objects.all()
