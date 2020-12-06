@@ -24,7 +24,12 @@ import axios from "axios";
 
 class App extends React.Component {
 
-
+  componentDidMount() {
+    axios
+      .get("/api/users/")
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
+  }
   // const classes = useStyles();
   render() {
     return (
