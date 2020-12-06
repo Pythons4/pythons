@@ -1,14 +1,21 @@
+# # from django.shortcuts import render
+
+# # Create your views here.
+from django.http import HttpResponse
+# from fEnd.models import Fav
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import TipsSerializer, UsersSerializer, AdminSerializer
-from .serializers import ServiceSerializer
-from .models import Tips, Users, Admin, Service
+from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, FavSerializer, ProductsSerializer, UserProductsSerializer
+from .models import Tips, Users, Admin, Service, UserService, TipCommints, Fav, Products, UserProducts
 
 
 class TipsView(viewsets.ModelViewSet):
     serializer_class = TipsSerializer
     queryset = Tips.objects.all()
 
+class TipCommintsView(viewsets.ModelViewSet):
+    serializer_class = TipCommintsSerializer
+    queryset = TipCommints.objects.all()
 
 class UsersView(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
@@ -23,35 +30,20 @@ class AdminView(viewsets.ModelViewSet):
 class ServiceView(viewsets.ModelViewSet):
     serializer_class = ServiceSerializer
     queryset = Service.objects.all()
-# # from django.shortcuts import render
 
+class UserServiceView(viewsets.ModelViewSet):
+    serializer_class = UserServiceSerializer
+    queryset = UserService.objects.all()
 
-# # Create your views here.
-# from django.http import HttpResponse
-# from fEnd.models import Tips
-# from fEnd.models import Fav
-# from fEnd.models import TipCommints
+class FavView(viewsets.ModelViewSet):
+    serializer_class = FavSerializer
+    queryset = Fav.objects.all()
 
-# from django.views.decorators.csrf import csrf_exempt
+class ProductsView(viewsets.ModelViewSet):
+    serializer_class = ProductsSerializer
+    queryset = Products.objects.all()
 
+class UserProductsView(viewsets.ModelViewSet):
+    serializer_class = UserProductsSerializer
+    queryset = UserProducts.objects.all()
 
-# @csrf_exempt
-# # work like the controller in node.js
-# # add anew tip
-# def addtip(request):
-#     tip = Tips(tip_title=request.POST.get('tip_title'),
-#                user_id=request.POST.get('user_id'),
-#                tip_img=request.POST.get('tip_img'),
-#                tip_text=request.POST.get('tip_text'))
-#     tip.save()
-#     return HttpResponse('Inserted')
-
-# # git all tips in database
-
-
-# def showtips(request):
-#     tips = Tips.objects.all()
-#     tipstittle = ""
-#     for tip in tips:
-#         tipstittle += tip.tip_title
-#     return HttpResponse(tipstittle)
