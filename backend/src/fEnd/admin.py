@@ -1,12 +1,11 @@
 from django.contrib import admin
-from .models import Tips,Users,Admin,Service, UserService, TipCommints, Fav, Products, UserProducts
+from .models import Tip,Users,Admin,Service, UserService, TipCommints, Fav, Products, UserProducts
 
 
-class UsersAdmin(admin.ModelAdmin):  
-  list_display = ( 'user_id', 'user_name', 'user_email', 'user_password', 'user_phon', 'user_img', 'user_bio')
 
 class TipsAdmin(admin.ModelAdmin):
-    list_display = ('tip_title', 'tip_text', 'tip_img')
+    list_display = ('_id', 'tip_img', 'tip_title',
+                    'tip_text', 'user_id')
 
 class AdminsAdmin(admin.ModelAdmin):  
   list_display = ( 'admin_name', 'admin_email', 'admin_password')
@@ -23,6 +22,10 @@ class TipCommintsAdmin(admin.ModelAdmin):
 class FavAdmin(admin.ModelAdmin):  
   list_display = ('fav_id', 'user_id', 'tip_id')
 
+class UsersAdmin(admin.ModelAdmin):
+      list_display = ('user_id', 'user_name', 'user_email', 'user_password', 'user_phon', 'user_img', 'user_bio')
+
+
 class ProductsAdmin(admin.ModelAdmin):  
   list_display = ('product_id', 'product_name', 'product_price','product_quantity','product_type','product_description')
 
@@ -30,7 +33,7 @@ class UserProductsAdmin(admin.ModelAdmin):
   list_display = ('user_product_id', 'user_id', 'product_id','user_product_location','user_product_quantity')
 
 # Register your models here.
-admin.site.register(Tips, TipsAdmin)
+admin.site.register(Tip, TipsAdmin)
 admin.site.register(Products,ProductsAdmin)
 admin.site.register(Fav,FavAdmin)
 admin.site.register(TipCommints,TipCommintsAdmin)
