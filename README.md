@@ -17,7 +17,7 @@ cd backend/
  - Create virtualenv:
 ```
 python -m venv env
-.\env\Script\activate
+.\env\Scripts\activate
 pip install -r requirements.txt
 ```
  - Run the server:

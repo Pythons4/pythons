@@ -1,37 +1,46 @@
 import React from 'react'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link } from "react-router-dom";
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import './Navbar.css'
 
+
+
+
 const Navbar = () => {
-  return (
-    <div className='header'>
-      <Link className='header__link' to='/' style={{ textDecoration: 'none' }}>
-        <img className='header__logo' src='https://www.seekpng.com/png/small/115-1150202_emoji-emojisticker-blue-sparkles-blue-sparkles-png.png' alt='logo' />
-        <h1>Sparkles</h1>
-      </Link>
-      
+    return (
+        <nav >
+            <div className='logo'>
+                <Link to='/homepage' ><h4>Sparkles</h4>
+                </Link>
+            </div>
 
-      <ul className="nav__links">
-        <li >
-          <Link to="/" style={{ textDecoration: 'none' }}>Home</Link>
-        </li>
-        <li >
-          <Link to="/" style={{ textDecoration: 'none' }}>Serves </Link>
-        </li>
-        <li >
-          <Link to="/" style={{ textDecoration: 'none' }}> Products</Link>
-        </li>
-        <li >
-          <Link to="/" style={{ textDecoration: 'none' }}>Tips </Link>
-        </li>
-      </ul>
-      <Link className='logbtn' to='/signin' style={{ textDecoration: 'none' }}>
-        <Button id='logbtn' variant="contained" > Login </Button>
-      </Link>
 
-    </div>
-  )
+
+            <ul className='nav-links' >
+                <li >
+                    <Link to='/homepage' className='nav-link'  >Home</Link>
+                </li>
+                <li >
+                    <Link to='/' className='nav-link'>Serveses</Link>
+                </li>
+
+                <li >
+                    <Link to='/product' className='nav-link' >Products</Link>
+                </li>
+                <li >
+                    <Link to='/' className='nav-link'>Tips</Link>
+                </li>
+                <li>
+                    <Link to='/signin' className='nav-link'>login</Link>
+                </li>
+            </ul>
+
+
+        </nav>
+    )
 }
 
-export default Navbar
+
+
+export default Navbar;

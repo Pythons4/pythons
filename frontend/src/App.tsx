@@ -6,6 +6,7 @@ import Homepage from './Components/Homepage/Homepage';
 import Product from './Components/Homepage/Products/product';
 import ProductTools from './Components/Homepage/Products/tools';
 import ProductMaterials from './Components/Homepage/Products/materials';
+import Navbar from './Components/Homepage/Navbar/Navbar'
 import axios from "axios";
 
 
@@ -24,22 +25,23 @@ import axios from "axios";
 
 class App extends React.Component {
   componentDidMount() {
-   
+
     axios
       .get("http://localhost:8000/api/users/")
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
   };
-  
+
 
   // const classes = useStyles();
   render() {
     return (
       // <Homepage />
       <div >
-            <Router>
+        <Router>
+          <Navbar />
           <Switch>
-            <Route exact path="/" render={() => <Homepage />} />
+            <Route exact path="/homepage" render={() => <Homepage />} />
 
             <Route path="/product" exact component={Product} />
             <Route path="/tools" exact component={ProductTools} />

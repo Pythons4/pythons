@@ -10,7 +10,7 @@ export class Product extends Component {
         return (
             <div>
                 <div className='container'>
-                    <img className='product__img' src='https://www.kdcleaner.com/wp-content/uploads/2017/09/commercial-cleaning-3-1-1024x455.jpg' />
+                    <img className='product__img' src='https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg' />
                 </div>
                 <div className='product__list'>
 
