@@ -1,19 +1,21 @@
 import axios from "axios"
 const initState = {
-    services: "Belal"
+    services: []
 }
 
 const ServicesReducer = (state = initState, action: any) => {
-    if (action.type == "GET") {
 
-        axios.get('/bookEvent')
-            .then((response) => {
-                console.log(response)
+    switch (action.type) {
 
-            })
+        case "SET_SERVICES":
+            return {
+                // ...state,
+                services: action.payload,
+                loading: false
+
+            }
+        default: return state
     }
-
-    return state
 }
 
 export default ServicesReducer

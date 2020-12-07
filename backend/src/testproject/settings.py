@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,15 +40,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'fEnd',
-    'corsheaders'
+
 
 
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware', 
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -129,7 +134,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+# USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -146,7 +151,25 @@ REST_FRAMEWORK = {
 }
 
 
-
 CORS_ORIGIN_WHITELIST = (
-     'http://localhost:3000',
- )
+    'http://localhost:3000',
+    # 'https://api.cloudinary.com/v1_1/dve46qnma/image/upload',
+)
+
+cloudinary.config(
+    cloud_name="dve46qnma",
+    api_key="727683254796878",
+    api_secret="nFgKT5sNaGfnsP98po1wSJ_rqYE"
+)
+
+USE_TZ = False
+CORS_ORIGIN_ALLOW_ALL=True
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework.authentication.TokenAuthentication',
+#     ),
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAdminUser'
+#     ),
+# }

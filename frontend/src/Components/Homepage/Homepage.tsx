@@ -1,16 +1,25 @@
 import React, { Component } from 'react'
+import Button from '@material-ui/core/Button';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import './Homepage.css'
 
 
 
-import Navbar from './Navbar/Navbar'
+
 
 const Homepage = (props: any) => {
     return (
+        <div className='container-img'>
 
-        <div className="homepage">
-            <Navbar />
+            <p>Cleaning is hard at first, messy in the middle and gorgeous in the end</p>
+            <div className='container-btns'>
+                <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Book NOW</Button>
+            </div>
         </div>
+
+
+
+
 
     )
 

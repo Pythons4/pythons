@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default class ServicesCard extends Component {
+interface Props {
+    price: string,
+    imge: string,
+    name: string
+}
+export default class ServicesCard extends Component<Props> {
+
     render() {
+        console.log(this.props)
         return (
             <div>
                 {/* <div class="row text-center"> */}
 
-                <div className="col-md-6 mb-4">
-                    <img className="rounded-circle" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
+                <div className=" ">
+                    <img className="rounded-circle" alt="100x100" src={this.props.imge}
                         data-holder-rendered="true" />
-                    <h2 className="my-5 h2">Basic example</h2>
-                    <h2 className="my-5 h2">Basic example</h2>
+                    <h2 className="my-5 h2">{this.props.name}</h2>
+                    <h2 className="my-5 h2">{this.props.price}</h2>
 
                 </div>
 
