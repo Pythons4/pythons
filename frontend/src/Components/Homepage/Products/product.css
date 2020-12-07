@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    flex-direction: column;
+  }
+
+.product__img {
+    width: 98vw;
+    height: 480px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.product__list{
+    
+    
+    margin-top: 50px;
+   
+    text-align: center;
+
+   
+
+}
