@@ -13,7 +13,7 @@ const Homepage = (props: any) => {
 
             <p>Cleaning is hard at first, messy in the middle and gorgeous in the end</p>
             <div className='container-btns'>
-                <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Book NOW</Button>
+                <Button color="primary" variant="contained" >Book NOW</Button>
             </div>
         </div>
 

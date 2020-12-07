@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'testproject.wsgi.application'
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
+ #       'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
@@ -153,7 +153,7 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
-    # 'https://api.cloudinary.com/v1_1/dve46qnma/image/upload',
+   # 'https://api.cloudinary.com/v1_1/dve46qnma/image/upload',
 )
 
 cloudinary.config(

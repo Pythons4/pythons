@@ -14,9 +14,6 @@ const Navbar = () => {
                 <Link to='/homepage' ><h4>Sparkles</h4>
                 </Link>
             </div>
-
-
-
             <ul className='nav-links' >
                 <li >
                     <Link to='/homepage' className='nav-link'  >Home</Link>

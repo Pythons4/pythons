@@ -10,7 +10,7 @@ export class Product extends Component {
         return (
             <div>
                 <div className='container'>
-                    <img className='product__img' src='https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg' />
+                    <img className='product__img' src='https://cdn.shopify.com/s/files/1/0282/9621/6679/files/home_product_carousel_800x.jpg?v=1592988158' />
                 </div>
                 <div className='product__list'>
 
