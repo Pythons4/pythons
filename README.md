@@ -22,7 +22,7 @@ cd backend/
 
 ```
 python -m venv env
-.\env\Script\activate
+.\env\Scripts\activate
 pip install -r requirements.txt
 ```
 

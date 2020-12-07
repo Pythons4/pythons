@@ -3,11 +3,12 @@ import React from 'react';
 import SignInPage from './Auth/Signinpage';
 import SignUpPage from './Auth/Signupage';
 import Homepage from './Components/Homepage/Homepage';
-import Product from './Components/Homepage/Products/product';
-import ProductTools from './Components/Homepage/Products/tools';
-import ProductMaterials from './Components/Homepage/Products/materials';
+import Product from './Components/Products/product';
+import ProductTools from './Components/Products/tools';
+import ProductMaterials from './Components/Products/materials';
 import axios from "axios";
 import AddTip from './Components/Tips/addtip.js'
+import Navbar from './Components/Navbar/Navbar';
 
 
 // import { connect } from 'react-redux'
@@ -45,21 +46,20 @@ class App extends React.Component<{}, any>{
   render() {
     return (
       // <Homepage />
-      <div >
-        <Router>
-          <img src={this.state.x} alt='hello'></img>
-          <Switch>
-            <Route exact path="/" render={() => <AddTip />} />
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/homepage" render={() => <Homepage />} />
 
-            <Route path="/product" exact component={Product} />
-            <Route path="/tools" exact component={ProductTools} />
-            <Route path="/materials" exact component={ProductMaterials} />
+          <Route path="/product" exact component={Product} />
+          <Route path="/tools" exact component={ProductTools} />
+          <Route path="/materials" exact component={ProductMaterials} />
+          <Route path="/tips" exact component={AddTip} />
 
-            <Route exact path="/signup" render={() => <SignUpPage />} />
-            <Route exact path="/signin" render={() => <SignInPage />} />
-          </Switch>
-        </Router>
-      </div >
+          <Route exact path="/signup" render={() => <SignUpPage />} />
+          <Route exact path="/signin" render={() => <SignInPage />} />
+        </Switch>
+      </Router>
     );
   }
 }
