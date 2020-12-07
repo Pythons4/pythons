@@ -3,11 +3,11 @@
 > A website where you can book cleaning services, buy cleaning products, and add or check cleaning tips provided by others.
 
 ## Team
-
-- **Scrum Master**: Qamar Jaradat
-- **Co-Leader**: Halal Salhab
-- **Development Team Members**: Belal Abuhani, Hanadi Sabuhani, Hala Salhab, Qamar Jaradat
-
+  - __Scrum Master__: Qamar Jaradat
+  - __Co-Leader__: Halal Salhab
+  - __Development Team Members__: Belal Abuhani, Hanadi Sabuhani, Hala Salhab, Qamar Jaradat
+  
+  
 ### Installing Dependencies
 
 1. Backend:
@@ -22,7 +22,7 @@ cd backend/
 
 ```
 python -m venv env
-.\env\Script\activate
+.\env\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -31,4 +31,3 @@ pip install -r requirements.txt
 ```
 cd src/
 python manage.py runserver
-```
