@@ -31,6 +31,7 @@ pip install -r requirements.txt
 ```
 cd src/
 python manage.py runserver
+```
 
 2. Backend:
 
@@ -39,5 +40,10 @@ python manage.py runserver
 ```
 cd frontend/
 npm i
+```
+
+- Run the app
+
+```
 npm start
 ```
