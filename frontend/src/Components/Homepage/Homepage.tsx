@@ -1,20 +1,26 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd';
+import Button from '@material-ui/core/Button';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import './Homepage.css'
 
-const { Header, Content, Footer } = Layout;
+
+
+
+
 const Homepage = (props: any) => {
     return (
-        <Layout className="layout">
-            <Header>
-                <div className="logo" />
-                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                    <Menu.Item key="1">nav 1</Menu.Item>
-                    <Menu.Item key="2">nav 2</Menu.Item>
-                    <Menu.Item key="3">nav 3</Menu.Item>
-                </Menu>
-            </Header>
+        <div className='container-img'>
 
-        </Layout>
+            <p>Cleaning is hard at first, messy in the middle and gorgeous in the end</p>
+            <div className='container-btns'>
+                <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Book NOW</Button>
+            </div>
+        </div>
+
+
+
+
+
     )
 
 }
