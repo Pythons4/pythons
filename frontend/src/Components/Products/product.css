@@ -65,3 +65,31 @@
     font-size: 15px;
     text-align: center;
 }
+
+/* product card css */
+.quantity{
+    display: flex;
+    justify-content: center;
+}
+.addtocart{
+   margin: auto;
+   width: 180px;
+   height: 45px;
+}
+.quantity button{
+    width: 30px;
+    height: 30px;
+    border:1px solid #000;
+    background: #fff;
+}
+
+.quantity input {
+    border: none;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    text-align: center;
+    font-size: 14px;
+    color:#000;
+    font-weight: 200;
+    width:60px
+}

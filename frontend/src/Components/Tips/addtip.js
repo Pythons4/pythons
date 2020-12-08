@@ -1,26 +1,19 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import jQuery from 'jquery'
+import configdata from '../../csrftoken'
 
 var postreq = async (file1) => {
     const data = new FormData()
     data.append('file', file1[0])
     data.append('upload_preset', 'appimgs')
-    var csrftoken = getCookie('csrftoken')
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken
-        }
-    }
-
 
     axios.post("https://api.cloudinary.com/v1_1/dve46qnma/image/upload", data)
         .then(res => {
             console.log(res.data.secure_url)
             axios.post("/api/tips/", {
                 tip_title: 'hello cleaner', tip_text: 'make it shime', tip_img: res.data.secure_url, user_id: '0poi9'
-            }, config)
+            }, configdata)
                 .then(res => {
                     console.log(res)
                 })
@@ -67,6 +60,7 @@ export default class AddTip extends Component {
 
     }
     render() {
+        console.log(configdata)
         return (
             <div>
                 <form>
@@ -77,21 +71,4 @@ export default class AddTip extends Component {
             </div>
         )
     }
-}
-
-
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
+}   
