@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios"
 import ServicesCard from "./ServiceCard"
-import setService from "../../redux/services/servicesAction"
+import setService from "../../store/actions/servicesAction"
 import { connect, useDispatch, useSelector } from "react-redux"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -30,8 +30,6 @@ class Services extends Component<{ services: any, setService: any }> {
             name = serv.service_name;
             return < ServicesCard price={price} imge={imge} name={name} />
 
-            // < ServicesCard price={serv} imge={serv} name={serv} />
-            console.log(this.props.services)
 
 
         }))

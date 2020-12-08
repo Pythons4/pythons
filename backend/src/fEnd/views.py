@@ -12,15 +12,16 @@ import json
 from .models import Tip, Users, Admin, Service, UserService, TipCommints, Fav, Products, UserProducts
 
 
-
 @csrf_exempt
 class TipsView(viewsets.ModelViewSet):
     serializer_class = TipsSerializer
     queryset = Tip.objects.all()
 
+
 class TipCommintsView(viewsets.ModelViewSet):
     serializer_class = TipCommintsSerializer
     queryset = TipCommints.objects.all()
+
 
 class UsersView(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
@@ -35,25 +36,11 @@ class AdminView(viewsets.ModelViewSet):
 class ServiceView(viewsets.ModelViewSet):
     serializer_class = ServiceSerializer
     queryset = Service.objects.all()
-# # from django.shortcuts import render
 
+
+# from django.shortcuts import render
 # @csrf_exempt
-# # work like the controller in node.js
-# # add anew tip
 
-
-def addtip(request):
-    body_unicode = request.body.decode('utf-8')
-    body = json.loads(body_unicode)
-    # print(body)
-    # tip = Tip(tip_title=request.POST.get('tip_title'),
-    #           user_id=request.POST.get('user_id'),
-    #           tip_img=request.POST.get('tip_img'),
-    #           tip_text=request.POST.get('tip_text'))
-    # tip.save()
-    return HttpResponse(body)
-
-# # git all tips in database
 
 class UserServiceView(viewsets.ModelViewSet):
     serializer_class = UserServiceSerializer
@@ -74,6 +61,7 @@ class UserServiceView(viewsets.ModelViewSet):
 
 # from django.views.decorators.csrf import csrf_exempt
 
+
 class TipsView(viewsets.ModelViewSet):       # add this
     serializer_class = TipsSerializer          # add this
     queryset = Tip.objects.all()
@@ -88,24 +76,18 @@ class TipsView(viewsets.ModelViewSet):       # add this
 #                tip_text=request.POST.get('tip_text'))
 #     tip.save()
 #     return HttpResponse('Inserted')
+
+
 class FavView(viewsets.ModelViewSet):
     serializer_class = FavSerializer
     queryset = Fav.objects.all()
+
 
 class ProductsView(viewsets.ModelViewSet):
     serializer_class = ProductsSerializer
     queryset = Products.objects.all()
 
+
 class UserProductsView(viewsets.ModelViewSet):
     serializer_class = UserProductsSerializer
     queryset = UserProducts.objects.all()
-
-# def showtips(request):
-#     tips = Tips.objects.all()
-#     tipstittle = ""
-#     for tip in tips:
-#         tipstittle += tip.tip_title
-#     return HttpResponse(tipstittle)
-
-def index(request):
-    return render(request, 'pictures/index.html')
