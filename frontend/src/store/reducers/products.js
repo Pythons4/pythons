@@ -6,7 +6,10 @@ const prodictsReducer = (state = [], action) => {
             return { tips: action.payload }
 
         case 'GET_ALL':
-            return { product: action.payload }
+            return {
+                product: action.product,
+                material: action.material
+            }
 
 
         default:

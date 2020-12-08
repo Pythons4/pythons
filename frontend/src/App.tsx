@@ -7,28 +7,11 @@ import Product from './Components/Products/product';
 import ProductTools from './Components/Products/tools';
 import ProductMaterials from './Components/Products/materials';
 import Services from './Components/services/Services';
-
-
-import axios from "axios";
-// import reducer from "../reducer/rootReducer"
-import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
 import AddTip from './Components/Tips/addtip.js'
 import Navbar from './Components/Navbar/Navbar';
-import AllProucts from './Components/Products/allpro'
+import ProductsCard from './Components/Products/productcard';
+// import AllProucts from './Components/Products/allpro'
 
-
-// import { connect } from 'react-redux'
-// import { Dispatch } from 'redux'
-// import { AppState } from './store/rootStore'
-// import 'reset-css'
-// import { makeStyles } from "@material-ui/core/styles";
-
-// const useStyles = makeStyles((theme) => ({
-//   container: {
-//     padding: theme.spacing(3),
-//   }
-// }))
 
 class App extends React.Component<{}, any>{
   constructor(props: {} | Readonly<{}>) {
@@ -36,20 +19,6 @@ class App extends React.Component<{}, any>{
     this.state = { x: '' }
 
   }
-  componentDidMount() {
-    axios
-      .get("/api/tips/")
-      .then(res => {
-        console.log(res.data[0].tip_img)
-        this.setState({
-          x: res.data[0].tip_img
-        })
-      })
-      .catch(err => console.log(err));
-  };
-
-
-  // const classes = useStyles();
   render() {
     return (
       // <Homepage />
@@ -57,15 +26,12 @@ class App extends React.Component<{}, any>{
         <Navbar />
         <Switch>
           <Route exact path="/homepage" render={() => <Homepage />} />
-
-          <Route path="/product" exact component={AllProucts} />
-          <Route path="/tools" exact component={ProductTools} />
-          <Route path="/materials" exact component={ProductMaterials} />
+          <Route path="/product" exact component={Product} />
+          <Route path="/product/tools" exact component={ProductTools} />
+          <Route path="/product/materials" exact component={ProductMaterials} />
+          <Route path="/product/:producttype/:name" exact component={ProductsCard} />
           <Route path="/tips" exact component={AddTip} />
           <Route path="/services" exact component={Services} />
-
-
-
           <Route exact path="/signup" render={() => <SignUpPage />} />
           <Route exact path="/signin" render={() => <SignInPage />} />
         </Switch>
@@ -75,4 +41,3 @@ class App extends React.Component<{}, any>{
 }
 
 export default App;
-

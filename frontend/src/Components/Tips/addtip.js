@@ -27,19 +27,6 @@ var postreq = async (file1) => {
                 .catch(err => console.log(err));
         })
         .catch(err => console.log(err));
-    // const res = await fetch("https://api.cloudinary.com/v1_1/dve46qnma/image/upload",
-    //     {
-    //         method: 'GET',
-    //         body: data,
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Accept': 'application/json',
-    //             'Access-Control-Allow-Origin': '*',
-    //         }
-    //     })
-    // const file = await res.json
-    // console.log(file)
-
 };
 
 export default class AddTip extends Component {
