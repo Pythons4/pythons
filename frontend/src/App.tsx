@@ -6,7 +6,13 @@ import Homepage from './Components/Homepage/Homepage';
 import Product from './Components/Products/product';
 import ProductTools from './Components/Products/tools';
 import ProductMaterials from './Components/Products/materials';
+import Services from './Components/services/Services';
+
+
 import axios from "axios";
+// import reducer from "../reducer/rootReducer"
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import AddTip from './Components/Tips/addtip.js'
 import Navbar from './Components/Navbar/Navbar';
 import AllProucts from './Components/Products/allpro'
@@ -56,6 +62,9 @@ class App extends React.Component<{}, any>{
           <Route path="/tools" exact component={ProductTools} />
           <Route path="/materials" exact component={ProductMaterials} />
           <Route path="/tips" exact component={AddTip} />
+          <Route path="/services" exact component={Services} />
+
+
 
           <Route exact path="/signup" render={() => <SignUpPage />} />
           <Route exact path="/signin" render={() => <SignInPage />} />
