@@ -11,21 +11,24 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }));
+interface data {
+    data: {
+        name: string,
+        price: string
+    }
+}
 
-export default function StateTextFields() {
+export default function StateTextFields(props: data) {
     const classes = useStyles();
     const [state, setState] = React.useState({ location: "", houres: "", date: "" });
     const handleChange = (e: any) => {
         setState(currentState => ({
             ...currentState,
             [e.target.name]: e.target.value
-
-
-
         })
 
         )
-        console.log(state)
+        console.log(props, "belalala")
     }
 
         ;

@@ -7,9 +7,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import FormOnCard from "./FormOnCard"
 
 class Services extends Component<{ services: any, setService: any }> {
-    // state = {
-    //     data: []
-    // }
+    state = {
+        data: {
+            name: "",
+            price: ""
+        }
+    }
     componentDidMount() {
         // this.props.setService()
 
@@ -21,25 +24,27 @@ class Services extends Component<{ services: any, setService: any }> {
         //     })
     }
 
+    onclick = (e: any) => {
+        this.setState({ data: e })
+        console.log(e)
+        return e
+    }
+
     render() {
-        var price: any;
-        var imge: any;
-        var name: any;
+        var price: any, imge: any, name: any;
         let ser: any = this.props.services.map(((serv: any) => {
             price = serv.service_price;
             imge = serv.service_img;
             name = serv.service_name;
-            return < ServicesCard price={price} imge={imge} name={name} />
-
-
-
+            return < ServicesCard price={price} imge={imge} name={name} onclick={this.onclick} />
         }))
+
         // console.log(ser, "props")
 
         return (
             <div className="row text-center">
                 {/* {this.props.services} */}
-                <FormOnCard />
+                <FormOnCard data={this.state.data} />
                 {ser}
                 {/* < ServicesCard price={price} imge={imge} name={name} /> */}
             </div >

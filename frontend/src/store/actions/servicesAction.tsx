@@ -7,7 +7,10 @@ const setService = () => async (dispatch: any) => {
         dispatch({
             type: 'SET_SERVICES',
             payload: res.data
+
         })
+        console.log(res.data)
+
     }
     catch (e) {
         // dispatch({

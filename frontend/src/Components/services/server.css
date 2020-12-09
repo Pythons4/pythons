@@ -4,11 +4,21 @@
     height: 500px !important;
     width:50% !important;
     align-content: center !important;
-
 }
 
 #forButton{
     width: 35% !important;
     height: 40px !important;
+    font-size: medium !important;
     
 }
+
+/* .MuiFormControl-root {
+    width: 60% !important;
+    height: 50px !important;
+}
+
+.MuiTextField-root{
+    width: 60% !important;
+    height: 50px !important;
+} */
