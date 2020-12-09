@@ -37,8 +37,9 @@ export default function StateTextFields(props: data) {
 
             <div id="forForm">
                 <br /><br /><br />
-                <h3>Sterilization</h3>
-                <h4>2 hr / 300 $</h4>
+
+                <h3>{props.data.name}</h3>
+                <h4>{props.data.price}</h4>
 
                 <TextField
                     id="outlined-name"

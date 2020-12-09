@@ -9,7 +9,7 @@ import FormOnCard from "./FormOnCard"
 class Services extends Component<{ services: any, setService: any }> {
     state = {
         data: {
-            name: "",
+            name: "choose service",
             price: ""
         }
     }
