@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from "axios"
 import ServicesCard from "./ServiceCard"
-import setService from "../../redux/services/servicesAction"
+import setService from "../../store/actions/servicesAction"
 import { connect, useDispatch, useSelector } from "react-redux"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FormOnCard from "./FormOnCard"
 
 class Services extends Component<{ services: any, setService: any }> {
     // state = {
@@ -30,8 +31,6 @@ class Services extends Component<{ services: any, setService: any }> {
             name = serv.service_name;
             return < ServicesCard price={price} imge={imge} name={name} />
 
-            // < ServicesCard price={serv} imge={serv} name={serv} />
-            console.log(this.props.services)
 
 
         }))
@@ -40,6 +39,7 @@ class Services extends Component<{ services: any, setService: any }> {
         return (
             <div className="row text-center">
                 {/* {this.props.services} */}
+                <FormOnCard />
                 {ser}
                 {/* < ServicesCard price={price} imge={imge} name={name} /> */}
             </div >

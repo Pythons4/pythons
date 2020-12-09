@@ -1,14 +1,3 @@
-import { ServicesTypes } from "./servicesTypes";
-
-// let setService = (service: any) => ({
-//     type: ServicesTypes.SET_SERVICES,
-//     payload: service
-// });
-
-
-// export default setService
-
-
 import axios from 'axios'
 
 const setService = () => async (dispatch: any) => {
@@ -16,7 +5,7 @@ const setService = () => async (dispatch: any) => {
     try {
         const res = await axios.get(`/api/services/`)
         dispatch({
-            type: ServicesTypes.SET_SERVICES,
+            type: 'SET_SERVICES',
             payload: res.data
         })
     }

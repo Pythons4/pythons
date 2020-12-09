@@ -15,6 +15,7 @@ import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import AddTip from './Components/Tips/addtip.js'
 import Navbar from './Components/Navbar/Navbar';
+import AllProucts from './Components/Products/allpro'
 
 
 // import { connect } from 'react-redux'
@@ -57,7 +58,7 @@ class App extends React.Component<{}, any>{
         <Switch>
           <Route exact path="/homepage" render={() => <Homepage />} />
 
-          <Route path="/product" exact component={Product} />
+          <Route path="/product" exact component={AllProucts} />
           <Route path="/tools" exact component={ProductTools} />
           <Route path="/materials" exact component={ProductMaterials} />
           <Route path="/tips" exact component={AddTip} />

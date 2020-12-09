@@ -1,0 +1,14 @@
+#forForm{
+    background-color:rgba(37, 122, 202, 0.199) !important;
+    border:rgb(91, 140, 231) solid !important;
+    height: 500px !important;
+    width:50% !important;
+    align-content: center !important;
+
+}
+
+#forButton{
+    width: 35% !important;
+    height: 40px !important;
+    
+}
