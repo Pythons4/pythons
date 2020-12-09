@@ -10,6 +10,8 @@ import Services from './Components/services/Services';
 import AddTip from './Components/Tips/addtip.js'
 import Navbar from './Components/Navbar/Navbar';
 import ProductsCard from './Components/Products/productcard';
+import TheCart from './Components/Products/thecart';
+import CofirmBuy from './Components/Products/confirmbuying';
 // import AllProucts from './Components/Products/allpro'
 
 
@@ -34,6 +36,10 @@ class App extends React.Component<{}, any>{
           <Route path="/services" exact component={Services} />
           <Route exact path="/signup" render={() => <SignUpPage />} />
           <Route exact path="/signin" render={() => <SignInPage />} />
+          <Route exact path="/cart" render={() => <TheCart />} />
+          <Route path="/cart/confirm" exact component={CofirmBuy} />
+
+
         </Switch>
       </Router>
     );

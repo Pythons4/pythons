@@ -93,3 +93,10 @@
     font-weight: 200;
     width:60px
 }
+
+.thecart{
+    width:40px;
+    height: 60px;
+    border-radius: 240px;
+    text-align: center;
+}

@@ -1,7 +1,8 @@
-const removefromcart = (data: {}) => {
+//remove product from cart (action)
+const removefromcart = (theid: string) => {
     return {
         type: "REMOVE_FROM_CART",
-        value: data
+        theid: theid
     }
 }
 

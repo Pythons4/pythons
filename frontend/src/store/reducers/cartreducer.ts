@@ -1,5 +1,6 @@
 
-const cartReducer = (state: any, action: any) => {
+const cartReducer = (state: { whatincart: any, cartvalue: any }, action: any) => {
+    console.log(state)
     switch (action.type) {
         case 'BUY_IT':
             return { cartvalue: action.value }
@@ -8,23 +9,26 @@ const cartReducer = (state: any, action: any) => {
             return { cartvalue: action.value }
 
         case 'ADD_TO_CART':
-            if (!state.whatincart) {
-                state.whatincart = []
-            }
-            state.whatincart.push(action.value)
-            return { ...state, whatincart: state.whatincart }
+            //add new product to the whatincart array
+            state.whatincart = JSON.parse(localStorage.getItem('thecart') || '{}')
+            state.whatincart[action.theid] = action.value
+            localStorage.setItem('thecart', JSON.stringify(state.whatincart))
+            return { whatincart: localStorage.getItem('thecart') }
 
         case 'REMOVE_FROM_CART':
-            let newState = Object.keys(state.whatincart).reduce((r: any, e: any) => {
-                if (!action.value[e]) r[e] = state.whatincart[e];
-                return r
-            }, {})
-
-            return { ...state, cartData: newState }
-
+            //remove all product
+            if (action.theid === 'remove') {
+                localStorage.removeItem('thecart')
+                return { whatincart: '{}' }
+            }
+            //remove product by its id from whatincart array
+            state.whatincart = JSON.parse(localStorage.getItem('thecart') || '{}')
+            delete state.whatincart[action.theid]
+            localStorage.setItem('thecart', JSON.stringify(state.whatincart))
+            return { whatincart: localStorage.getItem('thecart') }
 
         default:
-            return { cartvalue: 0 }
+            return { whatincart: localStorage.getItem('thecart'), price: 0 }
     };
 };
 export default cartReducer;

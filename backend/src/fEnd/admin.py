@@ -40,8 +40,8 @@ class ProductsAdmin(admin.ModelAdmin):
 
 
 class UserProductsAdmin(admin.ModelAdmin):
-    list_display = ('_id', 'user_id', 'product_id',
-                    'user_product_location', 'user_product_quantity')
+    list_display = ('_id', 'user_id', 'user_products',
+                    'user_product_location')
 
 
 # Register your models here.

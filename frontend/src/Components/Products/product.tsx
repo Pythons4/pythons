@@ -10,7 +10,7 @@ export class Product extends Component<{}, any> {
     constructor(props: {} | Readonly<{}>) {
         super(props)
         this.state = {
-            products: []
+            products: store.getState().productseReducer
         }
     }
 

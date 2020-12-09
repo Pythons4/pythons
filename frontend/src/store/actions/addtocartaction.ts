@@ -1,8 +1,8 @@
-const addtocart = (value: any) => {
+//action to add product to the cart
+export const addtocart = (value: any, theid: string) => {
     return {
         type: "ADD_TO_CART",
-        value: value
+        value: value,
+        theid: theid
     }
 }
-
-export default addtocart

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//get all product from database
 export const GET_ALL = () => {
     return function (dispatch) {
         axios.get("/api/products/").then(res => {
@@ -23,7 +24,6 @@ export const GET_ALL = () => {
                     type: "GET_ALL",
                     payload: err.message
                 })
-
             })
     }
 }

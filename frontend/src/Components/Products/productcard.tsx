@@ -5,7 +5,7 @@ import './product.css'
 import { Button } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import store from '../../store';
-import addToCart from '../../store/actions/addtocartaction'
+import { addtocart } from '../../store/actions/addtocartaction'
 
 
 //props type
@@ -67,9 +67,9 @@ export default class ProductsCard extends Component<Props, State> {
     }
     addtothecart() {
         console.log('in')
-        store.dispatch(addToCart({ s: this.state.quantity }))
+        store.dispatch(addtocart({ quantity: this.state.quantity, name: theproduct.product_name, img: theproduct.product_img, price: theproduct.product_price }, theproduct._id))
         var storedata = store.getState()
-        console.log(storedata.cartReducer.whatincart)
+        console.log(storedata)
     }
     render() {
         theproduct = this.props.location.state.theproduct
