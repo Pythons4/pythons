@@ -41,7 +41,7 @@ class Service(models.Model):
 class UserService(models.Model):
     _id = models.ObjectIdField()
     user_id = models.TextField()
-    service_id = models.TextField()
+    service_name = models.TextField()
     user_service_location = models.TextField()
     user_service_date = models.DateField()
     user_service_hours = models.IntegerField()

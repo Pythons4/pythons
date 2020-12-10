@@ -36,7 +36,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 class UserServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserService
-        fields = ('_id', 'user_id', 'service_id', 'user_service_location',
+        fields = ('_id', 'user_id', 'service_name', 'user_service_location',
                   'user_service_date', 'user_service_hours')
 
 

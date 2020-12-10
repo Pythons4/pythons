@@ -16,7 +16,7 @@ class ServicesAdmin(admin.ModelAdmin):
 
 
 class UserServiceAdmin(admin.ModelAdmin):
-    list_display = ('_id', 'user_id', 'service_id', 'user_service_location',
+    list_display = ('_id', 'user_id', 'service_name', 'user_service_location',
                     'user_service_date', 'user_service_hours')
 
 
