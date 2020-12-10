@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
+=======
     "python.pythonPath": "C:\\Users\\Asus\\Anaconda3\\python.exe",
+>>>>>>> c3666753d049fd919374ee1a9dd9b150fffc5cb4
     "team.showWelcomeMessage": false,
     "editor.formatOnSave": true,
     "python.linting.pycodestyleEnabled": true,
