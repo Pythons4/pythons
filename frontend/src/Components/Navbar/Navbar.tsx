@@ -14,15 +14,12 @@ const Navbar = () => {
                 <Link to='/homepage' ><h4>Sparkles</h4>
                 </Link>
             </div>
-
-
-
             <ul className='nav-links' >
                 <li >
                     <Link to='/homepage' className='nav-link'  >Home</Link>
                 </li>
                 <li >
-                    <Link to='/' className='nav-link'>Serveses</Link>
+                    <Link to='/services' className='nav-link'>services</Link>
                 </li>
 
                 <li >
@@ -34,6 +31,7 @@ const Navbar = () => {
                 <li>
                     <Link to='/signin' className='nav-link'>login</Link>
                 </li>
+
             </ul>
 
 
