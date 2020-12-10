@@ -30,15 +30,17 @@ class App extends React.Component<{}, any>{
 
   }
   componentDidMount() {
-    axios
-      .get("/api/tips/")
-      .then(res => {
-        console.log(res.data[0].tip_img)
-        this.setState({
-          x: res.data[0].tip_img
-        })
-      })
-      .catch(err => console.log(err));
+    // const user_id="0poi9"
+
+    // axios
+    //   .get(`/api/usertips/${user_id}`)
+    //   .then(res => {
+    //     console.log(res.data[0])
+    //     this.setState({
+    //       x: res.data[0]
+    //     })
+    //   })
+    //   .catch(err => console.log(err));
   };
 
 

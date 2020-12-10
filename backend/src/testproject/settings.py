@@ -15,6 +15,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,9 +44,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'fEnd',
-
-
-
 ]
 
 MIDDLEWARE = [
@@ -106,6 +104,8 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+# Custom user model
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -141,6 +141,8 @@ USE_L10N = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -163,7 +165,6 @@ cloudinary.config(
 )
 
 USE_TZ = False
-CORS_ORIGIN_ALLOW_ALL=True
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': (
