@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from "axios";
-import jQuery from 'jquery'
 import configdata from '../../csrftoken'
 
 var postreq = async (file1) => {
@@ -67,6 +66,7 @@ export default class AddTip extends Component {
                     <input type='file' name='img' onChange={this.handelimguplode}></input>
                     <button type='button' onClick={this.handelclikckimg}></button>
                 </form>
+                {/* eslint-disable-next-line jsx-a11y/alt-text */}
                 {this.state.reviwesoursw && (<img src={this.state.reviwesoursw}></img>)}
             </div>
         )

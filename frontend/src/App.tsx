@@ -12,7 +12,7 @@ import Navbar from './Components/Navbar/Navbar';
 import ProductsCard from './Components/Products/productcard';
 import TheCart from './Components/Products/thecart';
 import CofirmBuy from './Components/Products/confirmbuying';
-// import AllProucts from './Components/Products/allpro'
+import AllTips from './Components/Tips/alltipspage';
 
 
 class App extends React.Component<{}, any>{
@@ -23,7 +23,6 @@ class App extends React.Component<{}, any>{
   }
   render() {
     return (
-      // <Homepage />
       <Router>
         <Navbar />
         <Switch>
@@ -32,18 +31,16 @@ class App extends React.Component<{}, any>{
           <Route path="/product/tools" exact component={ProductTools} />
           <Route path="/product/materials" exact component={ProductMaterials} />
           <Route path="/product/:producttype/:name" exact component={ProductsCard} />
-          <Route path="/tips" exact component={AddTip} />
+          <Route path="/tip/add" exact component={AddTip} />
+          <Route path="/tips" exact component={AllTips} />
           <Route path="/services" exact component={Services} />
           <Route exact path="/signup" render={() => <SignUpPage />} />
           <Route exact path="/signin" render={() => <SignInPage />} />
           <Route exact path="/cart" render={() => <TheCart />} />
           <Route path="/cart/confirm" exact component={CofirmBuy} />
-
-
         </Switch>
       </Router>
     );
   }
 }
-
 export default App;

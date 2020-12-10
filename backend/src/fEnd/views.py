@@ -1,10 +1,9 @@
-# # from django.shortcuts import render
-
-# # Create your views here.
 from django.http import HttpResponse
-# from fEnd.models import Fav
+
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.response import Response
+
 from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, FavSerializer, ProductsSerializer, UserProductsSerializer
 from cloudinary.forms import cl_init_js_callbacks
 from django.views.decorators.csrf import csrf_exempt
@@ -38,10 +37,6 @@ class ServiceView(viewsets.ModelViewSet):
     queryset = Service.objects.all()
 
 
-# from django.shortcuts import render
-# @csrf_exempt
-
-
 class UserServiceView(viewsets.ModelViewSet):
     serializer_class = UserServiceSerializer
     queryset = UserService.objects.all()
@@ -66,7 +61,7 @@ class TipsView(viewsets.ModelViewSet):       # add this
     serializer_class = TipsSerializer          # add this
     queryset = Tip.objects.all()
 
-# @csrf_exempt
+
 # # work like the controller in node.js
 # # add anew tip
 # def addtip(request):
@@ -76,8 +71,6 @@ class TipsView(viewsets.ModelViewSet):       # add this
 #                tip_text=request.POST.get('tip_text'))
 #     tip.save()
 #     return HttpResponse('Inserted')
-
-
 class FavView(viewsets.ModelViewSet):
     serializer_class = FavSerializer
     queryset = Fav.objects.all()
@@ -91,3 +84,18 @@ class ProductsView(viewsets.ModelViewSet):
 class UserProductsView(viewsets.ModelViewSet):
     serializer_class = UserProductsSerializer
     queryset = UserProducts.objects.all()
+
+
+class ProductsUpdateView(viewsets.ModelViewSet):
+    queryset = Products.objects.all()
+    serializer_class = ProductsSerializer(queryset)
+    # return Response(serializer_class.data)
+
+# @csrf_exempt
+
+
+def ProductUpdate(request, id):
+    theproduct = Products.objects.get(_id=ObjectId(id))
+    theproduct.product_quantity = request.PUT.get('product_quantity')
+    theproduct.save()
+    return HttpResponse('updated')

@@ -6,6 +6,9 @@ import './product.css'
 import store from '../../store';
 import { GET_ALL } from '../../store/actions/getallproduct';
 
+import axios from "axios";
+import configdata from '../../csrftoken'
+
 export class Product extends Component<{}, any> {
     constructor(props: {} | Readonly<{}>) {
         super(props)
@@ -50,6 +53,15 @@ export class Product extends Component<{}, any> {
                         style={{ textDecoration: "none" }}>
                         <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Materials</Button>
                     </Link>
+                    <Button onClick={
+                        () => {
+                            axios.put('/api/products/', { _id: '5fce1fd486421322abecae99' }, configdata)
+                                .then(res => {
+                                    console.log(res.data)
+                                })
+                                .catch(err => console.log(err));
+                        }
+                    }>test</Button>
                 </div>
             </div>
         )
