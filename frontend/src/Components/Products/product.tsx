@@ -55,7 +55,7 @@ export class Product extends Component<{}, any> {
                     </Link>
                     <Button onClick={
                         () => {
-                            axios.put('/api/products/', { _id: '5fce1fd486421322abecae99' }, configdata)
+                            axios.put('/api/updateproduct', { _id: "5fce14dbab94ea3a26a9feb0", product_quantity: 42 }, configdata)
                                 .then(res => {
                                     console.log(res.data)
                                 })

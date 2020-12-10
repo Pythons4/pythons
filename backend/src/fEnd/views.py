@@ -104,10 +104,12 @@ class ProductsView(viewsets.ModelViewSet):
         return queryset
 
     def retrieve(self, request, *args, **kwargs):
+        print(request.method)
         params = kwargs
         print(params)
         products = Products.objects.filter(
             _id=ObjectId(params['pk']))
+        products.product_quantity = request.data['product_quantity']
         serializer = ProductsSerializer(products, many=True)
         print(serializer.data)
         return Response(serializer.data)
@@ -118,6 +120,13 @@ class UserProductsView(viewsets.ModelViewSet):
     queryset = UserProducts.objects.all()
 
 
-class ProductsUpdateView(viewsets.ModelViewSet):
-    queryset = Products.objects.all()
-    serializer_class = ProductsSerializer(queryset)
+@api_view(['PUT'])
+def updateProductQuantity(request):
+    print('params')
+    products = Products.objects.get(
+        _id=ObjectId(request.data['_id']))
+    products.product_quantity = request.data['product_quantity']
+    products.save()
+    serializer = ProductsSerializer(products)
+    print(serializer.data)
+    return Response(serializer.data)

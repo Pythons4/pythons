@@ -58,6 +58,9 @@ class Tip(models.Model):
     def __str__(self):
         return self.tip_title
 
+    def __str__(self):
+        return self.tip_title
+
 
 # Fav table
 class Fav(models.Model):
