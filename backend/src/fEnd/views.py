@@ -14,7 +14,21 @@ from .models import Tip, Users, Admin, Service, UserService, TipCommints, Fav, P
 @csrf_exempt
 class TipsView(viewsets.ModelViewSet):
     serializer_class = TipsSerializer
-    queryset = Tip.objects.all()
+    # queryset = Tip.objects.all()
+
+    def get_queryset(self):
+        tips = Tip.objects.all()
+        return tips
+
+    def get(self, request, *args, **kwargs):
+        try:
+            id = request.query_params['id']
+            if id != None:
+                usertip = Tip.objects.get(id=id)
+                serializer = TipsSerializer(usertip)
+        except:
+            usertips = self.get_queryset()
+            serializer = UserTipsSerializer(usertips, many=True)
 
 
 class TipCommintsView(viewsets.ModelViewSet):
