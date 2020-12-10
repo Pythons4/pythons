@@ -9,6 +9,7 @@ import ProductMaterials from './Components/Products/materials';
 import Services from './Components/services/Services';
 
 
+
 import axios from "axios";
 // import reducer from "../reducer/rootReducer"
 import { connect } from 'react-redux'
@@ -71,6 +72,7 @@ class App extends React.Component<{}, any>{
           <Route exact path="/signup" render={() => <SignUpPage />} />
           <Route exact path="/signin" render={() => <SignInPage />} />
         </Switch>
+
       </Router>
     );
   }
