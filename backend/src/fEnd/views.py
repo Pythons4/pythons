@@ -16,15 +16,18 @@ class TipsView(viewsets.ModelViewSet):
     serializer_class = TipsSerializer
     # queryset = Tip.objects.all()
 
-    def get_queryset(self):
-        tips = Tip.objects.all()
-        return tips
+    # def get_queryset(self):
+    #     tips = Tip.objects.all()
+    #     return tips
 
     def get(self, request, *args, **kwargs):
+        print('hello')
+
         try:
-            id = request.query_params['id']
+            id = request.query_params['user_id']
+
             if id != None:
-                usertip = Tip.objects.get(id=id)
+                usertip = Tip.objects.get(user_id=id)
                 serializer = TipsSerializer(usertip)
         except:
             usertips = self.get_queryset()
