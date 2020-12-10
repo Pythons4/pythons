@@ -11,7 +11,7 @@ var postreq = async (file1) => {
         .then(res => {
             console.log(res.data.secure_url)
             axios.post("/api/tips/", {
-                tip_title: 'hello cleaner', tip_text: 'make it shime', tip_img: res.data.secure_url, user_id: '0poi9'
+                tip_title: 'hello cleaner ', tip_text: 'make it shime', tip_img: res.data.secure_url, user_id: '0poi9'
             }, configdata)
                 .then(res => {
                     console.log(res)
@@ -27,7 +27,8 @@ export default class AddTip extends Component {
         this.state = {
             reviwesoursw: '',
             takethis: '',
-            file: ''
+            file: '',
+
         }
         this.handelimguplode = this.handelimguplode.bind(this)
         this.handelclikckimg = this.handelclikckimg.bind(this)
@@ -63,6 +64,7 @@ export default class AddTip extends Component {
         return (
             <div>
                 <form>
+                    {/* add input text titel  */}
                     <input type='file' name='img' onChange={this.handelimguplode}></input>
                     <button type='button' onClick={this.handelclikckimg}></button>
                 </form>
