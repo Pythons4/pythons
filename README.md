@@ -31,3 +31,13 @@ pip install -r requirements.txt
 ```
 cd src/
 python manage.py runserver
+
+2. Backend:
+
+- Go from root directory to frontend directory:
+
+```
+cd frontend/
+npm i
+npm start
+```
