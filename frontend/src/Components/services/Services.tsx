@@ -24,10 +24,10 @@ class Services extends Component<{ services: any, setService: any }> {
         //     })
     }
 
-    onclick = (e: any) => {
-        this.setState({ data: e })
-        console.log(e)
-        return e
+    onclick = (data: any) => {
+        this.setState({ data })
+        console.log(data)
+        return data
     }
 
     render() {
