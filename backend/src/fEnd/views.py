@@ -1,8 +1,11 @@
 from django.http import HttpResponse
-
+from bson.objectid import ObjectId
+from rest_framework.views import APIView
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, FavSerializer, ProductsSerializer, UserProductsSerializer
 from cloudinary.forms import cl_init_js_callbacks
@@ -11,24 +14,50 @@ import json
 from .models import Tip, Users, Admin, Service, UserService, TipCommints, Fav, Products, UserProducts
 
 
-@csrf_exempt
+# @csrf_exempt
+# class TipsView(viewsets.ModelViewSet):
+#     serializer_class = TipsSerializer
+#     queryset = Tip.objects.all()
+
+#     def get_queryset(self):
+#         tips = Tip.objects.all()
+#         return tips
+
+#     def get(self, request, *args, **kwargs):
+#         try:
+#             id = request.query_params['id']
+#             if id != None:
+#                 usertip = Tip.objects.get(id=id)
+#                 serializer = TipsSerializer(usertip)
+#         except:
+#             usertips = self.get_queryset()
+#             serializer = UserTipsSerializer(usertips, many=True)
+
+@api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
+def testfunction(request):
+    # id = request.query_params['id']
+    # return Response({'messege': "hello", 'the id': int(id)*2})
+    serializer_class = TipsSerializer          # add this
+    queryset = Tip.objects.all()
+    return Response(queryset.data)
+
+
 class TipsView(viewsets.ModelViewSet):
     serializer_class = TipsSerializer
-    queryset = Tip.objects.all()
 
     def get_queryset(self):
         tips = Tip.objects.all()
         return tips
 
-    def get(self, request, *args, **kwargs):
-        try:
-            id = request.query_params['id']
-            if id != None:
-                usertip = Tip.objects.get(id=id)
-                serializer = TipsSerializer(usertip)
-        except:
-            usertips = self.get_queryset()
-            serializer = UserTipsSerializer(usertips, many=True)
+    def retrieve(self, request, *args, **kwargs):
+        params = kwargs
+        print(params)
+        thetips = Tip.objects.filter(
+            user_id=params['pk'])
+        serializer = TipsSerializer(thetips, many=True)
+        print(serializer.data)
+        return Response(serializer.data)
 
 
 class TipCommintsView(viewsets.ModelViewSet):
@@ -55,44 +84,33 @@ class UserServiceView(viewsets.ModelViewSet):
     serializer_class = UserServiceSerializer
     queryset = UserService.objects.all()
 
-# def showtips(request):
-#     tips = Tips.objects.all()
-#     tipstittle = ""
-#     for tip in tips:
-#         tipstittle += tip.tip_title
-#     return HttpResponse(tipstittle)
 
-# # Create your views here.
-# from django.http import HttpResponse
-# from fEnd.models import Tips
-# from fEnd.models import Fav
-# from fEnd.models import TipCommints
-
-# from django.views.decorators.csrf import csrf_exempt
+# class TipsView(viewsets.ModelViewSet):
+#     serializer_class = TipsSerializer
+#     queryset = Tip.objects.all()
 
 
-class TipsView(viewsets.ModelViewSet):       # add this
-    serializer_class = TipsSerializer          # add this
-    queryset = Tip.objects.all()
-
-
-# # work like the controller in node.js
-# # add anew tip
-# def addtip(request):
-#     tip = Tips(tip_title=request.POST.get('tip_title'),
-#                user_id=request.POST.get('user_id'),
-#                tip_img=request.POST.get('tip_img'),
-#                tip_text=request.POST.get('tip_text'))
-#     tip.save()
-#     return HttpResponse('Inserted')
 class FavView(viewsets.ModelViewSet):
     serializer_class = FavSerializer
     queryset = Fav.objects.all()
 
 
+@permission_classes([AllowAny])
 class ProductsView(viewsets.ModelViewSet):
     serializer_class = ProductsSerializer
-    queryset = Products.objects.all()
+
+    def get_queryset(self):
+        queryset = Products.objects.all()
+        return queryset
+
+    def retrieve(self, request, *args, **kwargs):
+        params = kwargs
+        print(params)
+        products = Products.objects.filter(
+            _id=ObjectId(params['pk']))
+        serializer = ProductsSerializer(products, many=True)
+        print(serializer.data)
+        return Response(serializer.data)
 
 
 class UserProductsView(viewsets.ModelViewSet):
@@ -103,13 +121,3 @@ class UserProductsView(viewsets.ModelViewSet):
 class ProductsUpdateView(viewsets.ModelViewSet):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer(queryset)
-    # return Response(serializer_class.data)
-
-# @csrf_exempt
-
-
-def ProductUpdate(request, id):
-    theproduct = Products.objects.get(_id=ObjectId(id))
-    theproduct.product_quantity = request.PUT.get('product_quantity')
-    theproduct.save()
-    return HttpResponse('updated')

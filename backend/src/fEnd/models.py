@@ -56,6 +56,9 @@ class Tip(models.Model):
     user_id = models.TextField()
     objects = models.DjongoManager()
 
+    def __str__(self):
+        return self.tip_title
+
 
 # Fav table
 class Fav(models.Model):
