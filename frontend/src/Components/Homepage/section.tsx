@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default class Contaner extends Component {
+export default class Section extends Component {
     render() {
         return (
             <div className='section'>

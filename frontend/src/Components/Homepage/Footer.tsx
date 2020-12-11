@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Homepage.css'
 
 export default class Footer extends Component {
     render() {
         return (
-            <div>
+            <div className='footer'>
 
                 <div className="row d-flex justify-content-between" >
 

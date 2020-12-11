@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
 import './Homepage.css'
-import Contaner from './section'
+import Section from './section'
 import Footer from './Footer'
 
 
@@ -11,7 +11,7 @@ import Footer from './Footer'
 
 const Homepage = (props: any) => {
     return (
-        <>
+        <><div>
             <div className='container-img'>
 
                 <p>Cleaning is hard at first, messy in the middle and gorgeous in the end</p>
@@ -23,12 +23,17 @@ const Homepage = (props: any) => {
                 </div>
             </div>
 
+
             <div>
-                <Contaner />
+                <Section />
             </div>
             <div>
                 <Footer />
             </div>
+
+        </div>
+
+
         </>
 
 
