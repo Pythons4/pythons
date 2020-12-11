@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface Props {
     price: string,
@@ -7,6 +7,7 @@ interface Props {
     name: string,
     onclick: (e: any) => Object
 }
+
 export default class ServicesCard extends Component<Props> {
 
     render() {
