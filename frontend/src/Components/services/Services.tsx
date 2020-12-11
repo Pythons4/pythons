@@ -42,13 +42,14 @@ class Services extends Component<{ services: any, setService: any }> {
         // console.log(ser, "props")
 
         return (
-            <div className="row text-center">
+            <div className="d-flex row ">
                 {/* {this.props.services} */}
-                <FormOnCard data={this.state.data} />
+
+
                 {ser}
+
                 {/* < ServicesCard price={price} imge={imge} name={name} /> */}
             </div >
-
         )
     }
 }

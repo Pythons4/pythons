@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 const setService = () => async (dispatch: any) => {
-
     try {
         const res = await axios.get(`/api/services/`)
         dispatch({
@@ -18,6 +17,5 @@ const setService = () => async (dispatch: any) => {
         //     payload: console.log(e),
         // })
     }
-
 }
 export default setService

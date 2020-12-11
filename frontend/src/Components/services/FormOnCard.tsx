@@ -35,7 +35,14 @@ export default function StateTextFields(props: data) {
 
     const book = (e: React.FormEvent<EventTarget>) => {
         // e.preventdefault();
-        axios.post('/api/userservice/', state)
+        // axios.post('/api/userservice/', state)
+        //     .then(function (response) {
+        //         console.log(response);
+        //     })
+        axios.post('/api/userservice/', {
+
+
+        })
             .then(function (response) {
                 console.log(response);
             })

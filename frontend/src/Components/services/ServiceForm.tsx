@@ -13,7 +13,7 @@ export default class ServicesCard extends Component<Props> {
             <div>
                 {/* <div class="row text-center"> */}
 
-                <div className=" ">
+                <div className="">
                     <img className="rounded-circle" alt="100x100" src={this.props.imge}
                         data-holder-rendered="true" />
                     <h2 className="my-5 h2">{this.props.name}</h2>

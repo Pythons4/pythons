@@ -36,7 +36,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 class UserServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserService
-        fields = ('_id', 'user_id', 'service_id', 'user_service_location',
+        fields = ('_id', 'user_id', 'service_name', 'user_service_location',
                   'user_service_date', 'user_service_hours')
 
 
@@ -57,5 +57,5 @@ class ProductsSerializer(serializers.ModelSerializer):
 class UserProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProducts
-        fields = ('_product_id', 'user_id', 'product_id',
-                  'user_product_location', 'user_product_quantity')
+        fields = ('_id', 'user_id', 'user_products',
+                  'user_product_location')
