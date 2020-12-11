@@ -16,7 +16,6 @@ class Users(models.Model):
     user_phon = models.TextField()
     user_img = models.TextField()
     user_bio = models.TextField()
-    objects = models.DjongoManager()
 
 
 # admin table

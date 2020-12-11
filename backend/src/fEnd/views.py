@@ -19,16 +19,6 @@ import json
 from .models import Tip, Users, Admin, Service, UserService, TipCommints, Fav, Products, UserProducts
 
 
-@api_view(['GET', 'POST'])
-@permission_classes([AllowAny])
-def testfunction(request):
-    # id = request.query_params['id']
-    # return Response({'messege': "hello", 'the id': int(id)*2})
-    serializer_class = TipsSerializer          # add this
-    queryset = Tip.objects.all()
-    return Response(queryset.data)
-
-
 class TipsView(viewsets.ModelViewSet):
     serializer_class = TipsSerializer
 
@@ -51,13 +41,56 @@ class TipCommintsView(viewsets.ModelViewSet):
     queryset = TipCommints.objects.all()
 
 
+@permission_classes([AllowAny])
 class UsersView(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
-    queryset = Users.objects.all()
-    token = jwt.encode(
-        {'user_name': 'qamr', '_id': '98765edfghjklmnbvrt'},
-        settings.SECRET_KEY)
-    print(token)
+
+    def get_queryset(self):
+        queryset = Users.objects.all()
+        return queryset
+
+    def create(self, request, *args, **kwargs):
+        theuser = Users.objects.filter(user_email=request.data['user_email'])
+        if(theuser):
+            return Response('already existed user')
+        print('theuser')
+        userdata = request.data
+        newuser = Users.objects.create(user_email=userdata['user_email'],
+                                       user_password=userdata['user_password'],
+                                       user_name=userdata['user_name'],
+                                       user_phon=userdata['user_phon'])
+        newuser.save()
+        serializer = UsersSerializer(newuser)
+        token = jwt.encode(
+            {'user_name': userdata['user_email'],
+                '_id': serializer.data['_id']},
+            settings.SECRET_KEY)
+        return Response([serializer.data, token])
+
+        # if(theuser == None)
+        # theuser.product_quantity = request.data['product_quantity']
+        # theuser.save()
+        # serializer = ProductsSerializer(theuser)
+        # print(serializer.data)
+        # user = Users.objects.get(user_name='qamr')
+        # # payload = jwt_payload_handler(user)
+        # return Response(serializer.data)
+        # theuser.product_quantity = request.data['product_quantity']
+        # theuser.save()
+        # token = jwt.encode(
+        #     {'user_name': 'qamr', '_id': '98765edfghjklmnbvrt'},
+        #     settings.SECRET_KEY)
+        # print(token)
+        # pass
+
+    def retrieve(self, request, *args, **kwargs):
+        params = kwargs
+        print(params)
+        theuser = Users.objects.filter(
+            _id=params['pk'])
+        serializer = UsersSerializer(theuser, many=True)
+        print(serializer.data)
+        return Response(serializer.data)
 
 
 def loginuserpage(request):
@@ -77,11 +110,6 @@ class ServiceView(viewsets.ModelViewSet):
 class UserServiceView(viewsets.ModelViewSet):
     serializer_class = UserServiceSerializer
     queryset = UserService.objects.all()
-
-
-# class TipsView(viewsets.ModelViewSet):
-#     serializer_class = TipsSerializer
-#     queryset = Tip.objects.all()
 
 
 class FavView(viewsets.ModelViewSet):
