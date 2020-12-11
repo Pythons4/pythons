@@ -4,6 +4,7 @@ from djongo import models
 from bson.objectid import ObjectId
 import cloudinary
 from cloudinary.forms import CloudinaryJsFileField
+from django.conf import settings
 
 
 # user table

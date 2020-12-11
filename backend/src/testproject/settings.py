@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import datetime
 from pathlib import Path
 import cloudinary
 import cloudinary.uploader
@@ -154,14 +155,23 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.BasicAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
 
     ]
 }
 
+JWT_AUTH = {
+
+    'JWT_VERIFY': True,
+    'JWT_VERIFY_EXPIRATION': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=3000),
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+
+}
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',

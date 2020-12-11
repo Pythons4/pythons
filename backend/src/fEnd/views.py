@@ -1,3 +1,5 @@
+from rest_framework.authtoken.models import Token
+from django.contrib.auth import authenticate
 from django.http import HttpResponse
 from bson.objectid import ObjectId
 from rest_framework.views import APIView
@@ -6,6 +8,9 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
+import jwt
+from django.conf import settings
+
 
 from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, FavSerializer, ProductsSerializer, UserProductsSerializer
 from cloudinary.forms import cl_init_js_callbacks
@@ -13,25 +18,6 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Tip, Users, Admin, Service, UserService, TipCommints, Fav, Products, UserProducts
 
-
-# @csrf_exempt
-# class TipsView(viewsets.ModelViewSet):
-#     serializer_class = TipsSerializer
-#     queryset = Tip.objects.all()
-
-#     def get_queryset(self):
-#         tips = Tip.objects.all()
-#         return tips
-
-#     def get(self, request, *args, **kwargs):
-#         try:
-#             id = request.query_params['id']
-#             if id != None:
-#                 usertip = Tip.objects.get(id=id)
-#                 serializer = TipsSerializer(usertip)
-#         except:
-#             usertips = self.get_queryset()
-#             serializer = UserTipsSerializer(usertips, many=True)
 
 @api_view(['GET', 'POST'])
 @permission_classes([AllowAny])
@@ -68,6 +54,14 @@ class TipCommintsView(viewsets.ModelViewSet):
 class UsersView(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
     queryset = Users.objects.all()
+    token = jwt.encode(
+        {'user_name': 'qamr', '_id': '98765edfghjklmnbvrt'},
+        settings.SECRET_KEY)
+    print(token)
+
+
+def loginuserpage(request):
+    user = authenticate(request, username='qamar', password='09okj')
 
 
 class AdminView(viewsets.ModelViewSet):
@@ -121,6 +115,7 @@ class UserProductsView(viewsets.ModelViewSet):
 
 
 @api_view(['PUT'])
+@permission_classes([AllowAny])
 def updateProductQuantity(request):
     print('params')
     products = Products.objects.get(
@@ -129,4 +124,6 @@ def updateProductQuantity(request):
     products.save()
     serializer = ProductsSerializer(products)
     print(serializer.data)
+    user = Users.objects.get(user_name='qamr')
+    # payload = jwt_payload_handler(user)
     return Response(serializer.data)
