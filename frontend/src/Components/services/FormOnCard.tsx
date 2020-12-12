@@ -85,7 +85,7 @@ export default function StateTextFields(props: data) {
 
                 <TextField
                     id="outlined-name"
-                    label="Date"
+                    // label="Date"
                     type="date"
                     name="date"
                     onChange={handleChange}
