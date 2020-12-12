@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//the action that will get all tips in database
 export const ADD_TIP = () => {
     return function () {
         axios
