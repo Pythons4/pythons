@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Homepage.css'
 
 export default class Footer extends Component {
     render() {
         return (
-            <div>
+            <div className='footer'>
 
                 <div className="row d-flex justify-content-between" >
 
-                    <div className="w-25" >
+                    <div className="w-50" >
 
-                        <h5 className="text-uppercase" style={{ fontSize: "24px" }} >About us </h5>
+                        <h5 className="headertext"  >About us </h5>
 
                         <ul className="list-unstyled">
                             <li>
@@ -31,9 +32,9 @@ export default class Footer extends Component {
                     </div>
 
 
-                    <div className="w-20">
+                    <div className="50">
 
-                        <h5 className="text-uppercase" style={{ fontSize: "24px" }}>Head office</h5>
+                        <h5 className="headertext" >Head office</h5>
 
                         <ul className="list-unstyled">
                             <li>
