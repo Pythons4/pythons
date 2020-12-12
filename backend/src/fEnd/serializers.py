@@ -49,9 +49,9 @@ class FavSerializer(serializers.ModelSerializer):
 class ProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Products
-        fields = ('_id', 'product_name', 'product_price',
+        fields = ['_id', 'product_name', 'product_price',
                   'product_quantity', 'product_type', 'product_description',
-                  'product_img')
+                  'product_img']
 
 
 class UserProductsSerializer(serializers.ModelSerializer):
