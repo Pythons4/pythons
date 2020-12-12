@@ -3,7 +3,7 @@ import axios from "axios"
 import ServicesCard from "./ServiceCard"
 import setService from "../../store/actions/servicesAction"
 import { connect, useDispatch, useSelector } from "react-redux"
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import FormOnCard from "./FormOnCard"
 
 class Services extends Component<{ services: any, setService: any }> {
@@ -12,6 +12,9 @@ class Services extends Component<{ services: any, setService: any }> {
             name: "choose service",
             price: ""
         }
+        ,
+        isShow: false
+
     }
     componentDidMount() {
         // this.props.setService()
@@ -24,10 +27,18 @@ class Services extends Component<{ services: any, setService: any }> {
         //     })
     }
 
-    onclick = (e: any) => {
-        this.setState({ data: e })
-        console.log(e)
-        return e
+    onclick = (data: any) => {
+        this.setState({
+            data,
+        })
+        if (this.state.isShow === false) {
+            this.setState({
+
+                isShow: !this.state.isShow
+            })
+        }
+        console.log(data)
+        return data
     }
 
     render() {
@@ -38,17 +49,25 @@ class Services extends Component<{ services: any, setService: any }> {
             name = serv.service_name;
             return < ServicesCard price={price} imge={imge} name={name} onclick={this.onclick} />
         }))
-
+        let card = < FormOnCard data={this.state.data} />
         // console.log(ser, "props")
 
         return (
-            <div className="row text-center">
-                {/* {this.props.services} */}
-                <FormOnCard data={this.state.data} />
-                {ser}
-                {/* < ServicesCard price={price} imge={imge} name={name} /> */}
-            </div >
+            <div className="d-flex row justify-content-between " >
+                <div className="d-flex row  col-8 " >
 
+                    {ser}
+
+                </div >
+
+                <div className="col-4 ">
+
+                    {this.state.isShow && card}
+                </div>
+                {/* {this.props.services} */}
+                {/* < ServicesCard price={price} imge={imge} name={name} /> */}
+
+            </div >
         )
     }
 }
