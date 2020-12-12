@@ -67,31 +67,6 @@ class UsersView(viewsets.ModelViewSet):
             settings.SECRET_KEY)
         return Response([serializer.data, token])
 
-        # if(theuser == None)
-        # theuser.product_quantity = request.data['product_quantity']
-        # theuser.save()
-        # serializer = ProductsSerializer(theuser)
-        # print(serializer.data)
-        # user = Users.objects.get(user_name='qamr')
-        # # payload = jwt_payload_handler(user)
-        # return Response(serializer.data)
-        # theuser.product_quantity = request.data['product_quantity']
-        # theuser.save()
-        # token = jwt.encode(
-        #     {'user_name': 'qamr', '_id': '98765edfghjklmnbvrt'},
-        #     settings.SECRET_KEY)
-        # print(token)
-        # pass
-
-    def retrieve(self, request, *args, **kwargs):
-        params = kwargs
-        print(params)
-        theuser = Users.objects.filter(
-            _id=params['pk'])
-        serializer = UsersSerializer(theuser, many=True)
-        print(serializer.data)
-        return Response(serializer.data)
-
 
 def loginuserpage(request):
     user = authenticate(request, username='qamar', password='09okj')
@@ -155,3 +130,26 @@ def updateProductQuantity(request):
     user = Users.objects.get(user_name='qamr')
     # payload = jwt_payload_handler(user)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def getuserinfologin(request):
+    theuser = Users.objects.filter(
+        user_email=request.data['user_email'])
+    if(theuser):
+        serializer = UsersSerializer(theuser, many=True)
+        tuple_list = serializer.data[0]
+        tuple_list = list(tuple_list.items())
+        print(tuple_list[3][1])
+        if(tuple_list[3][1] != request.data['user_password']):
+            return Response('wrong password')
+        else:
+            token = jwt.encode(
+                {'user_email': tuple_list[2][1],
+                 '_id': tuple_list[0][1]},
+                settings.SECRET_KEY)
+            return Response([serializer.data, token])
+
+    else:
+        return Response('wrong email')
