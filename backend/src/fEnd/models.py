@@ -4,30 +4,23 @@ from djongo import models
 from bson.objectid import ObjectId
 import cloudinary
 from cloudinary.forms import CloudinaryJsFileField
+from django.conf import settings
 
-
-# Create your models here.
 
 # user table
-
-
 class Users(models.Model):
-    user_id = models.ObjectIdField()
-    # user_id = ObjectId()
+    _id = models.ObjectIdField()
     user_name = models.TextField()
     user_email = models.TextField()
     user_password = models.TextField()
     user_phon = models.TextField()
     user_img = models.TextField()
     user_bio = models.TextField()
-    objects = models.DjongoManager()
+
 
 # admin table
-
-
 class Admin(models.Model):
-    # admin_id = models.ObjectIdField()
-    admin_id = models.ObjectIdField()
+    _id = models.ObjectIdField()
     admin_name = models.TextField()
     admin_email = models.TextField()
     admin_password = models.TextField()
@@ -35,82 +28,78 @@ class Admin(models.Model):
 
 
 # services table
-
-
 class Service(models.Model):
-    # service_id = models.ObjectIdField()
-    service_id = models.ObjectIdField()
+    _id = models.ObjectIdField()
     service_name = models.TextField()
     service_img = models.TextField()
     service_price = models.TextField()
     objects = models.DjongoManager()
-    service_price=models.TextField()
+    service_price = models.TextField()
 
+
+# User Services table
 class UserService(models.Model):
-    user_service_id = models.ObjectIdField()
+    _id = models.ObjectIdField()
     user_id = models.TextField()
-    service_id = models.TextField()
+    service_name = models.TextField()
     user_service_location = models.TextField()
     user_service_date = models.DateField()
     user_service_hours = models.IntegerField()
 
 
 # tips table
-
 class Tip(models.Model):
-    # _id = ObjectId()
     _id = models.ObjectIdField()
     tip_title = models.CharField(max_length=40)
     tip_text = models.TextField()
-    # tip_img = CloudinaryField()
     tip_img = models.TextField()
     user_id = models.TextField()
-    objects = models.DjongoManager()
 
-    # objects = models.DjongoManager()
+    def __str__(self):
+        return self.tip_title
+
+    def __str__(self):
+        return self.tip_title
 
 
+# Fav table
 class Fav(models.Model):
-    fav_id = models.ObjectIdField()
+    _id = models.ObjectIdField()
     user_id = models.IntegerField()
     tip_id = models.IntegerField()
     objects = models.DjongoManager()
 
 
+# Tips Comments table
 class TipCommints(models.Model):
-    commint_id = models.ObjectIdField()
-    tip_id = models.IntegerField()
-    user_id = models.IntegerField()
-    commint_text = models.TextField()
-    objects = models.DjongoManager()
-
-
-# class Photo(models.Model):
-#     image = CloudinaryField('image')
-    tip_img = models.TextField()
-    user_id = models.TextField()
-    objects = models.DjongoManager()
-#tipscomments table
-class TipCommints(models.Model):
-    commint_id = models.ObjectIdField()
+    _id = models.ObjectIdField()
     tip_id = models.TextField()
     user_id = models.TextField()
     commint_text = models.TextField()
+    objects = models.DjongoManager()
 
 
+# Products table
 class Products(models.Model):
-    product_id = models.ObjectIdField()
+    _id = models.ObjectIdField()
     product_name = models.CharField(max_length=40)
     product_price = models.IntegerField()
     product_quantity = models.IntegerField()
     product_type = models.BooleanField()
     product_description = models.TextField()
+    product_img = models.TextField()
+    # objects = models.DjongoManager()
 
+    def __str__(self):
+        return self.product_name
+
+
+# User Product table
 class UserProducts(models.Model):
-    user_product_id = models.ObjectIdField()
+    _id = models.ObjectIdField()
     user_id = models.TextField()
-    product_id = models.TextField()
+    # product_id = models.TextField()
+    user_products = models.TextField()
     user_product_location = models.TextField()
-    user_product_quantity = models.IntegerField()
-    
-
+    # user_product_quantity = models.IntegerField()
+    objects = models.DjongoManager()
