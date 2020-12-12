@@ -11,8 +11,7 @@ nav{
     position: -webkit-sticky;
     top: 0;
     z-index: 1;
-
-   
+    height: 80px;   
 }
 
 
@@ -72,7 +71,7 @@ nav{
      position:  absolute  ;
      right: 0px;
      height:90vh ;
-     top: 10vh;
+     top: 15vh;
      background-color: rgba(67, 65, 209, 0.9);
      flex-direction: column;
      align-items: center;
