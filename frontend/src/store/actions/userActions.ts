@@ -19,7 +19,7 @@ export const login = (userinfo: any) => {
                 dispatch({
                     type: 'SIGN_IN_UP',
                     token: res.data[1],
-                    userId: res.data[0]._id
+                    userId: res.data[0]
                 })
         })
             .catch(err => {
