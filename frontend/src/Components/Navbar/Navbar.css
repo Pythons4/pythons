@@ -5,7 +5,8 @@ nav{
     padding: .4rem 0.6rem 0rem .6rem;
     display: flex;
     justify-content: space-between;
-    background-color: rgba(67, 65, 209, 0.9);
+    background-color: rgba(81, 79, 228, 0.9);
+
     align-items: center;
     position: sticky;
     position: -webkit-sticky;
@@ -22,7 +23,7 @@ nav{
     color:  #d81b1b;
     text-transform: lowercase;
     letter-spacing: 5px;
-    font-size: 30px; 
+    font-size: 50px; 
         
 
 }

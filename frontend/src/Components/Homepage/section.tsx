@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Homepage.css'
 
 export default class Section extends Component {
     render() {
         return (
             <div className='section'>
-                <h3>Why Choose Us ?</h3>
+                <h3 className="headertekst">Why Choose Us ?</h3>
                 <div className="row d-flex justify-content-between" >
 
                     <div className="w-20" >

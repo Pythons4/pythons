@@ -41,7 +41,7 @@ class Service(models.Model):
 class UserService(models.Model):
     _id = models.ObjectIdField()
     user_id = models.TextField()
-    service_id = models.TextField()
+    service_name = models.TextField()
     user_service_location = models.TextField()
     user_service_date = models.DateField()
     user_service_hours = models.IntegerField()
@@ -90,7 +90,8 @@ class Products(models.Model):
 class UserProducts(models.Model):
     _id = models.ObjectIdField()
     user_id = models.TextField()
-    product_id = models.TextField()
+    # product_id = models.TextField()
+    user_products = models.TextField()
     user_product_location = models.TextField()
-    user_product_quantity = models.IntegerField()
+    # user_product_quantity = models.IntegerField()
     objects = models.DjongoManager()
