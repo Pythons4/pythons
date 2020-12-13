@@ -15,17 +15,17 @@ class UserFev extends React.Component {
 
 
     render() {
-        var title, text, image;
-        title = this.props.fev.tip_title;
-        text = this.props.fev.tip_text;
-        image = this.props.tip.tip_img;
+        // var title, text, image;
+        // title = this.props.fev.tip_title;
+        // text = this.props.fev.tip_text;
+        // image = this.props.tip.tip_img;
 
 
 
 
         return (
             <div class="wrapper">
-                <div class="main_card">
+                {/* <div class="main_card">
                     <div class="card_left">
                         <div class="card_datails">
                             <h1>{title}</h1>
@@ -41,7 +41,7 @@ class UserFev extends React.Component {
 
 
                     </div>
-                </div>
+                </div> */}
             </div>
 
 

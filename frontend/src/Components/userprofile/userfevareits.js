@@ -6,23 +6,24 @@ import './user.css'
 
 
 
-class UserFevarets extends React.Component {
+class UserFevareits extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            UserFevarets: []
+            UserFevareits: []
         }
         
     }
 
 
     componentDidMount() {
-        axios.get('/api/favorites/')
+        // let { userid } = JSON.parse(store.getState().UserReducer)
+        axios.get(`api/favorites`)
             .then(res => {
 
-                console.log(res);
+                console.log(res.data);
 
-                this.setState({ UserFevarets: res})
+                this.setState({ UserFevareits: res.data })
 
             })
 
@@ -33,18 +34,18 @@ class UserFevarets extends React.Component {
 
     
     render() {
-        console.log(this.state.UserFevarets)
+        console.log(this.state.UserFevareits)
 
         return (
             <div>
-                <h1 className='user__fev'>Fevarets</h1>
+                <h1 className='user__ser'>Fevareits</h1>
                 {
-                    this.state.UserFevarets.length !== 0 ?
-                        this.state.UserFevarets.map((fev, id) => {
+                    this.state.UserFevareits.length !== 0 ?
+                        this.state.UserFevareits.map((fev, id) => {
                             return <UserFev fev={fev} key={id} />
 
                         })
-                        : <div className='user__fev'><h3>No Fevarets</h3></div>
+                        : <div className='user__ser'><h3>No Fevareits</h3></div>
                 }
             </div>
         )
@@ -53,4 +54,4 @@ class UserFevarets extends React.Component {
 
 }
 
-export default UserFevarets
+export default UserFevareits
