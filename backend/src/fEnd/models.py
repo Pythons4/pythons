@@ -24,7 +24,7 @@ class Admin(models.Model):
     admin_name = models.TextField()
     admin_email = models.TextField()
     admin_password = models.TextField()
-    objects = models.DjongoManager()
+    # objects = models.DjongoManager()
 
 
 # services table

@@ -169,3 +169,27 @@ def updateUserImage(request):
     theuser.save()
     serializer = UsersSerializer(theuser)
     return Response(serializer.data)
+
+
+# admin login handler with jwt
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def getAdminInfoLogin(request):
+    theadmin = Admin.objects.filter(
+        admin_email=request.data['admin_email'])
+    if(theadmin):
+        serializer = AdminSerializer(theadmin, many=True)
+        tuple_list = serializer.data[0]
+        tuple_list = list(tuple_list.items())
+        print(tuple_list[3][1])
+        if(tuple_list[3][1] != request.data['admin_password']):
+            return Response('wrong password')
+        else:
+            token = jwt.encode(
+                {'admin_email': tuple_list[2][1],
+                 '_id': tuple_list[0][1]},
+                settings.SECRET_KEY)
+            return Response([serializer.data, token])
+
+    else:
+        return Response('wrong email')
