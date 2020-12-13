@@ -37,7 +37,19 @@ class TipsView(viewsets.ModelViewSet):
 
 class TipCommintsView(viewsets.ModelViewSet):
     serializer_class = TipCommintsSerializer
-    queryset = TipCommints.objects.all()
+    
+    def get_queryset(self):
+        tipcommint = TipCommints.objects.all()
+        return tipcommint
+
+    def retrieve(self, request, *args, **kwargs):
+        params = kwargs
+        print(params)
+        thetipcommint = TipCommints.objects.filter(
+            user_id=params['pk'])
+        serializer = TipCommintsSerializer(thetipcommint, many=True)
+        print(serializer.data)
+        return Response(serializer.data)
 
 
 # user view/request (getall and create user and give it authentication(token))
