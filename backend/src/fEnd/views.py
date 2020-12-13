@@ -82,10 +82,36 @@ class UserServiceView(viewsets.ModelViewSet):
     serializer_class = UserServiceSerializer
     queryset = UserService.objects.all()
 
+    def get_queryset(self):
+        queryset = UserService.objects.all()
+        return queryset
+
+    def retrieve(self, request, *args, **kwargs):
+        params = kwargs
+        print(params)
+        userServices = UserService.objects.filter(
+            user_id=ObjectId(params['pk']))
+        serializer = UserServiceSerializer(userServices, many=True)
+        print(serializer.data)
+        return Response(serializer.data)
+
 
 class FavView(viewsets.ModelViewSet):
     serializer_class = FavSerializer
     queryset = Fav.objects.all()
+
+    def get_queryset(self):
+        queryset = Fav.objects.all()
+        return queryset
+
+    def retrieve(self, request, *args, **kwargs):
+        params = kwargs
+        print(params)
+        userFav = Fav.objects.filter(
+            user_id=ObjectId(params['pk']))
+        serializer = FavSerializer(userFav, many=True)
+        print(serializer.data)
+        return Response(serializer.data)
 
 
 # products viwe/request (fetall and retrive by id)
@@ -121,7 +147,8 @@ def updateProductQuantity(request):
     print('params')
     products = Products.objects.get(
         _id=ObjectId(request.data['_id']))
-    products.product_quantity = request.data['product_quantity']
+    products.product_quantity = products.product_quantity - \
+        request.data['product_quantity']
     products.save()
     serializer = ProductsSerializer(products)
     print(serializer.data)
