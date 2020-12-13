@@ -8,7 +8,7 @@ import { GET_ALL } from '../../store/actions/getallproduct';
 
 // import axios from "axios";
 // import configdata from '../../csrftoken'
-import { login } from '../../store/actions/userActions';
+// import { signin } from '../../store/actions/userActions';
 
 export class Product extends Component<{}, any> {
     constructor(props: {} | Readonly<{}>) {
@@ -55,7 +55,8 @@ export class Product extends Component<{}, any> {
                         <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Materials</Button>
                     </Link>
                     <Button onClick={() => {
-                        store.dispatch(login({ user_name: 'qamar test', user_password: '669nnh', user_email: 'qam0ar110@yahoo.com', user_phon: '0899088' }))
+                        // store.dispatch(login({ user_name: 'qamar test', user_password: '669nnh', user_email: 'qam0ar110@yahoo.com', user_phon: '0899088' }))
+                        // console.log(store.getState().UserReducer)
                         console.log(store.getState().UserReducer)
                     }}>test</Button>
                 </div>
