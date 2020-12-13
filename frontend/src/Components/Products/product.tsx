@@ -1,61 +1,63 @@
+//main products page
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
 import './product.css'
+import store from '../../store';
+import { GET_ALL } from '../../store/actions/getallproduct';
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const dispatch = useDispatch()
-
+// import axios from "axios";
+// import configdata from '../../csrftoken'
+import { login } from '../../store/actions/userActions';
 
 export class Product extends Component<{}, any> {
     constructor(props: {} | Readonly<{}>) {
         super(props)
         this.state = {
-            productid: ''
-
+            products: store.getState().productseReducer
         }
-        this.gettoolproduct = this.gettoolproduct.bind(this)
     }
 
-    gettoolproduct() {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const allproduct = useSelector<any, any>((state: any) => state.productseReducer)
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const dispatch = useDispatch()
-
-    }
+    //get all product from database (via GET_ALL action)
     componentDidMount() {
-        // axios
-        //     .get("/api/products/")
-        //     .then(res => {
-        //         console.log(res.data)
-        //     })
-        //     .catch(err => console.log(err));
+        store.dispatch(GET_ALL())
+        store.subscribe(() => {
+            this.setState({
+                products: store.getState().productseReducer
+            })
+        })
     };
     render() {
+        console.log(this.state.products)
         return (
             <div>
                 <div className='container'>
-                    <img className='product__img' src='https://cdn.shopify.com/s/files/1/0282/9621/6679/files/home_product_carousel_800x.jpg?v=1592988158' />
+                    {/* eslint-disable-next-line jsx-a11y/alt-text */}
+                    <img className='product__img' src='https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg' />
                 </div>
                 <div className='product__list'>
 
-                    <Button onClick={this.gettoolproduct} style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Tools</Button>
-
-                    <Link to="/tools" style={{ textDecoration: "none" }}>
+                    <Link to={{
+                        //pass the tools product to tools page
+                        pathname: "/product/tools",
+                        state: this.state.products.product,
+                    }}
+                        style={{ textDecoration: "none" }}>
                         <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Tools</Button>
                     </Link>
 
-                    <Link to="/materials" style={{ textDecoration: "none" }}>
+                    <Link to={{
+                        //pass the material product to material page
+                        pathname: "/product/materials",
+                        state: this.state.products.material,
+                    }}
+                        style={{ textDecoration: "none" }}>
                         <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Materials</Button>
                     </Link>
-
-
-
-
-
-
+                    <Button onClick={() => {
+                        store.dispatch(login({ user_name: 'qamar test', user_password: '669nnh', user_email: 'qam0ar110@yahoo.com', user_phon: '0899088' }))
+                        console.log(store.getState().UserReducer)
+                    }}>test</Button>
                 </div>
             </div>
         )
@@ -63,5 +65,3 @@ export class Product extends Component<{}, any> {
 }
 
 export default Product
-
-

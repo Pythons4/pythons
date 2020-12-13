@@ -4,6 +4,7 @@ from djongo import models
 from bson.objectid import ObjectId
 import cloudinary
 from cloudinary.forms import CloudinaryJsFileField
+from django.conf import settings
 
 
 # user table
@@ -15,7 +16,6 @@ class Users(models.Model):
     user_phon = models.TextField()
     user_img = models.TextField()
     user_bio = models.TextField()
-    objects = models.DjongoManager()
 
 
 # admin table
@@ -41,7 +41,7 @@ class Service(models.Model):
 class UserService(models.Model):
     _id = models.ObjectIdField()
     user_id = models.TextField()
-    service_id = models.TextField()
+    service_name = models.TextField()
     user_service_location = models.TextField()
     user_service_date = models.DateField()
     user_service_hours = models.IntegerField()
@@ -54,7 +54,12 @@ class Tip(models.Model):
     tip_text = models.TextField()
     tip_img = models.TextField()
     user_id = models.TextField()
-    objects = models.DjongoManager()
+
+    def __str__(self):
+        return self.tip_title
+
+    def __str__(self):
+        return self.tip_title
 
 
 # Fav table
@@ -83,14 +88,18 @@ class Products(models.Model):
     product_type = models.BooleanField()
     product_description = models.TextField()
     product_img = models.TextField()
-    objects = models.DjongoManager()
+    # objects = models.DjongoManager()
+
+    def __str__(self):
+        return self.product_name
 
 
 # User Product table
 class UserProducts(models.Model):
     _id = models.ObjectIdField()
     user_id = models.TextField()
-    product_id = models.TextField()
+    # product_id = models.TextField()
+    user_products = models.TextField()
     user_product_location = models.TextField()
-    user_product_quantity = models.IntegerField()
+    # user_product_quantity = models.IntegerField()
     objects = models.DjongoManager()
