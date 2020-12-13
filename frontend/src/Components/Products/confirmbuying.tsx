@@ -40,14 +40,14 @@ export default class CofirmBuy extends Component<Props, State>{
                 <input type='date' placeholder='expire date'></input>
                 <input type='text' placeholder='your address'></input> */}
 
-                <Button onClick={() => {
+                {/* <Button onClick={() => {
                     console.log('iiin')
-                    store.dispatch(buyWhatInCart(this.state.products))
+                    // store.dispatch(buyWhatInCart(this.state.products))
 
                 }
 
                 }
-                    className="addtocart" variant="contained" color="primary" >confirm</Button>
+                    className="addtocart" variant="contained" color="primary" >confirm</Button> */}
 
                 <StripeCheckOutButton price={this.state.price} />
 

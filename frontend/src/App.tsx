@@ -38,6 +38,7 @@ class App extends React.Component<{}, any>{
           <Route exact path="/signin" render={() => <SignInPage />} />
           <Route exact path="/cart" render={() => <TheCart />} />
           <Route path="/cart/confirm" exact component={CofirmBuy} />
+
           <Route path="/profile" exact component={UserProfile} />
 
         </Switch>
