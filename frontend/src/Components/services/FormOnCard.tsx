@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import './server.css'
 import axios from 'axios';
+import store from "../../store"
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -19,6 +20,7 @@ interface data {
     }
 }
 
+
 export default function StateTextFields(props: data) {
     const classes = useStyles();
     const [state, setState] = React.useState({ location: "", houres: "", date: "", name: props.data.name, price: props.data.price });
@@ -33,19 +35,41 @@ export default function StateTextFields(props: data) {
         console.log(state, "belalala")
     }
 
-    const book = (e: React.FormEvent<EventTarget>) => {
-        // e.preventdefault();
-        // axios.post('/api/userservice/', state)
+    let { userid } = store.getState().UserReducer
+    let serviceData = {
+        user_id: userid,
+        service_name: state.name,
+        user_service_date: state.date,
+        user_service_hours: state.houres,
+        user_service_location: state.location
+    }
+    // user_id = models.TextField()
+    // service_name = models.TextField()
+    // user_service_location = models.TextField()
+    // user_service_date = models.DateField()
+    // user_service_hours = models.IntegerField()
+
+
+    const book = () => {
+        console.log(serviceData)
+        if (userid) {
+            axios.post('/api/userservice/', serviceData)
+                .then(function (response) {
+                    console.log(response);
+                })
+        } else {
+
+            alert("you should login")
+        }
+
+
+        // axios.post('/api/userservice/', {
+
+
+        // })
         //     .then(function (response) {
         //         console.log(response);
         //     })
-        axios.post('/api/userservice/', {
-
-
-        })
-            .then(function (response) {
-                console.log(response);
-            })
     }
 
 
@@ -61,8 +85,8 @@ export default function StateTextFields(props: data) {
 
                 <TextField
                     id="outlined-name"
-                    label="Date"
-                    // value="mm/dd/yy"
+                    // label="Date"
+                    type="date"
                     name="date"
                     onChange={handleChange}
                     // {(e) => {
@@ -81,7 +105,7 @@ export default function StateTextFields(props: data) {
                 <TextField
                     id="outlined-uncontrolled"
                     label="Hours"
-                    // value="11:00am 1:00 pm"
+                    type="number"
                     name="houres"
                     onChange={handleChange}
 

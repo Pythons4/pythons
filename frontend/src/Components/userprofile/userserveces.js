@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import UserCard from './usercard'
 import './user.css'
-// import store from "../../store"
+
 
 
 
@@ -12,12 +12,13 @@ class UserServeces extends React.Component {
         this.state = {
             UserService: []
         }
-        // console.log(props)
+        
     }
 
 
     componentDidMount() {
-        axios.get('/api/userservice/')
+        // let { userid } = JSON.parse(store.getState().UserReducer)
+        axios.get(`/api/userservice/`)
             .then(res => {
 
                 console.log(res.data);
@@ -31,14 +32,7 @@ class UserServeces extends React.Component {
             })
     }
 
-    // SerList() {
-    //     return this.state.UserService.map(currentser => {
-    //         return <UserServeces ser={currentser} key={currentser._id} />;
-    //     })
-
-    // }
-
-
+    
     render() {
         console.log(this.state.UserService)
 

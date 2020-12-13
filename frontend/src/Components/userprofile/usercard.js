@@ -24,32 +24,36 @@ class UserCard extends React.Component {
 
 
         return (
-            <div className='ser__card'>
 
-                <div className='car__info'>
 
-                    <div className='card__info1'>
+            <div class="wrapper">
+                <div class="ser_card">
+                    
+                        <div class="ser_datails">
+                            <h1>{name}</h1>
 
-                        <h2 className="card__name">{name}</h2>
+                            <p class="disc">Detailes</p>
+                            <ul>
+                                <li>Date : {date}</li>
+                                <li>Duration :{hours} Hours</li>
+                                <li>Location :{location} </li>
 
-                        <div className="card__date">
-                            <h3>Date : {date}</h3>
+                            </ul>
+
                         </div>
-
-
-                        <div className='card__hour'>
-
-                            <h3>Duration :{hours} Hours</h3>
-                        </div>
-
-                        <div className='card__location'>
-                            <h3>Location :{location} </h3>
-                        </div>
-
-                    </div>
-
+                    
                 </div>
-            </div>
+            </div>    
+
+
+
+
+
+
+            
+
+
+
         )
     }
 

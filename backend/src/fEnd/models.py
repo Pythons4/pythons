@@ -65,8 +65,8 @@ class Tip(models.Model):
 # Fav table
 class Fav(models.Model):
     _id = models.ObjectIdField()
-    user_id = models.IntegerField()
-    tip_id = models.IntegerField()
+    user_id = models.TextField()
+    tip_id = models.TextField()
     objects = models.DjongoManager()
 
 
