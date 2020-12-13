@@ -12,7 +12,8 @@ import Navbar from './Components/Navbar/Navbar';
 import ProductsCard from './Components/Products/productcard';
 import TheCart from './Components/Products/thecart';
 import CofirmBuy from './Components/Products/confirmbuying';
-import AllTips from './Components/Tips/alltipspage';
+import Tips from './Components/Tips/TipsPage';
+import Tip from './Components/Tips/Tip';
 import UserProfile from './Components/userprofile/userprofile'
 
 class App extends React.Component<{}, any>{
@@ -32,7 +33,8 @@ class App extends React.Component<{}, any>{
           <Route path="/product/materials" exact component={ProductMaterials} />
           <Route path="/product/:producttype/:name" exact component={ProductsCard} />
           <Route path="/tip/add" exact component={AddTip} />
-          <Route path="/tips" exact component={AllTips} />
+          <Route path="/tips" exact component={Tips} />
+          <Route path="/tips/tip/:id" exact component={Tip} />
           <Route path="/services" exact component={Services} />
           <Route exact path="/signup" render={() => <SignUpPage />} />
           <Route exact path="/signin" render={() => <SignInPage />} />
