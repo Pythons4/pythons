@@ -10,8 +10,6 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 import jwt
 from django.conf import settings
-
-
 from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, FavSerializer, ProductsSerializer, UserProductsSerializer
 from cloudinary.forms import cl_init_js_callbacks
 from django.views.decorators.csrf import csrf_exempt
@@ -19,6 +17,7 @@ import json
 from .models import Tip, Users, Admin, Service, UserService, TipCommints, Fav, Products, UserProducts
 
 
+# tips view/requests (getall and get by user id )
 class TipsView(viewsets.ModelViewSet):
     serializer_class = TipsSerializer
 
@@ -41,6 +40,7 @@ class TipCommintsView(viewsets.ModelViewSet):
     queryset = TipCommints.objects.all()
 
 
+# user view/request (getall and create user and give it authentication(token))
 @permission_classes([AllowAny])
 class UsersView(viewsets.ModelViewSet):
     serializer_class = UsersSerializer
@@ -68,10 +68,6 @@ class UsersView(viewsets.ModelViewSet):
         return Response([serializer.data, token])
 
 
-def loginuserpage(request):
-    user = authenticate(request, username='qamar', password='09okj')
-
-
 class AdminView(viewsets.ModelViewSet):
     serializer_class = AdminSerializer
     queryset = Admin.objects.all()
@@ -92,6 +88,7 @@ class FavView(viewsets.ModelViewSet):
     queryset = Fav.objects.all()
 
 
+# products viwe/request (fetall and retrive by id)
 @permission_classes([AllowAny])
 class ProductsView(viewsets.ModelViewSet):
     serializer_class = ProductsSerializer
@@ -117,6 +114,7 @@ class UserProductsView(viewsets.ModelViewSet):
     queryset = UserProducts.objects.all()
 
 
+# update product quantity view (put request handler)
 @api_view(['PUT'])
 @permission_classes([AllowAny])
 def updateProductQuantity(request):
@@ -127,11 +125,11 @@ def updateProductQuantity(request):
     products.save()
     serializer = ProductsSerializer(products)
     print(serializer.data)
-    user = Users.objects.get(user_name='qamr')
-    # payload = jwt_payload_handler(user)
+    # user = Users.objects.get(user_name='qamr')
     return Response(serializer.data)
 
 
+# use login handler with jwt
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def getuserinfologin(request):
@@ -153,3 +151,21 @@ def getuserinfologin(request):
 
     else:
         return Response('wrong email')
+
+
+# user update image
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def updateUserImage(request):
+    theuser = Users.objects.get(
+        _id=ObjectId(request.data['user_id']))
+    if(request.data['chang_it'] == "img"):
+        theuser.user_img = request.data['user_img']
+    else:
+        theuser.user_bio = request.data['user_bio']
+        theuser.user_phon = request.data['user_phon']
+        theuser.user_name = request.data['user_name']
+
+    theuser.save()
+    serializer = UsersSerializer(theuser)
+    return Response(serializer.data)

@@ -3,8 +3,10 @@ import config from '../../csrftoken'
 
 //add the user product to the database
 const buyWhatInCart = (products: any) => {
+    //pars product sice it saved as json
     products = JSON.parse(products)
     var userproduct: any[][] = []
+    //add all product in array
     for (var i in products) {
         userproduct.push([products[i].name, products[i].quantity])
     }

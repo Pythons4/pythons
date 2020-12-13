@@ -2,6 +2,7 @@ import axios from 'axios'
 import config from '../../csrftoken'
 
 
+//user sign up action (with token)
 export const signup = (userinfo: any) => {
     return function (dispatch: any) {
         var data = {
@@ -33,6 +34,7 @@ export const signup = (userinfo: any) => {
 }
 
 
+//user sign in action (with token)
 export const signin = (userinfo: any) => {
     return function (dispatch: any) {
         var data = {
@@ -60,5 +62,64 @@ export const signin = (userinfo: any) => {
                     value: err.message
                 })
             })
+    }
+}
+
+//action to change user image
+export const updateuserimg = (file1: any, userinfo: any) => {
+    return function (dispatch: any) {
+        const data = new FormData()
+        data.append('file', file1[0])
+        data.append('upload_preset', 'appimgs')
+        axios.post("https://api.cloudinary.com/v1_1/dve46qnma/image/upload", data)
+            .then(res => {
+                console.log(res.data.secure_url)
+                axios.post("/api/userimgupdate", {
+                    chang_it: 'img',
+                    user_img: res.data.secure_url, user_id: userinfo
+                }, config)
+                    .then(res => {
+                        console.log(res.data)
+                        dispatch({
+                            type: 'UPDATE_IMG',
+                            userinfo: res.data,
+                        })
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        dispatch({
+                            type: "UPDATE_ERROR",
+                            message: err.message
+                        })
+                    });
+            })
+            .catch(err => console.log(err));
+    }
+}
+
+//action to change user informations
+export const updateuserinfo = (userinfo: any, newinfo: any) => {
+    return function (dispatch: any) {
+        axios.post("/api/userimgupdate", {
+            chang_it: 'info',
+            user_id: userinfo,
+            user_bio: newinfo.user_bio,
+            user_phon: newinfo.user_phon,
+            user_name: newinfo.user_name
+        }, config)
+            .then(res => {
+                console.log(res.data)
+                dispatch({
+                    type: 'UPDATE_IMG',
+                    userinfo: res.data,
+                })
+            })
+            .catch(err => {
+                console.log(err)
+                dispatch({
+                    type: "UPDATE_ERROR",
+                    message: err.message
+                })
+            });
     }
 }

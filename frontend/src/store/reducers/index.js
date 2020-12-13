@@ -13,7 +13,7 @@ const allReducers = combineReducers({
     services: servicesReducer,
     cartReducer: cartReducer,
     ProfileReducer,
-    UserReducer: UserReducer
+    UserReducer
 })
 
 export default allReducers
