@@ -5,13 +5,14 @@ nav{
     padding: .4rem 0.6rem 0rem .6rem;
     display: flex;
     justify-content: space-between;
-    background-color: rgba(67, 65, 209, 0.9);
+    background-color: rgba(81, 79, 228, 0.9);
+
     align-items: center;
     position: sticky;
     position: -webkit-sticky;
     top: 0;
     z-index: 1;
-
+    height: 80px;  
    
 }
 
@@ -22,7 +23,7 @@ nav{
     color:  #d81b1b;
     text-transform: lowercase;
     letter-spacing: 5px;
-    font-size: 30px; 
+    font-size: 50px; 
         
 
 }
@@ -60,7 +61,7 @@ nav{
     color: #610f0f;
   }  
 
-@media screen and (max-width: 1024px) {
+ @media screen and (max-width: 1024px) {
     .nav-links {
      width: 60px;
     }
@@ -72,7 +73,7 @@ nav{
      position:  absolute  ;
      right: 0px;
      height:90vh ;
-     top: 10vh;
+     top: 15vh;
      background-color: rgba(67, 65, 209, 0.9);
      flex-direction: column;
      align-items: center;
@@ -80,5 +81,5 @@ nav{
      
      
     }
-}
-
+} 
+ 
