@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import store from '../../store'
 import { Button } from '@material-ui/core';
 import buyWhatInCart from '../../store/actions/buywhatincart';
+import StripeCheckOutButton from "../strip-button/strip-button"
+
 
 interface Props {
     location: {
@@ -42,6 +44,9 @@ export default class CofirmBuy extends Component<Props, State>{
                     store.dispatch(buyWhatInCart(this.state.products))
                 }}
                     className="addtocart" variant="contained" color="primary" >confirm</Button>
+
+                <StripeCheckOutButton price={this.state.price} />
+
             </div>
         )
     }

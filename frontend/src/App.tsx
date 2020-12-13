@@ -14,6 +14,8 @@ import TheCart from './Components/Products/thecart';
 import CofirmBuy from './Components/Products/confirmbuying';
 import AllTips from './Components/Tips/alltipspage';
 import UserProfile from './Components/userprofile/userprofile'
+// import UserTips from './Components/userprofile/usertips'
+
 
 class App extends React.Component<{}, any>{
   constructor(props: {} | Readonly<{}>) {
@@ -39,6 +41,9 @@ class App extends React.Component<{}, any>{
           <Route exact path="/cart" render={() => <TheCart />} />
           <Route path="/cart/confirm" exact component={CofirmBuy} />
           <Route path="/profile" exact component={UserProfile} />
+          {/* <Route path="/usertips" exact component={UserTips} /> */}
+         
+
 
         </Switch>
       </Router>
