@@ -1,20 +1,31 @@
 import axios from 'axios'
 
-const setUser = () => async (dispatch: any) => {
 
-    axios.get("/api/users/id").then(res => {
-        dispatch({
-            type: "SET_USER",
-            payload: res.data
+
+const setSer = () => async (dispatch: any) => {
+
+
+
+    axios.get('/api/userservice/')
+        .then(res => {
+
+            dispatch({
+                type: "SET_SER",
+                payload: res.data
+            })
+
         })
-    })
+
         .catch(err => {
             dispatch({
-                type: "SET_USER",
+                type: "SET_SER",
                 payload: err.message
             })
 
         })
 
 }
-export default setUser
+export default setSer
+
+
+

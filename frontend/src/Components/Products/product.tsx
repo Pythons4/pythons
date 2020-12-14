@@ -6,8 +6,9 @@ import './product.css'
 import store from '../../store';
 import { GET_ALL } from '../../store/actions/getallproduct';
 
-import axios from "axios";
-import configdata from '../../csrftoken'
+// import axios from "axios";
+// import configdata from '../../csrftoken'
+// import { signin } from '../../store/actions/userActions';
 
 export class Product extends Component<{}, any> {
     constructor(props: {} | Readonly<{}>) {
@@ -53,15 +54,11 @@ export class Product extends Component<{}, any> {
                         style={{ textDecoration: "none" }}>
                         <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Materials</Button>
                     </Link>
-                    <Button onClick={
-                        () => {
-                            axios.put('/api/products/', { _id: '5fce1fd486421322abecae99' }, configdata)
-                                .then(res => {
-                                    console.log(res.data)
-                                })
-                                .catch(err => console.log(err));
-                        }
-                    }>test</Button>
+                    <Button onClick={() => {
+                        // store.dispatch(login({ user_name: 'qamar test', user_password: '669nnh', user_email: 'qam0ar110@yahoo.com', user_phon: '0899088' }))
+                        // console.log(store.getState().UserReducer)
+                        console.log(store.getState().UserReducer)
+                    }}>test</Button>
                 </div>
             </div>
         )

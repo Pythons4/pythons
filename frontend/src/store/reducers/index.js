@@ -5,6 +5,8 @@ import tipsReducer from './tipsreducer'
 import servicesReducer from './servicesReducer'
 import cartReducer from './cartreducer'
 import ProfileReducer from './profilereducer'
+import UserReducer from './userReducer'
+import AdminReduser from './adminreduser'
 
 const allReducers = combineReducers({
     productseReducer: productseReducer,
@@ -12,7 +14,8 @@ const allReducers = combineReducers({
     services: servicesReducer,
     cartReducer: cartReducer,
     ProfileReducer,
-
+    UserReducer,
+    AdminReduser
 })
 
 export default allReducers

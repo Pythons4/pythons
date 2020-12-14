@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from 'react-hook-form';
+import store from '../store';
+import { signup } from '../store/actions/userActions';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,18 +23,14 @@ interface FormData {
 }
 
 
-const initialState: FormData = {
-    username: '',
-    password: '',
-    email: '',
-    phone: 0,
-};
 const SignUpPage = () => {
     const classes = useStyles();
     const { handleSubmit, register } = useForm<FormData>();
 
     const onSubmit = handleSubmit((data) => {
         console.log(data);
+        store.dispatch(signup({ user_name: data.username, user_password: data.password, user_email: data.email, user_phon: data.phone }))
+
     });
     return (
         <Container className={classes.container} maxWidth="xs">

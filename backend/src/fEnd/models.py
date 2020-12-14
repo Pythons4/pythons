@@ -4,6 +4,7 @@ from djongo import models
 from bson.objectid import ObjectId
 import cloudinary
 from cloudinary.forms import CloudinaryJsFileField
+from django.conf import settings
 
 
 # user table
@@ -15,7 +16,6 @@ class Users(models.Model):
     user_phon = models.TextField()
     user_img = models.TextField()
     user_bio = models.TextField()
-    objects = models.DjongoManager()
 
 
 # admin table
@@ -24,7 +24,7 @@ class Admin(models.Model):
     admin_name = models.TextField()
     admin_email = models.TextField()
     admin_password = models.TextField()
-    objects = models.DjongoManager()
+    # objects = models.DjongoManager()
 
 
 # services table
@@ -45,6 +45,7 @@ class UserService(models.Model):
     user_service_location = models.TextField()
     user_service_date = models.DateField()
     user_service_hours = models.IntegerField()
+    user_service_approv = models.BooleanField()
 
 
 # tips table
@@ -54,15 +55,16 @@ class Tip(models.Model):
     tip_text = models.TextField()
     tip_img = models.TextField()
     user_id = models.TextField()
-    objects = models.DjongoManager()
+
+    def __str__(self):
+        return self.tip_title
 
 
 # Fav table
 class Fav(models.Model):
     _id = models.ObjectIdField()
-    user_id = models.IntegerField()
-    tip_id = models.IntegerField()
-    objects = models.DjongoManager()
+    user_id = models.TextField()
+    tip_id = models.TextField()
 
 
 # Tips Comments table
@@ -83,7 +85,10 @@ class Products(models.Model):
     product_type = models.BooleanField()
     product_description = models.TextField()
     product_img = models.TextField()
-    objects = models.DjongoManager()
+    # objects = models.DjongoManager()
+
+    def __str__(self):
+        return self.product_name
 
 
 # User Product table
