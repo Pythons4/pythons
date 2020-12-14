@@ -1,4 +1,3 @@
-import react from "react";
 import StripeCheckOut from "react-stripe-checkout";
 import buyWhatInCart from '../../store/actions/buywhatincart';
 import store from '../../store';

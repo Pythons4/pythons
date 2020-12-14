@@ -8,6 +8,7 @@ const buyWhatInCart = (products: any, userid: any, user_location: any) => {
 
     products = JSON.parse(products)
     var userproduct: any[][] = []
+    //add all product in array
     for (var i in products) {
         userproduct.push([products[i].name, products[i].quantity])
     }
