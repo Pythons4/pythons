@@ -1,11 +1,10 @@
 import React from "react";
 import '../userprofile/profilestyle.css'
-import store from "../../store";
-import { updateuserimg } from "../../store/actions/userActions";
 import { Checkbox, Grid, TextField } from "@material-ui/core";
 import { addProduct } from "./AddProduct";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+//State Type
 interface State {
     reviwesoursw: any,
     takethis: string,
@@ -15,8 +14,9 @@ interface State {
     productdescription: string,
     productquantity: number,
     producttype: boolean,
-
 }
+
+//props Type
 interface Props {
     handleClose: any,
 }
@@ -32,11 +32,13 @@ class AddProduct extends React.Component<Props, State> {
             productdescription: '',
             productquantity: 0,
             producttype: false
-
         }
+
         this.handelimguplode = this.handelimguplode.bind(this)
         this.handelclikckimg = this.handelclikckimg.bind(this)
     }
+
+    //fucnction to uplode image 
     handelimguplode(e: any) {
         const file = e.target.files
         this.previwefile(file)
@@ -45,8 +47,8 @@ class AddProduct extends React.Component<Props, State> {
             takethis: file.name,
             file: file,
         })
-
     }
+    //fucnction retrive the uploded in the form
     previwefile(file: any) {
         const reader = new FileReader()
         reader.readAsDataURL(file[0])
@@ -57,6 +59,7 @@ class AddProduct extends React.Component<Props, State> {
         }
     }
 
+    //fucntion that send the data to (addProduct) function to be store in the database
     handelclikckimg() {
         console.log(this.state.takethis)
         // store.dispatch(updateuserimg(this.state.file, this.props))
@@ -68,7 +71,6 @@ class AddProduct extends React.Component<Props, State> {
             quantity: this.state.productquantity
         }
         addProduct(this.state.file, productinfo)
-
     }
 
 
