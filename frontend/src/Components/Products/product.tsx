@@ -40,7 +40,7 @@ export class Product extends Component<{}, any> {
                     <Link to={{
                         //pass the tools product to tools page
                         pathname: "/product/tools",
-                        state: this.state.products.product,
+                        state: JSON.parse(this.state.products.product),
                     }}
                         style={{ textDecoration: "none" }}>
                         <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Tools</Button>
@@ -49,16 +49,11 @@ export class Product extends Component<{}, any> {
                     <Link to={{
                         //pass the material product to material page
                         pathname: "/product/materials",
-                        state: this.state.products.material,
+                        state: JSON.parse(this.state.products.material),
                     }}
                         style={{ textDecoration: "none" }}>
                         <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Materials</Button>
                     </Link>
-                    <Button onClick={() => {
-                        // store.dispatch(login({ user_name: 'qamar test', user_password: '669nnh', user_email: 'qam0ar110@yahoo.com', user_phon: '0899088' }))
-                        // console.log(store.getState().UserReducer)
-                        console.log(store.getState().UserReducer)
-                    }}>test</Button>
                 </div>
             </div>
         )

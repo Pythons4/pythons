@@ -4,12 +4,18 @@ const prodictsReducer = (state = [], action) => {
             return { tips: action.payload }
 
         case 'GET_ALL':
+            localStorage.setItem('product', JSON.stringify(action.product))
+            localStorage.setItem('material', JSON.stringify(action.material))
+
             return {
-                product: action.product,
-                material: action.material
+                product: localStorage.getItem('product'),
+                material: localStorage.getItem('material')
             }
         default:
-            return state
+            return {
+                product: localStorage.getItem('product'),
+                material: localStorage.getItem('material'),
+            }
     };
 };
 export default prodictsReducer;
