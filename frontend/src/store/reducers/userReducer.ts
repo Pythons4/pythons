@@ -22,7 +22,9 @@ const userReducer = (state: any, action: any) => {
             localStorage.setItem('userinfo', JSON.stringify(action.userinfo))
 
             return {
-                userinfo: localStorage.getItem('userinfo')
+                userinfo: localStorage.getItem('userinfo'),
+                token: localStorage.getItem('token'), userid: localStorage.getItem('userid'),
+
             }
 
 
