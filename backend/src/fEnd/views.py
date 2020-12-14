@@ -46,7 +46,7 @@ class TipCommintsView(viewsets.ModelViewSet):
         params = kwargs
         print(params)
         thetipcommint = TipCommints.objects.filter(
-            user_id=params['pk'])
+            user_name=params['pk'])
         serializer = TipCommintsSerializer(thetipcommint, many=True)
         print(serializer.data)
         return Response(serializer.data)

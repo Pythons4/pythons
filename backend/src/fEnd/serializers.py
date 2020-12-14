@@ -11,7 +11,7 @@ class TipsSerializer(serializers.ModelSerializer):
 class TipCommintsSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipCommints
-        fields = ('_id', 'tip_id', 'user_id',  'commint_text')
+        fields = ('_id', 'tip_id', 'user_name',  'commint_text')
 
 
 class UsersSerializer(serializers.ModelSerializer):
