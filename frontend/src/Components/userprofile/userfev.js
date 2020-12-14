@@ -15,33 +15,27 @@ class UserFev extends React.Component {
 
 
     render() {
-        // var title, text, image;
-        // title = this.props.fev.tip_title;
-        // text = this.props.fev.tip_text;
-        // image = this.props.tip.tip_img;
+        var tip;
+
+        tip = this.props.fev.tip_id;
+
 
 
 
 
         return (
             <div class="wrapper">
-                {/* <div class="main_card">
-                    <div class="card_left">
-                        <div class="card_datails">
-                            <h1>{title}</h1>
+                <div class="fev_card">
+                    <div class="fev_left">
+                        <div class="fev_datails">
+                            <h1>{tip}</h1>
 
-                            <p class="disc">{text}</p>
+
 
                         </div>
                     </div>
-                    <div class="card_right">
-                        <div class="img_container">
-                            <img src={image} alt="" />
-                        </div>
 
-
-                    </div>
-                </div> */}
+                </div>
             </div>
 
 

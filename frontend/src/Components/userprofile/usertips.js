@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios';
 import UserTip from './usertip'
+import store from "../../store"
 // import './user.css'
-// import store from "../../store"
+
 
 
 
@@ -17,7 +18,11 @@ class UserTips extends React.Component {
 
 
     componentDidMount() {
-        axios.get('api/tips/')
+        var { userid } = store.getState().UserReducer
+
+        var id = JSON.parse(userid)
+
+        axios.get(`api/tips/${id}`)
             .then(res => {
 
                 console.log(res.data);
@@ -31,7 +36,7 @@ class UserTips extends React.Component {
             })
     }
 
-    
+
     render() {
         console.log(this.state.UserTips)
 
