@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import store from '../../store';
 import Popup from './popupwindo';
 import PopupBio from './popupinfoedit'
+import TimeAgo from 'react-timeago'
+
 
 interface Test {
     userinfo: any
@@ -20,6 +22,7 @@ function App() {
     var test: Test = store.getState().UserReducer
 
     console.log(test)
+
     return <div>
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <img style={{ width: '300px' }} src={JSON.parse(test.userinfo).user_img}></img>
@@ -47,6 +50,9 @@ function App() {
             userId={JSON.parse(test.userinfo)}
             handleClose={togglePopupbio}
         />}
+
+        <p style={{ fontSize: '6px' }}><TimeAgo date={'Mon Dec 14 2020 16:03:46 GMT+0200 (Israel Standard Time)'} /></p>
+        {console.log(new Date())}
 
 
     </div>
