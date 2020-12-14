@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import store from '../../store';
 import PopUp from './addProductPopUp'
+import AdimApproveServices from './approved'
 
 interface Test {
     admininfo: any
@@ -28,6 +29,8 @@ function App() {
             value="Add Product"
             onClick={togglePopup}
         />
+
+        <AdimApproveServices services=''></AdimApproveServices>
 
     </div>
 }

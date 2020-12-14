@@ -232,3 +232,15 @@ def getAdminInfoLogin(request):
 
     else:
         return Response('wrong email')
+
+
+# update user services approve by admin (put request handler)
+@api_view(['PUT'])
+@permission_classes([AllowAny])
+def updateUserServicesApprove(request):
+    userservice = UserService.objects.get(
+        _id=ObjectId(request.data['_id']))
+    userservice.user_service_approv = request.data['approve']
+    userservice.save()
+    serializer = UserServiceSerializer(userservice)
+    return Response(serializer.data)

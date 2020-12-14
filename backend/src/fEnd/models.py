@@ -46,7 +46,7 @@ class UserService(models.Model):
     user_service_location = models.TextField()
     user_service_date = models.DateField()
     user_service_hours = models.IntegerField()
-    user_service_approv = models.BooleanField()
+    user_service_approv = models.BooleanField(default=False)
 
 
 # tips table
