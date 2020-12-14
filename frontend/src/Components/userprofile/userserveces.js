@@ -19,9 +19,10 @@ class UserServeces extends React.Component {
 
     componentDidMount() {
         var { userid } = store.getState().UserReducer
-        console.log(userid)
+
         var id = JSON.parse(userid)
-        console.log(id)
+
+
         axios.get(`/api/userservice/${id} `)
             .then(res => {
 

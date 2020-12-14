@@ -52,7 +52,7 @@
 	margin: 10px auto;
 	display: -webkit-box;
 	display: -ms-flexbox;
-	display: center;
+	display: flex;
 	/* max-width: 470px; */
 	background: #F1D4BE;	
 	float: left; 
