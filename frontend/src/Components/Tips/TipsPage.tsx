@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import "./TipsPage.css";
 import store from "../../store";
-import { login } from "../../store/actions/userActions";
 import { GET_ALL } from "../../store/actions/getalltips";
 
 export class Tips extends Component<{}, any> {
