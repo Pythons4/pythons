@@ -44,6 +44,9 @@ export default class TheCart extends Component<Props, State>{
         }
         console.log(allproducts, price)
 
+        let { userid } = store.getState().UserReducer
+        var pathname = userid ? "/cart/confirm" : "/signin"
+
         return (
             <div className="d-flex flex-column">
                 {allproducts.map((product: any, i: number) =>
@@ -55,7 +58,7 @@ export default class TheCart extends Component<Props, State>{
                     </div>
                 )}
                 <Link to={{
-                    pathname: "/cart/confirm",
+                    pathname: pathname,
                     state: {
                         price: price,
                         userproducts: this.state.theproduct.whatincart
