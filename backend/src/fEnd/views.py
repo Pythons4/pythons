@@ -37,7 +37,7 @@ class TipsView(viewsets.ModelViewSet):
 
 class TipCommintsView(viewsets.ModelViewSet):
     serializer_class = TipCommintsSerializer
-    
+
     def get_queryset(self):
         tipcommint = TipCommints.objects.all()
         return tipcommint
@@ -158,9 +158,9 @@ class UserProductsView(viewsets.ModelViewSet):
 def updateProductQuantity(request):
     print('params')
     products = Products.objects.get(
-        _id=ObjectId(request.data['_id']))
+        _id=ObjectId(request.data['product_id']))
     products.product_quantity = products.product_quantity - \
-        request.data['product_quantity']
+        request.data['product_user_quantity']
     products.save()
     serializer = ProductsSerializer(products)
     print(serializer.data)

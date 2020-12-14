@@ -17,6 +17,7 @@ import Tip from "./Components/Tips/Tip";
 import UserProfile from "./Components/userprofile/userprofile";
 import UserProfileTest from "./Components/userprofile/userprofiletest";
 import AdminSignIn from "./Components/Admin/Signinpage";
+import AdminProfile from "./Components/Admin/adminprofile";
 
 class App extends React.Component<{}, any> {
   constructor(props: {} | Readonly<{}>) {
@@ -40,15 +41,20 @@ class App extends React.Component<{}, any> {
           <Route path="/tip/add" exact component={AddTip} />
           <Route path="/tips" exact component={Tips} />
           <Route path="/tips/tip/:id" exact component={Tip} />
+          <Route
+            path="/product/:producttype/:name"
+            exact
+            component={ProductsCard}
+          />
           <Route path="/services" exact component={Services} />
           <Route exact path="/signup" render={() => <SignUpPage />} />
           <Route exact path="/signin" render={() => <SignInPage />} />
           <Route exact path="/cart" render={() => <TheCart />} />
           <Route path="/cart/confirm" exact component={CofirmBuy} />
           <Route path="/profile" exact component={UserProfile} />
-
           <Route path="/profiletest" exact component={UserProfileTest} />
           <Route path="/adminSignin" exact component={AdminSignIn} />
+          <Route path="/adminProfile" exact component={AdminProfile} />
         </Switch>
       </Router>
     );
