@@ -7,10 +7,12 @@ import store from "../../store"
 const buyWhatInCart = (products: any, userid: any, user_location: any) => {
 
     products = JSON.parse(products)
+    var ProductData: any[] = [];
     var userproduct: any[][] = []
     //add all product in array
     for (var i in products) {
         userproduct.push([products[i].name, products[i].quantity])
+        ProductData.push({ _id: i, product_quantity: products[i].quantity })
     }
 
     return function (dispatch: any) {
@@ -26,7 +28,20 @@ const buyWhatInCart = (products: any, userid: any, user_location: any) => {
                 value: res
             })
 
-            store.dispatch(removefromcart("remove"))
+            store.dispatch(removefromcart("remove"));
+
+
+            for (var i = 0; i < ProductData.length; i++) {
+
+
+                axios.put('/api/updateproduct', ProductData[i], config)
+                    .then(res => {
+                        console.log(res.data)
+                    })
+
+            }
+
+
 
         })
             .catch(err => {
