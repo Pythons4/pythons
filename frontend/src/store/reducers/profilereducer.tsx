@@ -1,21 +1,12 @@
 
-// const initialState = {
-//     profile: {
-//         id: '',
-//         name: '',
-//         email: '',
-//         img: '',
-//         phone: '',
-//         bio: '',
-//         post: [],
-//         fav: []
-//     }
-// };
+const initialState = {
+    UserService: []
+};
 
-const ProfileReducer = (state = null, action: any) => {
+const ProfileReducer = (state = initialState, action: any) => {
     switch (action.type) {
-        case "SET_USER":
-            return action.payload
+        case "SET_SER":
+            return { UserService: action.payload }
 
 
         default:

@@ -42,6 +42,7 @@ class Services extends Component<{ services: any, setService: any }> {
     }
 
     render() {
+
         var price: any, imge: any, name: any;
         let ser: any = this.props.services.map(((serv: any) => {
             price = serv.service_price;
@@ -49,21 +50,23 @@ class Services extends Component<{ services: any, setService: any }> {
             name = serv.service_name;
             return < ServicesCard price={price} imge={imge} name={name} onclick={this.onclick} />
         }))
+
         let card = < FormOnCard data={this.state.data} />
+
         // console.log(ser, "props")
 
         return (
             <div className="d-flex row justify-content-between " >
                 <div className="d-flex row  col-8 " >
-
                     {ser}
-
                 </div >
 
                 <div className="col-4 ">
 
                     {this.state.isShow && card}
+
                 </div>
+
                 {/* {this.props.services} */}
                 {/* < ServicesCard price={price} imge={imge} name={name} /> */}
 
