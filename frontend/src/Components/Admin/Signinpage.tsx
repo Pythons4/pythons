@@ -5,8 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from 'react-hook-form';
-import store from '../store';
-import { signup } from '../store/actions/userActions';
+import store from '../../store';
+import { adminsignin } from '../../store/actions/adminActions';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,18 +18,15 @@ const useStyles = makeStyles((theme) => ({
 interface FormData {
     email: string;
     password: string;
-    username: string,
-    phone: number
 }
 
-
-const SignUpPage = () => {
+const SignInPage = () => {
     const classes = useStyles();
     const { handleSubmit, register } = useForm<FormData>();
 
     const onSubmit = handleSubmit((data) => {
         console.log(data);
-        store.dispatch(signup({ user_name: data.username, user_password: data.password, user_email: data.email, user_phon: data.phone }))
+        store.dispatch(adminsignin({ user_password: data.password, user_email: data.email }))
 
     });
     return (
@@ -42,16 +39,7 @@ const SignUpPage = () => {
                                 <TextField
                                     fullWidth
                                     inputRef={register}
-                                    label="User Name"
-                                    name="username"
-                                    size="small"
-                                    variant="outlined" />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    fullWidth
-                                    inputRef={register}
-                                    label="Email"
+                                    label="Admin Email"
                                     name="email"
                                     size="small"
                                     variant="outlined" />
@@ -60,16 +48,7 @@ const SignUpPage = () => {
                                 <TextField
                                     fullWidth
                                     inputRef={register}
-                                    label="Phone Number"
-                                    name="phone"
-                                    size="small"
-                                    variant="outlined" />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    fullWidth
-                                    inputRef={register}
-                                    label="Password"
+                                    label="Admin Password"
                                     name="password"
                                     size="small"
                                     type="password"
@@ -88,6 +67,7 @@ const SignUpPage = () => {
                             Log in
                         </Button>
                     </Grid>
+                    <p>Don't have an Account?</p>
                 </Grid>
             </form>
 
@@ -96,4 +76,4 @@ const SignUpPage = () => {
     )
 }
 
-export default SignUpPage
+export default SignInPage
