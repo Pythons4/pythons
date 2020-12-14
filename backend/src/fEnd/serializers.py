@@ -11,7 +11,7 @@ class TipsSerializer(serializers.ModelSerializer):
 class TipCommintsSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipCommints
-        fields = ('_id', 'tip_id', 'user_id',  'commint_text')
+        fields = ('_id', 'tip_id', 'user_name',  'commint_text')
 
 
 class UsersSerializer(serializers.ModelSerializer):
@@ -49,9 +49,9 @@ class FavSerializer(serializers.ModelSerializer):
 class ProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Products
-        fields = ('_id', 'product_name', 'product_price',
+        fields = ['_id', 'product_name', 'product_price',
                   'product_quantity', 'product_type', 'product_description',
-                  'product_img')
+                  'product_img']
 
 
 class UserProductsSerializer(serializers.ModelSerializer):

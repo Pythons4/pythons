@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import './server.css'
+import axios from 'axios';
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -20,7 +21,8 @@ interface data {
 
 export default function StateTextFields(props: data) {
     const classes = useStyles();
-    const [state, setState] = React.useState({ location: "", houres: "", date: "" });
+    const [state, setState] = React.useState({ location: "", houres: "", date: "", name: props.data.name, price: props.data.price });
+
     const handleChange = (e: any) => {
         setState(currentState => ({
             ...currentState,
@@ -28,8 +30,24 @@ export default function StateTextFields(props: data) {
         })
 
         )
-        console.log(props, "belalala")
+        console.log(state, "belalala")
     }
+
+    const book = (e: React.FormEvent<EventTarget>) => {
+        // e.preventdefault();
+        // axios.post('/api/userservice/', state)
+        //     .then(function (response) {
+        //         console.log(response);
+        //     })
+        axios.post('/api/userservice/', {
+
+
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+    }
+
 
         ;
     return (
@@ -79,7 +97,7 @@ export default function StateTextFields(props: data) {
                     variant="outlined"
                 /><br /><br />
 
-                <Button id="forButton" variant="contained" color="primary">
+                <Button onClick={book} id="forButton" variant="contained" color="primary">
                     Submit
                 </Button>
             </div>

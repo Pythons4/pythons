@@ -4,6 +4,7 @@ from djongo import models
 from bson.objectid import ObjectId
 import cloudinary
 from cloudinary.forms import CloudinaryJsFileField
+from django.conf import settings
 
 
 # user table
@@ -15,7 +16,6 @@ class Users(models.Model):
     user_phon = models.TextField()
     user_img = models.TextField()
     user_bio = models.TextField()
-    objects = models.DjongoManager()
 
 
 # admin table
@@ -54,7 +54,12 @@ class Tip(models.Model):
     tip_text = models.TextField()
     tip_img = models.TextField()
     user_id = models.TextField()
-    objects = models.DjongoManager()
+
+    def __str__(self):
+        return self.tip_title
+
+    def __str__(self):
+        return self.tip_title
 
 
 # Fav table
@@ -69,7 +74,7 @@ class Fav(models.Model):
 class TipCommints(models.Model):
     _id = models.ObjectIdField()
     tip_id = models.TextField()
-    user_id = models.TextField()
+    user_name = models.TextField()
     commint_text = models.TextField()
     objects = models.DjongoManager()
 
@@ -83,7 +88,10 @@ class Products(models.Model):
     product_type = models.BooleanField()
     product_description = models.TextField()
     product_img = models.TextField()
-    objects = models.DjongoManager()
+    # objects = models.DjongoManager()
+
+    def __str__(self):
+        return self.product_name
 
 
 # User Product table

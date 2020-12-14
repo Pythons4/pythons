@@ -1,8 +1,10 @@
 import axios from 'axios'
+import config from '../../csrftoken'
+
 
 const setUser = () => async (dispatch: any) => {
 
-    axios.get("/api/users/id").then(res => {
+    axios.post("/api/users/id").then(res => {
         dispatch({
             type: "SET_USER",
             payload: res.data
@@ -18,3 +20,6 @@ const setUser = () => async (dispatch: any) => {
 
 }
 export default setUser
+
+
+

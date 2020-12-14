@@ -21,7 +21,7 @@ class UserServiceAdmin(admin.ModelAdmin):
 
 
 class TipCommintsAdmin(admin.ModelAdmin):
-    list_display = ('_id', 'tip_id', 'user_id',  'commint_text')
+    list_display = ('_id', 'tip_id', 'user_name',  'commint_text')
 
 
 class FavAdmin(admin.ModelAdmin):
@@ -45,8 +45,8 @@ class UserProductsAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.site.register(Tip, TipsAdmin)
-admin.site.register(Products, ProductsAdmin)
+admin.site.register(Tip)
+admin.site.register(Products)
 admin.site.register(Fav, FavAdmin)
 admin.site.register(TipCommints, TipCommintsAdmin)
 admin.site.register(UserService, UserServiceAdmin)

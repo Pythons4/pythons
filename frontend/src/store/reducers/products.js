@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const prodictsReducer = (state = [], action) => {
     switch (action.type) {
         case 'buy_product':
@@ -10,8 +8,6 @@ const prodictsReducer = (state = [], action) => {
                 product: action.product,
                 material: action.material
             }
-
-
         default:
             return state
     };

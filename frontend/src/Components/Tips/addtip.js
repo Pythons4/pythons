@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import configdata from '../../csrftoken'
+import store from '../../store';
 
-var postreq = async (file1,tip_text,tip_title) => {
+
+var postreq = async (file1, tip_text, tip_title) => {
     const data = new FormData()
     data.append('file', file1[0])
     data.append('upload_preset', 'appimgs')
@@ -11,7 +13,7 @@ var postreq = async (file1,tip_text,tip_title) => {
         .then(res => {
             console.log(res.data.secure_url)
             axios.post("/api/tips/", {
-                tip_title:tip_title, tip_text:tip_text, tip_img: res.data.secure_url, user_id: '123456789hfgshjkjg'
+                tip_title: tip_title, tip_text: tip_text, tip_img: res.data.secure_url, user_id: '123456789hfgshjkjg'
             }, configdata)
                 .then(res => {
                     console.log(res.data)
@@ -28,8 +30,8 @@ export default class AddTip extends Component {
             reviwesoursw: '',
             takethis: '',
             file: '',
-            tip_title:'',
-            tip_text:''
+            tip_title: '',
+            tip_text: ''
         }
         this.handelimguplode = this.handelimguplode.bind(this)
         this.handelclikckimg = this.handelclikckimg.bind(this)
@@ -55,21 +57,21 @@ export default class AddTip extends Component {
             })
         }
     }
-    handeltext(e){
+    handeltext(e) {
         console.log(e.target)
         this.setState({
-           [e.target.name]:e.target.value 
+            [e.target.name]: e.target.value
         })
 
     }
 
     handelclikckimg() {
         console.log(this.state.takethis)
-        postreq(this.state.file,this.state.tip_text,this.state.tip_title)
+        postreq(this.state.file, this.state.tip_text, this.state.tip_title)
 
     }
     render() {
-        console.log(configdata)
+        console.log(store.getState().UserReducer.userid)
         return (
             <div>
                 <form>
