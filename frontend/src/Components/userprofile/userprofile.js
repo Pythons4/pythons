@@ -7,7 +7,7 @@ import UserFevarets from './userfevareits'
 
 class UserProfile extends React.Component {
     constructor(props) {
-        
+
         super(props)
 
 
@@ -16,26 +16,31 @@ class UserProfile extends React.Component {
 
 
     render() {
-        
+
 
 
         return (
 
 
             <div >
-               <UserTips/>
-               <UserServeces/>
-               <UserFevarets/>
-                    
-                        
-            </div>    
+                <div >    <UserTips />
+                </div>
+
+                <div > <UserServeces /></div>
+
+                <div > <UserFevarets /></div>
+
+
+
+
+            </div>
 
 
 
 
 
 
-            
+
 
 
 

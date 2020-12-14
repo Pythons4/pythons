@@ -47,18 +47,22 @@
 
 .ser_card {
 	color: #fff;
-	width: 300px;
-	height: 190px;
-	margin: 50px auto;
+	width: 330px;
+	height: 220px;
+	margin: 10px auto;
 	display: -webkit-box;
 	display: -ms-flexbox;
-	display: flex;
-	max-width: 270px;
-	background: #F1D4BE; 
+	display: center;
+	/* max-width: 470px; */
+	background: #F1D4BE;	
+	float: left; 
+	
 	
 	-webkit-box-shadow: 0 0 40px rgba(0,0,0,0.3); 
 	        box-shadow: 0 0 40px rgba(0,0,0,0.3);
 }
+
+
 
 
 
@@ -80,3 +84,32 @@
 
 
 
+.menu-links li{
+	list-style: none;
+	
+
+}
+
+.menu-link{
+	display:inline;
+}
+
+
+
+
+.fev_card {
+	color: #fff;
+	width: 330px;
+	height: 220px;
+	margin: 50px auto;
+	/* display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex; */
+	max-width: 470px;
+	background: #F1D4BE;	
+	float: left; 
+	
+	
+	-webkit-box-shadow: 0 0 40px rgba(0,0,0,0.3); 
+	        box-shadow: 0 0 40px rgba(0,0,0,0.3);
+}
