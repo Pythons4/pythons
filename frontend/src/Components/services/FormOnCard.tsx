@@ -35,14 +35,9 @@ export default function StateTextFields(props: data) {
         console.log(state, "belalala")
     }
 
-    let { userid } = store.getState().UserReducer
-    let serviceData = {
-        user_id: JSON.parse(userid),
-        service_name: state.name,
-        user_service_date: state.date,
-        user_service_hours: state.houres,
-        user_service_location: state.location
-    }
+    let { userid }: any = store.getState().UserReducer
+
+
     // user_id = models.TextField()
     // service_name = models.TextField()
     // user_service_location = models.TextField()
@@ -51,8 +46,16 @@ export default function StateTextFields(props: data) {
 
 
     const book = () => {
-        console.log(serviceData)
         if (userid) {
+            let serviceData = {
+                user_id: JSON.parse(userid),
+                service_name: state.name,
+                user_service_date: state.date,
+                user_service_hours: state.houres,
+                user_service_location: state.location
+            }
+            console.log(serviceData)
+
             axios.post('/api/userservice/', serviceData)
                 .then(function (response) {
                     console.log(response);
