@@ -37,7 +37,7 @@ export default function StateTextFields(props: data) {
 
     let { userid } = store.getState().UserReducer
     let serviceData = {
-        user_id: userid,
+        user_id: JSON.parse(userid),
         service_name: state.name,
         user_service_date: state.date,
         user_service_hours: state.houres,

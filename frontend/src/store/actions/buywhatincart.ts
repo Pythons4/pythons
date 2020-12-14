@@ -1,5 +1,7 @@
 import axios from "axios";
 import config from '../../csrftoken'
+import removefromcart from "./removefromcartaction"
+import store from "../../store"
 
 //add the user product to the database
 const buyWhatInCart = (products: any, userid: any, user_location: any) => {
@@ -17,10 +19,14 @@ const buyWhatInCart = (products: any, userid: any, user_location: any) => {
         }
         axios.post("/api/userproducts/", data, config).then(res => {
             console.log(res.data)
+
             dispatch({
                 type: 'BUY_IT',
                 value: res
             })
+
+            store.dispatch(removefromcart("remove"))
+
         })
             .catch(err => {
                 console.log(err)
@@ -28,6 +34,8 @@ const buyWhatInCart = (products: any, userid: any, user_location: any) => {
                     type: "BUT_IT_ERROR",
                     value: err.message
                 })
+
+
 
             })
     }
