@@ -32,25 +32,25 @@ export default class AdimApproveServices extends Component<State, Props> {
             .catch(err => console.log(err.message))
     }
     render() {
-
+        var x = true
         return (
             <div>
                 { this.state.services && this.state.services.map((element: any, i: number) =>
                     <div key={i}>
                         <h4>{element.user_service_date}</h4>
                         <p>{element.user_service_location}</p>
-                        <FormControlLabel
-                            control={<Checkbox checked={element.user_service_approv} onChange={() => {
-                                console.log('clicked')
-                                var value = 1
-                                if (element.user_service_approv)
-                                    value = 0
-                                approveService(element._id, value)
+                        <p><Checkbox
+                            color='primary'
+                            defaultChecked={element.user_service_approv}
+                            onChange={(e) => {
+                                console.log('hii')
+                                approveService(element._id, e.target.checked)
                                 this.componentDidMount()
-                            }
-                            } name="checkedG" />}
-                            label="provve this booked service"
-                        />
+                            }}
+                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                        /> product type</p>
+
+
 
                     </div>)}
 

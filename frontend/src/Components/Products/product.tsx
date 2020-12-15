@@ -3,8 +3,15 @@ import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import './product.css'
-import store from '../../store';
+import storeapp from '../../store';
 import { GET_ALL } from '../../store/actions/getallproduct';
+import ReactNotification from 'react-notifications-component'
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css'
+
+
+
+
 
 // import axios from "axios";
 // import configdata from '../../csrftoken'
@@ -14,23 +21,32 @@ export class Product extends Component<{}, any> {
     constructor(props: {} | Readonly<{}>) {
         super(props)
         this.state = {
-            products: store.getState().productseReducer
+            products: storeapp.getState().productseReducer
         }
     }
 
     //get all product from database (via GET_ALL action)
     componentDidMount() {
-        store.dispatch(GET_ALL())
-        store.subscribe(() => {
-            this.setState({
-                products: store.getState().productseReducer
-            })
+        storeapp.dispatch(GET_ALL())
+
+        this.setState({
+            products: storeapp.getState().productseReducer
         })
+        if (localStorage.getItem('notivecation') === 'tool') {
+            // addnot('new tool product')
+
+            localStorage.removeItem('notivecation')
+        }
+
+
+
     };
     render() {
+
         console.log(this.state.products)
         return (
             <div>
+                <ReactNotification />
                 <div className='container'>
                     {/* eslint-disable-next-line jsx-a11y/alt-text */}
                     <img className='product__img' src='https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg' />

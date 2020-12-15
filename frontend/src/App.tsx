@@ -18,6 +18,8 @@ import UserProfile from "./Components/userprofile/userprofile";
 import UserProfileTest from "./Components/userprofile/userprofiletest";
 import AdminSignIn from "./Components/Admin/Signinpage";
 import AdminProfile from "./Components/Admin/adminprofile";
+import ReactNotification from 'react-notifications-component'
+
 
 class App extends React.Component<{}, any> {
   constructor(props: {} | Readonly<{}>) {
@@ -27,6 +29,8 @@ class App extends React.Component<{}, any> {
   render() {
     return (
       <Router>
+        <ReactNotification />
+
         <Navbar />
         <Switch>
           <Route exact path="/homepage" render={() => <Homepage />} />

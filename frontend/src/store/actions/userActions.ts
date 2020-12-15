@@ -123,3 +123,30 @@ export const updateuserinfo = (userinfo: any, newinfo: any) => {
             });
     }
 }
+
+
+//action to get user services
+export const userServices = (id: any, newinfo: any) => {
+    return function (dispatch: any) {
+        axios.get(`/api/userservice/${id}`, config)
+            .then(res => {
+                console.log(res.data)
+                var serv = []
+                for (var i in res.data) {
+                    if (res.data[i].user_service_approv)
+                        serv.push(res.data[i])
+                }
+                dispatch({
+                    type: 'MY_APPREVED_SERVICES',
+                    userinfo: serv,
+                })
+            })
+            .catch(err => {
+                console.log(err)
+                dispatch({
+                    type: "GET_ERROR",
+                    message: err.message
+                })
+            });
+    }
+}

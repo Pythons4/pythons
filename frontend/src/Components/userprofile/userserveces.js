@@ -3,6 +3,7 @@ import axios from 'axios';
 import UserCard from './usercard'
 import store from "../../store"
 import './user.css'
+import { userServices } from '../../store/actions/userActions'
 
 
 
@@ -13,33 +14,21 @@ class UserServeces extends React.Component {
         this.state = {
             UserService: []
         }
-
     }
 
 
     componentDidMount() {
         var { userid } = store.getState().UserReducer
-        console.log(userid)
         var id = JSON.parse(userid)
-        console.log(id)
-        axios.get(`/api/userservice/${id} `)
-            .then(res => {
+        store.dispatch(userServices(id))
+        this.setState({
+            UserService: JSON.parse(store.getState().UserReducer.userServices)
+        })
 
-                console.log(res.data);
-
-                this.setState({ UserService: res.data })
-
-            })
-
-            .catch((error) => {
-                console.log(error);
-            })
     }
 
 
     render() {
-        console.log(this.state.UserService)
-
         return (
             <div>
                 <h1 className='user__ser'>Services</h1>

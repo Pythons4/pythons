@@ -1,3 +1,5 @@
+import { addnot } from '../../notife'
+
 const userReducer = (state: any, action: any) => {
     switch (action.type) {
         case 'SIGN_IN_UP':
@@ -26,12 +28,22 @@ const userReducer = (state: any, action: any) => {
                 token: localStorage.getItem('token'), userid: localStorage.getItem('userid'),
 
             }
-
+        case 'MY_APPREVED_SERVICES':
+            if (JSON.parse(localStorage.getItem('provedServicses') || '{}').length !== action.userinfo.length) {
+                addnot('new approved service')
+            }
+            localStorage.setItem('provedServicses', JSON.stringify(action.userinfo))
+            return {
+                token: localStorage.getItem('token'), userid: localStorage.getItem('userid'),
+                userinfo: localStorage.getItem('userinfo'),
+                userServices: localStorage.getItem('provedServicses')
+            }
 
         default:
             return {
                 token: localStorage.getItem('token'), userid: localStorage.getItem('userid'),
-                userinfo: localStorage.getItem('userinfo')
+                userinfo: localStorage.getItem('userinfo'),
+                userServices: localStorage.getItem('provedServicses')
             }
     };
 };
