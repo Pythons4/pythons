@@ -10,11 +10,11 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 import jwt
 from django.conf import settings
-from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, FavSerializer, ProductsSerializer, UserProductsSerializer
+from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, ProductsSerializer, UserProductsSerializer
 from cloudinary.forms import cl_init_js_callbacks
 from django.views.decorators.csrf import csrf_exempt
 import json
-from .models import Tip, Users, Admin, Service, UserService, TipCommints, Fav, Products, UserProducts
+from .models import Tip, Users, Admin, Service, UserService, TipCommints,  Products, UserProducts
 
 
 # tips view/requests (getall and get by user id )
@@ -34,6 +34,19 @@ class TipsView(viewsets.ModelViewSet):
         print(serializer.data)
         return Response(serializer.data)
 
+# update the tip favarray
+@api_view(['PUT'])
+@permission_classes([AllowAny])
+def updateTipFavorite(request):
+    # print('params')
+    tip = Tip.objects.get(
+        _id=ObjectId(request.data['tip_id']))
+    tip.favorite = request.data['favorite']
+    tip.save()
+    serializer = TipsSerializer(tip)
+    # print(serializer.data)
+    return Response(serializer.data) 
+
 
 class TipCommintsView(viewsets.ModelViewSet):
     serializer_class = TipCommintsSerializer
@@ -46,7 +59,7 @@ class TipCommintsView(viewsets.ModelViewSet):
         params = kwargs
         print(params)
         thetipcommint = TipCommints.objects.filter(
-            user_name=params['pk'])
+            tip_id=params['pk'])
         serializer = TipCommintsSerializer(thetipcommint, many=True)
         print(serializer.data)
         return Response(serializer.data)
@@ -108,22 +121,22 @@ class UserServiceView(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-class FavView(viewsets.ModelViewSet):
-    serializer_class = FavSerializer
-    queryset = Fav.objects.all()
+# class FavView(viewsets.ModelViewSet):
+#     serializer_class = FavSerializer
+#     queryset = Fav.objects.all()
 
-    def get_queryset(self):
-        queryset = Fav.objects.all()
-        return queryset
+#     def get_queryset(self):
+#         queryset = Fav.objects.all()
+#         return queryset
 
-    def retrieve(self, request, *args, **kwargs):
-        params = kwargs
-        print(params)
-        userFav = Fav.objects.filter(
-            user_id=ObjectId(params['pk']))
-        serializer = FavSerializer(userFav, many=True)
-        print(serializer.data)
-        return Response(serializer.data)
+#     def retrieve(self, request, *args, **kwargs):
+#         params = kwargs
+#         print(params)
+#         userFav = Fav.objects.filter(
+#             user_id=ObjectId(params['pk']))
+#         serializer = FavSerializer(userFav, many=True)
+#         print(serializer.data)
+#         return Response(serializer.data)
 
 
 # products viwe/request (fetall and retrive by id)

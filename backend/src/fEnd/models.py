@@ -11,7 +11,7 @@ from django.conf import settings
 class Users(models.Model):
     _id = models.ObjectIdField()
     user_name = models.TextField()
-    user_email = models.TextField()
+    user_email = models.EmailField()
     user_password = models.TextField()
     user_phon = models.TextField()
     user_img = models.TextField()
@@ -56,16 +56,17 @@ class Tip(models.Model):
     tip_text = models.TextField()
     tip_img = models.TextField()
     user_id = models.TextField()
-
+    favorite = models.TextField()
+    # favorite= models.ArrayField()
     def __str__(self):
         return self.tip_title
 
 
 # Fav table
-class Fav(models.Model):
-    _id = models.ObjectIdField()
-    user_id = models.TextField()
-    tip_id = models.TextField()
+# class Fav(models.Model):
+#     _id = models.ObjectIdField()
+#     user_id = models.TextField()
+#     tip_id = models.TextField()
 
 
 # Tips Comments table

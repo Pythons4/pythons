@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import "./TipsPage.css";
 import store from "../../store";
 import { GET_ALL } from "../../store/actions/getalltips";
-
 export class Tips extends Component<{}, any> {
   constructor(props: {} | Readonly<{}>) {
     super(props);
@@ -36,6 +35,7 @@ export class Tips extends Component<{}, any> {
                   tip_img: string;
                   _id: string;
                   tip_title: string;
+                  favorite: string;
                 },
                 i: number
               ) => (
