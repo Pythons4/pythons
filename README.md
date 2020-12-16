@@ -8,42 +8,54 @@
 - **Co-Leader**: Halal Salhab
 - **Development Team Members**: Belal Abuhani, Hanadi Sabuhani, Hala Salhab, Qamar Jaradat
 
+## Technologies used
+- Frontend
+  - React (Redux ,Hooks , React Router)
+  - User Interface Framework (Material UI)
+- Backend
+  - Python (Django)
+  - Authentication (JWT, Bcrypt)
+  - Database (mongoDB)
+
+
+
 ### Installing Dependencies
 
-1. Backend:
+1. Backend
 
-- Go from root directory to backend directory:
+   - Go from root directory to backend directory
 
-```
-cd backend/
-```
+    ```
+    cd backend/
+    ```
 
-- Create virtualenv:
+   - Create virtualenv
 
-```
-python -m venv env
-.\env\Scripts\activate
-pip install -r requirements.txt
-```
+   ```
+   python -m venv env
+   .\env\Scripts\activate
+   pip install -r requirements.txt
+   ```
 
-- Run the server:
+   - Run the server:
 
-```
-cd src/
-python manage.py runserver
-```
+    ```
+    cd src/
+    python manage.py runserver
+    ```
 
-2. frontend:
 
-- Go from root directory to frontend directory:
+2. frontend
 
-```
-cd frontend/
-npm i
-```
+   - Go from root directory to frontend directory
 
-- Run the app
+   ```
+   cd frontend/
+   npm i
+   ```
 
-```
-npm start
-```
+   - Run the app
+
+   ```
+   npm start
+   ```
