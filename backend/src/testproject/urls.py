@@ -12,7 +12,7 @@ router.register(r'users', views.UsersView, 'users')
 router.register(r'tips', views.TipsView, 'tips')
 router.register(r'tipcomments', views.TipCommintsView, 'tipstipcomments')
 router.register(r'admins', views.AdminView, 'admins')
-router.register(r'favorites', views.FavView, 'favorites')
+# router.register(r'favorites', views.FavView, 'favorites')
 router.register(r'services', views.ServiceView, 'services')
 router.register(r'userservice', views.UserServiceView, 'userservice')
 router.register(r'products', views.ProductsView, 'products')
@@ -30,5 +30,6 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/usercheck', views.getuserinfologin),
     path('api/userimgupdate', views.updateUserImage),
-    path('api/adminLogin', views.getAdminInfoLogin)
+    path('api/adminLogin', views.getAdminInfoLogin),
+     path('api/favorite', views.updateTipFavorite)
 ]
