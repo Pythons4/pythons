@@ -1,4 +1,5 @@
 from django.contrib import admin
+from .views import index
 from django.urls import path, include
 from rest_framework import routers
 from fEnd import views
@@ -20,6 +21,7 @@ router.register(r'userproducts', views.UserProductsView, 'userproducts')
 
 
 urlpatterns = [
+     path('', index, name='index'),
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
