@@ -38,6 +38,10 @@ const userReducer = (state: any, action: any) => {
                 userinfo: localStorage.getItem('userinfo'),
                 userServices: localStorage.getItem('provedServicses')
             }
+        case 'SIGN-IN_ERROR':
+            return {
+                error: action.value
+            }
 
         default:
             return {
