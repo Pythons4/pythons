@@ -18,6 +18,9 @@ import UserProfile from "./Components/userprofile/userprofile";
 import UserProfileTest from "./Components/userprofile/userprofiletest";
 import AdminSignIn from "./Components/Admin/Signinpage";
 import AdminProfile from "./Components/Admin/adminprofile";
+import { IconButton } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ReactNotification from 'react-notifications-component'
 
 
@@ -30,8 +33,12 @@ class App extends React.Component<{}, any> {
     return (
       <Router>
         <ReactNotification />
-
         <Navbar />
+        <Link to={{ pathname: `/cart` }}>
+          <IconButton color="primary" component="span">
+            <ShoppingCartIcon fontSize="large" />
+          </IconButton>
+        </Link>
         <Switch>
           <Route exact path="/homepage" render={() => <Homepage />} />
           <Route path="/product" exact component={Product} />

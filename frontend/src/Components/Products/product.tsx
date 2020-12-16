@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom'
 import './product.css'
 import storeapp from '../../store';
 import { GET_ALL } from '../../store/actions/getallproduct';
-import ReactNotification from 'react-notifications-component'
-import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
 
 
@@ -32,11 +30,7 @@ export class Product extends Component<{}, any> {
         this.setState({
             products: storeapp.getState().productseReducer
         })
-        if (localStorage.getItem('notivecation') === 'tool') {
-            // addnot('new tool product')
-
-            localStorage.removeItem('notivecation')
-        }
+      
 
 
 
@@ -46,7 +40,6 @@ export class Product extends Component<{}, any> {
         console.log(this.state.products)
         return (
             <div>
-                <ReactNotification />
                 <div className='container'>
                     {/* eslint-disable-next-line jsx-a11y/alt-text */}
                     <img className='product__img' src='https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg' />

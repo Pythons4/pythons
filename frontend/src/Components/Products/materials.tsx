@@ -1,9 +1,7 @@
 //the file that show all material products
-import { IconButton } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './product.css'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const ProductMaterials = (props: any) => {
     var materials = []
@@ -12,11 +10,7 @@ const ProductMaterials = (props: any) => {
 
     return (
         <div>
-            <Link to={{ pathname: `/cart` }}>
-                <IconButton color="primary" component="span">
-                    <ShoppingCartIcon fontSize="large" />
-                </IconButton>
-            </Link>
+
             <div className="d-flex flex-wrap justify-content-around catdiv"
                 style={{ "marginBottom": '50px', marginTop: "18px" }}  >
                 {materials.map((element: { product_name: string, product_img: string, _id: string }, i: number) =>
