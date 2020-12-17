@@ -1,13 +1,15 @@
 import React from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link } from "react-router-dom";
-// import Button from '@material-ui/core/Button';
+import { Button, Avatar } from '@material-ui/core'
 import './Navbar.css'
 
-
-
+import store from "../../store"
 
 const Navbar = () => {
+    var { userid }: any = store.getState().UserReducer
+    var id = JSON.parse(userid)
+    console.log(id)
     return (
         <nav >
             <div className='logo'>
@@ -28,9 +30,23 @@ const Navbar = () => {
                 <li >
                     <Link to='/tips' className='nav-link'>Tips</Link>
                 </li>
-                <li>
+
+                {
+                    id ?
+                        <div className='header__profile'>
+                            <Link to="/profiletest" style={{ textDecoration: "none" }}>
+                                <Avatar className='header__avatar' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPasPbrVe2Txcc4aGbZkCddJkVTaj8uyb7A&usqp=CAU" />
+                            </Link>
+
+                        </div>
+                        :
+                        <Link to='/signin' className='nav-link'>login</Link>
+
+                }
+
+                {/* <li>
                     <Link to='/signin' className='nav-link'>login</Link>
-                </li>
+                </li> */}
 
             </ul>
 

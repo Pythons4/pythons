@@ -20,7 +20,8 @@ export const signup = (userinfo: any) => {
                 dispatch({
                     type: 'SIGN_IN_UP',
                     token: res.data[1],
-                    userId: res.data[0]
+                    userId: res.data[0],
+
                 })
         })
             .catch(err => {
@@ -64,6 +65,15 @@ export const signin = (userinfo: any) => {
             })
     }
 }
+
+//user sign out action
+export const signout = () => {
+    return { type: 'SIGN_OUT' }
+
+
+
+}
+
 
 //action to change user image
 export const updateuserimg = (file1: any, userinfo: any) => {

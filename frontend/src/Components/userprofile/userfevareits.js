@@ -40,16 +40,17 @@ class UserFevareits extends React.Component {
         console.log(this.state.UserFevareits)
 
         return (
-            <div>
-                <h1 className='user__fev'>Fevareits</h1>
-                {
-                    this.state.UserFevareits.length !== 0 ?
-                        this.state.UserFevareits.map((fev, id) => {
-                            return <UserFev fev={fev} key={id} />
+            <div div className="profile-body">
+                <div className="profile-fevareits tap">
+                    {
+                        this.state.UserFevareits.length !== 0 ?
+                            this.state.UserFevareits.map((fev, id) => {
+                                return <UserFev fev={fev} key={id} />
 
-                        })
-                        : <div className='user__fev'><h3>No Fevareits</h3></div>
-                }
+                            })
+                            : <div className='user__fev'><h3>No Fevareits</h3></div>
+                    }
+                </div>
             </div>
         )
     }

@@ -42,16 +42,17 @@ class UserServeces extends React.Component {
         console.log(this.state.UserService)
 
         return (
-            <div>
-                <h1 className='user__ser'>Services</h1>
-                {
-                    this.state.UserService.length !== 0 ?
-                        this.state.UserService.map((ser, id) => {
-                            return <UserCard ser={ser} key={id} />
+            <div className="profile-body">
+                <div className="profile-services tap">
+                    {
+                        this.state.UserService.length !== 0 ?
+                            this.state.UserService.map((ser, id) => {
+                                return <UserCard ser={ser} key={id} />
 
-                        })
-                        : <div className='user__ser'><h3>No Services</h3></div>
-                }
+                            })
+                            : <div className='user__ser'><h3>No Services</h3></div>
+                    }
+                </div>
             </div>
         )
     }
