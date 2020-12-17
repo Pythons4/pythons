@@ -32,5 +32,6 @@ urlpatterns = [
     path('api/usercheck', views.getuserinfologin),
     path('api/userimgupdate', views.updateUserImage),
     path('api/adminLogin', views.getAdminInfoLogin),
-    path('api/approvuserservice', views.updateUserServicesApprove)
+    path('api/approvuserservice', views.updateUserServicesApprove),
+    path('api/updatefavorite', views.updateFavorite),
 ]

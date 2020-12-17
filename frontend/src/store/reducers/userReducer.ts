@@ -6,6 +6,7 @@ const userReducer = (state: any, action: any) => {
             localStorage.setItem('token', JSON.stringify(action.token))
             localStorage.setItem('userid', JSON.stringify(action.userId._id))
             localStorage.setItem('userinfo', JSON.stringify(action.userId))
+            window.location.href = '/profiletest'
 
             return {
                 token: localStorage.getItem('token'), userid: localStorage.getItem('userid'),
@@ -16,6 +17,7 @@ const userReducer = (state: any, action: any) => {
             localStorage.removeItem('token')
             localStorage.removeItem('userid')
             localStorage.removeItem('userinfo')
+            window.location.href = '/homepage'
             return {
                 token: localStorage.getItem('token'), userid: localStorage.getItem('userid'),
                 userinfo: localStorage.getItem('userinfo')

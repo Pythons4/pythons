@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import "./TipsPage.css";
 import store from "../../store";
 import { GET_ALL } from "../../store/actions/getalltips";
-
 export class Tips extends Component<{}, any> {
   constructor(props: {} | Readonly<{}>) {
     super(props);
