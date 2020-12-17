@@ -37,7 +37,19 @@ class TipsView(viewsets.ModelViewSet):
 
 class TipCommintsView(viewsets.ModelViewSet):
     serializer_class = TipCommintsSerializer
-    queryset = TipCommints.objects.all()
+
+    def get_queryset(self):
+        tipcommint = TipCommints.objects.all()
+        return tipcommint
+
+    def retrieve(self, request, *args, **kwargs):
+        params = kwargs
+        print(params)
+        thetipcommint = TipCommints.objects.filter(
+            user_name=params['pk'])
+        serializer = TipCommintsSerializer(thetipcommint, many=True)
+        print(serializer.data)
+        return Response(serializer.data)
 
 
 # user view/request (getall and create user and give it authentication(token))
@@ -146,9 +158,9 @@ class UserProductsView(viewsets.ModelViewSet):
 def updateProductQuantity(request):
     print('params')
     products = Products.objects.get(
-        _id=ObjectId(request.data['_id']))
+        _id=ObjectId(request.data['product_id']))
     products.product_quantity = products.product_quantity - \
-        request.data['product_quantity']
+        request.data['product_user_quantity']
     products.save()
     serializer = ProductsSerializer(products)
     print(serializer.data)

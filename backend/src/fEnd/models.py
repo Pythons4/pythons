@@ -24,6 +24,7 @@ class Admin(models.Model):
     admin_name = models.TextField()
     admin_email = models.TextField()
     admin_password = models.TextField()
+    admin_img = models.TextField()
     # objects = models.DjongoManager()
 
 
@@ -71,7 +72,7 @@ class Fav(models.Model):
 class TipCommints(models.Model):
     _id = models.ObjectIdField()
     tip_id = models.TextField()
-    user_id = models.TextField()
+    user_name = models.TextField()
     commint_text = models.TextField()
     objects = models.DjongoManager()
 

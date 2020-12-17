@@ -1,7 +1,4 @@
 {
-
-    "python.pythonPath": "C:\\Users\\Asus\\Anaconda3\\python.exe",
-
     "team.showWelcomeMessage": false,
     "editor.formatOnSave": true,
     "python.linting.pycodestyleEnabled": true,
