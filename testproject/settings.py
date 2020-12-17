@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import datetime
 from pathlib import Path
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
 import django_heroku
 import os
 
@@ -185,11 +185,11 @@ CORS_ORIGIN_WHITELIST = (
     # 'https://api.cloudinary.com/v1_1/dve46qnma/image/upload',
 )
 
-cloudinary.config(
-    cloud_name="dve46qnma",
-    api_key="727683254796878",
-    api_secret="nFgKT5sNaGfnsP98po1wSJ_rqYE"
-)
+# cloudinary.config(
+#     cloud_name="dve46qnma",
+#     api_key="727683254796878",
+#     api_secret="nFgKT5sNaGfnsP98po1wSJ_rqYE"
+# )
 
 USE_TZ = False
 CORS_ORIGIN_ALLOW_ALL = True
