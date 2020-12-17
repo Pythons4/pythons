@@ -121,6 +121,8 @@ export default class Tip extends Component<Props, State> {
         .post(`/api/favorites/`, {
           user_id: user_id,
           tip_id: this.state.tip._id,
+          tip_img: this.state.tip.tip_img,
+          tip_title: this.state.tip.tip_title,
         })
         .then((res) => {
           this.setState({

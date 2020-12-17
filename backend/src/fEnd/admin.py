@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Tip, Users, Admin, Service, UserService, TipCommints,Products, UserProducts,Fav
+from .models import Tip, Users, Admin, Service, UserService, TipCommints, Products, UserProducts, Fav
 
 
 class TipsAdmin(admin.ModelAdmin):
@@ -25,7 +25,7 @@ class TipCommintsAdmin(admin.ModelAdmin):
 
 
 class FavAdmin(admin.ModelAdmin):
-    list_display = ('_id', 'user_id', 'tip_id')
+    list_display = ('_id', 'user_id', 'tip_id', 'tip_img', 'tip_title')
 
 
 class UsersAdmin(admin.ModelAdmin):

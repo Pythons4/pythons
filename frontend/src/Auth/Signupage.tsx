@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from 'react-hook-form';
 import store from '../store';
 import { signup } from '../store/actions/userActions';
+import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -79,14 +80,16 @@ const SignUpPage = () => {
                         </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                        <Button
-                            onClick={onSubmit}
-                            color="primary"
-                            fullWidth
-                            type="button"
-                            variant="contained">
-                            Log in
+                        <Link to="/homepage" style={{ textDecoration: "none" }}>
+                            <Button
+                                onClick={onSubmit}
+                                color="primary"
+                                fullWidth
+                                type="button"
+                                variant="contained">
+                                Log in
                         </Button>
+                        </Link>
                     </Grid>
                 </Grid>
             </form>
