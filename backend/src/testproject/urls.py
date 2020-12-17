@@ -30,5 +30,6 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/usercheck', views.getuserinfologin),
     path('api/userimgupdate', views.updateUserImage),
-    path('api/adminLogin', views.getAdminInfoLogin)
+    path('api/adminLogin', views.getAdminInfoLogin),
+     path('api/updatefavorite', views.updateFavorite),
 ]

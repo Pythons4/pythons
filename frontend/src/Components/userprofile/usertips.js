@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import UserTip from './usertip'
 import store from "../../store"
-// import './user.css'
+import './user.css'
 
 
 
@@ -41,16 +41,20 @@ class UserTips extends React.Component {
         console.log(this.state.UserTips)
 
         return (
-            <div>
-                <h1 className='user__tip'>Posts</h1>
-                {
-                    this.state.UserTips.length !== 0 ?
-                        this.state.UserTips.map((tip, id) => {
-                            return <UserTip tip={tip} key={id} />
+            <div className="profile-body">
+                <div className="profile-posts tap">
+                    {
+                        this.state.UserTips.length !== 0 ?
+                            this.state.UserTips.map((tip, id) => {
+                                return <UserTip tip={tip} key={id} />
 
-                        })
-                        : <div className='user__tip'><h3>No Posts</h3></div>
-                }
+                            })
+                            : <div className='user__tip'><h3>No Posts</h3></div>
+                    }
+
+                </div>
+
+
             </div>
         )
     }

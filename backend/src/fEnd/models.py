@@ -11,7 +11,7 @@ from django.conf import settings
 class Users(models.Model):
     _id = models.ObjectIdField()
     user_name = models.TextField()
-    user_email = models.TextField()
+    user_email = models.EmailField()
     user_password = models.TextField()
     user_phon = models.TextField()
     user_img = models.TextField()
@@ -65,6 +65,8 @@ class Tip(models.Model):
 class Fav(models.Model):
     _id = models.ObjectIdField()
     user_id = models.TextField()
+    tip_title = models.CharField(max_length=40)
+    tip_img = models.TextField()
     tip_id = models.TextField()
 
 

@@ -11,24 +11,17 @@ class UserFev extends React.Component {
 
 
     }
-
-
-
     render() {
-        var tip;
-
-        tip = this.props.fev.tip_id;
-
-
-
-
-
         return (
             <div class="wrapper">
                 <div class="fev_card">
                     <div class="fev_left">
                         <div class="fev_datails">
-                            <h1>{tip}</h1>
+                            <p>{this.props.fev.tip_title}</p>
+                            <img syle={{width:'20px'}}
+                            src={this.props.fev.tip_img}
+                            alt="tipimage"
+                            />
 
 
 

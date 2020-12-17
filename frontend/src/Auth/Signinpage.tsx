@@ -7,6 +7,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from 'react-hook-form';
 import store from '../store';
 import { signin } from '../store/actions/userActions';
+import { Link } from "react-router-dom";
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +30,7 @@ const SignInPage = () => {
     const onSubmit = handleSubmit((data) => {
         console.log(data);
         store.dispatch(signin({ user_password: data.password, user_email: data.email }))
+
 
     });
     return (
@@ -66,8 +70,18 @@ const SignInPage = () => {
                             variant="contained">
                             Log in
                         </Button>
+
                     </Grid>
-                    <p>Don't have an Account?</p>
+
+                    <Grid item xs={12}>
+                        <p>Don't have an Account?</p>
+                        <Link to="/signup" style={{ textDecoration: "none" }}>
+                            sign up
+                        </Link>
+                    </Grid>
+
+
+
                 </Grid>
             </form>
 
