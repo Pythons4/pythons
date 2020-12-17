@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Tip, Users, Admin, Service, UserService, TipCommints,Products, UserProducts
+from .models import Tip, Users, Admin, Service, UserService, TipCommints, Products, UserProducts, Fav
 
 
 class TipsAdmin(admin.ModelAdmin):
     list_display = ('_id', 'tip_img', 'tip_title',
-                    'tip_text', 'user_id','favorite')
+                    'tip_text', 'user_id')
 
 
 class AdminsAdmin(admin.ModelAdmin):
@@ -24,8 +24,8 @@ class TipCommintsAdmin(admin.ModelAdmin):
     list_display = ('_id', 'tip_id', 'user_name',  'commint_text')
 
 
-# class FavAdmin(admin.ModelAdmin):
-#     list_display = ('_id', 'user_id', 'tip_id')
+class FavAdmin(admin.ModelAdmin):
+    list_display = ('_id', 'user_id', 'tip_id', 'tip_img', 'tip_title')
 
 
 class UsersAdmin(admin.ModelAdmin):
@@ -47,7 +47,7 @@ class UserProductsAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Tip)
 admin.site.register(Products)
-# admin.site.register(Fav, FavAdmin)
+admin.site.register(Fav, FavAdmin)
 admin.site.register(TipCommints, TipCommintsAdmin)
 admin.site.register(UserService, UserServiceAdmin)
 admin.site.register(Users, UsersAdmin)

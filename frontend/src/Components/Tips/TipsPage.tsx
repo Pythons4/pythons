@@ -35,7 +35,6 @@ export class Tips extends Component<{}, any> {
                   tip_img: string;
                   _id: string;
                   tip_title: string;
-                  favorite: string;
                 },
                 i: number
               ) => (

@@ -17,7 +17,6 @@ interface Props {
         tip_title: string;
         tip_img: string;
         tip_text: string;
-        favorite: string;
         _id: string;
       };
     };
@@ -39,6 +38,7 @@ interface State {
   // isLoaded: boolean;
 }
 let thetip: Tip0;
+//tip class
 export default class Tip extends Component<Props, State> {
   constructor(props: Props | Readonly<Props>) {
     super(props);
@@ -46,7 +46,7 @@ export default class Tip extends Component<Props, State> {
       tip: this.props.location.state.tip,
       text: "",
       commints: [],
-      favorite: JSON.parse(this.props.location.state.tip.favorite),
+      favorite: [],
       isFavorite: false,
       // isLoaded: false,
     };
@@ -57,23 +57,36 @@ export default class Tip extends Component<Props, State> {
 
   componentDidMount() {
     var tip_id = this.state.tip._id;
-    console.log(tip_id);
+    var { userinfo }: any = store.getState().UserReducer;
+    var user_id = JSON.parse(userinfo)._id;
+    //retrive the commints 4 the tip
     axios
       .get(`/api/tipcomments/${tip_id}/`)
       .then((res) => {
         this.setState({
           commints: res.data,
         });
-        console.log(this.state.commints);
       })
       .catch((err) => {
         console.log(err);
       });
+    axios.get(`/api/favorites/${user_id}/`).then((res) => {
+      res.data.map((element: any, i: number) => {
+        if (element.tip_id === this.state.tip._id) {
+          this.state.favorite.push(res.data[i]);
+          console.log(this.state.favorite);
+          this.setState({
+            isFavorite: true,
+          });
+        }
+      });
+    });
   }
 
   handelcliking() {
     var { userinfo }: any = store.getState().UserReducer;
     if (JSON.parse(userinfo).user_name) {
+      //posting the commints
       axios
         .post(
           "/api/tipcomments/",
@@ -99,65 +112,48 @@ export default class Tip extends Component<Props, State> {
       text: e.target.value,
     });
   }
+
   favorite() {
     var { userinfo }: any = store.getState().UserReducer;
-
     var user_id = JSON.parse(userinfo)._id;
-    console.log(userinfo);
-    this.state.favorite &&
-      this.state.favorite.map((element: any, i: number) => {
-        if (element === user_id) {
+    if (this.state.isFavorite === false) {
+      axios
+        .post(`/api/favorites/`, {
+          user_id: user_id,
+          tip_id: this.state.tip._id,
+          tip_img: this.state.tip.tip_img,
+          tip_title: this.state.tip.tip_title,
+        })
+        .then((res) => {
           this.setState({
             isFavorite: true,
           });
-        } else {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    if (this.state.isFavorite === true) {
+      var _id = this.state.favorite[0]["_id"];
+      console.log(_id);
+      axios
+        .post(`/api/updatefavorite`, { _id: _id }, configdata)
+        .then((res) => {
+          console.log(res);
           this.setState({
             isFavorite: false,
           });
-        }
-      });
-    if (this.state.isFavorite === true) {
-      for (var i = 0; i < this.state.favorite.length; i++) {
-        if (this.state.favorite[i] === user_id) {
-          this.state.favorite.splice(i, 1);
-        }
-      }
-      axios
-        .put("/api/favorite", {
-          favorite: JSON.stringify(this.state.favorite),
-          tip_id: this.state.tip._id,
-        })
-        .then((res) => {
-          console.log(res);
         })
         .catch((err) => {
           console.log(err);
         });
-      this.setState({
-        isFavorite: false,
-      });
-    }
-    if (this.state.isFavorite === false) {
-      this.state.favorite.push(user_id);
-      axios
-        .put("/api/favorite", {
-          favorite: JSON.stringify(this.state.favorite),
-          tip_id: this.state.tip._id,
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      this.setState({
-        isFavorite: true,
-      });
     }
   }
 
   render() {
     return (
+      //the tip
       <div>
         <div
           className="d-flex flex-wrap justify-content-around catdiv"
@@ -191,6 +187,7 @@ export default class Tip extends Component<Props, State> {
             className="d-flex flex-wrap justify-content-around catdiv"
             style={{ marginBottom: "50px", marginTop: "18px" }}
           >
+            {/* tip commints  */}
             {this.state.commints &&
               this.state.commints.map((element: any, i: number) => (
                 <div key={i} style={{ textAlign: "center", marginTop: "45px" }}>
