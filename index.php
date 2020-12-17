@@ -1,1 +1,1 @@
-<?php  header('Location: /frontend/public/index.html')?>
+<?php  header('Location: /frontend/package.json')?>
