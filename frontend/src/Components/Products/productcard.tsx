@@ -83,25 +83,21 @@ export default class ProductsCard extends Component<Props, State> {
 
     return (
       <div>
-        <div className=" ">
-          <img
-            className=""
-            alt="100x100"
+        <div className="d-flex align-items-start flex-column bd-highlight mb-3" style={{ height: '200px' }}>
+          <div ><img
+            className="card-img"
+            alt=""
             src={theproduct.product_img}
             data-holder-rendered="true"
           />
-          <h2 className="my-5 h2">{theproduct.product_name}</h2>
-          <h4 className="my-5 h4">{theproduct.product_price}</h4>
-          <h5 className="my-5 h5">{theproduct.product_quantity}</h5>
-          <p>{theproduct.product_description}</p>
-          <div className="quantity">
-            <button
-              className="btn minus-btn"
-              type="button"
-              onClick={this.decrementQuantity}
-            >
-              -
-            </button>
+          </div>
+          <div >  <button
+            className="btn minus-btn"
+            type="button"
+            onClick={this.decrementQuantity}
+          >
+            -
+          </button>
             <input
               type="text"
               id="quantity"
@@ -113,9 +109,8 @@ export default class ProductsCard extends Component<Props, State> {
               onClick={this.incrementQuantity}
             >
               +
-            </button>
-          </div>
-          <Button
+          </button></div>
+          <div ><Button
             onClick={this.addtothecart}
             endIcon={<ShoppingCartIcon></ShoppingCartIcon>}
             className="addtocart"
@@ -123,9 +118,26 @@ export default class ProductsCard extends Component<Props, State> {
             color="primary"
           >
             Add to Cart
-          </Button>
+        </Button></div>
         </div>
+
+        <div className="d-flex justify-content-center flex-column bd-highlight mb-2" style={{ height: '200px' }}>
+          <div > <h2 >{theproduct.product_name}</h2>
+            <h4 >{theproduct.product_price}</h4>
+            <h5 >{theproduct.product_quantity}</h5></div>
+          <div > <p>{theproduct.product_description}</p></div>
+
+        </div>
+
       </div>
+
+
+
+
+
+
+
     );
   }
 }
+

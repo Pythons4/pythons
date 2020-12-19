@@ -71,7 +71,7 @@ class UserServeces extends React.Component {
 
 
                                 })
-                                : <div className='user__ser'><h3>No Services</h3></div>
+                                : <div></div>
                         }
                     </div>
                 </div>

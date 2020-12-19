@@ -3,10 +3,17 @@
 }
 
 .product__img {
-    width: 98vw;
-    height: 490px;
-    background-repeat: no-repeat;
-    background-size: cover;
+    margin-top: 0px;
+    background: url('https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg') center center/cover no-repeat;
+    height: 75vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+    z-index: 1;
 }
 
 .imgstyle {
@@ -16,10 +23,11 @@
     height: 20vw;
     border-radius: 30px ;
     margin-bottom: 18px;
+
 }
 
 .product__list{
-    margin-top: 50px;
+    margin-top: 400px;
     text-align: center;
 }
 
@@ -98,5 +106,28 @@
     width:40px;
     height: 60px;
     border-radius: 240px;
+    text-align: center;
+}
+
+
+
+.card-img{
+    width: 250px;
+    height: 250px;
+    border-radius: 30px;
+    /* margin-left: 250px; */
+}
+
+.product-ifo h2,h4,h5{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    text-align: center;
+}
+
+.product-ifo p{
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
     text-align: center;
 }

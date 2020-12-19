@@ -42,15 +42,16 @@ class UserFevareits extends React.Component {
                                     return <div class="fev_card" key={id}>
 
                                         <div class="fev_datails" >
-                                            
-                                            <h1>{fev.tip_title}</h1>
-                                        
-                                            <img 
+                                            <img
                                                 src={fev.tip_img}
                                                 alt="tipimage"
                                             />
-                                       
-                                    </div>
+
+                                            <h1>{fev.tip_title}</h1>
+
+
+
+                                        </div>
                                     </div>
 
 
@@ -59,7 +60,7 @@ class UserFevareits extends React.Component {
 
 
                                 })
-                                : <div className='user__fev'><h3>No Fevareits</h3></div>
+                                : <div ></div>
                         }
                     </div>
                 </div>

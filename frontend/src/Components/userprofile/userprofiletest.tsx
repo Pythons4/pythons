@@ -5,6 +5,7 @@ import PopupBio from "./popupinfoedit";
 import TimeAgo from "react-timeago";
 import { Button } from "@material-ui/core";
 import EmailIcon from '@material-ui/icons/Email';
+import CallIcon from '@material-ui/icons/Call';
 import Posts from "./tabs";
 
 import { signout } from "../../store/actions/userActions";
@@ -62,7 +63,7 @@ function App() {
               {JSON.parse(test.userinfo).user_email}
             </p>
             <p className="mobile-no">
-              <i className="fas fa-phone-volume"></i>
+              <CallIcon color='primary'></CallIcon>
               {JSON.parse(test.userinfo).user_phon}
             </p>
             <div className="user-pio">

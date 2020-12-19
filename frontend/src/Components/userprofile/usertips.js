@@ -12,10 +12,10 @@ class UserTips extends React.Component {
         this.state = {
             UserTips: []
         }
-        
+
     }
 
-    
+
     componentDidMount() {
         var { userid } = store.getState().UserReducer
 
@@ -40,30 +40,30 @@ class UserTips extends React.Component {
                     {
                         this.state.UserTips.length !== 0 ?
                             this.state.UserTips.map((tip, id) => {
-                               
-                                return <div class="main_card"key={id}>
-                                        <div class="card_left">
-                                            <div class="card_datails">
-                                                <h1>{tip.tip_title}</h1>
 
-                                                <p class="disc">{tip.tip_text}</p>
+                                return <div class="main_card" key={id}>
+                                    <div class="card_left">
+                                        <div class="card_datails">
+                                            <h1>{tip.tip_title}</h1>
 
-                                            </div>
-                                        </div>
-                                        <div class="card_right">
-                                            <div class="img_container">
-                                                <img src={tip.tip_img} alt="tipimage" />
-                                            </div>
-
+                                            <p class="disc">{tip.tip_text}</p>
 
                                         </div>
                                     </div>
-                               
+                                    <div class="card_right">
+                                        <div class="img_container">
+                                            <img src={tip.tip_img} alt="tipimage" />
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
 
 
 
                             })
-                            : <div className='user__tip'><h3>No Posts</h3></div>
+                            : <div ></div>
                     }
 
                 </div>
