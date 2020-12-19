@@ -7,11 +7,13 @@ const prodictsReducer = (state = [], action) => {
 
         case 'GET_ALL':
             var currentProduct = JSON.parse(localStorage.getItem('product'))
-            if (currentProduct.length !== action.product.length) {
-                // localStorage.setItem('notivecation', 'tool')
-                var notification = { value: 'tool' }
-                addnot()
-            }
+            console.log(currentProduct)
+            if (currentProduct)
+                if (currentProduct.length !== action.product.length) {
+                    // localStorage.setItem('notivecation', 'tool')
+                    var notification = { value: 'tool' }
+                    addnot()
+                }
             localStorage.setItem('product', JSON.stringify(action.product))
             localStorage.setItem('material', JSON.stringify(action.material))
 

@@ -62,7 +62,7 @@ export const signin = (userinfo: any) => {
                 console.log(err)
                 dispatch({
                     type: "SIGN-IN_ERROR",
-                    value: err.message
+                    value: 'Somthing Wrong Happened'
                 })
             })
     }

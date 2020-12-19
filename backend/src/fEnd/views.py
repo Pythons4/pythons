@@ -11,11 +11,11 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 import jwt
 import bcrypt
 from django.conf import settings
-from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, ProductsSerializer, UserProductsSerializer,FavSerializer
+from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, ProductsSerializer, UserProductsSerializer, FavSerializer
 from cloudinary.forms import cl_init_js_callbacks
 from django.views.decorators.csrf import csrf_exempt
 import json
-from .models import Tip, Users, Admin, Service, UserService, TipCommints,  Products, UserProducts,Fav
+from .models import Tip, Users, Admin, Service, UserService, TipCommints,  Products, UserProducts, Fav
 
 
 # tips view/requests (getall and get by user id )
@@ -46,7 +46,7 @@ class TipsView(viewsets.ModelViewSet):
 #     tip.save()
 #     serializer = TipsSerializer(tip)
 #     # print(serializer.data)
-#     return Response(serializer.data) 
+#     return Response(serializer.data)
 
 
 class TipCommintsView(viewsets.ModelViewSet):
@@ -141,8 +141,8 @@ class FavView(viewsets.ModelViewSet):
         serializer = FavSerializer(userFav, many=True)
         print(serializer.data)
         return Response(serializer.data)
-   
-   
+
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def updateFavorite(request):
@@ -200,6 +200,7 @@ def updateProductQuantity(request):
 def getuserinfologin(request):
     theuser = Users.objects.filter(
         user_email=request.data['user_email'])
+    print(theuser)
     if(theuser):
         serializer = UsersSerializer(theuser, many=True)
         tuple_list = serializer.data[0]
@@ -212,7 +213,6 @@ def getuserinfologin(request):
                  '_id': tuple_list[0][1]},
                 settings.SECRET_KEY)
             return Response([serializer.data, token])
-        # if(tuple_list[3][1] != request.data['user_password']):
         else:
             return Response('wrong password')
 
