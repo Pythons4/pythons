@@ -82,22 +82,32 @@ export default class ProductsCard extends Component<Props, State> {
     theproduct = this.props.location.state.theproduct;
 
     return (
-      <div>
-        <div className="d-flex align-items-start flex-column bd-highlight mb-3" style={{ height: '200px' }}>
-          <div ><img
-            className="card-img"
-            alt=""
+
+      <div className="product">
+        <div className="left-product">
+          <img
+
             src={theproduct.product_img}
             data-holder-rendered="true"
           />
-          </div>
-          <div >  <button
-            className="btn minus-btn"
-            type="button"
-            onClick={this.decrementQuantity}
-          >
-            -
-          </button>
+          <h4 > Price {theproduct.product_price}</h4>
+          <h5 > Quantity {theproduct.product_quantity}</h5>
+        </div>
+
+
+        <div className="right-product">
+
+          <h2 >{theproduct.product_name}</h2>
+
+          <p className="desc"><p>{theproduct.product_description}</p></p>
+          <div className="quantity">
+            <button
+              className="btn minus-btn"
+              type="button"
+              onClick={this.decrementQuantity}
+            >
+              -
+            </button>
             <input
               type="text"
               id="quantity"
@@ -109,8 +119,9 @@ export default class ProductsCard extends Component<Props, State> {
               onClick={this.incrementQuantity}
             >
               +
-          </button></div>
-          <div ><Button
+            </button>
+          </div>
+          <Button style={{ marginRight: '50px' }}
             onClick={this.addtothecart}
             endIcon={<ShoppingCartIcon></ShoppingCartIcon>}
             className="addtocart"
@@ -118,17 +129,14 @@ export default class ProductsCard extends Component<Props, State> {
             color="primary"
           >
             Add to Cart
-        </Button></div>
-        </div>
+          </Button>
 
-        <div className="d-flex justify-content-center flex-column bd-highlight mb-2" style={{ height: '200px' }}>
-          <div > <h2 >{theproduct.product_name}</h2>
-            <h4 >{theproduct.product_price}</h4>
-            <h5 >{theproduct.product_quantity}</h5></div>
-          <div > <p>{theproduct.product_description}</p></div>
+
+
+
+
 
         </div>
-
       </div>
 
 
@@ -140,4 +148,5 @@ export default class ProductsCard extends Component<Props, State> {
     );
   }
 }
+
 

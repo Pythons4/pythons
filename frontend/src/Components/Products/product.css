@@ -1,6 +1,6 @@
-.container {
+/* .container {
     display: flex;
-}
+} */
 
 .product__img {
     margin-top: 0px;
@@ -84,23 +84,14 @@
    width: 180px;
    height: 45px;
 }
-.quantity button{
+ /* .quantity {
     width: 30px;
     height: 30px;
-    border:1px solid #000;
-    background: #fff;
-}
+    
+   
+}  */
 
-.quantity input {
-    border: none;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-    text-align: center;
-    font-size: 14px;
-    color:#000;
-    font-weight: 200;
-    width:60px
-}
+
 
 .thecart{
     width:40px;
@@ -111,23 +102,113 @@
 
 
 
-.card-img{
-    width: 250px;
+
+
+
+
+
+/* center container in the middle */
+
+  
+  .product {
+       
+
+    color: #fff;
+	width: 650px;
+	height: 470px;
+	margin: 30px auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	
+	background:#eff0f1 ; 
+
+  }
+
+ 
+
+
+.left-product img {
     height: 250px;
-    border-radius: 30px;
-    /* margin-left: 250px; */
+	width: 300px;
+    border-radius: 15px;
+    margin-top: 30px;
+    margin-left: 20px;
+    
+	
 }
 
-.product-ifo h2,h4,h5{
-    font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
-    color: black;
-    text-align: center;
+
+
+
+.left-product h4,h5 {
+	font-size: 20px;
+	
+	font-family: 'Poly';
+	color: black;
+	width: 100%;
+    
+    margin-left: 20px;
+
 }
 
-.product-ifo p{
-    font-size: 15px;
-    font-family: 'Times New Roman', Times, serif;
-    color: black;
+
+.right-product h2 {
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+	font-size: 25px;
+	
+	font-family: 'Poly';
+	color: black;
+	width: 100%;
+	
+    }
+
+    .right-product p {
+      
+        margin-left: 10px;
+        
+        font-size: 15px;
+             font-family: 'Poly';
+        color: black;
+       
+    margin-right: 10px;
+    text-align: justify;
+        
+    
+    }
+  
+  
+  
+  
+  
+  #quantity {
+    border: none;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
     text-align: center;
+    font-size: 14px;
+    color:#000;
+    font-weight: 200;
+    width:25px;
+    height:  45px; ;
 }
+
+.quantity button{
+    width: 40px;
+    height: 45px;
+    border:1px solid #000;
+    background: rgb(118, 110, 230);
+}
+
+.quantity{
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+
+}
+
+
+  
+  
