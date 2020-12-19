@@ -9,6 +9,7 @@ import Posts from "./tabs";
 
 import { signout } from "../../store/actions/userActions";
 import "./user.css";
+import "./profilestyle.css";
 
 interface Test {
   userinfo: any;
@@ -105,27 +106,9 @@ function App() {
         <div className="right-side">
           <div className="nav">
             <Posts />
-            {/* <ul>
-                            <li className="user-posts">Posts</li>
-                            <li className="user-services">Services</li>
-                            <li className="user-fevareits">Fevareits</li>
-                        </ul> */}
+            
           </div>
-          {/* <div className="profile-body">
-                        <div className="profile-posts tap">
-                            <UserTips />
-
-                        </div>
-                        <div className="profile-services tap">
-                            <UserServeces />
-
-                        </div>
-                        <div className="profile-fevareits tap">
-                            <UserFevarets />
-
-                        </div>
-
-                    </div> */}
+          
         </div>
       </div>
     </div>

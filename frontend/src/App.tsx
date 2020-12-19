@@ -28,6 +28,7 @@ class App extends React.Component<{}, any> {
       <Router>
         <Navbar />
         <Switch>
+          <Route exact path="/" render={() => <Homepage />} />
           <Route exact path="/homepage" render={() => <Homepage />} />
           <Route path="/product" exact component={Product} />
           <Route path="/product/tools" exact component={ProductTools} />

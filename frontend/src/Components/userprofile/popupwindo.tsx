@@ -56,7 +56,7 @@ class Popup extends React.Component<Props, State> {
         return (
             <div className="popup-box">
                 <div className="box">
-                    <span className="close-icon" onClick={this.props.handleClose}>x</span>
+                    <span className="close-icons" onClick={this.props.handleClose}>x</span>
                     <input type='file' name='img' onChange={this.handelimguplode}></input>
                     {/* eslint-disable-next-line jsx-a11y/alt-text */}
                     {this.state.reviwesoursw && (<img style={{ width: '260px' }} src={this.state.reviwesoursw}></img>)}

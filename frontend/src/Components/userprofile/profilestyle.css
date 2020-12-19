@@ -17,7 +17,7 @@
     height: auto;
     /* margin-top: 30px; */
     max-height: 70vh;
-    margin-top: calc(100vh - 70vh);
+    margin-top: 85px;
     background: #fff;
     border-radius: 4px;
     padding: 20px;
@@ -28,10 +28,30 @@
   .close-icon {
     content: 'x';
     cursor: pointer;
-    margin-top: calc(100vh - 80vh);
-    position: fixed;
-    right: calc(30% - 30px);
-    top: calc(100vh - 85vh - 33px);
+    margin-top: 100px;
+    position: fixed; 
+    right:450px;
+    top:150px;
+    /* top: calc(100vh - 85vh - 33px); */
+    background: #ededed;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid #999;
+    font-size: 20px;
+  }
+
+
+  .close-icons {
+    content: 'x';
+    cursor: pointer;
+    margin-top: 100px;
+    position: fixed; 
+    right:420px;
+    top:50px;
+    /* top: calc(100vh - 85vh - 33px); */
     background: #ededed;
     width: 25px;
     height: 25px;
