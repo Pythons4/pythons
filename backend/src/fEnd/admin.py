@@ -25,7 +25,8 @@ class TipCommintsAdmin(admin.ModelAdmin):
 
 
 class FavAdmin(admin.ModelAdmin):
-    list_display = ('_id', 'user_id', 'tip_id', 'tip_img', 'tip_title')
+    list_display = ('_id', 'user_id', 'tip_id',
+                    'tip_img', 'tip_title', 'user_name')
 
 
 class UsersAdmin(admin.ModelAdmin):

@@ -43,8 +43,8 @@ class UserFevareits extends React.Component {
                                     <div class="fev_card">
                                         <div class="fev_left">
                                             <div class="fev_datails" >
-                                                {console.log(fev.tip_title)}
                                                 <p>{fev.tip_title}</p>
+                                                <p>{fev.user_name}</p>
                                                 <img style={{ width: '300px' }}
                                                     src={fev.tip_img}
                                                     alt="tipimage"

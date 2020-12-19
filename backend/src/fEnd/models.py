@@ -66,6 +66,7 @@ class Tip(models.Model):
 class Fav(models.Model):
     _id = models.ObjectIdField()
     user_id = models.TextField()
+    user_name = models.TextField()
     tip_title = models.CharField(max_length=40)
     tip_img = models.TextField()
     tip_id = models.TextField()
