@@ -48,6 +48,7 @@ class UserFevareits extends React.Component {
                                             />
 
                                             <h1>{fev.tip_title}</h1>
+                                            <p> By:{fev.user_name}</p>
 
 
 

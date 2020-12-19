@@ -12,7 +12,7 @@ import { GET_ALL } from '../../store/actions/getallproduct';
 
 export class Product extends Component<{}, any> {
     constructor(props: {} | Readonly<{}>) {
-        super(props)
+        super(props);
         this.state = {
             products: store.getState().productseReducer
         }
@@ -32,9 +32,7 @@ export class Product extends Component<{}, any> {
         return (
             <div>
                 <div className='product__img'>
-                    {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                    {/* <img className='product__img' src='https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg' />
-                </div> */}
+
                     <div className='product__list'>
 
                         <Link to={{
@@ -56,12 +54,7 @@ export class Product extends Component<{}, any> {
                         </Link>
 
                     </div>
-                    {/* <Button onClick={() => {
-                        // store.dispatch(login({ user_name: 'qamar test', user_password: '669nnh', user_email: 'qam0ar110@yahoo.com', user_phon: '0899088' }))
-                        // console.log(store.getState().UserReducer)
-                        console.log(store.getState().UserReducer)
-                    }}>test</Button>
-                </div> */}
+
                 </div>
             </div>
 

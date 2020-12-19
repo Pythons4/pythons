@@ -59,15 +59,15 @@ function App() {
             <p className="user-maile">
               {/* <i className="fas fa-envelope"></i> */}
               {/* <FontAwesomeIcon icon={['fab', 'microsoft']} /> */}
-              <EmailIcon color='primary'></EmailIcon>
+              <EmailIcon id='icon'></EmailIcon>
               {JSON.parse(test.userinfo).user_email}
             </p>
             <p className="mobile-no">
-              <CallIcon color='primary'></CallIcon>
+              <CallIcon id='icon' ></CallIcon>
               {JSON.parse(test.userinfo).user_phon}
             </p>
             <div className="user-pio">
-              <p className="pio"> Bio :{JSON.parse(test.userinfo).user_bio}</p>
+              <p className="pio"> Bio {JSON.parse(test.userinfo).user_bio}</p>
             </div>
             <div className="button">
               <input

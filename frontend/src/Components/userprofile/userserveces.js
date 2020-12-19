@@ -56,13 +56,13 @@ class UserServeces extends React.Component {
                                             <h1>{ser.service_name}</h1>
                                             <h6>{ser.user_service_price}</h6>
 
-                                            <p className="disc">Detailes</p>
-                                            <ul>
+                                            <p className="disc"><ul>
                                                 <li>Date : {ser.user_service_date}</li>
                                                 <li>Duration :{ser.user_service_hours} Hours</li>
                                                 <li>Location :{ser.user_service_location} </li>
 
-                                            </ul>
+                                            </ul></p>
+
 
                                         </div>
 

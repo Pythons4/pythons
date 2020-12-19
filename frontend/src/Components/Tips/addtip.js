@@ -5,6 +5,8 @@ import store from '../../store';
 
 
 var postreq = async (file1, tip_text, tip_title) => {
+    var userinfo  = JSON.parse(store.getState().UserReducer.userinfo);
+    console.log(userinfo)
     const data = new FormData()
     data.append('file', file1[0])
     data.append('upload_preset', 'appimgs')
@@ -13,7 +15,7 @@ var postreq = async (file1, tip_text, tip_title) => {
         .then(res => {
             console.log(res.data.secure_url)
             axios.post("/api/tips/", {
-                tip_title: tip_title, tip_text: tip_text, tip_img: res.data.secure_url, user_id: '123456789hfgshjkjg'
+                tip_title: tip_title, tip_text: tip_text, tip_img: res.data.secure_url,user_id:userinfo._id,user_name:userinfo.user_name
             }, configdata)
                 .then(res => {
                     console.log(res.data)
@@ -71,8 +73,9 @@ export default class AddTip extends Component {
 
     }
     render() {
-        console.log(store.getState().UserReducer.userid)
+        console.log(store.getState().UserReducer.userinfo)
         return (
+            // var userinfo  = JSON.parse(store.getState().UserReducer.userinfo);
             <div>
                 <form>
                     <input type='text' name='tip_text' onChange={this.handeltext}></input>
