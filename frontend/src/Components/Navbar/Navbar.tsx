@@ -18,17 +18,17 @@ const Navbar = () => {
             </div>
             <ul className='nav-links' >
                 <li >
-                    <Link to='/homepage' className='nav-link'  >Home</Link>
+                    <Link to='/homepage' className='nav-link'  ><h4>Home</h4></Link>
                 </li>
                 <li >
-                    <Link to='/services' className='nav-link'>services</Link>
+                    <Link to='/services' className='nav-link'><h4>Services</h4></Link>
                 </li>
 
                 <li >
-                    <Link to='/product' className='nav-link' >Products</Link>
+                    <Link to='/product' className='nav-link' ><h4>Products</h4></Link>
                 </li>
                 <li >
-                    <Link to='/tips' className='nav-link'>Tips</Link>
+                    <Link to='/tips' className='nav-link'><h4>Tips</h4></Link>
                 </li>
 
                 {
