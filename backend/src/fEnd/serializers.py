@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Tip, Users, Admin, Service, UserService, TipCommints, Fav, Products, UserProducts
+from .models import Tip, Users, Admin, Service, UserService, TipCommints,  Products, UserProducts, Fav
 
 
 class TipsSerializer(serializers.ModelSerializer):
@@ -11,7 +11,7 @@ class TipsSerializer(serializers.ModelSerializer):
 class TipCommintsSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipCommints
-        fields = ('_id', 'tip_id', 'user_id',  'commint_text')
+        fields = ('_id', 'tip_id', 'user_name',  'commint_text')
 
 
 class UsersSerializer(serializers.ModelSerializer):
@@ -24,7 +24,8 @@ class UsersSerializer(serializers.ModelSerializer):
 class AdminSerializer(serializers.ModelSerializer):
     class Meta:
         model = Admin
-        fields = ('_id', 'admin_name', 'admin_email', 'admin_password')
+        fields = ('_id', 'admin_name', 'admin_email',
+                  'admin_password', 'admin_img')
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -37,13 +38,14 @@ class UserServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserService
         fields = ('_id', 'user_id', 'service_name', 'user_service_location',
-                  'user_service_date', 'user_service_hours')
+                  'user_service_date', 'user_service_hours',
+                  'user_service_approv')
 
 
 class FavSerializer(serializers.ModelSerializer):
     class Meta:
         model = Fav
-        fields = ('_id', 'user_id', 'tip_id')
+        fields = ('_id', 'user_id', 'tip_id', 'tip_img', 'tip_title')
 
 
 class ProductsSerializer(serializers.ModelSerializer):

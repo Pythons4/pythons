@@ -1,12 +1,4 @@
 {
-<<<<<<< HEAD
-    "python.pythonPath": "C:\\Users\\hp\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
-=======
-<<<<<<< HEAD
-=======
-    "python.pythonPath": "C:\\Users\\Asus\\Anaconda3\\python.exe",
->>>>>>> c3666753d049fd919374ee1a9dd9b150fffc5cb4
->>>>>>> ae0208a0318f5491d31402e0d9ec60346aacf964
     "team.showWelcomeMessage": false,
     "editor.formatOnSave": true,
     "python.linting.pycodestyleEnabled": true,

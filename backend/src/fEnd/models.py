@@ -11,7 +11,7 @@ from django.conf import settings
 class Users(models.Model):
     _id = models.ObjectIdField()
     user_name = models.TextField()
-    user_email = models.TextField()
+    user_email = models.EmailField()
     user_password = models.TextField()
     user_phon = models.TextField()
     user_img = models.TextField()
@@ -24,7 +24,8 @@ class Admin(models.Model):
     admin_name = models.TextField()
     admin_email = models.TextField()
     admin_password = models.TextField()
-    objects = models.DjongoManager()
+    admin_img = models.TextField()
+    # objects = models.DjongoManager()
 
 
 # services table
@@ -45,6 +46,7 @@ class UserService(models.Model):
     user_service_location = models.TextField()
     user_service_date = models.DateField()
     user_service_hours = models.IntegerField()
+    user_service_approv = models.BooleanField(default=False)
 
 
 # tips table
@@ -58,23 +60,21 @@ class Tip(models.Model):
     def __str__(self):
         return self.tip_title
 
-    def __str__(self):
-        return self.tip_title
-
 
 # Fav table
 class Fav(models.Model):
     _id = models.ObjectIdField()
-    user_id = models.IntegerField()
-    tip_id = models.IntegerField()
-    objects = models.DjongoManager()
+    user_id = models.TextField()
+    tip_title = models.CharField(max_length=40)
+    tip_img = models.TextField()
+    tip_id = models.TextField()
 
 
 # Tips Comments table
 class TipCommints(models.Model):
     _id = models.ObjectIdField()
     tip_id = models.TextField()
-    user_id = models.TextField()
+    user_name = models.TextField()
     commint_text = models.TextField()
     objects = models.DjongoManager()
 
