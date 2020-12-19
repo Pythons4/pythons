@@ -31,13 +31,13 @@ class UserServeces extends React.Component {
         return (
             <div className="profile-body">
                 <div className="profile-services tap">
-                    {
+                    {this.state.UserService &&
                         this.state.UserService.length !== 0 ?
-                            this.state.UserService.map((ser, id) => {
-                                return <UserCard ser={ser} key={id} />
+                        this.state.UserService.map((ser, id) => {
+                            return <UserCard ser={ser} key={id} />
 
-                            })
-                            : <div className='user__ser'><h3>No Services</h3></div>
+                        })
+                        : <div className='user__ser'><h3>No Services</h3></div>
                     }
                 </div>
             </div>

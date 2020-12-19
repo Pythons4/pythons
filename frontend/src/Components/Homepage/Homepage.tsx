@@ -17,7 +17,7 @@ const Homepage = (props: any) => {
 
           <div className="container-btns">
             <Link to="/services" style={{ textDecoration: "none" }}>
-              <Button id="btn" color="primary" variant="contained">
+              <Button id="btn" style={{ backgroundColor: '#3f869d' }} variant="contained">
                 Book Now
               </Button>
             </Link>

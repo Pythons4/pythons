@@ -5,7 +5,7 @@ import './product.css'
 
 
 const ProductMaterials = (props: any) => {
-    var materials = props.location.state
+    var materials = JSON.parse(props.location.state)
     var path = props.location.pathname
 
     return (

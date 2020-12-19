@@ -60,6 +60,7 @@ class App extends React.Component<{}, any> {
           <Route path="/cart/confirm" exact component={CofirmBuy} />
 
           <Route path="/profiletest" exact component={UserProfileTest} />
+          <Route path="/adminprofile" exact component={AdminProfile} />
 
           <Route path="/adminSignin" exact component={AdminSignIn} />
         </Switch>

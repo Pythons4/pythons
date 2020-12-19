@@ -56,17 +56,17 @@ class Services extends Component<{ services: any, setService: any }> {
         // console.log(ser, "props")
 
         return (
-            <div className="d-flex row justify-content-between " >
-                <div className="d-flex row  col-8 " >
+            <div className="d-flex justify-content-around" >
+                <div className="d-flex row" >
                     {ser}
                 </div >
 
-                <div className="col-4 ">
+                {this.state.isShow && <div className="col-4" >
 
-                    {this.state.isShow && card}
+                    {card}
 
                 </div>
-
+                }
                 {/* {this.props.services} */}
                 {/* < ServicesCard price={price} imge={imge} name={name} /> */}
 
