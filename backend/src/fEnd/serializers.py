@@ -5,7 +5,8 @@ from .models import Tip, Users, Admin, Service, UserService, TipCommints,  Produ
 class TipsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tip
-        fields = ('_id', 'tip_title', 'tip_text',  'tip_img', 'user_id')
+        fields = ('_id', 'tip_title', 'tip_text',
+                  'tip_img', 'user_id', "user_name")
 
 
 class TipCommintsSerializer(serializers.ModelSerializer):

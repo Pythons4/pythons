@@ -56,6 +56,7 @@ class Tip(models.Model):
     tip_text = models.TextField()
     tip_img = models.TextField()
     user_id = models.TextField()
+    user_name = models.TextField()
 
     def __str__(self):
         return self.tip_title

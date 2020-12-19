@@ -4,7 +4,7 @@ from .models import Tip, Users, Admin, Service, UserService, TipCommints, Produc
 
 class TipsAdmin(admin.ModelAdmin):
     list_display = ('_id', 'tip_img', 'tip_title',
-                    'tip_text', 'user_id')
+                    'tip_text', 'user_id', 'user_name')
 
 
 class AdminsAdmin(admin.ModelAdmin):
