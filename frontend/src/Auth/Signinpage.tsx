@@ -33,8 +33,6 @@ const classes = makeStyles((theme) => ({
 //     alert: boolean
 // }
 class SignInPage extends React.Component<{}, { value: string; alert: boolean; useremail: string; userpass: string }>{
-    // const { handleSubmit, register } = useForm<FormData>();
-
     constructor(props: any) {
         super(props)
         this.state = {
@@ -50,9 +48,8 @@ class SignInPage extends React.Component<{}, { value: string; alert: boolean; us
 
     onSubmit(data: any) {
         console.log(data);
-        store.dispatch(signin({ user_password: this.state.useremail, user_email: this.state.userpass }))
+        store.dispatch(signin({ user_email: this.state.useremail, user_password: this.state.userpass }))
         setTimeout(() => {
-            console.log('This will run after 1 second!')
             if (store.getState().UserReducer.error === "wrong email") {
                 console.log('hii')
                 this.setState({
@@ -61,57 +58,83 @@ class SignInPage extends React.Component<{}, { value: string; alert: boolean; us
                 })
 
             }
-        }, 4000);
+            else if (store.getState().UserReducer.error === "wrong password") {
+                console.log('hii')
+                this.setState({
+                    value: 'Wrong Password',
+                    alert: true
+                })
+            }
+            else if (store.getState().UserReducer.error === "Somthing Wrong Happened") {
+                console.log('hii')
+                this.setState({
+                    value: 'Somthing Wrong Happened',
+                    alert: true
+                })
+            }
+
+        }, 3000);
+
 
 
     };
 
     render() {
         return (
-            <Container maxWidth="xs">
-                <form>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12}>
-                            <Grid container spacing={2}>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        label="Email"
-                                        name="email"
-                                        size="small"
-                                        onChange={(e) => this.setState({ useremail: e.target.value })}
-                                        variant="outlined" />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        label="Password"
-                                        name="password"
-                                        size="small"
-                                        type="password"
-                                        onChange={(e) => this.setState({ userpass: e.target.value })}
+            <div className="d-flex justify-content-center" style={{ borderStyle: 'solid', paddingTop: '20px', width: '800px' }}>
+                <div>
+                    <img src='https://res.cloudinary.com/dve46qnma/image/upload/v1608366628/appimgs/qtqqb8lygpm2ssvb5cwj.jpg' style={{ width: '400px' }}></img>
+                </div>
+                <Container maxWidth="xs" style={{ marginRight: '0', marginLeft: '0' }}>
+                    <form>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            label="Email"
+                                            name="email"
+                                            size="small"
+                                            onChange={(e) => this.setState({ useremail: e.target.value })}
+                                            variant="outlined" />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            label="Password"
+                                            name="password"
+                                            size="small"
+                                            type="password"
+                                            onChange={(e) => this.setState({ userpass: e.target.value })}
 
-                                        variant="outlined"
-                                    />
+                                            variant="outlined"
+                                        />
+                                    </Grid>
                                 </Grid>
+
+                                {this.state.alert && <>
+                                    <br></br>
+                                    <Alert severity="error">{this.state.value}</Alert></>}
                             </Grid>
-                            {this.state.alert && <Alert severity="error">{this.state.value}</Alert>}
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Button
-                                onClick={this.onSubmit}
-                                color="primary"
-                                fullWidth
-                                type="button"
-                                variant="contained">
-                                Log in
+                            <Grid item xs={12}>
+                                <Button
+                                    onClick={this.onSubmit}
+                                    color="primary"
+                                    fullWidth
+                                    type="button"
+                                    variant="contained">
+                                    Log in
                         </Button>
+                            </Grid>
+                            <p>Don't have an Account?</p>
                         </Grid>
-                        <p>Don't have an Account?</p>
-                    </Grid>
-                </form>
+                    </form>
 
-            </Container >
+
+                </Container >
+
+            </div>
 
         )
     }
