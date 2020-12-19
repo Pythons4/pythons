@@ -1,5 +1,7 @@
 import axios from 'axios'
 import config from '../../csrftoken'
+import { addnot } from '../../notife'
+
 
 
 //user sign up action (with token)
@@ -90,6 +92,8 @@ export const updateuserimg = (file1: any, userinfo: any) => {
                 }, config)
                     .then(res => {
                         console.log(res.data)
+                        addnot('image updated')
+
                         dispatch({
                             type: 'UPDATE_IMG',
                             userinfo: res.data,
@@ -119,6 +123,8 @@ export const updateuserinfo = (userinfo: any, newinfo: any) => {
         }, config)
             .then(res => {
                 console.log(res.data)
+                addnot('Your information updated')
+
                 dispatch({
                     type: 'UPDATE_IMG',
                     userinfo: res.data,

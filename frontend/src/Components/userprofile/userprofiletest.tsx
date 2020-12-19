@@ -4,15 +4,15 @@ import Popup from "./popupwindo";
 import PopupBio from "./popupinfoedit";
 import TimeAgo from "react-timeago";
 import { Button } from "@material-ui/core";
-
+import EmailIcon from '@material-ui/icons/Email';
 import Posts from "./tabs";
 
 import { signout } from "../../store/actions/userActions";
 import "./user.css";
 
-interface Test {
-  userinfo: any;
-}
+// interface Test {
+//   userinfo: any;
+// }
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenbio, setIsOpenbio] = useState(false);
@@ -55,7 +55,9 @@ function App() {
         <div className="left-side">
           <div className="profile-side">
             <p className="user-maile">
-              <i className="fas fa-envelope"></i>
+              {/* <i className="fas fa-envelope"></i> */}
+              {/* <FontAwesomeIcon icon={['fab', 'microsoft']} /> */}
+              <EmailIcon color='primary'></EmailIcon>
               {JSON.parse(test.userinfo).user_email}
             </p>
             <p className="mobile-no">
@@ -72,12 +74,7 @@ function App() {
                 value="change image"
                 onClick={togglePopup}
               />
-              {isOpen && (
-                <Popup
-                  userId={JSON.parse(test.userinfo)._id}
-                  handleClose={togglePopup}
-                />
-              )}
+
 
               <input
                 className="button-bio"
@@ -85,12 +82,7 @@ function App() {
                 value="change bio"
                 onClick={togglePopupbio}
               />
-              {isOpenbio && (
-                <PopupBio
-                  userId={JSON.parse(test.userinfo)}
-                  handleClose={togglePopupbio}
-                />
-              )}
+
             </div>
             <p className="date">
               <TimeAgo
@@ -102,6 +94,7 @@ function App() {
             {console.log(new Date())}
           </div>
         </div>
+
         <div className="right-side">
           <div className="nav">
             <Posts />
@@ -128,6 +121,18 @@ function App() {
                     </div> */}
         </div>
       </div>
+      {isOpen && (
+        <Popup
+          userId={JSON.parse(test.userinfo)._id}
+          handleClose={togglePopup}
+        />
+      )}
+      {isOpenbio && (
+        <PopupBio
+          userId={JSON.parse(test.userinfo)}
+          handleClose={togglePopupbio}
+        />
+      )}
     </div>
   );
 }
