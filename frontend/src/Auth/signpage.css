@@ -13,6 +13,13 @@
       background-size: cover; 
     
   }
+  .backimg3{
+    background-image: url('https://cdn.dribbble.com/users/2014543/screenshots/9705946/media/5843e538abeaac1b0e942635bcc9c60b.jpg?compress=1&resize=1200x900');
+    width:900px;
+    height: 320px;
+    background-size: cover; 
+  
+}
   .backimg2{
     background-image: url('https://res.cloudinary.com/dve46qnma/image/upload/v1608377772/appimgs/idniyx94oj8pkfl4ny7b.jpg');
     width:400px;
