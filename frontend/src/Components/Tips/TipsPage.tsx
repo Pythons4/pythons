@@ -13,10 +13,13 @@ export class Tips extends Component<{}, any> {
     };
   }
 
+  //get all product from database (via GET_ALL action)
   componentDidMount() {
-    this.setState({
-      tips: store.getState().tipsReducer,
-
+    store.dispatch(GET_ALL());
+    store.subscribe(() => {
+      this.setState({
+        tips: store.getState().tipsReducer,
+      });
     });
   }
   render() {

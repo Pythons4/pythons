@@ -3,13 +3,8 @@ import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import './product.css'
-import storeapp from '../../store';
+import store from '../../store';
 import { GET_ALL } from '../../store/actions/getallproduct';
-import 'react-notifications-component/dist/theme.css'
-
-
-
-
 
 // import axios from "axios";
 // import configdata from '../../csrftoken'
@@ -19,24 +14,20 @@ export class Product extends Component<{}, any> {
     constructor(props: {} | Readonly<{}>) {
         super(props)
         this.state = {
-            products: storeapp.getState().productseReducer
+            products: store.getState().productseReducer
         }
     }
 
     //get all product from database (via GET_ALL action)
     componentDidMount() {
-        storeapp.dispatch(GET_ALL())
-
-        this.setState({
-            products: storeapp.getState().productseReducer
+        store.dispatch(GET_ALL())
+        store.subscribe(() => {
+            this.setState({
+                products: store.getState().productseReducer
+            })
         })
-      
-
-
-
     };
     render() {
-
         console.log(this.state.products)
         return (
             <div>
@@ -49,7 +40,7 @@ export class Product extends Component<{}, any> {
                     <Link to={{
                         //pass the tools product to tools page
                         pathname: "/product/tools",
-                        state: JSON.parse(this.state.products.product),
+                        state: this.state.products.product,
                     }}
                         style={{ textDecoration: "none" }}>
                         <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Tools</Button>
@@ -58,11 +49,16 @@ export class Product extends Component<{}, any> {
                     <Link to={{
                         //pass the material product to material page
                         pathname: "/product/materials",
-                        state: JSON.parse(this.state.products.material),
+                        state: this.state.products.material,
                     }}
                         style={{ textDecoration: "none" }}>
                         <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Materials</Button>
                     </Link>
+                    <Button onClick={() => {
+                        // store.dispatch(login({ user_name: 'qamar test', user_password: '669nnh', user_email: 'qam0ar110@yahoo.com', user_phon: '0899088' }))
+                        // console.log(store.getState().UserReducer)
+                        console.log(store.getState().UserReducer)
+                    }}>test</Button>
                 </div>
             </div>
         )
