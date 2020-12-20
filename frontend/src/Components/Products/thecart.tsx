@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import store from '../../store'
-import CancelIcon from '@material-ui/icons/Cancel';
 import removefromcart from '../../store/actions/removefromcartaction';
 import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { Link } from 'react-router-dom';
 import '../../Auth/signpage.css'
 import StripeCheckOutButton from "../strip-button/strip-button"
-
 
 
 interface Props { }
@@ -28,8 +25,10 @@ export default class TheCart extends Component<Props, State>{
             theproduct: (store.getState().cartReducer)
         })
     }
-    removefromcart(id: string) {
-        store.dispatch(removefromcart(id))
+    //method to remove product from the cart
+    removefromcart(str: string) {
+        //if str was 'remove' all product will be removed from the cart
+        store.dispatch(removefromcart(str))
         this.componentDidMount()
         window.location.reload();
 
@@ -52,7 +51,7 @@ export default class TheCart extends Component<Props, State>{
         var isuser = userid ? true : false
 
         return (
-            <div className='shadowtable ' style={{ borderRadius: '5px', width: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+            <div className='shadowtable' style={{ borderRadius: '5px', width: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
                 <table className="table">
                     <thead className="thead-light" >
                         <tr>
@@ -64,6 +63,7 @@ export default class TheCart extends Component<Props, State>{
                         </tr>
                     </thead>
                     <tbody style={{ paddingTop: '15px' }}>
+                        {/* retrive all proudcts that user select in the cart */}
                         {allproducts.map((product: any, i: number) =>
                             <tr >
                                 <th scope="row"><img style={{ width: '60px' }} alt='product img' src={product[1].img}></img></th>
@@ -83,18 +83,11 @@ export default class TheCart extends Component<Props, State>{
                         {isuser && <Button endIcon={<ShoppingCartIcon></ShoppingCartIcon>} className="addtocart" variant="contained" style={{ backgroundColor: '#337ab7', marginRight: '20px', width: '120px' }} color="primary" >
                             <StripeCheckOutButton price={price} />
                         </Button>}
-
                         <Button onClick={() => { this.removefromcart('remove') }} className="addtocart" style={{ backgroundColor: '#337ab7', color: 'white', fontWeight: 600, fontSize: '10px', width: '120px' }} variant="contained" >Clear Cart</Button>
                     </div>
                     <br></br>
                 </div>
             </div>
-
-
-
-
-
-            // </div>
         )
     }
 }

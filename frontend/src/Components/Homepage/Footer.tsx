@@ -22,6 +22,11 @@ export default class Footer extends Component {
                             </li>
                             <li>
                                 <p>the best cleaning services</p>
+
+                            </li>
+                            <li>
+                                <p>in the country</p>
+
                             </li>
 
 

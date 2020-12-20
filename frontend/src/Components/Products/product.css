@@ -114,8 +114,8 @@
        
 
     color: #fff;
-	width: 650px;
-	height: 470px;
+	width: 900px;
+	height: 400px;
 	margin: 30px auto;
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -128,12 +128,12 @@
 
   .left-product{
     background: rgb(235, 232, 232);
-	width: 350px;
+	width: 370px;
 
   }
   .right-product{
     background: rgb(217, 219, 212);
-	width: 300px;
+	width: 530px;
 
   }
 
@@ -222,7 +222,7 @@
 .quantity{
     margin-bottom: 60px;
     margin-left: 10px;
-    margin-top: 80px;
+    margin-top: 10px;
     justify-items: auto;
 
 }
