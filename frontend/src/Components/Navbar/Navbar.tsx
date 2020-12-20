@@ -9,7 +9,8 @@ import store from "../../store"
 import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
 const Navbar = () => {
     var pathname = "/profiletest"
-
+    var { whatincart } = store.getState().cartReducer
+    var count = (Object.keys(JSON.parse(whatincart)).length)
     var { userid }: any = store.getState().UserReducer
     var { adminid }: any = store.getState().AdminReduser
     var adminID = JSON.parse(adminid)
@@ -56,7 +57,7 @@ const Navbar = () => {
                 <Link to={{ pathname: `/cart` }}>
                     {/* <IconButton color="primary" component="span"> */}
 
-                    <Badge badgeContent={17} color="secondary" style={{ marginTop: '10px' }}><ShoppingCartIcon color="primary" style={{ fontSize: 30 }} /></Badge>
+                    <Badge badgeContent={count} color="secondary" style={{ marginTop: '10px' }}><ShoppingCartIcon color="primary" style={{ fontSize: 30 }} /></Badge>
                     {/* </ShoppingCartIcon> */}
                     {/* </IconButton> */}
                 </Link>

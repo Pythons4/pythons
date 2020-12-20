@@ -77,6 +77,7 @@ export default class ProductsCard extends Component<Props, State> {
     );
     var storedata = store.getState();
     console.log(storedata);
+    window.location.reload();
   }
   render() {
     theproduct = this.props.location.state.theproduct;
@@ -86,7 +87,7 @@ export default class ProductsCard extends Component<Props, State> {
       <div className="product">
         <div className="left-product">
           <img
-
+            alt='theproduct'
             src={theproduct.product_img}
             data-holder-rendered="true"
           />

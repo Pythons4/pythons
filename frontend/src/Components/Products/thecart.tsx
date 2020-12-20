@@ -3,8 +3,11 @@ import store from '../../store'
 import CancelIcon from '@material-ui/icons/Cancel';
 import removefromcart from '../../store/actions/removefromcartaction';
 import { Button } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from 'react-router-dom';
+import '../../Auth/signpage.css'
+import StripeCheckOutButton from "../strip-button/strip-button"
 
 
 
@@ -28,6 +31,7 @@ export default class TheCart extends Component<Props, State>{
     removefromcart(id: string) {
         store.dispatch(removefromcart(id))
         this.componentDidMount()
+        window.location.reload();
 
     }
 
@@ -45,32 +49,52 @@ export default class TheCart extends Component<Props, State>{
         console.log(allproducts, price)
 
         let { userid } = store.getState().UserReducer
-        var pathname = userid ? "/cart/confirm" : "/signin"
+        var isuser = userid ? true : false
 
         return (
-            <div className="d-flex flex-column">
-                {allproducts.map((product: any, i: number) =>
-                    <div className="d-flex justify-content-start" key={i}>
-                        {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                        <img style={{ width: '30px' }} src={product[1].img}></img>
-                        <p>{product[1].name}</p>
-                        <CancelIcon color="secondary" onClick={() => { this.removefromcart(product[0]) }}></CancelIcon>
+            <div className='shadowtable ' style={{ borderRadius: '5px', width: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+                <table className="table">
+                    <thead className="thead-light" >
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody style={{ paddingTop: '15px' }}>
+                        {allproducts.map((product: any, i: number) =>
+                            <tr >
+                                <th scope="row"><img style={{ width: '60px' }} alt='product img' src={product[1].img}></img></th>
+                                <td><br></br>{product[1].name}</td>
+                                <td><br></br>{product[1].quantity}</td>
+                                <td><br></br>{product[1].quantity} x {product[1].price}₪</td>
+                                <td><br></br><DeleteIcon style={{ fontSize: 23, color: '#337ab7', cursor: 'pointer' }} onClick={() => { this.removefromcart(product[0]) }}></DeleteIcon></td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+                <div className='d-flex flex-column'>
+                    <div className='d-flex justify-content-around'>Total Price: {price}₪</div>
+                    <br></br>
+                    <div className='d-flex justify-content-center'>
+
+                        {isuser && <Button endIcon={<ShoppingCartIcon></ShoppingCartIcon>} className="addtocart" variant="contained" style={{ backgroundColor: '#337ab7', marginRight: '20px', width: '120px' }} color="primary" >
+                            <StripeCheckOutButton price={price} />
+                        </Button>}
+
+                        <Button onClick={() => { this.removefromcart('remove') }} className="addtocart" style={{ backgroundColor: '#337ab7', color: 'white', fontWeight: 600, fontSize: '10px', width: '120px' }} variant="contained" >Clear Cart</Button>
                     </div>
-                )}
-                <Link to={{
-                    pathname: pathname,
-                    state: {
-                        price: price,
-                        userproducts: this.state.theproduct.whatincart
-                    }
-                }}>
-                    <Button endIcon={<ShoppingCartIcon></ShoppingCartIcon>} className="addtocart" variant="contained" color="primary" >BUY</Button>
-                </Link>
-                <Button onClick={() => { this.removefromcart('remove') }} className="addtocart" variant="contained" color="primary" >clear</Button>
-
-
-
+                    <br></br>
+                </div>
             </div>
+
+
+
+
+
+            // </div>
         )
     }
 }
