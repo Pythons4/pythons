@@ -5,7 +5,7 @@ nav{
     padding: .4rem 0.6rem 0rem .6rem;
     display: flex;
     justify-content: space-between;
-    background-color: rgba(81, 79, 228, 0.9);
+    background-color:#B2D3EF;
 
     align-items: center;
     position: sticky;
@@ -20,7 +20,7 @@ nav{
 
 .logo h4{
     font-family: 'Sail', sans-serif;
-    color:  #d81b1b;
+    color:  rgba(160, 77, 37, 0.82);
     text-transform: lowercase;
     letter-spacing: 5px;
     font-size: 50px; 
@@ -73,8 +73,10 @@ nav{
      position:  absolute  ;
      right: 0px;
      height:90vh ;
+     /* font-weight: 200; */
+     /* font-size: larger; */
      top: 15vh;
-     background-color: rgba(67, 65, 209, 0.9);
+     background-color: #B2D3EF;
      flex-direction: column;
      align-items: center;
      width: 50%;

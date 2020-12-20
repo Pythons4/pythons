@@ -1,10 +1,10 @@
-// import { ADD_TIP } from '../actions/addtips';
-
-const tipsReducer = (state = {}, { type, payload }) => {
-    switch (type) {
-        case 'ADD_TIP':
-            return { tips: payload }
-
+// import { GET_ALL } from '../actions/getalltips';
+const tipsReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'GET_ALL_TIPS':
+            return {
+                tips: action.tips
+            }
         default:
             return state
     };

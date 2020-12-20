@@ -1,43 +1,36 @@
 import React, { useState } from 'react';
 import store from '../../store';
+import PopUp from './addProductPopUp'
+import AdimApproveServices from './approved'
 
 interface Test {
-    userinfo: any
+    admininfo: any
 }
 function App() {
     const [isOpen, setIsOpen] = useState(false);
-    const [isOpenbio, setIsOpenbio] = useState(false);
-
 
     const togglePopup = () => {
         setIsOpen(!isOpen);
     }
-    const togglePopupbio = () => {
-        setIsOpenbio(!isOpenbio)
-    }
-    var test: Test = store.getState().UserReducer
 
-    console.log(test)
+    var test: Test = store.getState().AdminReduser
+
+    console.log(test.admininfo)
     return <div>
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
-        <img style={{ width: '300px' }} src={JSON.parse(test.userinfo).user_img}></img>
+        <img style={{ width: '300px' }} src={JSON.parse(test.admininfo).admin_img}></img>
+        <p>{JSON.parse(test.admininfo).admin_name}</p>
+        <p>{JSON.parse(test.admininfo).admin_email}</p>
+        {isOpen && <PopUp
+            handleClose={togglePopup}
+        />}
         <input
             type="button"
-            value="change image"
+            value="Add Product"
             onClick={togglePopup}
         />
-        <p>{JSON.parse(test.userinfo).user_name}</p>
-        <p>{JSON.parse(test.userinfo).user_email}</p>
-        <p>{JSON.parse(test.userinfo).user_phon}</p>
-        <p>{JSON.parse(test.userinfo).user_bio}</p>
 
-
-
-        <input
-            type="button"
-            value="change bio"
-            onClick={togglePopupbio}
-        />
+        <AdimApproveServices services=''></AdimApproveServices>
 
     </div>
 }
