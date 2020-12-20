@@ -39,7 +39,9 @@ class UserFevareits extends React.Component {
                         this.state.UserFevareits.length !== 0 ?
                             this.state.UserFevareits.map((fev, id) => {
 
-                                return <div class="wrapper" key={id}>
+                                return <div class="wrapper" key={id} onClick={() => {
+                                    window.location.href = `/tips/tip/${fev.tip_id}`
+                                }}>
                                     <div class="fev_card">
                                         <div class="fev_left">
                                             <div class="fev_datails" >

@@ -1,0 +1,14 @@
+.tipadd {
+  display: grid;
+  place-items: center;
+  height: 89vh;
+  /* background-color: #f0b593; */
+}
+.tipaddform {
+  display: flex;
+  background-color: #caeaf7;
+  margin-top: -50px;
+  height: 60vh;
+  width: 90vw;
+  box-shadow: -1px 4px 20px -6px rgb(17, 5, 126);
+}

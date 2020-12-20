@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import axios from "axios";
 import configdata from '../../csrftoken'
 import store from '../../store';
-
+import './addtip.css'
 
 var postreq = async (file1, tip_text, tip_title) => {
-    var userinfo  = JSON.parse(store.getState().UserReducer.userinfo);
+    var userinfo = JSON.parse(store.getState().UserReducer.userinfo);
     console.log(userinfo)
     const data = new FormData()
     data.append('file', file1[0])
@@ -15,7 +15,7 @@ var postreq = async (file1, tip_text, tip_title) => {
         .then(res => {
             console.log(res.data.secure_url)
             axios.post("/api/tips/", {
-                tip_title: tip_title, tip_text: tip_text, tip_img: res.data.secure_url,user_id:userinfo._id,user_name:userinfo.user_name
+                tip_title: tip_title, tip_text: tip_text, tip_img: res.data.secure_url, user_id: userinfo._id, user_name: userinfo.user_name
             }, configdata)
                 .then(res => {
                     console.log(res.data)
@@ -76,15 +76,18 @@ export default class AddTip extends Component {
         console.log(store.getState().UserReducer.userinfo)
         return (
             // var userinfo  = JSON.parse(store.getState().UserReducer.userinfo);
-            <div>
-                <form>
-                    <input type='text' name='tip_text' onChange={this.handeltext}></input>
-                    <input type='text' name='tip_title' onChange={this.handeltext}></input>
-                    <input type='file' name='img' onChange={this.handelimguplode}></input>
-                    <button type='button' onClick={this.handelclikckimg}></button>
-                </form>
-                {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                {this.state.reviwesoursw && (<img src={this.state.reviwesoursw}></img>)}
+            <div className='tipadd'>
+
+                <div className='tipaddform'>
+                    <form>
+                <img src={"https://imgur.com/undefined"}></img>
+                        <input type='text' name='tip_text' onChange={this.handeltext}></input>
+                        <input type='text' name='tip_title' onChange={this.handeltext}></input>
+                        <input type='file' name='img' onChange={this.handelimguplode}></input>
+                        <button type='button' onClick={this.handelclikckimg}>Share</button>
+                    </form>
+                    {this.state.reviwesoursw && (<img src={this.state.reviwesoursw } id="cloudimg"></img>)}
+                </div>
             </div>
         )
     }
