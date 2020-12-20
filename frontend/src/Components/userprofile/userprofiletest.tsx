@@ -4,15 +4,15 @@ import Popup from "./popupwindo";
 import PopupBio from "./popupinfoedit";
 import TimeAgo from "react-timeago";
 import { Button } from "@material-ui/core";
-
+import EmailIcon from '@material-ui/icons/Email';
+import CallIcon from '@material-ui/icons/Call';
 import Posts from "./tabs";
+
 
 import { signout } from "../../store/actions/userActions";
 import "./user.css";
+import "./profilestyle.css";
 
-interface Test {
-  userinfo: any;
-}
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenbio, setIsOpenbio] = useState(false);
@@ -23,7 +23,7 @@ function App() {
   const togglePopupbio = () => {
     setIsOpenbio(!isOpenbio);
   };
-  var test: Test = store.getState().UserReducer;
+  var test: any = store.getState().UserReducer;
 
   console.log(test);
 
@@ -37,7 +37,7 @@ function App() {
       <div className="container">
         <div className="profile-header">
           <div className="profile-img">
-            <img src={JSON.parse(test.userinfo).user_img} />
+            <img src={JSON.parse(test.userinfo).user_img} alt='usrimg' />
           </div>
           <div className="profile-nav-inf">
             <h3 className="user-name">{JSON.parse(test.userinfo).user_name}</h3>
@@ -55,15 +55,17 @@ function App() {
         <div className="left-side">
           <div className="profile-side">
             <p className="user-maile">
-              <i className="fas fa-envelope"></i>
+              {/* <i className="fas fa-envelope"></i> */}
+              {/* <FontAwesomeIcon icon={['fab', 'microsoft']} /> */}
+              <EmailIcon id='icon'></EmailIcon>
               {JSON.parse(test.userinfo).user_email}
             </p>
             <p className="mobile-no">
-              <i className="fas fa-phone-volume"></i>
+              <CallIcon id='icon' ></CallIcon>
               {JSON.parse(test.userinfo).user_phon}
             </p>
             <div className="user-pio">
-              <p className="pio"> Bio :{JSON.parse(test.userinfo).user_bio}</p>
+              <p className="pio"> Bio {JSON.parse(test.userinfo).user_bio}</p>
             </div>
             <div className="button">
               <input
@@ -72,12 +74,7 @@ function App() {
                 value="change image"
                 onClick={togglePopup}
               />
-              {isOpen && (
-                <Popup
-                  userId={JSON.parse(test.userinfo)._id}
-                  handleClose={togglePopup}
-                />
-              )}
+
 
               <input
                 className="button-bio"
@@ -85,12 +82,7 @@ function App() {
                 value="change bio"
                 onClick={togglePopupbio}
               />
-              {isOpenbio && (
-                <PopupBio
-                  userId={JSON.parse(test.userinfo)}
-                  handleClose={togglePopupbio}
-                />
-              )}
+
             </div>
             <p className="date">
               <TimeAgo
@@ -102,32 +94,27 @@ function App() {
             {console.log(new Date())}
           </div>
         </div>
+
         <div className="right-side">
           <div className="nav">
             <Posts />
-            {/* <ul>
-                            <li className="user-posts">Posts</li>
-                            <li className="user-services">Services</li>
-                            <li className="user-fevareits">Fevareits</li>
-                        </ul> */}
+
           </div>
-          {/* <div className="profile-body">
-                        <div className="profile-posts tap">
-                            <UserTips />
 
-                        </div>
-                        <div className="profile-services tap">
-                            <UserServeces />
-
-                        </div>
-                        <div className="profile-fevareits tap">
-                            <UserFevarets />
-
-                        </div>
-
-                    </div> */}
         </div>
       </div>
+      {isOpen && (
+        <Popup
+          userId={JSON.parse(test.userinfo)._id}
+          handleClose={togglePopup}
+        />
+      )}
+      {isOpenbio && (
+        <PopupBio
+          userId={JSON.parse(test.userinfo)}
+          handleClose={togglePopupbio}
+        />
+      )}
     </div>
   );
 }

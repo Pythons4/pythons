@@ -1,14 +1,40 @@
-.tipadd {
-  display: grid;
-  place-items: center;
-  height: 89vh;
-  /* background-color: #f0b593; */
+@import url("https://fonts.googleapis.com/css2?family=Sail&display=swap");
+.shadow {
+  border: 1px solid #b2d3ef;
+  /* padding: 10px; */
+  box-shadow: 10px 10px #b2d3ef;
+  margin-top: 30px;
 }
-.tipaddform {
-  display: flex;
-  background-color: #caeaf7;
-  margin-top: -50px;
-  height: 60vh;
-  width: 90vw;
-  box-shadow: -1px 4px 20px -6px rgb(17, 5, 126);
+/* .sideimg { */
+/* background-image: url("https://i.imgur.com/Fr1Gj9b.png"); */
+/* background-color: blueviolet;
+  width: 55%;
+  height: 80%; */
+/* background-size: cover; */
+/* margin: 0;
+}
+#sideimg {
+  width: 100%;
+  height: 100%;
+  margin: 0%;
+} */
+
+.incenter {
+  margin-left: 14px;
+  margin-top: 0;
+}
+
+.h3font {
+  font-family: "Sail", cursive;
+  font-style: normal;
+  font-weight: 300;
+  font-size: xx-large;
+  color: #3f51b5;
+  text-align: center;
+}
+#cloudimg {
+  max-width: 90%;
+  max-height: 90%;
+  margin-left: 20px;
+  padding-top: 20px;
 }

@@ -3,6 +3,10 @@ import axios from "axios";
 import configdata from '../../csrftoken'
 import store from '../../store';
 import './addtip.css'
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 
 var postreq = async (file1, tip_text, tip_title) => {
     var userinfo = JSON.parse(store.getState().UserReducer.userinfo);
@@ -68,27 +72,72 @@ export default class AddTip extends Component {
     }
 
     handelclikckimg() {
-        console.log(this.state.takethis)
         postreq(this.state.file, this.state.tip_text, this.state.tip_title)
 
     }
     render() {
-        console.log(store.getState().UserReducer.userinfo)
         return (
-            // var userinfo  = JSON.parse(store.getState().UserReducer.userinfo);
-            <div className='tipadd'>
+            <div>
+             <div className="d-flex justify-content-center shadow" style={{ borderRadius: '5px', paddingTop: '10px', width: '1150px',height:"700px", marginLeft: 'auto', marginRight: 'auto', marginBottom: '50px',backgroundImage: "url('https://i.imgur.com/QpTKnYk.png')",backgroundRepeat:'no-repeat',backgroundPosition:'0px 0px 0px 0px',backgroundSize:'100%'}}>
+             {/* <div className="sideimg">
+                 <img src="https://i.imgur.com/1cf1Eds.png" id='sideimg'></img>
+             </div> */}
 
-                <div className='tipaddform'>
-                    <form>
-                <img src={"https://imgur.com/undefined"}></img>
-                        <input type='text' name='tip_text' onChange={this.handeltext}></input>
-                        <input type='text' name='tip_title' onChange={this.handeltext}></input>
-                        <input type='file' name='img' onChange={this.handelimguplode}></input>
-                        <button type='button' onClick={this.handelclikckimg}>Share</button>
-                    </form>
-                    {this.state.reviwesoursw && (<img src={this.state.reviwesoursw } id="cloudimg"></img>)}
-                </div>
-            </div>
+             <Container style={{ marginRight: '0', marginLeft: '0', marginTop: '25px',backgroundColor:'white',borderRadius:'10px',width:'45%',height:'96%'}}>
+                 <h3 className='incenter h3font '>Share your knowledge with our community</h3>
+                 <form>
+                     <Grid container spacing={3}>
+                         <Grid item xs={12}>
+                             <Grid container spacing={2}>
+                                 <Grid item xs={12}>
+                                     <TextField
+                                         fullWidth
+                                         label="tip_text"
+                                         name="tip_text"
+                                         size="small"
+                                         onChange={this.handeltext}
+                                         variant="outlined" />
+                                 </Grid>
+                                 <Grid item xs={12}>
+                                     <TextField
+                                         fullWidth
+                                         label="tip_title"
+                                         name="tip_title"
+                                         size="small"
+                                         onChange={this.handeltext}
+                                         variant="outlined" />
+                                 </Grid>
+                                 <Grid item xs={12}>
+                                     {/* <TextField
+                                         fullWidth
+                                         label="User Phone Number"
+                                         name="img"
+                                         size="small"
+                                         type="password"
+                                         onChange={this.handelimguplode}
+                                         variant="outlined"
+                                     /> */}
+                                     <input type='file' name='img' onChange={this.handelimguplode}></input>
+                                     {this.state.reviwesoursw && (<img src={this.state.reviwesoursw } id="cloudimg"></img>)}
+                           </Grid>
+                             </Grid>
+                             </Grid>
+                           
+                         <Grid item xs={12}>
+                             <Button
+                                 onClick={this.handelclikckimg}
+                                 color="primary"
+                                 fullWidth
+                                 type="button"
+                                 variant="contained">
+                                 Share
+                             </Button>
+                         </Grid>
+                     </Grid>
+                 </form>
+             </Container >
+         </div>
+         </div>
         )
     }
 }   
