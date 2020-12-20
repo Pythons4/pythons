@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import "./Homepage.css";
@@ -17,7 +17,7 @@ const Homepage = (props: any) => {
 
           <div className="container-btns">
             <Link to="/services" style={{ textDecoration: "none" }}>
-              <Button id="btn" style={{ backgroundColor: '#3f869d' }} variant="contained">
+              <Button id="btn" style={{ backgroundColor: '#B2D3EF' }} variant="contained">
                 Book Now
               </Button>
             </Link>

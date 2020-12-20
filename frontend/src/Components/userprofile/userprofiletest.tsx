@@ -6,13 +6,12 @@ import TimeAgo from "react-timeago";
 import { Button } from "@material-ui/core";
 import EmailIcon from '@material-ui/icons/Email';
 import Posts from "./tabs";
+import ReactNotification from 'react-notifications-component'
+
 
 import { signout } from "../../store/actions/userActions";
 import "./user.css";
 
-// interface Test {
-//   userinfo: any;
-// }
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenbio, setIsOpenbio] = useState(false);
@@ -37,7 +36,7 @@ function App() {
       <div className="container">
         <div className="profile-header">
           <div className="profile-img">
-            <img src={JSON.parse(test.userinfo).user_img} />
+            <img src={JSON.parse(test.userinfo).user_img} alt='usrimg' />
           </div>
           <div className="profile-nav-inf">
             <h3 className="user-name">{JSON.parse(test.userinfo).user_name}</h3>
@@ -57,7 +56,7 @@ function App() {
             <p className="user-maile">
               {/* <i className="fas fa-envelope"></i> */}
               {/* <FontAwesomeIcon icon={['fab', 'microsoft']} /> */}
-              <EmailIcon color='primary'></EmailIcon>
+              <EmailIcon ></EmailIcon>
               {JSON.parse(test.userinfo).user_email}
             </p>
             <p className="mobile-no">

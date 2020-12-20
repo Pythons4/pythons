@@ -6,7 +6,6 @@ nav{
     display: flex;
     justify-content: space-between;
     background-color:#B2D3EF;
-
     align-items: center;
     position: sticky;
     position: -webkit-sticky;
@@ -20,12 +19,10 @@ nav{
 
 .logo h4{
     font-family: 'Sail', sans-serif;
-    color:  rgb(97, 78, 126);
+    color: rgb(110, 86, 94);
     text-transform: lowercase;
     letter-spacing: 5px;
     font-size: 50px; 
-        
-
 }
 
 .nav-links{

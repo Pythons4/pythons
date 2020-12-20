@@ -54,11 +54,12 @@ class SignInPage extends React.Component<{}, { value: string; alert: boolean; us
         return (
             <div className="d-flex justify-content-center shadow" style={{ borderRadius: '5px', paddingTop: '20px', width: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
 
-                <div className="backimg">
-                    <h3 className='incenter h3font '>Welcome Back!</h3>
+                <div className="backimg2">
+
                 </div>
 
-                <Container maxWidth="xs" style={{ marginRight: '0', marginLeft: '0', marginTop: '40px' }}>
+                <Container maxWidth="xs" style={{ marginRight: '0', marginLeft: '0', marginTop: '60px' }}>
+                    <h3 className='incenter h3font '>Welcome Back!</h3>
                     <form>
                         <Grid container spacing={3}>
                             <Grid item xs={12}>

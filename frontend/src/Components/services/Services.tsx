@@ -56,7 +56,7 @@ class Services extends Component<{ services: any, setService: any }> {
         // console.log(ser, "props")
 
         return (
-            <div className="d-flex justify-content-around" >
+            <div className="d-flex justify-content-around" style={{ marginTop: '40px', paddingBottom: '20px' }}>
                 <div className="d-flex row" >
                     {ser}
                 </div >
