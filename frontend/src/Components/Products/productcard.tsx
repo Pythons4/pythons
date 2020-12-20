@@ -90,16 +90,7 @@ export default class ProductsCard extends Component<Props, State> {
             src={theproduct.product_img}
             data-holder-rendered="true"
           />
-          <h4 > Price {theproduct.product_price}</h4>
-          <h5 > Quantity {theproduct.product_quantity}</h5>
-        </div>
 
-
-        <div className="right-product">
-
-          <h2 >{theproduct.product_name}</h2>
-
-          <p className="desc"><p>{theproduct.product_description}</p></p>
           <div className="quantity">
             <button
               className="btn minus-btn"
@@ -120,19 +111,28 @@ export default class ProductsCard extends Component<Props, State> {
             >
               +
             </button>
-          </div>
-          <Button style={{ marginRight: '50px' }}
-            onClick={this.addtothecart}
-            endIcon={<ShoppingCartIcon></ShoppingCartIcon>}
-            className="addtocart"
-            variant="contained"
-            color="primary"
-          >
-            Add to Cart
+
+            <Button style={{ height: "45px", width: "50%" }}
+              onClick={this.addtothecart}
+              endIcon={<ShoppingCartIcon></ShoppingCartIcon>}
+              id="addtocart"
+              variant="contained"
+              color="primary"
+
+            >
+              Add to Cart
           </Button>
+          </div>
 
+        </div>
 
+        <div className="right-product">
 
+          <h2 >{theproduct.product_name}</h2>
+          <h4 > Price {theproduct.product_price} ₪ </h4>
+          <h5 > Quantity {theproduct.product_quantity}</h5>
+
+          <p className="desc">{theproduct.product_description}</p>
 
 
 

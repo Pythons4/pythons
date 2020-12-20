@@ -46,7 +46,7 @@ class UserTips extends React.Component {
                                         <div class="card_datails">
                                             <h1>{tip.tip_title}</h1>
 
-                                            <p class="disc">{tip.tip_text}</p>
+                                            <p >{tip.tip_text}</p>
 
                                         </div>
                                     </div>
