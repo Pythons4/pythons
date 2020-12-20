@@ -1,16 +1,18 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Pridi:wght@300&display=swap');
 .container-img {
     margin-top: 0px;
-    background: url('https://media-exp1.licdn.com/dms/image/C511BAQHstP3Hr4TJcw/company-background_10000/0/1519798569826?e=2159024400&v=beta&t=1iAw6FntEwaHddGEreFPEZq9Wo00iTXk6JGDAB4G4o8') center center/cover no-repeat;
+    background: url('https://res.cloudinary.com/dve46qnma/image/upload/v1608398058/appimgs/ozhjcjc1mwt0lyfswsnt.png') center center/cover no-repeat;
     height: 75vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.319);
     object-fit: contain;
     z-index: 1;
+    background-position:top;
 
 }
 
@@ -28,7 +30,7 @@
 }
 
 .container-btns {
-    margin-top: 340px;
+    margin-top: 270px;
     
 }   
 
@@ -36,6 +38,8 @@
   width: 100% !important;
   height: 50px !important;
   font-size: large !important;
+  font-family:'Pridi', serif !important;
+  font-weight: 400 !important
   
 }
 
@@ -58,8 +62,9 @@
 
   .section{
     
-    padding: 15px;
+    padding: 35px;
     background-color:rgb(190, 170, 177) ;
+    
     
 
   }
@@ -73,7 +78,14 @@
     
   }
 
-  
+  .list-unstyled2{
+    color: white;
+    font-size: 1.7rem;
+    font-family: 'Pridi', serif;
+    text-transform: uppercase;
+    font-weight: 100;
+    padding: 5px;
+  }
 
   .section li{
     font-family: "Times New Roman", Times, serif;
@@ -83,26 +95,39 @@
 
 
 
-  .footer{
+  /* .footer{
     padding: 20px;
     background-color: #B2D3EF;
 
-  }
+  } */
 
   .headertext{
     color: white;
-    font-size: 30px;
-    font-family: "Times New Roman", Times, serif;
+    font-size: 3rem;
+    font-family: 'Pridi', serif;
     text-transform: uppercase;
+    font-weight: 400;
     padding: 5px;
   }
 
 
   .footer {
-    font-family: "Times New Roman", Times, serif;
+    font-family: 'Pridi', serif;
     font-size: 25px;
     color: rgb(248, 246, 241);
-
+    padding: 4px;
+    padding-left:100px ;
+    padding-right:110px ;
+    padding-top: 14px;
+    background-color: #B2D3EF;
+  }
+  .textstyle{
+    color: white;
+    font-size: 2.2rem;
+    font-family: 'Pridi', serif;
+    text-transform: uppercase;
+    font-weight: 100;
+    padding: 5px;
   }
 
 

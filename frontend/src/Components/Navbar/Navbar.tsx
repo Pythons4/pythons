@@ -1,14 +1,23 @@
 import React from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link } from "react-router-dom";
-import { Button, Avatar } from '@material-ui/core'
+import { Avatar, Badge } from '@material-ui/core'
 import './Navbar.css'
-
+import { IconButton } from '@material-ui/core';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import store from "../../store"
-
+import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
 const Navbar = () => {
+    var pathname = "/profiletest"
+
     var { userid }: any = store.getState().UserReducer
+    var { adminid }: any = store.getState().AdminReduser
+    var adminID = JSON.parse(adminid)
     var id = JSON.parse(userid)
+    if (adminID) {
+        pathname = "/adminprofile"
+        id = adminID
+    }
     console.log(id)
     return (
         <nav >
@@ -34,8 +43,9 @@ const Navbar = () => {
                 {
                     id ?
                         <div className='header__profile'>
-                            <Link to="/profiletest" style={{ textDecoration: "none" }}>
-                                <Avatar className='header__avatar' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPasPbrVe2Txcc4aGbZkCddJkVTaj8uyb7A&usqp=CAU" />
+                            <Link to={pathname} style={{ textDecoration: "none" }}>
+                                <AccountCircleSharpIcon className='header__avatar' style={{ fontSize: 50 }}></AccountCircleSharpIcon>
+                                {/* <Avatar className='header__avatar' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPasPbrVe2Txcc4aGbZkCddJkVTaj8uyb7A&usqp=CAU" /> */}
                             </Link>
 
                         </div>
@@ -43,6 +53,13 @@ const Navbar = () => {
                         <Link to='/signin' className='nav-link'>login</Link>
 
                 }
+                <Link to={{ pathname: `/cart` }}>
+                    {/* <IconButton color="primary" component="span"> */}
+
+                    <Badge badgeContent={17} color="secondary" style={{ marginTop: '10px' }}><ShoppingCartIcon color="primary" style={{ fontSize: 30 }} /></Badge>
+                    {/* </ShoppingCartIcon> */}
+                    {/* </IconButton> */}
+                </Link>
 
                 {/* <li>
                     <Link to='/signin' className='nav-link'>login</Link>
