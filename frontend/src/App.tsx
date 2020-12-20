@@ -34,6 +34,7 @@ class App extends React.Component<{}, any> {
         <ReactNotification />
 
         <Switch>
+          <Route exact path="/" render={() => <Homepage />} />
           <Route exact path="/homepage" render={() => <Homepage />} />
           <Route exact path="/" render={() => <Homepage />} />
           <Route path="/product" exact component={Product} />

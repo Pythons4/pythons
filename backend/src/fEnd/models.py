@@ -48,6 +48,8 @@ class UserService(models.Model):
     user_service_location = models.TextField()
     user_service_date = models.DateField()
     user_service_hours = models.IntegerField()
+    user_service_approv = models.BooleanField()
+    user_service_price = models.TextField()
     user_service_approv = models.BooleanField(default=False)
 
 
@@ -58,6 +60,7 @@ class Tip(models.Model):
     tip_text = models.TextField()
     tip_img = models.TextField()
     user_id = models.TextField()
+    user_name = models.TextField()
 
     def __str__(self):
         return self.tip_title
@@ -67,6 +70,7 @@ class Tip(models.Model):
 class Fav(models.Model):
     _id = models.ObjectIdField()
     user_id = models.TextField()
+    user_name = models.TextField()
     tip_title = models.CharField(max_length=40)
     tip_img = models.TextField()
     tip_id = models.TextField()

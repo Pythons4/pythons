@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import axios from "axios"
 import ServicesCard from "./ServiceCard"
 import setService from "../../store/actions/servicesAction"
-import { connect, useDispatch, useSelector } from "react-redux"
+import { connect } from "react-redux"
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import FormOnCard from "./FormOnCard"
 
