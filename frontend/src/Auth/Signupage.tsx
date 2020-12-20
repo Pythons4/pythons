@@ -80,16 +80,16 @@ const SignUpPage = () => {
                         </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                        <Link to="/homepage" style={{ textDecoration: "none" }}>
-                            <Button
-                                onClick={onSubmit}
-                                color="primary"
-                                fullWidth
-                                type="button"
-                                variant="contained">
-                                Log in
+
+                        <Button
+                            onClick={onSubmit}
+                            color="primary"
+                            fullWidth
+                            type="button"
+                            variant="contained">
+                            Log in
                         </Button>
-                        </Link>
+
                     </Grid>
                 </Grid>
             </form>

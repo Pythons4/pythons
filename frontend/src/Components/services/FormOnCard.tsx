@@ -45,6 +45,7 @@ export default function StateTextFields(props: data) {
     user_service_date: state.date,
     user_service_hours: state.houres,
     user_service_location: state.location,
+    user_service_price: state.price,
   };
   // user_id = models.TextField()
   // service_name = models.TextField()
@@ -60,6 +61,7 @@ export default function StateTextFields(props: data) {
         user_service_date: state.date,
         user_service_hours: state.houres,
         user_service_location: state.location,
+        user_service_price: state.price,
       };
       console.log(serviceData);
 

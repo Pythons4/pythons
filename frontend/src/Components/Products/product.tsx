@@ -12,7 +12,7 @@ import { GET_ALL } from '../../store/actions/getallproduct';
 
 export class Product extends Component<{}, any> {
     constructor(props: {} | Readonly<{}>) {
-        super(props)
+        super(props);
         this.state = {
             products: store.getState().productseReducer
         }
@@ -30,37 +30,41 @@ export class Product extends Component<{}, any> {
     render() {
         console.log(this.state.products)
         return (
-            <div>
-                <div className='container'>
-                    {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                    <img className='product__img' src='https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg' />
-                </div>
-                <div className='product__list'>
 
-                    <Link to={{
-                        //pass the tools product to tools page
-                        pathname: "/product/tools",
-                        state: this.state.products.product,
-                    }}
-                        style={{ textDecoration: "none" }}>
-                        <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Tools</Button>
-                    </Link>
+            <div className='product__lists'>
+                <div className='product__img'>
+                    {/* <img src='https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg' /> */}
 
-                    <Link to={{
-                        //pass the material product to material page
-                        pathname: "/product/materials",
-                        state: this.state.products.material,
-                    }}
-                        style={{ textDecoration: "none" }}>
-                        <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Materials</Button>
-                    </Link>
-                    <Button onClick={() => {
-                        // store.dispatch(login({ user_name: 'qamar test', user_password: '669nnh', user_email: 'qam0ar110@yahoo.com', user_phon: '0899088' }))
-                        // console.log(store.getState().UserReducer)
-                        console.log(store.getState().UserReducer)
-                    }}>test</Button>
+
+
+                    <div className='product__buttuns'>
+
+                        <Link to={{
+                            //pass the tools product to tools page
+                            pathname: "/product/tools",
+                            state: this.state.products.product,
+                        }}
+                            style={{ textDecoration: "none" }}>
+                            <Button style={{ borderRadius: '5px', paddingTop: '20px', width: '50%', height: "45px", marginLeft: 'auto', marginRight: 'auto' }} color="primary" variant="contained" >Product Tools</Button>
+                        </Link>
+
+                        <Link to={{
+                            //pass the material product to material page
+                            pathname: "/product/materials",
+                            state: this.state.products.material,
+                        }}
+                            style={{ textDecoration: "none" }}>
+                            <Button id='btnn' style={{ borderRadius: '5px', paddingTop: '20px', width: '50%', height: "45px", marginLeft: 'auto', marginRight: 'auto' }} color="primary" variant="contained" size="large">Product Materials</Button>
+                        </Link>
+
+                    </div>
                 </div>
             </div>
+
+
+
+
+
         )
     }
 }
