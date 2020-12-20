@@ -30,10 +30,14 @@ export class Product extends Component<{}, any> {
     render() {
         console.log(this.state.products)
         return (
-            <div>
-                <div className='product__img'>
 
-                    <div className='product__list'>
+            <div className='product__lists'>
+                <div className='product__img'>
+                    {/* <img src='https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg' /> */}
+
+
+
+                    <div className='product__buttuns'>
 
                         <Link to={{
                             //pass the tools product to tools page
@@ -41,7 +45,7 @@ export class Product extends Component<{}, any> {
                             state: this.state.products.product,
                         }}
                             style={{ textDecoration: "none" }}>
-                            <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Tools</Button>
+                            <Button style={{ borderRadius: '5px', paddingTop: '20px', width: '50%', height: "45px", marginLeft: 'auto', marginRight: 'auto' }} color="primary" variant="contained" >Product Tools</Button>
                         </Link>
 
                         <Link to={{
@@ -50,13 +54,16 @@ export class Product extends Component<{}, any> {
                             state: this.state.products.material,
                         }}
                             style={{ textDecoration: "none" }}>
-                            <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Materials</Button>
+                            <Button id='btnn' style={{ borderRadius: '5px', paddingTop: '20px', width: '50%', height: "45px", marginLeft: 'auto', marginRight: 'auto' }} color="primary" variant="contained" size="large">Product Materials</Button>
                         </Link>
 
                     </div>
-
                 </div>
             </div>
+
+
+
+
 
         )
     }
