@@ -85,8 +85,7 @@
 	color: black;
 	font-size: 20px;
 	font-family:  'Times New Roman', Times, serif;
-	/* text-align: center;
-	align-items: center; */
+	
 
 }
 
@@ -120,7 +119,13 @@
 
 .user-pio{
 	margin-left: 2.5px;
+	
 }
+
+/* .user-pio p{
+justify-items: ;
+	
+} */
 
 
 .logout_button{
@@ -160,12 +165,7 @@
 	display: flex;
 	/* max-width: 570px; */
 	background:#F1D4BE ; 
-	
-	
-  /* border-radius: 25px; */
-	
-	/* -webkit-box-shadow: 0 0 40px rgba(0,0,0,0.3); 
-	        box-shadow: 0 0 40px rgba(0,0,0,0.3); */
+  
 }
 
 .card_right {
@@ -222,8 +222,7 @@
 	background: #B2D3EF;	
 	border-radius: 15px;
 	
-	/* -webkit-box-shadow: 0 0 40px rgba(0,0,0,0.3); 
-	        box-shadow: 0 0 40px rgba(0,0,0,0.3); */
+	
 }
 
 
@@ -259,11 +258,6 @@
 
 
 
-
-
-
-
-
 .fev_card {
 	color: #fff;
 	width: 220px;
@@ -276,9 +270,7 @@
 	background: #B2D3EF;	
 	
 	border-radius: 15px;
-	
-	/* -webkit-box-shadow: 0 0 40px rgba(0,0,0,0.3); 
-	        box-shadow: 0 0 40px rgba(0,0,0,0.3); */
+		
 }
 
 .fev_card h1 {
@@ -307,14 +299,72 @@
 
 .fev_card img {
 	width: 220px;
-	height: 135px;
-	 /* border-radius: 15px; */
-	 border-top-left-radius: 15px;
-	 
-
+	height: 135px;	
+	border-top-left-radius: 15px;
 	 border-top-right-radius: 15px;
-                        /* borderTopRightRadius: 15px; */
+                       
+}
 
+
+
+@media(max-width:1100px){
+	/* .profile-side{
+		width:25px;
+		padding:90px 15px 20px;
+	}
+	.profile-img img{
+		height:200px;
+		width:200px;
+		left:50px;
+		top:10px
+	} */
+}
+@media(max-width:900px){
+	body{
+		margin:0 20px;
+	}
+	.profile-header{
+		display:flex;
+		height:100%;
+		flex-direction:colum;
+		text-align:center;
+		padding-bottom:20px;
+	}
+	.profile-img{
+		float:left;
+		width:100%;
+		height:200px;
+	}
+	.profile-img img {
+		/* position:relative; */
+		left:0;
+	}
+	.profile-nav-info{
+		text-align: center;
+		margin-left: 17px;
+	}
+	.main-bd{
+		flex-direction: column;
+		padding-right: 0px;
+
+	}
+	.profile-side{
+		width: 93%;
+		text-align: center;
+		padding:20px;
+		margin:5px 17px 0px ;
+	}
+	@media(max-width:400px){
+		body{
+			margin:0;
+		}
+		.profile-header h3{
+			font-size: 1.7rem;
+		}
+		.profile-header p{
+			font-size: .9rem;
+		}
+	}
 }
 
 

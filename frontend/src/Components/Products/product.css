@@ -1,20 +1,42 @@
-/* .container {
-    display: flex;
-} */
-
+@import url('https://fonts.googleapis.com/css2?family=Pridi:wght@300&display=swap');
 .product__img {
     margin-top: 0px;
-    background: url('https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg') center center/cover no-repeat;
-    height: 75vh;
+    background: url('https://mybayutcdn.bayut.com/mybayut/wp-content/uploads/Home-cleaning-companies-in-sharjahAR20072020.jpg') center center/cover no-repeat;
+    height: 90vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.319);
     object-fit: contain;
     z-index: 1;
+    background-position:top;
+
 }
+
+   
+
+
+ .product__buttons {
+    margin-top: 40px;
+    margin-right:600px;
+    
+}   
+
+#btn{
+  width: 100% !important;
+  height: 50px !important;
+  font-size: large !important;
+  font-family:'Pridi', serif !important;
+  font-weight: 400 !important;
+  margin-block-end: 20px;
+  
+} 
+
+
+
+
 
 .imgstyle {
     object-fit: cover;
