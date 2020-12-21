@@ -26,9 +26,11 @@ export class Tips extends Component<{}, any> {
   componentDidMount() {
     store.dispatch(GET_ALL());
     store.subscribe(() => {
+
       this.setState({
         tips: store.getState().tipsReducer,
       });
+
     });
   }
   render() {
@@ -38,12 +40,12 @@ export class Tips extends Component<{}, any> {
         <div
           className="d-flex flex-wrap justify-content-around "
           style={{
-            marginBottom: "20px",
+            marginBottom: "30px",
             padding: "10px",
           }}
         >
           {this.state.tips.tips ?
-            this.state.tips.tips.map(
+            this.state.tips.tips.slice(0).reverse().map(
               (
                 element: {
                   tip_text: string;
@@ -58,10 +60,13 @@ export class Tips extends Component<{}, any> {
                   key={i}
                   style={{
                     marginBottom: "60px",
-                    height: "300px",
-                    width: "300px",
+                    height: "280px",
+                    width: "280px",
                     position: "relative",
                     paddingTop: "40px",
+                    marginLeft: '8px',
+                    marginRight: '8px'
+
                   }}
                 >
                   <Link
@@ -100,6 +105,7 @@ export class Tips extends Component<{}, any> {
                           color: "#A04D25",
                           fontFamily: "Poly",
                           fontSize: "20px",
+                          paddingTop: '10px'
                         }}
                       >
                         {element.tip_title}

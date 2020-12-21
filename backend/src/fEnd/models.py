@@ -61,7 +61,7 @@ class Tip(models.Model):
     tip_img = models.TextField()
     user_id = models.TextField()
     user_name = models.TextField()
-    tip_date = models.DateField()
+    tip_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.tip_title
@@ -84,7 +84,7 @@ class TipCommints(models.Model):
     user_name = models.TextField()
     commint_text = models.TextField()
     objects = models.DjongoManager()
-    commint_date = models.DateField()
+    commintdate = models.DateTimeField(auto_now=True)
 
 
 # Products table

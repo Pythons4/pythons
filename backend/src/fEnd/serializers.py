@@ -6,7 +6,7 @@ class TipsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tip
         fields = ('_id', 'tip_title', 'tip_text',
-                  'tip_img', 'user_id', "user_name")
+                  'tip_img', 'user_id', "user_name", 'tip_date')
 
 
 class TipCommintsSerializer(serializers.ModelSerializer):
@@ -39,15 +39,16 @@ class UserServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserService
         fields = ('_id', 'user_id', 'service_name', 'user_service_location',
-                  'user_service_date', 'user_service_hours','user_service_price',
-                 
+                  'user_service_date', 'user_service_hours', 'user_service_price',
+
                   'user_service_approv')
 
 
 class FavSerializer(serializers.ModelSerializer):
     class Meta:
         model = Fav
-        fields = ('_id', 'user_id', 'tip_id', 'tip_img', 'tip_title','user_name')
+        fields = ('_id', 'user_id', 'tip_id',
+                  'tip_img', 'tip_title', 'user_name')
 
 
 class ProductsSerializer(serializers.ModelSerializer):

@@ -1,5 +1,6 @@
 //tip page
 import React, { Component, useState } from "react";
+import TimeAgo from "react-timeago";
 import Button from "@material-ui/core/Button";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
@@ -18,6 +19,7 @@ interface Props {
         tip_img: string;
         tip_text: string;
         _id: string;
+        tip_date: any
       };
     };
   };
@@ -28,6 +30,7 @@ interface Tip0 {
   tip_img: string;
   tip_text: string;
   _id: string;
+  tip_date: any
 }
 interface State {
   text: string;
@@ -171,6 +174,12 @@ export default class Tip extends Component<Props, State> {
             className="imgstyle"
           ></img>
           <p>{this.state.tip.tip_text} </p>
+          <p>{this.state.tip.tip_date}</p>
+          <TimeAgo
+            date={
+              this.state.tip.tip_date.replace('000', '+02:00')
+            }
+          />
         </div>
         <div>
           <form>
