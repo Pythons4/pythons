@@ -61,6 +61,7 @@ class Tip(models.Model):
     tip_img = models.TextField()
     user_id = models.TextField()
     user_name = models.TextField()
+    tip_date = models.DateField()
 
     def __str__(self):
         return self.tip_title
@@ -83,6 +84,7 @@ class TipCommints(models.Model):
     user_name = models.TextField()
     commint_text = models.TextField()
     objects = models.DjongoManager()
+    commint_date = models.DateField()
 
 
 # Products table
