@@ -1,16 +1,16 @@
 //tip page
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import TimeAgo from "react-timeago";
 import Button from "@material-ui/core/Button";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import "./Tip.css";
 import ChatIcon from '@material-ui/icons/Chat';
-import '../../Auth/signpage.css'
+import { Paper } from "@material-ui/core";
 import store from "../../store";
 import configdata from "../../csrftoken";
 import axios from "axios";
-import { Paper } from "@material-ui/core";
+import "./Tip.css";
+
 interface Props {
   title: string;
   imge: string;
@@ -27,21 +27,20 @@ interface Props {
     };
   };
 }
-//tip type
-interface Tip0 {
-  tip_title: string;
-  tip_img: string;
-  tip_text: string;
-  _id: string;
-  tip_date: any
-}
+// //tip type
+// interface Tip0 {
+//   tip_title: string;
+//   tip_img: string;
+//   tip_text: string;
+//   _id: string;
+//   tip_date: any
+// }
 interface State {
   text: string;
   tip: any;
   commints: Array<string>;
   favorite: any;
   isFavorite: boolean;
-  // isLoaded: boolean;
 }
 //tip class
 export default class Tip extends Component<Props, State> {
@@ -53,7 +52,6 @@ export default class Tip extends Component<Props, State> {
       commints: [],
       favorite: [],
       isFavorite: false,
-      // isLoaded: false,
     };
     this.handelcliking = this.handelcliking.bind(this);
     this.handeltext = this.handeltext.bind(this);
@@ -64,8 +62,22 @@ export default class Tip extends Component<Props, State> {
   componentDidMount() {
     var tip_id = this.state.tip._id;
     var { userinfo }: any = store.getState().UserReducer;
-    var user_id = JSON.parse(userinfo)._id;
-    //retrive the commints 4 the tip
+    if (userinfo) {
+      var user_id = JSON.parse(userinfo)._id;
+      //retrive the commints 4 the tip
+
+      axios.get(`/api/favorites/${user_id}/`).then((res) => {
+        res.data.map((element: any, i: number) => {
+          if (element.tip_id === this.state.tip._id) {
+            this.state.favorite.push(res.data[i]);
+            console.log(this.state.favorite);
+            this.setState({
+              isFavorite: true,
+            });
+          }
+        });
+      });
+    }
     axios
       .get(`/api/tipcomments/${tip_id}/`)
       .then((res) => {
@@ -76,17 +88,6 @@ export default class Tip extends Component<Props, State> {
       .catch((err) => {
         console.log(err);
       });
-    axios.get(`/api/favorites/${user_id}/`).then((res) => {
-      res.data.map((element: any, i: number) => {
-        if (element.tip_id === this.state.tip._id) {
-          this.state.favorite.push(res.data[i]);
-          console.log(this.state.favorite);
-          this.setState({
-            isFavorite: true,
-          });
-        }
-      });
-    });
   }
 
   handelcliking() {
@@ -166,6 +167,7 @@ export default class Tip extends Component<Props, State> {
   }
 
   render() {
+    var { userid } = store.getState().UserReducer
     return (
       <div className='shadowtip' style={{ borderRadius: '5px', paddingTop: '20px', width: '100%', textAlign: 'center' }}>
         <div className='d-flex flex-column' style={{ borderRadius: '5px', paddingTop: 'auto', width: '80%', marginLeft: 'auto', marginRight: '10%' }}>
@@ -196,10 +198,10 @@ export default class Tip extends Component<Props, State> {
             <table className="table favdatestyle">
               <thead className="thead-light">
                 <tr>
-                  <Paper style={{ height: '40px', marginBottom: '18px' }}>
+                  {userid && <Paper style={{ height: '40px', marginBottom: '18px' }}>
                     <input className='inputfield' id='cpmmentinput' type="text" name="comments" placeholder='Add a comment...' onChange={this.handeltext}></input>
                     <button type="button" className='postbtn' onClick={this.handelcliking}>Post</button>
-                  </Paper>
+                  </Paper>}
                 </tr>
               </thead>
 
