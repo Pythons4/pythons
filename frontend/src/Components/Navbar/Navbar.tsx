@@ -10,7 +10,13 @@ import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
 const Navbar = () => {
     var pathname = "/profiletest"
     var { whatincart } = store.getState().cartReducer
-    var count = (Object.keys(JSON.parse(whatincart)).length)
+    var count = 0
+    if (whatincart) {
+
+        count = (Object.keys(JSON.parse(whatincart)).length)
+
+    }
+
     var { userid }: any = store.getState().UserReducer
     var { adminid }: any = store.getState().AdminReduser
     var adminID = JSON.parse(adminid)
