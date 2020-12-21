@@ -5,7 +5,7 @@ import './product.css'
 
 
 const ProductMaterials = (props: any) => {
-    var materials = props.location.state
+    var materials = JSON.parse(props.location.state)
     var path = props.location.pathname
 
     return (
@@ -13,7 +13,7 @@ const ProductMaterials = (props: any) => {
             style={{ "marginBottom": '50px', marginTop: "18px" }}>
             {/* show all tools product that ar in the database */}
             {materials.map((element: { product_name: string, product_img: string, _id: string }, i: number) =>
-                <div key={i} style={{ textAlign: 'center', marginTop: '45px' }}>
+                <div key={i} style={{ textAlign: 'center', marginTop: '45px', color: 'black', fontSize: '20px' }}>
                     <Link to={{
                         pathname: `${path}/${element.product_name}`,
                         state: { theproduct: element }

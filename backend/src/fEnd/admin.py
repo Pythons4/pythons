@@ -4,7 +4,7 @@ from .models import Tip, Users, Admin, Service, UserService, TipCommints, Produc
 
 class TipsAdmin(admin.ModelAdmin):
     list_display = ('_id', 'tip_img', 'tip_title',
-                    'tip_text', 'user_id')
+                    'tip_text', 'user_id', 'user_name')
 
 
 class AdminsAdmin(admin.ModelAdmin):
@@ -25,7 +25,8 @@ class TipCommintsAdmin(admin.ModelAdmin):
 
 
 class FavAdmin(admin.ModelAdmin):
-    list_display = ('_id', 'user_id', 'tip_id', 'tip_img', 'tip_title')
+    list_display = ('_id', 'user_id', 'tip_id',
+                    'tip_img', 'tip_title', 'user_name')
 
 
 class UsersAdmin(admin.ModelAdmin):

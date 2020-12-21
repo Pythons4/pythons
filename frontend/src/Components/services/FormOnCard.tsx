@@ -3,6 +3,10 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import "./server.css";
+import MomentUtils from "@date-io/moment";
+import moment from 'moment'
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
+
 import axios from "axios";
 import store from "../../store";
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +25,14 @@ interface data {
 }
 
 export default function StateTextFields(props: data) {
+  const [selectedDate, setDate] = React.useState(moment().add(1, 'days').endOf('day'));
+  const [inputValue, setInputValue] = React.useState(moment().format("YYYY-MM-DD"));
+  const onDateChange = (date: any, value: any) => {
+    setDate(date);
+    setInputValue(value);
+    console.log(inputValue)
+  };
+
   const classes = useStyles();
   const [state, setState] = React.useState({
     location: "",
@@ -39,27 +51,15 @@ export default function StateTextFields(props: data) {
   };
 
   let { userid }: any = store.getState().UserReducer;
-  let serviceData = {
-    user_id: JSON.parse(userid),
-    service_name: state.name,
-    user_service_date: state.date,
-    user_service_hours: state.houres,
-    user_service_location: state.location,
-  };
-  // user_id = models.TextField()
-  // service_name = models.TextField()
-  // user_service_location = models.TextField()
-  // user_service_date = models.DateField()
-  // user_service_hours = models.IntegerField()
-
   const book = () => {
     if (userid) {
       let serviceData = {
         user_id: JSON.parse(userid),
         service_name: state.name,
-        user_service_date: state.date,
+        user_service_date: inputValue,
         user_service_hours: state.houres,
         user_service_location: state.location,
+        user_service_price: state.price,
       };
       console.log(serviceData);
 
@@ -69,62 +69,43 @@ export default function StateTextFields(props: data) {
     } else {
       alert("you should login");
     }
-
-    // axios.post('/api/userservice/', {
-
-    // })
-    //     .then(function (response) {
-    //         console.log(response);
-    //     })
   };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <div id="forForm">
-        <br />
-        <br />
-        <br />
-
         <h3>{props.data.name}</h3>
-        <h4>{props.data.price}</h4>
+        <h4>{props.data.price} / hour</h4>
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <KeyboardDatePicker
+            id="outlined-name"
+            label="Date"
+            name="date"
+            minDate={moment().add(1, 'days').endOf('day')}
+            value={selectedDate}
+            format="YYYY-MM-DD"
+            // inputValue={inputValue}
+            onChange={onDateChange}
+            KeyboardButtonProps={{
+              "aria-label": "change date",
+            }}
+          />
+        </MuiPickersUtilsProvider>
 
         <TextField
-          id="outlined-name"
-          // label="Date"
-          type="date"
-          name="date"
-          onChange={handleChange}
-          // {(e) => {
-          //     setState(currentState => ({
-          //         ...currentState,
-          //         date: e.target.value
-
-          //     })
-
-          //     )
-          // }}
-
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-uncontrolled"
+          id="standard-secondary"
           label="Hours"
           type="number"
           name="houres"
           onChange={handleChange}
-          variant="outlined"
         />
         <TextField
-          id="outlined-uncontrolled"
+          id="standard-secondary"
           label="Location"
-          // value="Some Where"
           name="location"
           onChange={handleChange}
-          variant="outlined"
         />
         <br />
-        <br />
-
         <Button
           onClick={book}
           id="forButton"

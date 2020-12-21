@@ -1,5 +1,7 @@
 import axios from 'axios'
 import config from '../../csrftoken'
+import { addnot } from '../../notife'
+
 
 
 //user sign up action (with token)
@@ -60,7 +62,7 @@ export const signin = (userinfo: any) => {
                 console.log(err)
                 dispatch({
                     type: "SIGN-IN_ERROR",
-                    value: err.message
+                    value: 'Somthing Wrong Happened'
                 })
             })
     }
@@ -90,6 +92,8 @@ export const updateuserimg = (file1: any, userinfo: any) => {
                 }, config)
                     .then(res => {
                         console.log(res.data)
+                        addnot('image updated')
+
                         dispatch({
                             type: 'UPDATE_IMG',
                             userinfo: res.data,
@@ -119,6 +123,8 @@ export const updateuserinfo = (userinfo: any, newinfo: any) => {
         }, config)
             .then(res => {
                 console.log(res.data)
+                addnot('Your information updated')
+
                 dispatch({
                     type: 'UPDATE_IMG',
                     userinfo: res.data,
@@ -128,6 +134,33 @@ export const updateuserinfo = (userinfo: any, newinfo: any) => {
                 console.log(err)
                 dispatch({
                     type: "UPDATE_ERROR",
+                    message: err.message
+                })
+            });
+    }
+}
+
+
+//action to get user services
+export const userServices = (id: any, newinfo: any) => {
+    return function (dispatch: any) {
+        axios.get(`/api/userservice/${id}`, config)
+            .then(res => {
+                console.log(res.data)
+                var serv = []
+                for (var i in res.data) {
+                    if (res.data[i].user_service_approv)
+                        serv.push(res.data[i])
+                }
+                dispatch({
+                    type: 'MY_APPREVED_SERVICES',
+                    userinfo: serv,
+                })
+            })
+            .catch(err => {
+                console.log(err)
+                dispatch({
+                    type: "GET_ERROR",
                     message: err.message
                 })
             });

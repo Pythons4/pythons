@@ -9,12 +9,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 import jwt
+import bcrypt
 from django.conf import settings
-from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, ProductsSerializer, UserProductsSerializer,FavSerializer
+from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, ProductsSerializer, UserProductsSerializer, FavSerializer
 from cloudinary.forms import cl_init_js_callbacks
 from django.views.decorators.csrf import csrf_exempt
 import json
-from .models import Tip, Users, Admin, Service, UserService, TipCommints,  Products, UserProducts,Fav
+from .models import Tip, Users, Admin, Service, UserService, TipCommints,  Products, UserProducts, Fav
 
 
 # tips view/requests (getall and get by user id )
@@ -45,7 +46,7 @@ class TipsView(viewsets.ModelViewSet):
 #     tip.save()
 #     serializer = TipsSerializer(tip)
 #     # print(serializer.data)
-#     return Response(serializer.data) 
+#     return Response(serializer.data)
 
 
 class TipCommintsView(viewsets.ModelViewSet):
@@ -80,8 +81,11 @@ class UsersView(viewsets.ModelViewSet):
             return Response('already existed user')
         print('theuser')
         userdata = request.data
+        hashed = bcrypt.hashpw(
+            userdata['user_password'].encode('utf-8'), bcrypt.gensalt())
+        print(hashed)
         newuser = Users.objects.create(user_email=userdata['user_email'],
-                                       user_password=userdata['user_password'],
+                                       user_password=hashed.decode(),
                                        user_name=userdata['user_name'],
                                        user_phon=userdata['user_phon'])
         newuser.save()
@@ -137,8 +141,8 @@ class FavView(viewsets.ModelViewSet):
         serializer = FavSerializer(userFav, many=True)
         print(serializer.data)
         return Response(serializer.data)
-   
-   
+
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def updateFavorite(request):
@@ -196,27 +200,29 @@ def updateProductQuantity(request):
 def getuserinfologin(request):
     theuser = Users.objects.filter(
         user_email=request.data['user_email'])
+    print(theuser)
     if(theuser):
         serializer = UsersSerializer(theuser, many=True)
         tuple_list = serializer.data[0]
         tuple_list = list(tuple_list.items())
         print(tuple_list[3][1])
-        if(tuple_list[3][1] != request.data['user_password']):
-            return Response('wrong password')
-        else:
+        if bcrypt.checkpw(request.data['user_password'].encode('utf-8'),
+                          tuple_list[3][1].encode()):
             token = jwt.encode(
                 {'user_email': tuple_list[2][1],
                  '_id': tuple_list[0][1]},
                 settings.SECRET_KEY)
             return Response([serializer.data, token])
+        else:
+            return Response('wrong password')
 
     else:
         return Response('wrong email')
 
 
 # user update image
-@api_view(['POST'])
-@permission_classes([AllowAny])
+@ api_view(['POST'])
+@ permission_classes([AllowAny])
 def updateUserImage(request):
     theuser = Users.objects.get(
         _id=ObjectId(request.data['user_id']))
@@ -226,15 +232,14 @@ def updateUserImage(request):
         theuser.user_bio = request.data['user_bio']
         theuser.user_phon = request.data['user_phon']
         theuser.user_name = request.data['user_name']
-
     theuser.save()
     serializer = UsersSerializer(theuser)
     return Response(serializer.data)
 
 
 # admin login handler with jwt
-@api_view(['POST'])
-@permission_classes([AllowAny])
+@ api_view(['POST'])
+@ permission_classes([AllowAny])
 def getAdminInfoLogin(request):
     theadmin = Admin.objects.filter(
         admin_email=request.data['admin_email'])
@@ -254,3 +259,15 @@ def getAdminInfoLogin(request):
 
     else:
         return Response('wrong email')
+
+
+# update user services approve by admin (put request handler)
+@ api_view(['PUT'])
+@ permission_classes([AllowAny])
+def updateUserServicesApprove(request):
+    userservice = UserService.objects.get(
+        _id=ObjectId(request.data['_id']))
+    userservice.user_service_approv = request.data['approve']
+    userservice.save()
+    serializer = UserServiceSerializer(userservice)
+    return Response(serializer.data)
