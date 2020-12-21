@@ -116,7 +116,7 @@ export default class Tip extends Component<Props, State> {
         .catch((err) => {
           console.log(err);
         });
-    }
+    } else return <p>please make sure you are logged in first</p>;
     console.log(this.state.favorite);
   }
   handeltext(e: any) {
@@ -129,40 +129,44 @@ export default class Tip extends Component<Props, State> {
   favorite() {
     var { userinfo }: any = store.getState().UserReducer;
     var user_id = JSON.parse(userinfo)._id;
-    if (this.state.isFavorite === false) {
-      // console.log(this.stat);
-      axios
-        .post(`/api/favorites/`, {
-          user_id: user_id,
-          tip_id: this.state.tip._id,
-          tip_img: this.state.tip.tip_img,
-          tip_title: this.state.tip.tip_title,
-          user_name: this.state.tip.user_name,
-        })
-        .then((res) => {
-          this.setState({
-            isFavorite: true,
+    if (JSON.parse(userinfo)._id !== null) {
+      if (this.state.isFavorite === false) {
+        // console.log(this.stat);
+        axios
+          .post(`/api/favorites/`, {
+            user_id: user_id,
+            tip_id: this.state.tip._id,
+            tip_img: this.state.tip.tip_img,
+            tip_title: this.state.tip.tip_title,
+            user_name: this.state.tip.user_name,
+          })
+          .then((res) => {
+            this.setState({
+              isFavorite: true,
+            });
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
           });
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    if (this.state.isFavorite === true) {
-      var _id = this.state.favorite[0]["_id"];
-      console.log(_id);
-      axios
-        .post(`/api/updatefavorite`, { _id: _id }, configdata)
-        .then((res) => {
-          console.log(res);
-          this.setState({
-            isFavorite: false,
+      }
+      if (this.state.isFavorite === true) {
+        var _id = this.state.favorite[0]["_id"];
+        console.log(_id);
+        axios
+          .post(`/api/updatefavorite`, { _id: _id }, configdata)
+          .then((res) => {
+            console.log(res);
+            this.setState({
+              isFavorite: false,
+            });
+          })
+          .catch((err) => {
+            console.log(err);
           });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      }
+    } else {
+      return <p>please make sure you are logged in first</p>;
     }
   }
 

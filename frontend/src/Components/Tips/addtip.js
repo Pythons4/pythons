@@ -84,70 +84,67 @@ export default class AddTip extends Component {
     }
     render() {
         return (
-            <div>
-                <div className="d-flex justify-content-center shadow" style={{ borderRadius: '5px', paddingTop: '10px', width: '1150px', height: "700px", marginLeft: 'auto', marginRight: 'auto', marginBottom: '50px', backgroundImage: "url('https://i.imgur.com/QpTKnYk.png')", backgroundRepeat: 'no-repeat', backgroundPosition: '0px 0px 0px 0px', backgroundSize: '100%' }}>
-                    {/* <div className="sideimg">
-                 <img src="https://i.imgur.com/1cf1Eds.png" id='sideimg'></img>
-             </div> */}
+            <div >
+                <div className='cont'>
 
-                    <Container style={{ marginRight: '0', marginLeft: '0', marginTop: '25px', backgroundColor: 'white', borderRadius: '10px', width: '45%', height: '96%' }}>
-                        <h3 className='incenter h3font '>Share your knowledge with our community</h3>
-                        <form>
-                            <Grid container spacing={3}>
-                                <Grid item xs={12}>
-                                    <Grid container spacing={2}>
-                                        <Grid item xs={12}>
-                                            <TextField
-                                                fullWidth
-                                                label="tip_text"
-                                                name="tip_text"
-                                                size="small"
-                                                onChange={this.handeltext}
-                                                variant="outlined" />
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <TextField
-                                                fullWidth
-                                                label="tip_title"
-                                                name="tip_title"
-                                                size="small"
-                                                onChange={this.handeltext}
-                                                variant="outlined" />
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            {/* <TextField
-                                         fullWidth
-                                         label="User Phone Number"
-                                         name="img"
-                                         size="small"
-                                         type="password"
-                                         onChange={this.handelimguplode}
-                                         variant="outlined"
-                                     /> */}
-                                            <input type='file' name='img' onChange={this.handelimguplode}></input>
-                                            {this.state.reviwesoursw && (<img src={this.state.reviwesoursw} id="cloudimg"></img>)}
+
+                    {/* <p>hello</p> */}
+
+                    {/* <img src="https://i.imgur.com/QpTKnYk.png" id='sideimg'></img> */}
+
+                    <div className="d-flex justify-content-center " style={{ textAlign: 'center', width: '35%', height: "100%", marginTop: '-20px' }}>
+
+                        <Container style={{ marginRight: '0', marginLeft: '0', marginTop: '10px', backgroundColor: 'white', width: '100%', height: '100%', borderRight: '4px solid #FACD52', borderLeft: '4px solid #FACD52' }}>
+                            <h3 className='incenter h3font ' style={{ marginTop: '10px' }}>Share your knowledge with our community</h3>
+                            <form>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12}>
+                                        <Grid container spacing={2}>
+                                            <Grid item xs={12}>
+                                                <TextField
+                                                    fullWidth
+                                                    label="tip_text"
+                                                    name="tip_text"
+                                                    size="small"
+                                                    onChange={this.handeltext}
+                                                    variant="outlined" />
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <TextField
+                                                    fullWidth
+                                                    label="tip_title"
+                                                    name="tip_title"
+                                                    size="small"
+                                                    onChange={this.handeltext}
+                                                    variant="outlined" />
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <input type='file' name='img' onChange={this.handelimguplode}></input>
+                                                {this.state.reviwesoursw && (<img src={this.state.reviwesoursw} id="cloudimg"></img>)}
+                                            </Grid>
                                         </Grid>
                                     </Grid>
-                                </Grid>
 
-                                <Grid item xs={12}>
-                                    <Link
-                                        to={{
-                                            pathname: `/tips/`
-                                        }}>
-                                        <Button
-                                            onClick={this.handelclikckimg}
-                                            color="primary"
-                                            fullWidth
-                                            type="button"
-                                            variant="contained">
-                                            Share
+                                    <Grid item xs={12} >
+                                        <Link
+                                            to={{
+                                                pathname: `/tips/`
+                                            }}>
+                                            <Button
+                                                onClick={this.handelclikckimg}
+                                                id='share'
+                                                fullWidth
+                                                color="primary"
+                                                type="button"
+                                                variant="contained">
+                                                Share
                              </Button>
-                                    </Link>
+                                        </Link>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </form>
-                    </Container >
+                            </form>
+                        </Container >
+                    </div>
                 </div>
             </div>
         )
