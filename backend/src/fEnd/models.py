@@ -14,7 +14,8 @@ class Users(models.Model):
     user_email = models.EmailField()
     user_password = models.TextField()
     user_phon = models.TextField()
-    user_img = models.TextField()
+    user_img = models.TextField(
+        default='https://ronaldmottram.co.nz/wp-content/uploads/2019/01/default-user-icon-8.jpg')
     user_bio = models.TextField()
 
 
@@ -24,7 +25,8 @@ class Admin(models.Model):
     admin_name = models.TextField()
     admin_email = models.TextField()
     admin_password = models.TextField()
-    admin_img = models.TextField()
+    admin_img = models.TextField(
+        default='https://ronaldmottram.co.nz/wp-content/uploads/2019/01/default-user-icon-8.jpg')
     # objects = models.DjongoManager()
 
 

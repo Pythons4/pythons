@@ -3,9 +3,6 @@ import store from '../../store';
 import PopUp from './addProductPopUp'
 import AdimApproveServices from './approved'
 
-interface Test {
-    admininfo: any
-}
 function App() {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -13,7 +10,7 @@ function App() {
         setIsOpen(!isOpen);
     }
 
-    var test: Test = store.getState().AdminReduser
+    var test: any = store.getState().AdminReduser
 
     console.log(test.admininfo)
     return <div>
@@ -30,7 +27,7 @@ function App() {
             onClick={togglePopup}
         />
 
-        <AdimApproveServices services=''></AdimApproveServices>
+        {/* <AdimApproveServices services=''></AdimApproveServices> */}
 
     </div>
 }

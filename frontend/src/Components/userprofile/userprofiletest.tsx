@@ -8,13 +8,11 @@ import EmailIcon from '@material-ui/icons/Email';
 import CallIcon from '@material-ui/icons/Call';
 import Posts from "./tabs";
 
+
 import { signout } from "../../store/actions/userActions";
 import "./user.css";
 import "./profilestyle.css";
 
-// interface Test {
-//   userinfo: any;
-// }
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenbio, setIsOpenbio] = useState(false);
@@ -39,7 +37,7 @@ function App() {
       <div className="container">
         <div className="profile-header">
           <div className="profile-img">
-            <img src={JSON.parse(test.userinfo).user_img} />
+            <img src={JSON.parse(test.userinfo).user_img} alt='usrimg' />
           </div>
           <div className="profile-nav-inf">
             <h3 className="user-name">{JSON.parse(test.userinfo).user_name}</h3>

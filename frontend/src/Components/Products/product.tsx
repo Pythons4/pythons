@@ -31,13 +31,13 @@ export class Product extends Component<{}, any> {
         console.log(this.state.products)
         return (
 
-            <div className='product__lists'>
+            <div >
                 <div className='product__img'>
-                    {/* <img src='https://cdn.simplegreen.com/images/news_media/9-spring-cleaning-tips-made-simple-large.jpg' /> */}
 
 
 
-                    <div className='product__buttuns'>
+
+                    <div className='product__buttons'>
 
                         <Link to={{
                             //pass the tools product to tools page
@@ -45,7 +45,7 @@ export class Product extends Component<{}, any> {
                             state: this.state.products.product,
                         }}
                             style={{ textDecoration: "none" }}>
-                            <Button style={{ borderRadius: '5px', paddingTop: '20px', width: '50%', height: "45px", marginLeft: 'auto', marginRight: 'auto' }} color="primary" variant="contained" >Product Tools</Button>
+                            <Button id='btn' style={{ backgroundColor: '#B2D3EF' }} variant="contained" >Product Tools</Button>
                         </Link>
 
                         <Link to={{
@@ -54,7 +54,7 @@ export class Product extends Component<{}, any> {
                             state: this.state.products.material,
                         }}
                             style={{ textDecoration: "none" }}>
-                            <Button id='btnn' style={{ borderRadius: '5px', paddingTop: '20px', width: '50%', height: "45px", marginLeft: 'auto', marginRight: 'auto' }} color="primary" variant="contained" size="large">Product Materials</Button>
+                            <Button id='btn' style={{ backgroundColor: '#B2D3EF' }} variant="contained" >Product Materials</Button>
                         </Link>
 
                     </div>

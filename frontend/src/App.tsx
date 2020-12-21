@@ -15,13 +15,11 @@ import CofirmBuy from "./Components/Products/confirmbuying";
 import AllTips from "./Components/Tips/TipsPage";
 import Tip from "./Components/Tips/Tip";
 import UserProfileTest from "./Components/userprofile/userprofiletest";
-
 import AdminSignIn from "./Components/Admin/Signinpage";
 import AdminProfile from "./Components/Admin/adminprofile";
-import { IconButton } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+
 
 
 class App extends React.Component<{}, any> {
@@ -32,13 +30,9 @@ class App extends React.Component<{}, any> {
   render() {
     return (
       <Router>
-        <ReactNotification />
         <Navbar />
-        <Link to={{ pathname: `/cart` }}>
-          <IconButton color="primary" component="span">
-            <ShoppingCartIcon fontSize="large" />
-          </IconButton>
-        </Link>
+        <ReactNotification />
+
         <Switch>
           <Route exact path="/" render={() => <Homepage />} />
           <Route exact path="/homepage" render={() => <Homepage />} />
@@ -61,6 +55,7 @@ class App extends React.Component<{}, any> {
           <Route path="/cart/confirm" exact component={CofirmBuy} />
 
           <Route path="/profiletest" exact component={UserProfileTest} />
+          <Route path="/adminprofile" exact component={AdminProfile} />
 
           <Route path="/adminSignin" exact component={AdminSignIn} />
         </Switch>
