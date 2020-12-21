@@ -39,26 +39,3 @@
    ```
    npm start
    ```
-
-
-
-
-
-
-
-Message Belal abuhani, Hanadi Sabarnah, Qamar Jaradat
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

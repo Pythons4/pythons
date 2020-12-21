@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import axios from "axios"
 import ServicesCard from "./ServiceCard"
 import setService from "../../store/actions/servicesAction"
-import { connect, useDispatch, useSelector } from "react-redux"
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import FormOnCard from "./FormOnCard"
+import { connect } from "react-redux"
+import Popup from './popupinfoedit'
 
 class Services extends Component<{ services: any, setService: any }> {
     state = {
@@ -16,60 +14,40 @@ class Services extends Component<{ services: any, setService: any }> {
         isShow: false
 
     }
-    componentDidMount() {
-        // this.props.setService()
-
-        // axios.get('/api/services/')
-        //     .then((response) => {
-        //         console.log(response.data)
-        //         this.setState({ data: response.data })
-
-        //     })
-    }
-
     onclick = (data: any) => {
         this.setState({
             data,
         })
-        if (this.state.isShow === false) {
-            this.setState({
+        this.setState({
 
-                isShow: !this.state.isShow
-            })
-        }
-        console.log(data)
+            isShow: !this.state.isShow
+        })
         return data
     }
 
     render() {
-
         var price: any, imge: any, name: any;
+        var check = true
         let ser: any = this.props.services.map(((serv: any) => {
             price = serv.service_price;
             imge = serv.service_img;
             name = serv.service_name;
+            check = false
             return < ServicesCard price={price} imge={imge} name={name} onclick={this.onclick} />
         }))
 
-        let card = < FormOnCard data={this.state.data} />
-
-        // console.log(ser, "props")
-
         return (
-            <div className="d-flex row justify-content-between " >
-                <div className="d-flex row  col-8 " >
-                    {ser}
+            <div className="d-flex justify-content-around" style={{ marginTop: '40px', paddingBottom: '20px' }}>
+                <div className="d-flex row" >
+                    {check ? <img alt='serviceimg' src='https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif' style={{ width: '230px' }}></img> : ser}
                 </div >
 
-                <div className="col-4 ">
-
-                    {this.state.isShow && card}
-
-                </div>
-
-                {/* {this.props.services} */}
-                {/* < ServicesCard price={price} imge={imge} name={name} /> */}
-
+                {(this.state.isShow && true) && (
+                    <Popup
+                        data={this.state.data}
+                        handleClose={this.onclick}
+                    />
+                )}
             </div >
         )
     }
@@ -83,14 +61,4 @@ function mapStateToProps(state: any) {
     }
 }
 
-// function mapDispatchToProps(dispatch: any) {
-//     return {
-//         getServices: () => async dispatch({ type: "SET_SERVICES" })
-
-//     }
-// }
-
-
-
 export default connect(mapStateToProps, setService)(Services)
-// export default Services
