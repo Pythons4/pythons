@@ -27,7 +27,10 @@ class UserServeces extends React.Component {
 
                 console.log(res.data);
 
-                this.setState({ UserService: res.data })
+                this.setState({
+                    UserService:
+                        res.data.filter(service => service.user_service_approv)
+                })
 
             })
 
