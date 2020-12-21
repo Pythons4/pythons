@@ -15,10 +15,18 @@ export default class Footer extends Component {
 
                         <ul className="list-unstyled textstyle">
                             <li>
-                                <p> We make your place</p>
+                                <p> We are a company  </p>
                             </li>
                             <li>
-                                <p> look perfect</p>
+                                <p>specialized  in providing   </p>
+                            </li>
+                            <li>
+                                <p>the best cleaning services</p>
+
+                            </li>
+                            <li>
+                                <p>in the country</p>
+
                             </li>
 
 

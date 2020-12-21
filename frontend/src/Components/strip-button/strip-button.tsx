@@ -1,6 +1,8 @@
 import StripeCheckOut from "react-stripe-checkout";
 import buyWhatInCart from "../../store/actions/buywhatincart";
 import store from "../../store";
+import './stylestrip.css'
+import { Button } from '@material-ui/core';
 
 interface Props {
   price: any;
@@ -34,16 +36,19 @@ function StripeCheckOutButton(props: Props) {
 
   return (
     <StripeCheckOut
-      label="confirm && Pay Now"
+      label="Checkout"
       name="Products"
       shippingAddress
       billingAddress
-      description={`your total${props.price}`}
+      description={`your total ${props.price}₪`}
       amount={priceStripe}
       panelLabel="Give Money"
       token={onToken}
       stripeKey={key}
-    />
+
+    >
+      <Button style={{ color: 'white', fontWeight: 600, fontSize: '10px', outline: 'none' }} >Checkout</Button>
+    </StripeCheckOut>
   );
 }
 export default StripeCheckOutButton;

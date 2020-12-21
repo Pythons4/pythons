@@ -30,10 +30,14 @@ export class Product extends Component<{}, any> {
     render() {
         console.log(this.state.products)
         return (
-            <div>
+
+            <div >
                 <div className='product__img'>
 
-                    <div className='product__list'>
+
+
+
+                    <div className='product__buttons'>
 
                         <Link to={{
                             //pass the tools product to tools page
@@ -41,7 +45,7 @@ export class Product extends Component<{}, any> {
                             state: this.state.products.product,
                         }}
                             style={{ textDecoration: "none" }}>
-                            <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Tools</Button>
+                            <Button id='btn' style={{ backgroundColor: '#B2D3EF' }} variant="contained" >Product Tools</Button>
                         </Link>
 
                         <Link to={{
@@ -50,13 +54,16 @@ export class Product extends Component<{}, any> {
                             state: this.state.products.material,
                         }}
                             style={{ textDecoration: "none" }}>
-                            <Button style={{ marginLeft: "8px" }} color="primary" variant="contained" size="large">Product Materials</Button>
+                            <Button id='btn' style={{ backgroundColor: '#B2D3EF' }} variant="contained" >Product Materials</Button>
                         </Link>
 
                     </div>
-
                 </div>
             </div>
+
+
+
+
 
         )
     }

@@ -46,8 +46,9 @@
 
 @media screen and (max-width: 768px) {
   .container-img > p {
-    font-size: 30px;
+    font-size: 40px;
     margin-top: -100px;
+    font-weight:800
   }
 
 
@@ -123,7 +124,7 @@
   }
   .textstyle{
     color: white;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-family: 'Pridi', serif;
     text-transform: uppercase;
     font-weight: 100;
