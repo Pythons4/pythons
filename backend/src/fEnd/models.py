@@ -62,6 +62,8 @@ class Tip(models.Model):
     user_id = models.TextField()
     user_name = models.TextField()
     tip_date = models.DateTimeField(auto_now_add=True)
+    tip_comments = models.IntegerField(default=0)
+    tip_fav = models.IntegerField(default=0)
 
     def __str__(self):
         return self.tip_title

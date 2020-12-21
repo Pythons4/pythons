@@ -180,6 +180,7 @@ export default class Tip extends Component<Props, State> {
             <p className='tipdescription'>{this.state.tip.tip_text} </p>
             <div className='d-flex justify-content-between favdatestyle'>
               <div>
+                {/* add the tip to favorite or remove it */}
                 <Button onClick={this.favorite} style={{ outline: 'none', color: '#C70039', width: '20px', fontSize: '12px' }}>
                   {this.state.isFavorite ? <FavoriteIcon style={{ fontSize: 26 }} /> : <FavoriteBorderIcon style={{ fontSize: 26 }} />}
                 50
