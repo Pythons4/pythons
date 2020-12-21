@@ -82,9 +82,10 @@ class TipCommints(models.Model):
     _id = models.ObjectIdField()
     tip_id = models.TextField()
     user_name = models.TextField()
+    user_img = models.TextField()
     commint_text = models.TextField()
+    commint_date = models.DateTimeField(auto_now=True)
     objects = models.DjongoManager()
-    commintdate = models.DateTimeField(auto_now=True)
 
 
 # Products table

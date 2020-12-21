@@ -2,11 +2,13 @@
 
 .profile-header {
 	background: #E4E4E1;
-	width: 100%;
+	width: 124%;
 	display: flex;
 	height: 190px;
 	position: relative;
 	box-shadow: 0px 3px 4px rgba(0,0,0,.2);
+	margin-left:-150px;
+	
 
 } 
 
@@ -25,8 +27,8 @@
 	/* position: absolute; */
 	margin-top: 40px;
 	margin-left:45px;
-	left: 20px;
-	top: 40px;
+	/* left: 20px;
+	top: 40px; */
 	z-index: 5;
 	background: #fff;
 }
@@ -71,15 +73,17 @@
 	box-shadow: 0px 3px 5px rgba(0,0,0,.2);
 	padding: 90px 30px 20px;
 	font-family: 'Times New Roman', Times, serif;
-	margin-left:120px;
-	height: 400px;
-	z-index: 99;
+	/* margin-left:80px; */
+	height: 100%;
+	/* margin-left:-150px; */
+	/* z-index: 99; */
+	margin-right:0px;
 	
 	
 }
 
 .profile-side p {
-	margin-bottom: 7px;
+	margin-bottom: 30px;
 	margin-top: 15px;
 
 	color: black;
@@ -89,10 +93,10 @@
 
 }
 
-.profile-side p i {
+/* .profile-side p i {
 	color:var(--color);
 	margin-right:10px ;
-}
+} */
 
 .button.button-img,
 .button.button-bio{
@@ -106,7 +110,7 @@
 	/* margin: 5px 2px; */
 	cursor: pointer;
 	outline: none;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	/* box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.3); */
 	color: black;
 
@@ -146,7 +150,7 @@ justify-items: ;
 
 .nav  {	
 	/* z-index: -1; */
-	padding-left: 10px;	
+	margin-left: 10px;	
 
 }
 
@@ -305,66 +309,5 @@ justify-items: ;
                        
 }
 
-
-
-@media(max-width:1100px){
-	/* .profile-side{
-		width:25px;
-		padding:90px 15px 20px;
-	}
-	.profile-img img{
-		height:200px;
-		width:200px;
-		left:50px;
-		top:10px
-	} */
-}
-@media(max-width:900px){
-	body{
-		margin:0 20px;
-	}
-	.profile-header{
-		display:flex;
-		height:100%;
-		flex-direction:colum;
-		text-align:center;
-		padding-bottom:20px;
-	}
-	.profile-img{
-		float:left;
-		width:100%;
-		height:200px;
-	}
-	.profile-img img {
-		/* position:relative; */
-		left:0;
-	}
-	.profile-nav-info{
-		text-align: center;
-		margin-left: 17px;
-	}
-	.main-bd{
-		flex-direction: column;
-		padding-right: 0px;
-
-	}
-	.profile-side{
-		width: 93%;
-		text-align: center;
-		padding:20px;
-		margin:5px 17px 0px ;
-	}
-	@media(max-width:400px){
-		body{
-			margin:0;
-		}
-		.profile-header h3{
-			font-size: 1.7rem;
-		}
-		.profile-header p{
-			font-size: .9rem;
-		}
-	}
-}
 
 
