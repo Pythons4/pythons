@@ -48,7 +48,6 @@ export default class Tip extends Component<Props, State> {
       commints: [],
       favorite: [],
       isFavorite: false,
-      // isLoaded: false,
     };
     this.handelcliking = this.handelcliking.bind(this);
     this.handeltext = this.handeltext.bind(this);
@@ -58,8 +57,9 @@ export default class Tip extends Component<Props, State> {
 
   componentDidMount() {
     var tip_id = this.state.tip._id;
-    var { userinfo }: any = store.getState().UserReducer;
-    var user_id = JSON.parse(userinfo)._id;
+
+    var { userid }: any = store.getState().UserReducer;
+    var user_id = JSON.parse(userid);
     //retrive the commints 4 the tip
     axios
       .get(`/api/tipcomments/${tip_id}/`)
@@ -71,17 +71,19 @@ export default class Tip extends Component<Props, State> {
       .catch((err) => {
         console.log(err);
       });
-    axios.get(`/api/favorites/${user_id}/`).then((res) => {
-      res.data.map((element: any, i: number) => {
-        if (element.tip_id === this.state.tip._id) {
-          this.state.favorite.push(res.data[i]);
-          console.log(this.state.favorite);
-          this.setState({
-            isFavorite: true,
-          });
-        }
+    if (user_id !== null) {
+      axios.get(`/api/favorites/${user_id}/`).then((res) => {
+        res.data.map((element: any, i: number) => {
+          if (element.tip_id === this.state.tip._id) {
+            this.state.favorite.push(res.data[i]);
+            console.log(this.state.favorite);
+            this.setState({
+              isFavorite: true,
+            });
+          }
+        });
       });
-    });
+    }
   }
 
   handelcliking() {
@@ -104,7 +106,7 @@ export default class Tip extends Component<Props, State> {
         .catch((err) => {
           console.log(err);
         });
-    }
+    } else return <p>please make sure you are logged in first</p>;
     console.log(this.state.favorite);
   }
   handeltext(e: any) {
@@ -117,40 +119,44 @@ export default class Tip extends Component<Props, State> {
   favorite() {
     var { userinfo }: any = store.getState().UserReducer;
     var user_id = JSON.parse(userinfo)._id;
-    if (this.state.isFavorite === false) {
-      // console.log(this.stat);
-      axios
-        .post(`/api/favorites/`, {
-          user_id: user_id,
-          tip_id: this.state.tip._id,
-          tip_img: this.state.tip.tip_img,
-          tip_title: this.state.tip.tip_title,
-          user_name: this.state.tip.user_name,
-        })
-        .then((res) => {
-          this.setState({
-            isFavorite: true,
+    if (JSON.parse(userinfo)._id !== null) {
+      if (this.state.isFavorite === false) {
+        // console.log(this.stat);
+        axios
+          .post(`/api/favorites/`, {
+            user_id: user_id,
+            tip_id: this.state.tip._id,
+            tip_img: this.state.tip.tip_img,
+            tip_title: this.state.tip.tip_title,
+            user_name: this.state.tip.user_name,
+          })
+          .then((res) => {
+            this.setState({
+              isFavorite: true,
+            });
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
           });
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    if (this.state.isFavorite === true) {
-      var _id = this.state.favorite[0]["_id"];
-      console.log(_id);
-      axios
-        .post(`/api/updatefavorite`, { _id: _id }, configdata)
-        .then((res) => {
-          console.log(res);
-          this.setState({
-            isFavorite: false,
+      }
+      if (this.state.isFavorite === true) {
+        var _id = this.state.favorite[0]["_id"];
+        console.log(_id);
+        axios
+          .post(`/api/updatefavorite`, { _id: _id }, configdata)
+          .then((res) => {
+            console.log(res);
+            this.setState({
+              isFavorite: false,
+            });
+          })
+          .catch((err) => {
+            console.log(err);
           });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      }
+    } else {
+      return <p>please make sure you are logged in first</p>;
     }
   }
 
@@ -183,15 +189,11 @@ export default class Tip extends Component<Props, State> {
               post
             </button>
           </form>
-          {/* { if (!isLoaded) {
-      return <div>Loading ... </div>;
-    } else {
-      return( */}
+
           <div
             className="d-flex flex-wrap justify-content-around catdiv"
             style={{ marginBottom: "50px", marginTop: "18px" }}
           >
-            {/* tip commints  */}
             {this.state.commints &&
               this.state.commints.map((element: any, i: number) => (
                 <div key={i} style={{ textAlign: "center", marginTop: "45px" }}>

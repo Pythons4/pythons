@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import store from "../../store";
 import { GET_ALL } from "../../store/actions/getalltips";
+import PostAddSharpIcon from "@material-ui/icons/PostAddSharp";
 // import {
 //   CardGroup,
 //   Card,
@@ -16,9 +17,11 @@ import { GET_ALL } from "../../store/actions/getalltips";
 // } from "reactstrap";
 export class Tips extends Component<{}, any> {
   constructor(props: {} | Readonly<{}>) {
+    var { userid }: any = store.getState().UserReducer;
     super(props);
     this.state = {
       tips: store.getState().tipsReducer,
+      user_id: JSON.parse(userid),
     };
   }
 
@@ -32,9 +35,34 @@ export class Tips extends Component<{}, any> {
     });
   }
   render() {
-
+    // console.log(this.state.user_id);
     return (
       <div>
+        <div
+          style={{
+            display: "inline-block",
+            fontFamily: "Poly",
+            color: "#A04D25",
+          }}
+        >
+          {this.state.user_id && this.state.tips.tips && (
+            <h3>Share your tip</h3>
+          )}
+        </div>
+        <div
+          style={{
+            display: "inline-block",
+            paddingLeft: "10px",
+          }}
+        >
+          {this.state.user_id && this.state.tips.tips && (
+            <PostAddSharpIcon
+              color="primary"
+              style={{ fontSize: 30 }}
+              onClick={(event) => (window.location.href = "tip/add")}
+            />
+          )}
+        </div>
         <div
           className="d-flex flex-wrap justify-content-around "
           style={{
@@ -42,7 +70,7 @@ export class Tips extends Component<{}, any> {
             padding: "10px",
           }}
         >
-          {this.state.tips.tips ?
+          {this.state.tips.tips ? (
             this.state.tips.tips.map(
               (
                 element: {
@@ -82,7 +110,7 @@ export class Tips extends Component<{}, any> {
                         borderTopRightRadius: "15px",
                       }}
                       alt="tip"
-                    // className="imgstyle"
+                      // className="imgstyle"
                     ></img>
                     <div
                       style={{
@@ -118,51 +146,14 @@ export class Tips extends Component<{}, any> {
                   </Link>
                 </div>
               )
-            ) : <img src='https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif' style={{ width: '230px' }}></img>}
+            )
+          ) : (
+            <img
+              src="https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif"
+              style={{ width: "230px" }}
+            ></img>
+          )}
         </div>
-        {/* <CardDeck>
-          {this.state.tips.tips &&
-            this.state.tips.tips.map(
-              (
-                element: {
-                  tip_text: string;
-                  tip_img: string;
-                  _id: string;
-                  tip_title: string;
-                  user_name: string;
-                },
-                i: number
-              ) => (
-                <Card
-                  key={i}
-                  // className="d-flex flex-wrap justify-content-around "
-                  // style={{
-                  //   marginBottom: "50px",
-                  //   marginTop: "18px",
-                  //   // borderRadius: "50px",
-                  // }}
-                  style={{ width: "18rem" }}
-                >
-                  <Link
-                    to={{
-                      pathname: `/tips/tip/${element._id}`,
-                      state: { tip: element },
-                    }}
-                  >
-                    <CardImg
-                      variant="top"
-                      src={element.tip_img}
-                      style={{ maxHeight: "100%", maxWidth: "100%" }}
-                    />
-                    <CardBody>
-                      <CardTitle>{element.tip_title}</CardTitle>
-                      <CardText>By: {element.user_name}</CardText>
-                    </CardBody>
-                  </Link>
-                </Card>
-              )
-            )}
-        </CardDeck> */}
       </div>
     );
   }
