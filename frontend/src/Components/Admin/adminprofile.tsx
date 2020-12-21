@@ -27,7 +27,7 @@ function App() {
             onClick={togglePopup}
         />
 
-        {/* <AdimApproveServices services=''></AdimApproveServices> */}
+        <AdimApproveServices services=''></AdimApproveServices>
 
     </div>
 }
