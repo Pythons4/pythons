@@ -1,19 +1,31 @@
 //main tips page
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import "./TipsPage.css";
 import store from "../../store";
 import { GET_ALL } from "../../store/actions/getalltips";
+import PostAddSharpIcon from "@material-ui/icons/PostAddSharp";
+// import {
+//   CardGroup,
+//   Card,
+//   Button,
+//   CardImg,
+//   CardTitle,
+//   CardText,
+//   CardDeck,
+//   CardSubtitle,
+//   CardBody,
+// } from "reactstrap";
 export class Tips extends Component<{}, any> {
   constructor(props: {} | Readonly<{}>) {
+    var { userid }: any = store.getState().UserReducer;
     super(props);
     this.state = {
       tips: store.getState().tipsReducer,
+      user_id: JSON.parse(userid),
     };
   }
 
-  //get all product from database (via GET_ALL action)
+  //get all tips from database (via GET_ALL action)
   componentDidMount() {
     store.dispatch(GET_ALL());
     store.subscribe(() => {
@@ -23,11 +35,42 @@ export class Tips extends Component<{}, any> {
     });
   }
   render() {
-    console.log(this.state.tips.tips);
+    // console.log(this.state.user_id);
     return (
       <div>
-        <div className="tips_list">
-          {this.state.tips.tips &&
+        <div
+          style={{
+            display: "inline-block",
+            fontFamily: "Poly",
+            color: "#A04D25",
+          }}
+        >
+          {this.state.user_id && this.state.tips.tips && (
+            <h3>Share your tip</h3>
+          )}
+        </div>
+        <div
+          style={{
+            display: "inline-block",
+            paddingLeft: "10px",
+          }}
+        >
+          {this.state.user_id && this.state.tips.tips && (
+            <PostAddSharpIcon
+              color="primary"
+              style={{ fontSize: 30 }}
+              onClick={(event) => (window.location.href = "tip/add")}
+            />
+          )}
+        </div>
+        <div
+          className="d-flex flex-wrap justify-content-around "
+          style={{
+            marginBottom: "20px",
+            padding: "10px",
+          }}
+        >
+          {this.state.tips.tips ? (
             this.state.tips.tips.map(
               (
                 element: {
@@ -35,10 +78,20 @@ export class Tips extends Component<{}, any> {
                   tip_img: string;
                   _id: string;
                   tip_title: string;
+                  user_name: string;
                 },
                 i: number
               ) => (
-                <div key={i} style={{ textAlign: "center", marginTop: "45px" }}>
+                <div
+                  key={i}
+                  style={{
+                    marginBottom: "60px",
+                    height: "300px",
+                    width: "300px",
+                    position: "relative",
+                    paddingTop: "40px",
+                  }}
+                >
                   <Link
                     to={{
                       pathname: `/tips/tip/${element._id}`,
@@ -47,15 +100,59 @@ export class Tips extends Component<{}, any> {
                   >
                     <img
                       src={element.tip_img}
-                      style={{ cursor: "pointer" }}
+                      style={{
+                        margin: "0",
+                        display: "block",
+                        height: "100%",
+                        width: "100%",
+                        position: "relative",
+                        borderTopLeftRadius: "15px",
+                        borderTopRightRadius: "15px",
+                      }}
                       alt="tip"
-                      className="imgstyle"
+                      // className="imgstyle"
                     ></img>
-                    <p>{element.tip_title} </p>
+                    <div
+                      style={{
+                        backgroundColor: "#e6f0fa",
+                        height: "80px",
+                        marginTop: "-17px",
+                        position: "relative",
+                        borderBottomLeftRadius: "15px",
+                        borderBottomRightRadius: "15px",
+                      }}
+                    >
+                      <p
+                        style={{
+                          marginLeft: "10px",
+                          color: "#A04D25",
+                          fontFamily: "Poly",
+                          fontSize: "20px",
+                        }}
+                      >
+                        {element.tip_title}
+                      </p>
+                      <p
+                        style={{
+                          marginLeft: "10px",
+                          color: "#A04D25",
+                          fontFamily: "Poly",
+                          fontSize: "15px",
+                        }}
+                      >
+                        By: {element.user_name}
+                      </p>
+                    </div>
                   </Link>
                 </div>
               )
-            )}
+            )
+          ) : (
+            <img
+              src="https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif"
+              style={{ width: "230px" }}
+            ></img>
+          )}
         </div>
       </div>
     );

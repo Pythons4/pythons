@@ -3,77 +3,106 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import { useForm } from 'react-hook-form';
+import Alert from '@material-ui/lab/Alert';
 import store from '../../store';
 import { adminsignin } from '../../store/actions/adminActions';
+import '../../Auth/signpage.css'
 
-
-const useStyles = makeStyles((theme) => ({
-    container: {
-        padding: theme.spacing(3),
+class SignInPage extends React.Component<{}, { value: string; alert: boolean; adminemail: string; adminPass: string }>{
+    constructor(props: any) {
+        super(props)
+        this.state = {
+            alert: false,
+            value: '',
+            adminemail: '',
+            adminPass: ''
+        }
+        this.onSubmit = this.onSubmit.bind(this)
     }
-}))
 
-interface FormData {
-    email: string;
-    password: string;
-}
+    //user sign in function
+    onSubmit() {
+        store.dispatch(adminsignin({ user_email: this.state.adminemail, user_password: this.state.adminPass }))
+        setTimeout(() => {
+            //check if the email is wrong
+            if (store.getState().UserReducer.error === "wrong email") {
+                this.setState({
+                    value: 'wrong Email',
+                    alert: true
+                })
+            }
+            //check if the password is wrong
+            else if (store.getState().UserReducer.error === "wrong password") {
+                this.setState({
+                    value: 'Wrong Password',
+                    alert: true
+                })
+            }
+            //check if any error accoure
+            else if (store.getState().UserReducer.error === "Somthing Wrong Happened") {
+                this.setState({
+                    value: 'Somthing Wrong Happened',
+                    alert: true
+                })
+            }
+        }, 2500);
+    };
 
-const SignInPage = () => {
-    const classes = useStyles();
-    const { handleSubmit, register } = useForm<FormData>();
+    render() {
+        return (
+            <div className="d-flex justify-content-center shadow" style={{ borderRadius: '5px', paddingTop: '20px', width: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
 
-    const onSubmit = handleSubmit((data) => {
-        console.log(data);
-        store.dispatch(adminsignin({ user_password: data.password, user_email: data.email }))
+                <div className="backimg3">
+                    <h3 className='incenter h3font' style={{ marginBottom: '15px' }}>Welcome Admin!</h3>
+                </div>
 
-    });
-    return (
-        <Container className={classes.container} maxWidth="xs">
-            <form>
-                <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                        <Grid container spacing={2}>
+                <Container maxWidth="xs" style={{ marginRight: '0', marginLeft: '0', marginTop: '70px' }}>
+                    <form>
+                        <Grid container spacing={3}>
                             <Grid item xs={12}>
-                                <TextField
-                                    fullWidth
-                                    inputRef={register}
-                                    label="Admin Email"
-                                    name="email"
-                                    size="small"
-                                    variant="outlined" />
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            label="Email"
+                                            name="email"
+                                            size="small"
+                                            onChange={(e) => this.setState({ adminemail: e.target.value })}
+                                            variant="outlined" />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            label="Password"
+                                            name="password"
+                                            size="small"
+                                            type="password"
+                                            onChange={(e) => this.setState({ adminPass: e.target.value })}
+                                            variant="outlined"
+                                        />
+                                    </Grid>
+                                </Grid>
+
+                                {this.state.alert && <>
+                                    <br></br>
+                                    <Alert severity="error">{this.state.value}</Alert></>}
                             </Grid>
                             <Grid item xs={12}>
-                                <TextField
+                                <Button
+                                    onClick={this.onSubmit}
+                                    color="primary"
                                     fullWidth
-                                    inputRef={register}
-                                    label="Admin Password"
-                                    name="password"
-                                    size="small"
-                                    type="password"
-                                    variant="outlined"
-                                />
+                                    type="button"
+                                    variant="contained">
+                                    Sign In
+                                </Button>
                             </Grid>
                         </Grid>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Button
-                            onClick={onSubmit}
-                            color="primary"
-                            fullWidth
-                            type="button"
-                            variant="contained">
-                            Log in
-                        </Button>
-                    </Grid>
-                    <p>Don't have an Account?</p>
-                </Grid>
-            </form>
-
-        </Container >
-
-    )
+                    </form>
+                </Container >
+            </div>
+        )
+    }
 }
 
 export default SignInPage
