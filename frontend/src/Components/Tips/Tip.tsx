@@ -53,6 +53,7 @@ export default class Tip extends Component<Props, State> {
     this.handelcliking = this.handelcliking.bind(this);
     this.handeltext = this.handeltext.bind(this);
     this.favorite = this.favorite.bind(this);
+    console.log(props);
   }
 
   componentDidMount() {
@@ -117,12 +118,14 @@ export default class Tip extends Component<Props, State> {
     var { userinfo }: any = store.getState().UserReducer;
     var user_id = JSON.parse(userinfo)._id;
     if (this.state.isFavorite === false) {
+      // console.log(this.stat);
       axios
         .post(`/api/favorites/`, {
           user_id: user_id,
           tip_id: this.state.tip._id,
           tip_img: this.state.tip.tip_img,
           tip_title: this.state.tip.tip_title,
+          user_name: this.state.tip.user_name,
         })
         .then((res) => {
           this.setState({
@@ -159,6 +162,7 @@ export default class Tip extends Component<Props, State> {
           className="d-flex flex-wrap justify-content-around catdiv"
           style={{ marginBottom: "50px", marginTop: "18px" }}
         >
+          <p>{this.state.tip.user_name} </p>
           <p>{this.state.tip.tip_title} </p>
           <img
             src={this.state.tip.tip_img}

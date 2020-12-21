@@ -15,8 +15,12 @@ import CofirmBuy from "./Components/Products/confirmbuying";
 import AllTips from "./Components/Tips/TipsPage";
 import Tip from "./Components/Tips/Tip";
 import UserProfileTest from "./Components/userprofile/userprofiletest";
-
 import AdminSignIn from "./Components/Admin/Signinpage";
+import AdminProfile from "./Components/Admin/adminprofile";
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+
+
 
 class App extends React.Component<{}, any> {
   constructor(props: {} | Readonly<{}>) {
@@ -27,8 +31,12 @@ class App extends React.Component<{}, any> {
     return (
       <Router>
         <Navbar />
+        <ReactNotification />
+
         <Switch>
+          <Route exact path="/" render={() => <Homepage />} />
           <Route exact path="/homepage" render={() => <Homepage />} />
+          <Route exact path="/" render={() => <Homepage />} />
           <Route path="/product" exact component={Product} />
           <Route path="/product/tools" exact component={ProductTools} />
           <Route path="/product/materials" exact component={ProductMaterials} />
@@ -47,6 +55,7 @@ class App extends React.Component<{}, any> {
           <Route path="/cart/confirm" exact component={CofirmBuy} />
 
           <Route path="/profiletest" exact component={UserProfileTest} />
+          <Route path="/adminprofile" exact component={AdminProfile} />
 
           <Route path="/adminSignin" exact component={AdminSignIn} />
         </Switch>

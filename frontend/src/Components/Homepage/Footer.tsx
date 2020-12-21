@@ -13,7 +13,7 @@ export default class Footer extends Component {
 
                         <h5 className="headertext"  >About us </h5>
 
-                        <ul className="list-unstyled">
+                        <ul className="list-unstyled textstyle">
                             <li>
                                 <p> We make your place</p>
                             </li>
@@ -23,8 +23,8 @@ export default class Footer extends Component {
 
 
                             <li className="d-flex">
-                                <span className="d-block mr-20"><i className="fa fa-facebook-square " style={{ fontSize: "36px" }} ></i></span>
-                                <span className="d-block"> <i className="fa fa-instagram d-inline-block  " style={{ fontSize: "36px" }} ></i></span>
+                                <span className="d-block mr-20"><i className="fa fa-facebook-square " style={{ fontSize: "29px", marginRight: '10px' }} ></i></span>
+                                <span className="d-block"> <i className="fa fa-instagram d-inline-block  " style={{ fontSize: "30px" }} ></i></span>
 
                             </li>
                         </ul>
@@ -32,11 +32,11 @@ export default class Footer extends Component {
                     </div>
 
 
-                    <div className="50">
+                    <div className="50" >
 
                         <h5 className="headertext" >Head office</h5>
 
-                        <ul className="list-unstyled">
+                        <ul className="list-unstyled list-unstyled2 ">
                             <li>
                                 <p> 345 Palestine Street</p>
                             </li>

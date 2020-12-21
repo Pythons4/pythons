@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import axios from "axios"
 import ServicesCard from "./ServiceCard"
 import setService from "../../store/actions/servicesAction"
-import { connect, useDispatch, useSelector } from "react-redux"
+import { connect } from "react-redux"
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import FormOnCard from "./FormOnCard"
 
@@ -56,17 +55,17 @@ class Services extends Component<{ services: any, setService: any }> {
         // console.log(ser, "props")
 
         return (
-            <div className="d-flex row justify-content-between " >
-                <div className="d-flex row  col-8 " >
+            <div className="d-flex justify-content-around" style={{ marginTop: '40px', paddingBottom: '20px' }}>
+                <div className="d-flex row" >
                     {ser}
                 </div >
 
-                <div className="col-4 ">
+                {this.state.isShow && <div className="col-4" >
 
-                    {this.state.isShow && card}
+                    {card}
 
                 </div>
-
+                }
                 {/* {this.props.services} */}
                 {/* < ServicesCard price={price} imge={imge} name={name} /> */}
 
