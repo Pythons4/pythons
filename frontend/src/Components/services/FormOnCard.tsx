@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+
+// interface for props
 interface data {
   data: {
     name: string;
@@ -25,6 +28,7 @@ interface data {
 }
 
 export default function StateTextFields(props: data) {
+
   const [selectedDate, setDate] = React.useState(moment().add(1, 'days').endOf('day'));
   const [inputValue, setInputValue] = React.useState(moment().format("YYYY-MM-DD"));
   const onDateChange = (date: any, value: any) => {
@@ -34,6 +38,8 @@ export default function StateTextFields(props: data) {
   };
 
   const classes = useStyles();
+
+  // hooks state to get data from user (form)
   const [state, setState] = React.useState({
     location: "",
     houres: "",
@@ -42,6 +48,7 @@ export default function StateTextFields(props: data) {
     price: props.data.price,
   });
 
+  //  to save data from user on state (form)
   const handleChange = (e: any) => {
     setState((currentState) => ({
       ...currentState,
@@ -51,7 +58,11 @@ export default function StateTextFields(props: data) {
   };
 
   let { userid }: any = store.getState().UserReducer;
+
+  // send post req after book using axios
   const book = () => {
+
+    // check if there is user login
     if (userid) {
       let serviceData = {
         user_id: JSON.parse(userid),
@@ -66,7 +77,9 @@ export default function StateTextFields(props: data) {
       axios.post("/api/userservice/", serviceData).then(function (response) {
         console.log(response);
       });
-    } else {
+    }
+
+    else {
       alert("you should login");
     }
   };
