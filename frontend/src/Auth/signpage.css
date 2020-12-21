@@ -6,6 +6,11 @@
     margin-top: 30px;
    
   }
+  .shadowtable{
+    box-shadow: 10px 10px #B2D3EF;
+    margin-top: 50px;
+   
+  }
 
   .backimg{
       background-image: url('https://res.cloudinary.com/dve46qnma/image/upload/v1608366628/appimgs/qtqqb8lygpm2ssvb5cwj.jpg');

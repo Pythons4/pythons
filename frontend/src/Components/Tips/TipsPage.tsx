@@ -32,6 +32,7 @@ export class Tips extends Component<{}, any> {
     });
   }
   render() {
+
     return (
       <div>
         <div
@@ -41,7 +42,7 @@ export class Tips extends Component<{}, any> {
             padding: "10px",
           }}
         >
-          {this.state.tips.tips &&
+          {this.state.tips.tips ?
             this.state.tips.tips.map(
               (
                 element: {
@@ -56,7 +57,7 @@ export class Tips extends Component<{}, any> {
                 <div
                   key={i}
                   style={{
-                    marginTop: "70px",
+                    marginBottom: "60px",
                     height: "300px",
                     width: "300px",
                     position: "relative",
@@ -81,7 +82,7 @@ export class Tips extends Component<{}, any> {
                         borderTopRightRadius: "15px",
                       }}
                       alt="tip"
-                      // className="imgstyle"
+                    // className="imgstyle"
                     ></img>
                     <div
                       style={{
@@ -117,7 +118,7 @@ export class Tips extends Component<{}, any> {
                   </Link>
                 </div>
               )
-            )}
+            ) : <img src='https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif' style={{ width: '230px' }}></img>}
         </div>
         {/* <CardDeck>
           {this.state.tips.tips &&

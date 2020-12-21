@@ -11,8 +11,9 @@ const Homepage = (props: any) => {
       <div>
         <div className="container-img">
           <p className="text">
-            Cleaning is hard at first, messy in the middle and gorgeous in the
-            end
+            {/* Cleaning is hard at first, messy in the middle and gorgeous in the
+            end */}
+            We Make Your Place Sparkle <img style={{ width: '44px' }} src='https://res.cloudinary.com/dve46qnma/image/upload/v1608469290/appimgs/qxexrer4ea4dztfiss7o.png'></img>
           </p>
 
           <div className="container-btns">
