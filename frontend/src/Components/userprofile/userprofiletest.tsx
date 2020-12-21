@@ -87,11 +87,10 @@ function App() {
             <p className="date">
               <TimeAgo
                 date={
-                  "Mon Dec 14 2020 16:03:46 GMT+0200 (Israel Standard Time)"
+                  "2020-12-21T11:52:23.259+00:00".replace('00:', '02:')
                 }
               />
             </p>
-            {console.log(new Date())}
           </div>
         </div>
 
