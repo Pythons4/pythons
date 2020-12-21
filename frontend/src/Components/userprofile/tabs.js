@@ -18,18 +18,23 @@ class Posts extends Component {
     render() {
 
         const mystyle = {
-            color: "black",
+            color: "#88BBC7",
             fontSize: "20px",
             padding: "10px",
             fontFamily: "'Times New Roman', Times, serif",
             background: "#E4E4E1",
-            paddingLeft: "50px",
-            // width: "30%",
+            width: "358px",
+            // paddingLeft: "50px",
+            justifyContent: "center",
             cursor: "pointer",
             textAlign: "center",
-            transition: "all .2s ease-in-out",
+            // transition: "all .2s ease-in-out",
+
 
         };
+
+
+
 
         const displayPosts = (
             <Tabs defaultIndex={1} onSelect={index => console.log(index)}>
@@ -45,7 +50,7 @@ class Posts extends Component {
 
                 </TabList >
                 <TabPanel><UserTips /></TabPanel>
-                <TabPanel><UserServeces /></TabPanel>
+                <TabPanel ><UserServeces /></TabPanel>
                 <TabPanel><UserFevarets /></TabPanel>
             </Tabs >
         );

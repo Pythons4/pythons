@@ -18,8 +18,8 @@ const cartReducer = (state: { whatincart: any, cartvalue: any }, action: any) =>
         case 'REMOVE_FROM_CART':
             //remove all product
             if (action.theid === 'remove') {
-                localStorage.removeItem('thecart')
-                return { whatincart: '{}' }
+                localStorage.setItem('thecart', '{}')
+                return { whatincart: localStorage.getItem('thecart') }
             }
             //remove product by its id from whatincart array
             state.whatincart = JSON.parse(localStorage.getItem('thecart') || '{}')
