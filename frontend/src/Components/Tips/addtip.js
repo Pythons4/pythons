@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import { Link } from "react-router-dom";
 
 var postreq = async (file1, tip_text, tip_title) => {
     var userinfo = JSON.parse(store.getState().UserReducer.userinfo);
@@ -73,6 +74,11 @@ export default class AddTip extends Component {
 
     handelclikckimg() {
         postreq(this.state.file, this.state.tip_text, this.state.tip_title)
+        // this.setState({
+        //     tip_text:'',
+        //     tip_title:'',
+        //     reviwesoursw:'',
+        // })
 
     }
     render() {
@@ -124,14 +130,19 @@ export default class AddTip extends Component {
                              </Grid>
                            
                          <Grid item xs={12}>
-                             <Button
-                                 onClick={this.handelclikckimg}
-                                 color="primary"
-                                 fullWidth
-                                 type="button"
-                                 variant="contained">
-                                 Share
+                                 <Link
+                                 to={{
+                                     pathname: `/tips/`
+                                  }}>
+                                     <Button
+                                         onClick={this.handelclikckimg}
+                                         color="primary"
+                                         fullWidth
+                                         type="button"
+                                         variant="contained">
+                                         Share
                              </Button>
+                                 </Link>
                          </Grid>
                      </Grid>
                  </form>
