@@ -10,7 +10,10 @@ import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
 const Navbar = () => {
     var pathname = "/profiletest"
     var { whatincart } = store.getState().cartReducer
-    var count = (Object.keys(JSON.parse(whatincart)).length)
+    var count = 0
+    if (whatincart) {
+        count = (Object.keys(JSON.parse(whatincart)).length)
+    }
     var { userid }: any = store.getState().UserReducer
     var { userinfo }: any = store.getState().UserReducer
 
@@ -54,7 +57,7 @@ const Navbar = () => {
                         <div className='header__profile'>
                             <Link to={pathname} style={{ textDecoration: "none" }}>
                                 {/* <AccountCircleSharpIcon className='header__avatar' style={{ fontSize: 50 }}></AccountCircleSharpIcon> */}
-                                <Avatar className='header__avatar' src={theimg} />
+                                <Avatar style={{ marginTop: '6px' }} className='header__avatar' src={theimg} />
                             </Link>
 
                         </div>
@@ -65,7 +68,7 @@ const Navbar = () => {
                 <Link to={{ pathname: `/cart` }}>
                     {/* <IconButton color="primary" component="span"> */}
 
-                    <Badge badgeContent={count} color="secondary" style={{ marginTop: '10px' }}><ShoppingCartIcon color="primary" style={{ fontSize: 30 }} /></Badge>
+                    <Badge badgeContent={count} color="secondary" style={{ marginTop: '10px' }}><ShoppingCartIcon className='header__avatar' style={{ fontSize: 30 }} /></Badge>
                     {/* </ShoppingCartIcon> */}
                     {/* </IconButton> */}
                 </Link>
