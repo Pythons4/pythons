@@ -1,21 +1,21 @@
-from rest_framework.authtoken.models import Token
-from django.contrib.auth import authenticate
-from django.http import HttpResponse
-from bson.objectid import ObjectId
-from rest_framework.views import APIView
-from django.shortcuts import render
-from rest_framework import viewsets
-from rest_framework.response import Response
+from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, ProductsSerializer, UserProductsSerializer, FavSerializer
+from .models import Tip, Users, Admin, Service, UserService, TipCommints,  Products, UserProducts, Fav
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
-import jwt
-import bcrypt
-from django.conf import settings
-from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, ProductsSerializer, UserProductsSerializer, FavSerializer
-from cloudinary.forms import cl_init_js_callbacks
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.authtoken.models import Token
+from cloudinary.forms import cl_init_js_callbacks
+from django.contrib.auth import authenticate
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from django.http import HttpResponse
+from bson.objectid import ObjectId
+from django.shortcuts import render
+from rest_framework import viewsets
+from django.conf import settings
+import bcrypt
 import json
-from .models import Tip, Users, Admin, Service, UserService, TipCommints,  Products, UserProducts, Fav
+import jwt
 
 
 # tips view/requests (getall and get by user id )
@@ -35,20 +35,8 @@ class TipsView(viewsets.ModelViewSet):
         print(serializer.data)
         return Response(serializer.data)
 
-# update the tip favarray
-# @api_view(['PUT'])
-# @permission_classes([AllowAny])
-# def updateTipFavorite(request):
-#     # print('params')
-#     tip = Tip.objects.get(
-#         _id=ObjectId(request.data['tip_id']))
-#     tip.favorite = request.data['favorite']
-#     tip.save()
-#     serializer = TipsSerializer(tip)
-#     # print(serializer.data)
-#     return Response(serializer.data)
 
-
+# tipscomments view/requests (getall and get by user tip_id )
 class TipCommintsView(viewsets.ModelViewSet):
     serializer_class = TipCommintsSerializer
 
@@ -270,4 +258,13 @@ def updateUserServicesApprove(request):
     userservice.user_service_approv = request.data['approve']
     userservice.save()
     serializer = UserServiceSerializer(userservice)
+    return Response(serializer.data)
+
+
+@ api_view(['POST'])
+@ permission_classes([AllowAny])
+def gettipbyid(request):
+    thetip = Tip.objects.get(
+        _id=ObjectId(request.data['tip_id']))
+    serializer = TipsSerializer(thetip)
     return Response(serializer.data)
