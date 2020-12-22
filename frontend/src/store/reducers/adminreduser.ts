@@ -1,28 +1,34 @@
 const userReducer = (state: any, action: any) => {
     switch (action.type) {
         case 'ADMIN_SIGN_IN':
-            localStorage.setItem('token', JSON.stringify(action.token))
+            localStorage.setItem('adminToken', JSON.stringify(action.adminToken))
             localStorage.setItem('adminid', JSON.stringify(action.adminId._id))
             localStorage.setItem('admininfo', JSON.stringify(action.adminId))
+            window.location.href = '/adminprofile'
 
             return {
-                token: localStorage.getItem('token'), adminid: localStorage.getItem('adminid'),
+                adminToken: localStorage.getItem('adminToken'), adminid: localStorage.getItem('adminid'),
                 admininfo: localStorage.getItem('admininfo')
             }
 
         case 'SIGN_OUT':
-            localStorage.removeItem('token')
+            localStorage.removeItem('adminToken')
             localStorage.removeItem('adminid')
             localStorage.removeItem('admininfo')
+            window.location.href = '/homepage'
+
             return {
-                token: localStorage.getItem('token'), adminid: localStorage.getItem('adminid'),
+                adminToken: localStorage.getItem('adminToken'), adminid: localStorage.getItem('adminid'),
                 admininfo: localStorage.getItem('admininfo')
             }
 
-
+        case 'SIGN-IN_ERROR':
+            return {
+                error: action.value
+            }
         default:
             return {
-                token: localStorage.getItem('token'), adminid: localStorage.getItem('adminid'),
+                adminToken: localStorage.getItem('adminToken'), adminid: localStorage.getItem('adminid'),
                 admininfo: localStorage.getItem('admininfo')
             }
     };

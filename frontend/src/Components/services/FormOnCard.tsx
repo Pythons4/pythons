@@ -1,133 +1,133 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import './server.css'
-import axios from 'axios';
-import store from "../../store"
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import "./server.css";
+import MomentUtils from "@date-io/moment";
+import moment from 'moment'
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
+
+import axios from "axios";
+import store from "../../store";
 const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "25ch",
     },
+  },
 }));
+
+
+// interface for props
 interface data {
-    data: {
-        name: string,
-        price: string
-    }
+  data: {
+    name: string;
+    price: string;
+  };
 }
 
-
 export default function StateTextFields(props: data) {
-    const classes = useStyles();
-    const [state, setState] = React.useState({ location: "", houres: "", date: "", name: props.data.name, price: props.data.price });
 
-    const handleChange = (e: any) => {
-        setState(currentState => ({
-            ...currentState,
-            [e.target.name]: e.target.value
-        })
+  const [selectedDate, setDate] = React.useState(moment().add(1, 'days').endOf('day'));
+  const [inputValue, setInputValue] = React.useState(moment().format("YYYY-MM-DD"));
+  const onDateChange = (date: any, value: any) => {
+    setDate(date);
+    setInputValue(value);
+    console.log(inputValue)
+  };
 
-        )
-        console.log(state, "belalala")
+  const classes = useStyles();
+
+  // hooks state to get data from user (form)
+  const [state, setState] = React.useState({
+    location: "",
+    houres: "",
+    date: "",
+    name: props.data.name,
+    price: props.data.price,
+  });
+
+  //  to save data from user on state (form)
+  const handleChange = (e: any) => {
+    setState((currentState) => ({
+      ...currentState,
+      [e.target.name]: e.target.value,
+    }));
+    console.log(state, "belalala");
+  };
+
+  let { userid }: any = store.getState().UserReducer;
+
+  // send post req after book using axios
+  const book = () => {
+
+    // check if there is user login
+    if (userid) {
+      let serviceData = {
+        user_id: JSON.parse(userid),
+        service_name: state.name,
+        user_service_date: inputValue,
+        user_service_hours: state.houres,
+        user_service_location: state.location,
+        user_service_price: state.price,
+      };
+      console.log(serviceData);
+
+      axios.post("/api/userservice/", serviceData).then(function (response) {
+        console.log(response);
+      });
     }
 
-    let { userid }: any = store.getState().UserReducer
-
-
-    // user_id = models.TextField()
-    // service_name = models.TextField()
-    // user_service_location = models.TextField()
-    // user_service_date = models.DateField()
-    // user_service_hours = models.IntegerField()
-
-
-    const book = () => {
-        if (userid) {
-            let serviceData = {
-                user_id: JSON.parse(userid),
-                service_name: state.name,
-                user_service_date: state.date,
-                user_service_hours: state.houres,
-                user_service_location: state.location
-            }
-            console.log(serviceData)
-
-            axios.post('/api/userservice/', serviceData)
-                .then(function (response) {
-                    console.log(response);
-                })
-        } else {
-
-            alert("you should login")
-        }
-
-
-        // axios.post('/api/userservice/', {
-
-
-        // })
-        //     .then(function (response) {
-        //         console.log(response);
-        //     })
+    else {
+      alert("you should login");
     }
+  };
 
+  return (
+    <form className={classes.root} noValidate autoComplete="off">
+      <div id="forForm">
+        <h3>{props.data.name}</h3>
+        <h4>{props.data.price} / hour</h4>
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <KeyboardDatePicker
+            id="outlined-name"
+            label="Date"
+            name="date"
+            minDate={moment().add(1, 'days').endOf('day')}
+            value={selectedDate}
+            format="YYYY-MM-DD"
+            // inputValue={inputValue}
+            onChange={onDateChange}
+            KeyboardButtonProps={{
+              "aria-label": "change date",
+            }}
+          />
+        </MuiPickersUtilsProvider>
 
-        ;
-    return (
-        <form className={classes.root} noValidate autoComplete="off">
-
-            <div id="forForm">
-                <br /><br /><br />
-
-                <h3>{props.data.name}</h3>
-                <h4>{props.data.price}</h4>
-
-                <TextField
-                    id="outlined-name"
-                    // label="Date"
-                    type="date"
-                    name="date"
-                    onChange={handleChange}
-                    // {(e) => {
-                    //     setState(currentState => ({
-                    //         ...currentState,
-                    //         date: e.target.value
-
-
-                    //     })
-
-                    //     )
-                    // }}
-
-                    variant="outlined"
-                />
-                <TextField
-                    id="outlined-uncontrolled"
-                    label="Hours"
-                    type="number"
-                    name="houres"
-                    onChange={handleChange}
-
-                    variant="outlined"
-                />
-                <TextField
-                    id="outlined-uncontrolled"
-                    label="Location"
-                    // value="Some Where"
-                    name="location"
-                    onChange={handleChange}
-
-                    variant="outlined"
-                /><br /><br />
-
-                <Button onClick={book} id="forButton" variant="contained" color="primary">
-                    Submit
-                </Button>
-            </div>
-        </form>
-    );
+        <TextField
+          id="standard-secondary"
+          label="Hours"
+          type="number"
+          name="houres"
+          onChange={handleChange}
+        />
+        <TextField
+          id="standard-secondary"
+          label="Location"
+          name="location"
+          onChange={handleChange}
+        />
+        <br />
+        <Button
+          onClick={book}
+          id="forButton"
+          variant="contained"
+          color="primary"
+        >
+          Submit
+        </Button>
+      </div>
+    </form >
+  );
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios';
-import UserTip from './usertip'
-// import './user.css'
-// import store from "../../store"
+import store from "../../store"
+import './user.css'
+
 
 
 
@@ -12,40 +12,63 @@ class UserTips extends React.Component {
         this.state = {
             UserTips: []
         }
-        // console.log(props)
+
     }
 
 
     componentDidMount() {
-        axios.get('api/tips/')
-            .then(res => {
+        var { userid } = store.getState().UserReducer
 
-                console.log(res.data);
+        var id = JSON.parse(userid)
 
-                this.setState({ UserTips: res.data })
+        axios.get(`api/tips/${id}`).then(res => {
 
-            })
+            this.setState({ UserTips: res.data })
 
-            .catch((error) => {
-                console.log(error);
-            })
+        })
+
+
     }
 
-    
+
     render() {
         console.log(this.state.UserTips)
 
         return (
-            <div>
-                <h1 className='user__tip'>Posts</h1>
-                {
-                    this.state.UserTips.length !== 0 ?
-                        this.state.UserTips.map((tip, id) => {
-                            return <UserTip tip={tip} key={id} />
+            <div className="profile-body">
+                <div className="profile-posts tap">
+                    {
+                        this.state.UserTips.length !== 0 ?
+                            this.state.UserTips.map((tip, id) => {
 
-                        })
-                        : <div className='user__tip'><h3>No Posts</h3></div>
-                }
+                                return <div class="main_card" key={id}>
+                                    <div class="card_left">
+                                        <div class="card_datails">
+                                            <h1>{tip.tip_title}</h1>
+
+                                            <p >{tip.tip_text}</p>
+
+                                        </div>
+                                    </div>
+                                    <div class="card_right">
+                                        <div class="img_container">
+                                            <img src={tip.tip_img} alt="tipimage" />
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+
+
+                            })
+                            : <div ></div>
+                    }
+
+                </div>
+
+
             </div>
         )
     }

@@ -18,7 +18,7 @@ export const adminsignin = (userinfo: any) => {
             else
                 dispatch({
                     type: 'ADMIN_SIGN_IN',
-                    token: res.data[1],
+                    adminToken: res.data[1],
                     adminId: res.data[0][0]
                 })
         })
@@ -26,7 +26,7 @@ export const adminsignin = (userinfo: any) => {
                 console.log(err)
                 dispatch({
                     type: "SIGN-IN_ERROR",
-                    value: err.message
+                    value: 'signinerror'
                 })
             })
     }

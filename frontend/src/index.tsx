@@ -5,13 +5,6 @@ import App from './App';
 import store from './store/index'
 
 
-
-// import reducer from "./redux/rootReducer"
-// import { createStore } from "redux"
-
-
-// const store = createStore(reducer)
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
