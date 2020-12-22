@@ -109,6 +109,7 @@ export default class Tip extends Component<Props, State> {
       .then((res) => {
         this.setState({
           commints: res.data,
+          commintscount: res.data.length,
         });
       })
       .catch((err) => {
@@ -171,6 +172,7 @@ export default class Tip extends Component<Props, State> {
           .then((res) => {
             this.setState({
               isFavorite: true,
+              favoritecount: this.state.favoritecount + 1,
             });
             console.log(res.data);
           })
@@ -187,6 +189,7 @@ export default class Tip extends Component<Props, State> {
             console.log(res);
             this.setState({
               isFavorite: false,
+              favoritecount: this.state.favoritecount - 1,
             });
           })
           .catch((err) => {
@@ -194,7 +197,7 @@ export default class Tip extends Component<Props, State> {
           });
       }
     }
-    this.componentDidMount();
+    // this.componentDidMount();
   }
 
   render() {
@@ -267,7 +270,8 @@ export default class Tip extends Component<Props, State> {
                         fontSize: "12px",
                       }}
                     >
-                      <ChatIcon style={{ fontSize: 26 }}></ChatIcon> 18
+                      <ChatIcon style={{ fontSize: 26 }}></ChatIcon>{" "}
+                      {this.state.commintscount}
                     </Button>
 
                     <TimeAgo

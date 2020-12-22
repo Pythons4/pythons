@@ -118,9 +118,10 @@ export default class AddTip extends Component {
                                                     onChange={this.handeltext}
                                                     variant="outlined" />
                                             </Grid>
-                                            <Grid item xs={12}>
+                                            <Grid item xs={12}  id='grid3'>
                                                 <input type='file' name='img' onChange={this.handelimguplode}></input>
                                                 {this.state.reviwesoursw && (<img src={this.state.reviwesoursw} id="cloudimg"></img>)}
+                                                
                                             </Grid>
                                         </Grid>
                                     </Grid>
