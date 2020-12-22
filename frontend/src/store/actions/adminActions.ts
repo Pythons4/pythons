@@ -26,7 +26,7 @@ export const adminsignin = (userinfo: any) => {
                 console.log(err)
                 dispatch({
                     type: "SIGN-IN_ERROR",
-                    value: err.message
+                    value: 'signinerror'
                 })
             })
     }

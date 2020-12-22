@@ -1,17 +1,187 @@
+/* User profile */
 
+.profile-header {
+	/* background: #E4E4E1;
+	width: 124%;
+	display: flex;
+	height: 190px;
+	position: relative;
+	box-shadow: 0px 3px 4px rgba(0,0,0,.2);
+	margin-left:-150px; */
+
+	background: #E4E4E1;
+	width: 124%;
+	display: flex;
+	height: 190px;
+	position: relative;
+	box-shadow: 0px 3px 4px rgba(0,0,0,.2);
+	margin-left:-150px;
+	
+
+} 
+
+.profile-img {
+	 float: left;
+	 width: 340px;
+	 height: 200px;
+}
+
+.profile-img img {
+	border-radius: 50%;
+	height: 190px;
+	width: 190px;
+	border: 4px solid #fff;
+	box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+	/* position: absolute; */
+	margin-top: 40px;
+	margin-left:45px;
+	/* left: 20px;
+	top: 40px; */
+	z-index: 5;
+	background: #fff;
+}
+
+.profile-nav-inf {
+	float: left;
+	flex-direction: column;
+	justify-content: center;
+	padding-top: 60px;
+
+}
+
+.profile-nav-inf  h3{
+	font-variant: small-caps;
+	font-size: 2rem;
+	font-family: sans-serif;
+	font-weight: bold;
+	color: black;
+}
+
+.profile-nav-inf .address{
+	display: flex;
+	font-weight: bold;
+	color: black;
+
+}
+
+/* .profile-nav-inf .company p{
+	margin-right: 5px;
+} */
+
+.main-bd{
+	 width: 100%;
+	display: flex;
+	padding-right: 15px; 
+	
+}
+
+.profile-side {
+	width: 270px;
+	background:#E4E4E1;
+	box-shadow: 0px 3px 5px rgba(0,0,0,.2);
+	padding: 70px 30px 20px;
+	font-family: 'Times New Roman', Times, serif;
+	
+	height: 100%;
+	
+	margin-right:0px;
+	
+	
+}
+
+.profile-side p {
+	margin-bottom: 30px;
+	margin-top: 15px;
+
+	color: black;
+	font-size: 20px;
+	font-family:  'Times New Roman', Times, serif;
+	
+
+}
+
+/* .profile-side p i {
+	color:var(--color);
+	margin-right:10px ;
+} */
+
+.button.button-img,
+.button.button-bio{
+	border: 0;
+	padding: 10px;
+	width: 100%;
+	border-radius: 3px;
+	background: #E4E4E1;
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 1rem;
+	/* margin: 5px 2px; */
+	cursor: pointer;
+	outline: none;
+	margin-bottom: 30px;
+	/* box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.3); */
+	color: black;
+
+
+}
+
+#icon{
+	margin-right: 2.5px;
+}
+
+.user-pio{
+	margin-left: 2.5px;
+	
+}
+
+/* .user-pio p{
+justify-items: ;
+	
+} */
+
+
+.logout_button{
+	
+	margin: 5px 2px;
+	cursor: pointer;
+	outline: none;
+	
+		width: 100% !important;
+		height: 50px !important;
+		font-size: smaller !important;
+		margin-right: 150px;
+		
+	 
+} 
+
+
+
+.nav  {	
+	/* z-index: -1; */
+	margin-left: 10px;	
+
+}
+
+
+
+
+
+/* css for user post card */
 .main_card {
 	color: #fff;
-	width: 760px;
-	height: 290px;
-	margin: 50px auto;
+	width: 700px;
+	height: 250px;
+	margin: 30px auto;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	max-width: 770px;
+	/* max-width: 570px; */
 	background:#F1D4BE ; 
-	
-	-webkit-box-shadow: 0 0 40px rgba(0,0,0,0.3); 
-	        box-shadow: 0 0 40px rgba(0,0,0,0.3);
+  
+}
+
+.card_right {
+    width: 40%;
+
 }
 
 .card_left {
@@ -22,60 +192,128 @@
 	width: 90%;
 	padding: 30px;
     margin-top: -25px;
-    color: black;
+    /* color: black; */
 }
 .card_datails  h1 {
-	font-size: 30px;
+	font-size: 20px;
+	font-family: 'Poly';
+	color: black;
+	margin-bottom: 25px;
+
 }
 .card_right img {
-    height: 290px;
-    width: 100%;
-    
-	border-radius: 2px;
+    height: 250px;
+	width: 100%;
+	  
+	
 }
-.card_right {
-    width: 40%;
-	border-radius: 2px;
+
+.card_datails  p {
+	font-size: 15px;
+	font-family: 'Poly';
+	color: black;
+	margin-bottom: 25px;
+	text-align: justify;
+
 }
 
 
-.disc {
-	font-weight: 100;
-	line-height: 27px;
-}
 
+/* css for user servise card */
 
 .ser_card {
 	color: #fff;
-	width: 300px;
-	height: 190px;
-	margin: 50px auto;
+	width: 240px;
+	height: 160px;
+	margin: 30px auto;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	max-width: 270px;
-	background: #F1D4BE; 
 	
-	-webkit-box-shadow: 0 0 40px rgba(0,0,0,0.3); 
-	        box-shadow: 0 0 40px rgba(0,0,0,0.3);
+	background: #B2D3EF;	
+	border-radius: 15px;
+	
+	
 }
+
+
 
 
 
 .ser_datails {
 	width: 90%;
 	padding: 30px;
-    margin-top: -25px;
+    margin-top: -30px;
     color:black
 }
 .ser_datails  h1 {
-	font-size: 30px;
+	font-size: 16px;
+	font-family: 'Poly';
+	color: black;
+	text-align: center;
+}
+.ser_datails  h6 {
+	font-size: 18px;
+	font-family: 'Times New Roman', Times, serif;
+	color: black;
+	text-align: center;
 }
 
 
 .disc {
-	font-weight: 100;
-	line-height: 27px;
+	font-size: 15px;
+	font-family: 'Times New Roman', Times, serif;
+	color: black;
+	margin-top: 20px;
+}
+
+
+
+.fev_card {
+	color: #fff;
+	width: 220px;
+	height: 180px;
+	margin: 30px auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	max-width: 470px;
+	background: #B2D3EF;	
+	
+	border-radius: 15px;
+		
+}
+
+.fev_card h1 {
+	width: 230px;
+	height: 15px;
+	font-size: 15px;
+	color: #A04D25;
+	/* text-align: center; */
+	font-family: 'Poly';
+	margin: auto;
+    margin-left: 5px;
+
+}
+
+.fev_card p {
+	width: 230px;
+	
+	font-size: 13px;
+	color: #A04D25;
+	/* text-align: center; */
+	font-family: 'Poly';
+	margin-top: 4px;
+    margin-left: 5px;
+
+}
+
+.fev_card img {
+	width: 220px;
+	height: 135px;	
+	border-top-left-radius: 15px;
+	 border-top-right-radius: 15px;
+                       
 }
 
 
