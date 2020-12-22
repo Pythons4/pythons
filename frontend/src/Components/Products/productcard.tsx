@@ -52,6 +52,9 @@ export default class ProductsCard extends Component<Props, State> {
   }
 
   incrementQuantity() {
+    if (this.state.quantity + 1 > theproduct.product_quantity) {
+      return alert("you reach the limit")
+    }
     this.setState({
       quantity: this.state.quantity + 1,
     });
@@ -77,23 +80,21 @@ export default class ProductsCard extends Component<Props, State> {
     );
     var storedata = store.getState();
     console.log(storedata);
+    window.location.reload();
   }
   render() {
     theproduct = this.props.location.state.theproduct;
 
     return (
-      <div>
-        <div className=" ">
+
+      <div className="product">
+        <div className="left-product">
           <img
-            className=""
-            alt="100x100"
+            alt='theproduct'
             src={theproduct.product_img}
             data-holder-rendered="true"
           />
-          <h2 className="my-5 h2">{theproduct.product_name}</h2>
-          <h4 className="my-5 h4">{theproduct.product_price}</h4>
-          <h5 className="my-5 h5">{theproduct.product_quantity}</h5>
-          <p>{theproduct.product_description}</p>
+
           <div className="quantity">
             <button
               className="btn minus-btn"
@@ -114,18 +115,42 @@ export default class ProductsCard extends Component<Props, State> {
             >
               +
             </button>
-          </div>
-          <Button
-            onClick={this.addtothecart}
-            endIcon={<ShoppingCartIcon></ShoppingCartIcon>}
-            className="addtocart"
-            variant="contained"
-            color="primary"
-          >
-            Add to Cart
+
+            <Button style={{ height: "45px", width: "50%" }}
+              onClick={this.addtothecart}
+              endIcon={<ShoppingCartIcon></ShoppingCartIcon>}
+              id="addtocart"
+              variant="contained"
+              color="primary"
+
+            >
+              Add to Cart
           </Button>
+          </div>
+
+        </div>
+
+        <div className="right-product">
+
+          <h2 >{theproduct.product_name}</h2>
+          <h4 > Price {theproduct.product_price} ₪ </h4>
+          <h5 > Quantity {theproduct.product_quantity}</h5>
+
+          <p className="desc">{theproduct.product_description}</p>
+
+
+
         </div>
       </div>
+
+
+
+
+
+
+
     );
   }
 }
+
+

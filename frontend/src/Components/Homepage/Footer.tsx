@@ -5,7 +5,7 @@ import './Homepage.css'
 export default class Footer extends Component {
     render() {
         return (
-            <div className='footer'>
+            <div data-test="footer" className='footer'>
 
                 <div className="row d-flex justify-content-between" >
 
@@ -13,18 +13,26 @@ export default class Footer extends Component {
 
                         <h5 className="headertext"  >About us </h5>
 
-                        <ul className="list-unstyled">
+                        <ul className="list-unstyled textstyle">
                             <li>
-                                <p> We make your place</p>
+                                <p> We are a company  </p>
                             </li>
                             <li>
-                                <p> look perfect</p>
+                                <p>specialized  in providing   </p>
+                            </li>
+                            <li>
+                                <p>the best cleaning services</p>
+
+                            </li>
+                            <li>
+                                <p>in the country</p>
+
                             </li>
 
 
                             <li className="d-flex">
-                                <span className="d-block mr-20"><i className="fa fa-facebook-square " style={{ fontSize: "36px" }} ></i></span>
-                                <span className="d-block"> <i className="fa fa-instagram d-inline-block  " style={{ fontSize: "36px" }} ></i></span>
+                                <span className="d-block mr-20"><i className="fa fa-facebook-square " style={{ fontSize: "29px", marginRight: '10px' }} ></i></span>
+                                <span className="d-block"> <i className="fa fa-instagram d-inline-block  " style={{ fontSize: "30px" }} ></i></span>
 
                             </li>
                         </ul>
@@ -32,11 +40,11 @@ export default class Footer extends Component {
                     </div>
 
 
-                    <div className="50">
+                    <div className="50" >
 
                         <h5 className="headertext" >Head office</h5>
 
-                        <ul className="list-unstyled">
+                        <ul className="list-unstyled list-unstyled2 ">
                             <li>
                                 <p> 345 Palestine Street</p>
                             </li>
