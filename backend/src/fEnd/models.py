@@ -56,7 +56,7 @@ class UserService(models.Model):
 # tips table
 class Tip(models.Model):
     _id = models.ObjectIdField()
-    tip_title = models.CharField(max_length=40)
+    tip_title = models.CharField(max_length=50)
     tip_text = models.TextField()
     tip_img = models.TextField()
     user_id = models.TextField()

@@ -1,4 +1,4 @@
-import { Grid, TextField } from "@material-ui/core";
+import { Button, Grid, TextField } from "@material-ui/core";
 import React from "react";
 import store from "../../store";
 import { updateuserinfo } from "../../store/actions/userActions";
@@ -57,10 +57,10 @@ class Popup extends React.Component<Props, State> {
     render() {
         return (
             <div className="popup-box">
-                <div className="box">
+                <div className="box shadowpopup">
                     <span className="close-icon" onClick={this.props.handleClose}>x</span>
                     {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                    <Grid container spacing={3}>
+                    <Grid container spacing={3} style={{ marginTop: '9vh' }}>
                         <Grid item xs={12}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
@@ -95,7 +95,8 @@ class Popup extends React.Component<Props, State> {
                                         type='textfield'
                                         variant="outlined"
                                         multiline
-                                        rowsMax={6}
+                                        rows={5}
+                                        rowsMax={5}
                                     />
                                 </Grid>
                             </Grid>
@@ -103,10 +104,11 @@ class Popup extends React.Component<Props, State> {
 
                     </Grid>
                     <div>
-                        <button onClick={() => {
+                        <br></br>
+                        <Button className='uplodeimgbtn' style={{ background: '#337BA7', color: 'white', fontSize: '12px', fontFamily: "'Poly', serif" }} onClick={() => {
                             console.log('change image')
                             this.handelclikckimg()
-                        }}>Test button</button>
+                        }}>Confirm change</Button>
                     </div>
 
                 </div>
