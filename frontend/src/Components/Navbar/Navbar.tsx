@@ -21,16 +21,18 @@ const Navbar = () => {
     var adminID = JSON.parse(adminid)
     var id = JSON.parse(userid)
     var theimg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPasPbrVe2Txcc4aGbZkCddJkVTaj8uyb7A&usqp=CAU"
-    if (adminID) {
-        pathname = "/adminprofile"
-        id = adminID
-        // theimg=userimg
-    }
     if (id) {
         var userimg = JSON.parse(userinfo).user_img
         theimg = userimg
     }
     console.log(id)
+    if (adminID) {
+        pathname = "/adminprofile"
+        id = adminID
+        var { admininfo }: any = store.getState().AdminReduser
+        var adminimg = JSON.parse(admininfo).user_img
+        theimg = adminimg
+    }
     return (
         <nav >
             <div className='logo'>
