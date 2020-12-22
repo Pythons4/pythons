@@ -185,7 +185,7 @@ export default class Tip extends Component<Props, State> {
   render() {
     var { userid } = store.getState().UserReducer
     return (
-      <div> { this.state.tip.user_name && (<div className='shadowtip' style={{ borderRadius: '5px', paddingTop: '20px', width: '100%', textAlign: 'center' }}>
+      <div> { this.state.tip.user_name ? (<div className='shadowtip' style={{ borderRadius: '5px', paddingTop: '20px', width: '100%', textAlign: 'center' }}>
         <div className='d-flex flex-column' style={{ borderRadius: '5px', paddingTop: 'auto', width: '80%', marginLeft: 'auto', marginRight: '10%' }}>
           {/* Tip Information (title, img ,description ,time ,fav and commint) */}
           <div className='d-flex flex-column '
@@ -241,7 +241,13 @@ export default class Tip extends Component<Props, State> {
             </table>
           </div>
         </div>
-      </div >)}
+      </div >) :
+        (
+          <img
+            src="https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif" alt='theimg'
+            style={{ width: "20%", marginLeft: '40%', marginRight: '40%' }}
+          ></img>
+        )}
       </div>
     );
   }

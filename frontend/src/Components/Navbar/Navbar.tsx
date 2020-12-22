@@ -3,10 +3,8 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { Avatar, Badge } from '@material-ui/core'
 import './Navbar.css'
-import { IconButton } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import store from "../../store"
-import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
 const Navbar = () => {
     var pathname = "/profiletest"
     var { whatincart } = store.getState().cartReducer
