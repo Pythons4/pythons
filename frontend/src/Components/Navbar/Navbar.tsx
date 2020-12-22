@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link } from "react-router-dom";
 import { Avatar, Badge } from '@material-ui/core'
@@ -79,11 +79,7 @@ const Navbar = () => {
 
             </ul>
 
-
         </nav>
-    )
-}
-
-
-
-export default Navbar
+    );
+};
+export default Navbar;
