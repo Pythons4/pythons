@@ -22,7 +22,8 @@ nav{
     color: rgb(110, 86, 94);
     text-transform: lowercase;
     letter-spacing: 5px;
-    font-size: 50px; 
+    font-size: 54px; 
+    margin-left: 26px;
 }
 
 .nav-links{

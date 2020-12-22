@@ -41,6 +41,8 @@ interface State {
   commints: Array<string>;
   favorite: any;
   isFavorite: boolean;
+  tipdesc: string,
+  tipuser: string
 }
 //tip class
 export default class Tip extends Component<Props, State> {
@@ -52,6 +54,8 @@ export default class Tip extends Component<Props, State> {
       commints: [],
       favorite: [],
       isFavorite: false,
+      tipuser: '',
+      tipdesc: ''
     };
     this.handelcliking = this.handelcliking.bind(this);
     this.handeltext = this.handeltext.bind(this);
@@ -61,6 +65,14 @@ export default class Tip extends Component<Props, State> {
 
   componentDidMount() {
     var tip_id = this.state.tip._id;
+    axios.post('/api/getbyid', { tip_id: tip_id }, configdata)
+      .then((res: any) => {
+        this.setState({
+          // tipuser: res.data.user_name,
+          // tipdesc: res.data.tip_text
+          tip: res.data
+        })
+      })
     var { userinfo }: any = store.getState().UserReducer;
     if (userinfo) {
       var user_id = JSON.parse(userinfo)._id;
@@ -173,15 +185,15 @@ export default class Tip extends Component<Props, State> {
   render() {
     var { userid } = store.getState().UserReducer
     return (
-      <div className='shadowtip' style={{ borderRadius: '5px', paddingTop: '20px', width: '100%', textAlign: 'center' }}>
+      <div> { this.state.tip.user_name && (<div className='shadowtip' style={{ borderRadius: '5px', paddingTop: '20px', width: '100%', textAlign: 'center' }}>
         <div className='d-flex flex-column' style={{ borderRadius: '5px', paddingTop: 'auto', width: '80%', marginLeft: 'auto', marginRight: '10%' }}>
           {/* Tip Information (title, img ,description ,time ,fav and commint) */}
           <div className='d-flex flex-column '
             style={{ marginBottom: "50px", marginTop: "18px" }} >
             <p className='titlestyle'>{this.state.tip.tip_title} </p>
-            <p className='thefont'>written by: {this.state.tip.user_name} </p>
+            <p className='thefont'>written by: {this.state.tip.user_name || this.state.tipuser} </p>
             <img className='tipimgstyle' src={this.state.tip.tip_img} style={{ cursor: "pointer" }} alt="tippage" ></img>
-            <p className='tipdescription'>{this.state.tip.tip_text} </p>
+            <p className='tipdescription'>{this.state.tip.tip_text || this.state.tipdesc} </p>
             <div className='d-flex justify-content-between favdatestyle'>
               <div>
                 {/* add the tip to favorite or remove it */}
@@ -214,8 +226,8 @@ export default class Tip extends Component<Props, State> {
               <tbody>
                 {this.state.commints &&
                   this.state.commints.slice(0).reverse().map((element: any, i: number) => (
-                    <tr style={{ textAlign: 'left', borderBottom: '0.5px solid rgb(126, 102, 110)' }}>
-                      <div className='d-flex' key={i} >
+                    <tr key={i} style={{ textAlign: 'left', borderBottom: '0.5px solid rgb(126, 102, 110)' }}>
+                      <div className='d-flex'  >
                         <img className='userimg' src={element.user_img} alt='userimg'></img>
                         <div className='d-flex flex-column'>
                           <p style={{ marginLeft: '8px', marginTop: '12px' }}>{element.user_name} <TimeAgo date={element.commint_date} style={{ fontSize: '9px' }} ></TimeAgo>
@@ -223,14 +235,14 @@ export default class Tip extends Component<Props, State> {
                         </div>
                       </div>
                       <p style={{ marginLeft: '40px' }}>{element.commint_text} </p>
-
                     </tr>
                   ))}
               </tbody>
             </table>
           </div>
         </div>
-      </div >
+      </div >)}
+      </div>
     );
   }
 }
