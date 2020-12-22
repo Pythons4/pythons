@@ -152,5 +152,3 @@ export default class ProductsCard extends Component<Props, State> {
     );
   }
 }
-
-
