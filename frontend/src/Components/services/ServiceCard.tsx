@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+// props to send price and name of service to form 
 interface Props {
     price: string,
     imge: string,
