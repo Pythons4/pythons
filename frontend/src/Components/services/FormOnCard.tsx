@@ -12,8 +12,8 @@ import store from "../../store";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "25ch",
+      marginBottom: theme.spacing(1),
+      width: "30ch",
     },
   },
 }));
@@ -44,6 +44,7 @@ export default function StateTextFields(props: data) {
     location: "",
     houres: "",
     date: "",
+    phoneNumber: "",
     name: props.data.name,
     price: props.data.price,
   });
@@ -85,10 +86,10 @@ export default function StateTextFields(props: data) {
   };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form id="formShadow" className={classes.root} noValidate autoComplete="off" style={{ width: "430px", height: "400px" }}>
       <div id="forForm">
-        <h3>{props.data.name}</h3>
-        <h4>{props.data.price} / hour</h4>
+        <h3 style={{ color: "#337ab7" }}>{props.data.name}</h3>
+        <h4 style={{ color: "#337ab7", fontSize: "22px", marginBottom: "30px" }}>  {props.data.price} / hour</h4>
         <MuiPickersUtilsProvider utils={MomentUtils}>
           <KeyboardDatePicker
             id="outlined-name"
@@ -102,6 +103,7 @@ export default function StateTextFields(props: data) {
             KeyboardButtonProps={{
               "aria-label": "change date",
             }}
+
           />
         </MuiPickersUtilsProvider>
 
@@ -110,20 +112,34 @@ export default function StateTextFields(props: data) {
           label="Hours"
           type="number"
           name="houres"
+          InputProps={{ inputProps: { min: 0, max: 6 } }}
           onChange={handleChange}
+
+        />
+
+        <TextField
+          id="standard-secondary"
+          label="number"
+          type="number"
+          name="phoneNumber"
+          onChange={handleChange}
+
         />
         <TextField
           id="standard-secondary"
           label="Location"
           name="location"
           onChange={handleChange}
+          style={{ color: "white" }}
+
+
         />
         <br />
         <Button
           onClick={book}
           id="forButton"
           variant="contained"
-          color="primary"
+          style={{ marginTop: "26px", background: "#337ab7", color: "white" }}
         >
           Submit
         </Button>
