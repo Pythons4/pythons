@@ -3,34 +3,25 @@ import axios from 'axios';
 import store from "../../store"
 import './user.css'
 
-
-
-
 class UserServeces extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             UserService: []
         }
-
     }
-
-
     componentDidMount() {
         var { userid } = store.getState().UserReducer
-
         var id = JSON.parse(userid)
-
-
         axios.get(`/api/userservice/${id} `)
             .then(res => {
 
                 console.log(res.data);
 
-                this.setState({ UserService: res.data })
-
+                this.setState({
+                    UserService: res.data.filter(service => service.user_service_approv)
+                })
             })
-
             .catch((error) => {
                 console.log(error);
             })
@@ -39,9 +30,6 @@ class UserServeces extends React.Component {
 
     render() {
         console.log(this.state.UserService)
-
-
-
         return (
             <div className="profile-body">
                 <div className="d-flex row align-items-center ">
@@ -62,14 +50,8 @@ class UserServeces extends React.Component {
                                                 <li>Location :{ser.user_service_location} </li>
 
                                             </ul></p>
-
-
                                         </div>
-
                                     </div>
-
-
-
                                 })
                                 : <div></div>
                         }
@@ -78,8 +60,6 @@ class UserServeces extends React.Component {
             </div>
         )
     }
-
-
 }
 
 export default UserServeces
