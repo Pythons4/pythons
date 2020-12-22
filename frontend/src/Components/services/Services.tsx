@@ -3,6 +3,7 @@ import ServicesCard from "./ServiceCard"
 import setService from "../../store/actions/servicesAction"
 import { connect } from "react-redux"
 import Popup from './popupinfoedit'
+import Footer from '../Homepage/Footer';
 
 class Services extends Component<{ services: any, setService: any }> {
     // to send data to the form to know which servid
@@ -52,6 +53,7 @@ class Services extends Component<{ services: any, setService: any }> {
                         handleClose={this.onclick}
                     />
                 )}
+
             </div >
         )
     }
