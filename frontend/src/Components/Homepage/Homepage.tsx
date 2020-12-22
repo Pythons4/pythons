@@ -9,7 +9,7 @@ const Homepage = (props: any) => {
   return (
     <>
       <div>
-        <div className="container-img">
+        <div data-test="container-img" className="container-img">
           <p className="text">
             {/* Cleaning is hard at first, messy in the middle and gorgeous in the
             end */}
