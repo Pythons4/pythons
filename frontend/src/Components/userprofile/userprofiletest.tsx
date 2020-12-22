@@ -4,10 +4,9 @@ import Popup from "./popupwindo";
 import PopupBio from "./popupinfoedit";
 import TimeAgo from "react-timeago";
 import { Button } from "@material-ui/core";
-import EmailIcon from '@material-ui/icons/Email';
-import CallIcon from '@material-ui/icons/Call';
+import EmailIcon from "@material-ui/icons/Email";
+import CallIcon from "@material-ui/icons/Call";
 import Posts from "./tabs";
-
 
 import { signout } from "../../store/actions/userActions";
 import "./user.css";
@@ -91,7 +90,6 @@ function App() {
                 }
               />
             </p>
-            {console.log(new Date())}
           </div>
         </div>
 

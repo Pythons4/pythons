@@ -1,0 +1,166 @@
+.admin-header {
+	background: #E4E4E1;
+	width: 100%;
+	display: flex;
+	height: 190px;
+	position: relative;
+	box-shadow: 0px 3px 4px rgba(0,0,0,.2);
+	/* margin-left:-150px; */
+	
+
+} 
+
+.admin-img {
+    float: left;
+    width: 340px;
+    height: 200px;
+}
+
+.admin-img img {
+   border-radius: 50%;
+   height: 190px;
+   width: 190px;
+   border: 4px solid #fff;
+   box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+   /* position: absolute; */
+   margin-top: 40px;
+   margin-left:45px;
+   left: 20px;
+   top: 40px;
+   z-index: 5;
+   background: #fff;
+}
+
+
+.admin-nav-inf {
+	float: left;
+	flex-direction: column;
+	justify-content: center;
+	padding-top: 60px;
+
+}
+
+.admin-nav-inf  h3{
+	font-variant: small-caps;
+	font-size: 2rem;
+	font-family: sans-serif;
+	font-weight: bold;
+	color: black;
+}
+
+.admin-nav-inf .address{
+	display: flex;
+	font-weight: bold;
+	color: black;
+
+}
+
+
+
+.main-body{
+    width: 100%;
+   display: flex;
+   padding-right: 15px; 
+   
+}
+
+.admin-side {
+   width: 300px;
+   background:#E4E4E1;
+   box-shadow: 0px 3px 5px rgba(0,0,0,.2);
+   padding: 90px 0px 20px;
+   font-family: 'Times New Roman', Times, serif;
+   
+   height: 100%;
+  
+   margin-left:0 auto;
+   
+   
+}
+
+.admin-side p {
+   margin-bottom: 50px;
+   margin-top: 15px;
+   padding-left:10px;
+
+   color: black;
+   font-size: 20px;
+   font-family:  'Times New Roman', Times, serif;
+   
+
+}
+
+
+#icon{
+    margin-right: 2.5px;
+    margin-left: 3.5px;
+    
+} 
+
+/* .button{
+    margin-left: 50px;
+} */
+
+.button-add{
+	border: 1;
+	/* padding: 10px; */
+	width: 50%;
+	border-radius: 3px;
+	background: #E4E4E1;
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 2rem;
+	margin-left: 60px;
+	cursor: pointer;
+	outline: none;
+	margin-bottom: 30px;
+	/* box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.3); */
+	color: black;
+
+
+}
+	
+
+
+
+
+.nav  {		
+	margin-left: 25px;	
+}
+
+.admin_card {
+	color: #fff;
+	width: 240px;
+	height: 150px;
+	margin: 30px auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	
+	background: #B2D3EF;	
+	border-radius: 15px;
+	
+	
+}
+
+.ser_datails {
+	width: 90%;
+	padding: 30px;
+    margin-top: -15px;
+    margin-left: 10px;
+   
+    color:black
+}
+.ser_datails  h4,p{
+	font-size: 16px;
+	font-family: 'Poly';
+	color: black;
+    /* text-align: center ; */
+    padding-top: 5px;
+}
+
+.custom-checkbox-root .MuiSvgIcon-root{
+    width: 25px;
+    height: 25px;
+    color:#0f0f0f;
+   
+  }
