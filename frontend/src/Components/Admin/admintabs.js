@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
-import './user.css'
-import UserTips from './usertips'
-import UserServeces from './userserveces'
-import UserFevarets from './userfevareits'
+
+
+import ServecesApproved from './servecesapproved'
+import ServecesNApproved from './servecesnotapproved'
 import { responsiveFontSizes } from '@material-ui/core'
 
 // import Button from '@material-ui/core/Button';
 
 
-class Posts extends Component {
+class AdminTabs extends Component {
 
 
 
@@ -23,7 +23,7 @@ class Posts extends Component {
             padding: "10px",
             fontFamily: "'Times New Roman', Times, serif",
             background: "#E4E4E1",
-            width: "340px",
+            width: "500px",
             // paddingLeft: "50px",
             justifyContent: "center",
             cursor: "pointer",
@@ -41,17 +41,16 @@ class Posts extends Component {
 
 
                 <TabList   >
-                    <Tab style={mystyle} > Posts</Tab>
-                    <Tab style={mystyle}> Serveces   </Tab>
-                    <Tab style={mystyle}>  Fevarets  </Tab>
+                    <Tab style={mystyle} > Approved</Tab>
+                    <Tab style={mystyle}> Not Approved   </Tab>
 
 
 
 
                 </TabList >
-                <TabPanel><UserTips /></TabPanel>
-                <TabPanel ><UserServeces /></TabPanel>
-                <TabPanel><UserFevarets /></TabPanel>
+
+                <TabPanel ><ServecesApproved /></TabPanel>
+                <TabPanel><ServecesNApproved /></TabPanel>
             </Tabs >
         );
 
@@ -78,7 +77,6 @@ class Posts extends Component {
 
 }
 
-export default Posts
-
+export default AdminTabs
 
 

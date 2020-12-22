@@ -4,10 +4,9 @@ import Popup from "./popupwindo";
 import PopupBio from "./popupinfoedit";
 import TimeAgo from "react-timeago";
 import { Button } from "@material-ui/core";
-import EmailIcon from '@material-ui/icons/Email';
-import CallIcon from '@material-ui/icons/Call';
+import EmailIcon from "@material-ui/icons/Email";
+import CallIcon from "@material-ui/icons/Call";
 import Posts from "./tabs";
-
 
 import { signout } from "../../store/actions/userActions";
 import "./user.css";
@@ -37,7 +36,7 @@ function App() {
       <div className="container">
         <div className="profile-header">
           <div className="profile-img">
-            <img src={JSON.parse(test.userinfo).user_img} alt='usrimg' />
+            <img src={JSON.parse(test.userinfo).user_img} alt="usrimg" />
           </div>
           <div className="profile-nav-inf">
             <h3 className="user-name">{JSON.parse(test.userinfo).user_name}</h3>
@@ -57,11 +56,11 @@ function App() {
             <p className="user-maile">
               {/* <i className="fas fa-envelope"></i> */}
               {/* <FontAwesomeIcon icon={['fab', 'microsoft']} /> */}
-              <EmailIcon id='icon'></EmailIcon>
+              <EmailIcon id="icon"></EmailIcon>
               {JSON.parse(test.userinfo).user_email}
             </p>
             <p className="mobile-no">
-              <CallIcon id='icon' ></CallIcon>
+              <CallIcon id="icon"></CallIcon>
               {JSON.parse(test.userinfo).user_phon}
             </p>
             <div className="user-pio">
@@ -75,31 +74,28 @@ function App() {
                 onClick={togglePopup}
               />
 
-
               <input
                 className="button-bio"
                 type="button"
                 value="change bio"
                 onClick={togglePopupbio}
               />
-
             </div>
             <p className="date">
               <TimeAgo
                 date={
-                  "2020-12-21T11:52:23.259+00:00".replace('00:', '02:')
+                  "Mon Dec 14 2020 16:03:46 GMT+0200 (Israel Standard Time)"
                 }
               />
             </p>
+            {console.log(new Date())}
           </div>
         </div>
 
         <div className="right-side">
           <div className="nav">
             <Posts />
-
           </div>
-
         </div>
       </div>
       {isOpen && (

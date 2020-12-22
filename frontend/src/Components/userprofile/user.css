@@ -1,6 +1,14 @@
 /* User profile */
 
 .profile-header {
+	/* background: #E4E4E1;
+	width: 124%;
+	display: flex;
+	height: 190px;
+	position: relative;
+	box-shadow: 0px 3px 4px rgba(0,0,0,.2);
+	margin-left:-150px; */
+
 	background: #E4E4E1;
 	width: 124%;
 	display: flex;
@@ -56,9 +64,9 @@
 
 }
 
-.profile-nav-inf .company p{
+/* .profile-nav-inf .company p{
 	margin-right: 5px;
-}
+} */
 
 .main-bd{
 	 width: 100%;
@@ -68,15 +76,14 @@
 }
 
 .profile-side {
-	width: 250px;
+	width: 270px;
 	background:#E4E4E1;
 	box-shadow: 0px 3px 5px rgba(0,0,0,.2);
-	padding: 90px 30px 20px;
+	padding: 70px 30px 20px;
 	font-family: 'Times New Roman', Times, serif;
-	/* margin-left:80px; */
+	
 	height: 100%;
-	/* margin-left:-150px; */
-	/* z-index: 99; */
+	
 	margin-right:0px;
 	
 	

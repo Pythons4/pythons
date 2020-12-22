@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import store from '../../store';
 import PopUp from './addProductPopUp'
-import AdimApproveServices from './approved'
+import AdminTabs from './admintabs'
+import './adminprofile.css';
+import EmailIcon from '@material-ui/icons/Email';
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
@@ -14,22 +16,65 @@ function App() {
 
     console.log(test.admininfo)
     return <div>
-        {/* eslint-disable-next-line jsx-a11y/alt-text */}
-        <img style={{ width: '300px' }} src={JSON.parse(test.admininfo).admin_img}></img>
-        <p>{JSON.parse(test.admininfo).admin_name}</p>
-        <p>{JSON.parse(test.admininfo).admin_email}</p>
-        {isOpen && <PopUp
-            handleClose={togglePopup}
-        />}
-        <input
-            type="button"
-            value="Add Product"
-            onClick={togglePopup}
-        />
+        <div className="container-admin">
+            <div className="admin-header">
+                <div className="admin-img">
+                    <img src={JSON.parse(test.admininfo).admin_img}></img>
+                </div>
+                <div className="admin-nav-inf">
+                    <h3 className="admin-name"> <p>{JSON.parse(test.admininfo).admin_name}</p></h3>
+                    <div className="admin-address">
+                        <p className="address">Palestine</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="main-body">
+            <div className="left">
+                <div className="admin-side">
+                    <p className="admin-maile">
 
-        <AdimApproveServices services=''></AdimApproveServices>
+                        <EmailIcon id='icon'></EmailIcon>
+                        {JSON.parse(test.admininfo).admin_email}
+                    </p>
 
-    </div>
+                    {/* <div className="button"> */}
+                    <input className="button-add"
+                        type="button"
+                        value="Add Product"
+                        onClick={togglePopup}
+                    />
+
+
+
+                    {/* </div> */}
+
+
+                </div>
+            </div>
+            <div className="right-side">
+                <div className="nav">
+                    <AdminTabs />
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+        {
+            isOpen && <PopUp
+                handleClose={togglePopup}
+            />
+        }
+
+
+
+
+    </div >
 }
 
 export default App;
+
+
