@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import { addnot } from '../../notife'
 import store from "../../store"
 import './user.css'
 
@@ -15,11 +16,19 @@ class UserServeces extends React.Component {
         var id = JSON.parse(userid)
         axios.get(`/api/userservice/${id} `)
             .then(res => {
-
                 console.log(res.data);
+                var approvedServices = res.data.filter(service => service.user_service_approv)
+                if (localStorage.getItem('approvedservices')) {
+                    var oldservices = JSON.parse(localStorage.getItem('approvedservices'))
+                    if (oldservices.length < approvedServices.length) {
+                        console.log('new approved')
+                        addnot('new approved service', 'info')
 
+                    }
+                }
+                localStorage.setItem('approvedservices', JSON.stringify(approvedServices))
                 this.setState({
-                    UserService: res.data.filter(service => service.user_service_approv)
+                    UserService: approvedServices
                 })
             })
             .catch((error) => {
