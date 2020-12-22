@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Pridi:wght@300&display=swap");
+
+.cont {
+  margin: unset;
+  background: url("https://i.imgur.com/QpTKnYk.png") center center/cover
+    no-repeat;
+  height: 89vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+  z-index: 1;
+  background-position: center;
+}
+.incenter {
+  margin-left: 14px;
+  margin-top: 0;
+}
+
+#cloudimg {
+  max-width: 90%;
+  max-height: 90%;
+  margin-left: 20px;
+  padding-top: 20px;
+}
+
+#share {
+  height: 30px;
+  font-size: medium;
+}

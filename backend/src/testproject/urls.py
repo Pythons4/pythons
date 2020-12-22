@@ -34,4 +34,5 @@ urlpatterns = [
     path('api/adminLogin', views.getAdminInfoLogin),
     path('api/approvuserservice', views.updateUserServicesApprove),
     path('api/updatefavorite', views.updateFavorite),
+    path('api/getbyid', views.gettipbyid)
 ]
