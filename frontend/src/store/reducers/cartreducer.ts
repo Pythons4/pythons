@@ -1,6 +1,6 @@
 
 const cartReducer = (state: { whatincart: any, cartvalue: any }, action: any) => {
-    console.log(state)
+    
     switch (action.type) {
         case 'BUY_IT':
             return { cartvalue: action.value }
