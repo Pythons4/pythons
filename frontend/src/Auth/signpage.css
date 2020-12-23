@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Sail&display=swap");
 .shadow {
+
   border: 1px solid #b2d3ef;
   /* padding: 10px; */
   box-shadow: 10px 10px #b2d3ef;
@@ -46,3 +47,4 @@
   font-size: xx-large;
   color: #3f51b5;
 }
+

@@ -14,7 +14,6 @@ const buyWhatInCart = (products: any, userid: any, user_location: any) => {
         userproduct.push([products[i].name, products[i].quantity])
         ProductData.push({ _id: i, product_quantity: products[i].quantity })
     }
-
     return function (dispatch: any) {
         var data = {
             user_id: userid,
@@ -27,35 +26,23 @@ const buyWhatInCart = (products: any, userid: any, user_location: any) => {
                 type: 'BUY_IT',
                 value: res
             })
-
+            //clear all product in the cart
             store.dispatch(removefromcart("remove"));
-
-
             for (var i = 0; i < ProductData.length; i++) {
-
-
                 axios.put('/api/updateproduct', ProductData[i], config)
                     .then(res => {
                         console.log(res.data)
                     })
-
             }
-
-
-
         })
             .catch(err => {
-                console.log(err)
+                console.log(err.message)
                 dispatch({
                     type: "BUT_IT_ERROR",
                     value: err.message
                 })
-
-
-
             })
     }
 }
-
 
 export default buyWhatInCart

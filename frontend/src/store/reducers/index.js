@@ -8,6 +8,7 @@ import ProfileReducer from './profilereducer'
 import UserReducer from './userReducer'
 import AdminReduser from './adminreduser'
 
+//all store reducers
 const allReducers = combineReducers({
     productseReducer: productseReducer,
     tipsReducer: tipsReducer,
