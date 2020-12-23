@@ -18,8 +18,8 @@ class Popup extends React.Component<Props> {
     render() {
         return (
             <div className="popup-box " >
-                <div className="box formShadow" style={{ width: '460px', marginTop: 'calc(100vh - 80vh)' }}>
-                    <span className="close-icon" onClick={this.props.handleClose} style={{ marginTop: 'calc(100vh - 90vh)' }}>x</span>
+                <div className="box formShadow" style={{ width: '38vw', height: '98vh', marginTop: 'calc(100vh - 80vh)' }}>
+                    <span className="close-icon" onClick={this.props.handleClose} style={{ marginTop: 'calc(100vh - 84vh)' }}>x</span>
                     <BookForm data={this.props.data}></BookForm>
                 </div>
             </div>

@@ -140,7 +140,6 @@ class SignInPage extends React.Component<
                       label="User Phone Number"
                       name="phone"
                       size="small"
-                      type="password"
                       onChange={(e) =>
                         this.setState({ userphone: e.target.value })
                       }

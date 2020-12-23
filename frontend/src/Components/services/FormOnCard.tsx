@@ -72,6 +72,7 @@ export default function StateTextFields(props: data) {
         user_service_hours: state.houres,
         user_service_location: state.location,
         user_service_price: state.price,
+        user_phone_No: state.phoneNumber
       };
       console.log(serviceData);
 
@@ -86,7 +87,7 @@ export default function StateTextFields(props: data) {
   };
 
   return (
-    <form id="formShadow" className={classes.root} noValidate autoComplete="off" style={{ width: "430px", height: "400px" }}>
+    <form id="formShadow" className={classes.root} noValidate autoComplete="off" style={{ width: "430px", height: "390px" }}>
       <div id="forForm">
         <h3 style={{ color: "#337ab7" }}>{props.data.name}</h3>
         <h4 style={{ color: "#337ab7", fontSize: "22px", marginBottom: "30px" }}>  {props.data.price} / hour</h4>
@@ -98,7 +99,6 @@ export default function StateTextFields(props: data) {
             minDate={moment().add(1, 'days').endOf('day')}
             value={selectedDate}
             format="YYYY-MM-DD"
-            // inputValue={inputValue}
             onChange={onDateChange}
             KeyboardButtonProps={{
               "aria-label": "change date",
