@@ -81,9 +81,19 @@ export default function StateTextFields(props: data) {
       };
       console.log(serviceData);
 
-      axios.post("/api/userservice/", serviceData).then((response) => {
-        addnot(`${state.name} Service has been Booked`, 'default')
-        console.log(response.data);
+
+      axios.post("/api/userservice/", serviceData).then(function (response) {
+        console.log(response);
+
+        setState((currentState) => ({
+          ...currentState,
+          location: "",
+          houres: "",
+          date: "",
+          phoneNumber: ""
+
+        }));
+        alert(`booking done`)
       });
     } else {
       alert("you should login");
@@ -126,6 +136,7 @@ export default function StateTextFields(props: data) {
           label="Hours"
           type="number"
           name="houres"
+          value={state.houres}
           InputProps={{ inputProps: { min: 0, max: 6 } }}
           error={parseInt(state.houres) > 6}
           onChange={handleChange}
@@ -137,6 +148,10 @@ export default function StateTextFields(props: data) {
           type="number"
           name="phoneNumber"
           onChange={handleChange}
+
+          value={state.phoneNumber}
+
+
         />
         <TextField
           id="standard-secondary"
@@ -144,6 +159,8 @@ export default function StateTextFields(props: data) {
           name="location"
           onChange={handleChange}
           style={{ color: "white" }}
+
+          value={state.location}
         />
         <br />
         <Button
