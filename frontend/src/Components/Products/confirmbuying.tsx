@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import store from '../../store'
-import { Button } from '@material-ui/core';
-import buyWhatInCart from '../../store/actions/buywhatincart';
+
 import StripeCheckOutButton from "../strip-button/strip-button"
 
 
@@ -35,19 +33,7 @@ export default class CofirmBuy extends Component<Props, State>{
         return (
             <div className="d-flex flex-column">
                 <h2>total price {this.state.price} ₪</h2>
-                {/* <input type='text' placeholder='your cridet card number'></input>
-                <input type='password' placeholder='your cvv'></input>
-                <input type='date' placeholder='expire date'></input>
-                <input type='text' placeholder='your address'></input> */}
 
-                {/* <Button onClick={() => {
-                    console.log('iiin')
-                    // store.dispatch(buyWhatInCart(this.state.products))
-
-                }
-
-                }
-                    className="addtocart" variant="contained" color="primary" >confirm</Button> */}
 
                 <StripeCheckOutButton price={this.state.price} />
 

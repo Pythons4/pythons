@@ -11,7 +11,7 @@ const ProductMaterials = (props: any) => {
     return (
         <div className="d-flex flex-wrap justify-content-around catdiv"
             style={{ "marginBottom": '50px', marginTop: "18px" }}>
-            {/* show all tools product that ar in the database */}
+
             {materials.map((element: { product_name: string, product_img: string, _id: string }, i: number) =>
                 <div key={i} style={{ textAlign: 'center', marginTop: '45px', color: 'black', fontSize: '20px' }}>
                     <Link to={{

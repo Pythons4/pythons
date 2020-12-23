@@ -8,10 +8,10 @@ interface Props {
 export default class ServicesCard extends Component<Props> {
 
     render() {
-        console.log(this.props)
+
         return (
             <div>
-                {/* <div class="row text-center"> */}
+
 
                 <div className="">
                     <img className="rounded-circle" alt="100x100" src={this.props.imge}
@@ -21,7 +21,7 @@ export default class ServicesCard extends Component<Props> {
 
                 </div>
 
-                {/* </div> */}
+
 
             </div >
 

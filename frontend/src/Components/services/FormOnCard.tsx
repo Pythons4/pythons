@@ -56,7 +56,7 @@ export default function StateTextFields(props: data) {
       ...currentState,
       [e.target.name]: e.target.value,
     }));
-    console.log(state, "belalala");
+
   };
 
   let { userid }: any = store.getState().UserReducer;
@@ -75,11 +75,11 @@ export default function StateTextFields(props: data) {
         user_service_price: state.price,
         user_phone_No: state.phoneNumber
       };
-      console.log(serviceData);
+
 
       axios.post("/api/userservice/", serviceData).then((response) => {
         addnot(`${state.name} Service has been Booked`, 'default')
-        console.log(response.data);
+
       });
     }
 
