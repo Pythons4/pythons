@@ -10,11 +10,11 @@
 }
 
 .MuiInputBase-input {
-    font-size: 18px !important;
+    font-size: 12px !important;
 }
 
 .MuiInputLabel-animated{
-    /* font-size: 17px !important; */
+    font-size: 10px !important;
     color: rgba(0, 0, 0, 0.801) !important;
 }
 
