@@ -10,7 +10,6 @@ import store from "../../store";
 import configdata from "../../csrftoken";
 import axios from "axios";
 import "./Tip.css";
-
 interface Props {
   title: string;
   imge: string;
@@ -61,7 +60,6 @@ export default class Tip extends Component<Props, State> {
     this.handeltext = this.handeltext.bind(this);
     this.favorite = this.favorite.bind(this);
   }
-
   componentDidMount() {
     var tip_id = this.state.tip._id;
     axios
@@ -77,7 +75,6 @@ export default class Tip extends Component<Props, State> {
     if (userinfo) {
       var user_id = JSON.parse(userinfo)._id;
       //retrive the commints 4 the tip
-
       axios.get(`/api/favorites/${user_id}/`).then((res) => {
         res.data.map((element: any, i: number) => {
           if (element.tip_id === this.state.tip._id) {
@@ -103,22 +100,19 @@ export default class Tip extends Component<Props, State> {
         favoritecount: fav.length,
       });
     });
-
     axios
       .get(`/api/tipcomments/${tip_id}/`)
       .then((res) => {
         var c = Object.keys(res.data).length;
         this.setState({
           commints: res.data,
-          commintscount: c
-
+          commintscount: c,
         });
       })
       .catch((err) => {
         console.log(err);
       });
   }
-
   handelcliking() {
     var { userinfo }: any = store.getState().UserReducer;
     if (JSON.parse(userinfo).user_name) {
@@ -156,7 +150,6 @@ export default class Tip extends Component<Props, State> {
       text: e.target.value,
     });
   }
-
   favorite() {
     var { userinfo }: any = store.getState().UserReducer;
     if (userinfo)
@@ -175,7 +168,7 @@ export default class Tip extends Component<Props, State> {
             .then((res) => {
               this.setState({
                 isFavorite: true,
-                favoritecount: this.state.favoritecount + 1
+                favoritecount: this.state.favoritecount + 1,
               });
               console.log(res.data);
             })
@@ -192,8 +185,7 @@ export default class Tip extends Component<Props, State> {
               console.log(res);
               this.setState({
                 isFavorite: false,
-                favoritecount: this.state.favoritecount - 1
-
+                favoritecount: this.state.favoritecount - 1,
               });
             })
             .catch((err) => {
@@ -203,71 +195,165 @@ export default class Tip extends Component<Props, State> {
       }
     this.componentDidMount();
   }
-
   render() {
     var { userid } = store.getState().UserReducer;
     return (
-      <div> { this.state.tip.user_name ? (<div className='shadowtip' style={{ borderRadius: '5px', paddingTop: '20px', width: '100%', textAlign: 'center' }}>
-        <div className='d-flex flex-column' style={{ borderRadius: '5px', paddingTop: 'auto', width: '80%', marginLeft: 'auto', marginRight: '10%' }}>
-          {/* Tip Information (title, img ,description ,time ,fav and commint) */}
-          <div className='d-flex flex-column '
-            style={{ marginBottom: "50px", marginTop: "18px" }} >
-            <p className='titlestyle'>{this.state.tip.tip_title} </p>
-            <p className='thefont'>written by: {this.state.tip.user_name} </p>
-            <img className='tipimgstyle' src={this.state.tip.tip_img} style={{ cursor: "pointer" }} alt="tippage" ></img>
-            <p className='tipdescription'>{this.state.tip.tip_text} </p>
-            <div className='d-flex justify-content-between favdatestyle'>
-              <div>
-                {/* add the tip to favorite or remove it */}
-                <Button onClick={this.favorite} style={{ outline: 'none', color: '#C70039', width: '20px', fontSize: '12px' }}>
-                  {this.state.isFavorite ? <FavoriteIcon style={{ fontSize: 26 }} /> : <FavoriteBorderIcon style={{ fontSize: 26 }} />}
-                  {this.state.favoritecount}
-                </Button>
-
-                <Button disabled style={{ outline: 'none', color: 'black', width: '20px', fontSize: '12px' }}>
-                  <ChatIcon style={{ fontSize: 26 }}></ChatIcon> {this.state.commintscount}
-                </Button>
-
-                <TimeAgo style={{ marginTop: '10px', marginRight: '8px', marginLeft: '4px' }} date={this.state.tip.tip_date} />
+      <div>
+        {" "}
+        {this.state.tip.user_name ? (
+          <div
+            className="shadowtip"
+            style={{
+              borderRadius: "5px",
+              paddingTop: "20px",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            <div
+              className="d-flex flex-column"
+              style={{
+                borderRadius: "5px",
+                paddingTop: "auto",
+                width: "80%",
+                marginLeft: "auto",
+                marginRight: "10%",
+              }}
+            >
+              {/* Tip Information (title, img ,description ,time ,fav and commint) */}
+              <div
+                className="d-flex flex-column "
+                style={{ marginBottom: "50px", marginTop: "18px" }}
+              >
+                <p className="titlestyle">{this.state.tip.tip_title} </p>
+                <p className="thefont">
+                  written by: {this.state.tip.user_name}{" "}
+                </p>
+                <img
+                  className="tipimgstyle"
+                  src={this.state.tip.tip_img}
+                  style={{ cursor: "pointer" }}
+                  alt="tippage"
+                ></img>
+                <p className="tipdescription">{this.state.tip.tip_text} </p>
+                <div className="d-flex justify-content-between favdatestyle">
+                  <div>
+                    {/* add the tip to favorite or remove it */}
+                    <Button
+                      onClick={this.favorite}
+                      style={{
+                        outline: "none",
+                        color: "#C70039",
+                        width: "20px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      {this.state.isFavorite ? (
+                        <FavoriteIcon style={{ fontSize: 26 }} />
+                      ) : (
+                        <FavoriteBorderIcon style={{ fontSize: 26 }} />
+                      )}
+                      {this.state.favoritecount}
+                    </Button>
+                    ​
+                    <Button
+                      disabled
+                      style={{
+                        outline: "none",
+                        color: "black",
+                        width: "20px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      <ChatIcon style={{ fontSize: 26 }}></ChatIcon>{" "}
+                      {this.state.commintscount}
+                    </Button>
+                    ​
+                    <TimeAgo
+                      style={{
+                        marginTop: "10px",
+                        marginRight: "8px",
+                        marginLeft: "4px",
+                      }}
+                      date={this.state.tip.tip_date}
+                    />
+                  </div>
+                </div>
+                <div className="thelinestyle"></div>​{/* the tip commints*/}
+                <table className="table favdatestyle">
+                  <thead className="thead-light">
+                    <tr>
+                      {userid && (
+                        <Paper style={{ height: "40px", marginBottom: "18px" }}>
+                          <input
+                            className="inputfield"
+                            id="cpmmentinput"
+                            type="text"
+                            name="comments"
+                            placeholder="Add a comment..."
+                            onChange={this.handeltext}
+                          ></input>
+                          <button
+                            type="button"
+                            className="postbtn"
+                            onClick={this.handelcliking}
+                          >
+                            Post
+                          </button>
+                        </Paper>
+                      )}
+                    </tr>
+                  </thead>
+                  ​{/* <div className="d-flex justify-content-around " > */}
+                  <tbody>
+                    {this.state.commints &&
+                      this.state.commints
+                        .slice(0)
+                        .reverse()
+                        .map((element: any, i: number) => (
+                          <tr
+                            key={i}
+                            style={{
+                              textAlign: "left",
+                              borderBottom: "0.5px solid rgb(126, 102, 110)",
+                            }}
+                          >
+                            <div className="d-flex">
+                              <img
+                                className="userimg"
+                                src={element.user_img}
+                                alt="userimg"
+                              ></img>
+                              <div className="d-flex flex-column">
+                                <p
+                                  style={{
+                                    marginLeft: "8px",
+                                    marginTop: "12px",
+                                  }}
+                                >
+                                  {element.user_name}{" "}
+                                  <TimeAgo
+                                    date={element.commint_date}
+                                    style={{ fontSize: "9px" }}
+                                  ></TimeAgo>
+                                </p>
+                              </div>
+                            </div>
+                            <p style={{ marginLeft: "40px" }}>
+                              {element.commint_text}{" "}
+                            </p>
+                          </tr>
+                        ))}
+                  </tbody>
+                </table>
               </div>
             </div>
-            <div className='thelinestyle'></div>
-
-            {/* the tip commints*/}
-            <table className="table favdatestyle">
-              <thead className="thead-light">
-                <tr>
-                  {userid && <Paper style={{ height: '40px', marginBottom: '18px' }}>
-                    <input className='inputfield' id='cpmmentinput' type="text" name="comments" placeholder='Add a comment...' onChange={this.handeltext}></input>
-                    <button type="button" className='postbtn' onClick={this.handelcliking}>Post</button>
-                  </Paper>}
-                </tr>
-              </thead>
-
-              {/* <div className="d-flex justify-content-around " > */}
-              <tbody>
-                {this.state.commints &&
-                  this.state.commints.slice(0).reverse().map((element: any, i: number) => (
-                    <tr key={i} style={{ textAlign: 'left', borderBottom: '0.5px solid rgb(126, 102, 110)' }}>
-                      <div className='d-flex'  >
-                        <img className='userimg' src={element.user_img} alt='userimg'></img>
-                        <div className='d-flex flex-column'>
-                          <p style={{ marginLeft: '8px', marginTop: '12px' }}>{element.user_name} <TimeAgo date={element.commint_date} style={{ fontSize: '9px' }} ></TimeAgo>
-                          </p>
-                        </div>
-                      </div>
-                      <p style={{ marginLeft: '40px' }}>{element.commint_text} </p>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
           </div>
-        </div>
-      </div >) :
-        (
+        ) : (
           <img
-            src="https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif" alt='theimg'
-            style={{ width: "20%", marginLeft: '40%', marginRight: '40%' }}
+            src="https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif"
+            alt="theimg"
+            style={{ width: "20%", marginLeft: "40%", marginRight: "40%" }}
           ></img>
         )}
       </div>
