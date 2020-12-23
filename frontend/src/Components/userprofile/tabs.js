@@ -35,7 +35,7 @@ class Posts extends Component {
 
 
         const displayPosts = (
-            <Tabs defaultIndex={1} onSelect={index => console.log(index)}>
+            <Tabs defaultIndex={1} onSelect={index => console.log(index)} >
                 <TabList   >
                     <Tab style={mystyle} > Posts</Tab>
                     <Tab style={mystyle}> Serveces   </Tab>
