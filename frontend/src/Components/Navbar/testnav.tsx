@@ -36,12 +36,7 @@ const Header = () => {
         var adminimg = JSON.parse(admininfo).user_img
         theimg = adminimg
     }
-    var comp = <Link to='/signin' className='nav-link'><h4>login</h4></Link>
-    if (id) {
-        <Link to={pathname} className='nav-link'>
-            <Avatar style={{ marginTop: '6px' }} className='header__avatar' src={theimg} />
-        </Link>
-    }
+
     return (
         <div className="header">
             <div className="logo-nav">
@@ -64,8 +59,19 @@ const Header = () => {
                         <Link to='/tips' className='nav-link'><h4>Tips</h4></Link>
                     </li>
                     <li className="option" onClick={closeMobileMenu}>
-                        {comp}
-                    </li>
+                        {
+                            id ?
+                                <div className='header__profile'>
+                                    <Link to={pathname} style={{ textDecoration: "none" }}>
+                                        {/* <AccountCircleSharpIcon className='header__avatar' style={{ fontSize: 50 }}></AccountCircleSharpIcon> */}
+                                        <Avatar style={{ marginTop: '6px' }} className='header__avatar' src={theimg} />
+                                    </Link>
+
+                                </div>
+                                :
+                                <Link to='/signin' className='nav-link'><h4>login</h4></Link>
+
+                        }                    </li>
                     <li className="option" onClick={closeMobileMenu}>
 
                         <Link to={{ pathname: `/cart` }}>
