@@ -8,7 +8,7 @@ import ProductTools from "./Components/Products/tools";
 import ProductMaterials from "./Components/Products/materials";
 import Services from "./Components/services/Services";
 import AddTip from "./Components/Tips/addtip.js";
-import Navbar from "./Components/Navbar/Navbar";
+import Navbar from "./Components/Navbar/testnav";
 import ProductsCard from "./Components/Products/productcard";
 import TheCart from "./Components/Products/thecart";
 import CofirmBuy from "./Components/Products/confirmbuying";
