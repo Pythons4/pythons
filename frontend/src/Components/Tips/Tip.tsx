@@ -152,6 +152,7 @@ export default class Tip extends Component<Props, State> {
   }
   favorite() {
     var { userinfo }: any = store.getState().UserReducer;
+    console.log(this.state.tip._id);
     if (userinfo)
       if (JSON.parse(userinfo)._id !== null) {
         var user_id = JSON.parse(userinfo)._id;
