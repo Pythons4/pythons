@@ -156,7 +156,7 @@ export default class Tip extends Component<Props, State> {
       if (JSON.parse(userinfo)._id !== null) {
         var user_id = JSON.parse(userinfo)._id;
         if (this.state.isFavorite === false) {
-          // console.log(this.stat);
+          console.log(this.state.tip);
           axios
             .post(`/api/favorites/`, {
               user_id: user_id,
@@ -164,7 +164,7 @@ export default class Tip extends Component<Props, State> {
               tip_img: this.state.tip.tip_img,
               tip_title: this.state.tip.tip_title,
               user_name: this.state.tip.user_name,
-            })
+            }, configdata)
             .then((res) => {
               this.setState({
                 isFavorite: true,
@@ -173,6 +173,7 @@ export default class Tip extends Component<Props, State> {
               console.log(res.data);
             })
             .catch((err) => {
+              console.log('some errors')
               console.log(err);
             });
         }
@@ -251,11 +252,11 @@ export default class Tip extends Component<Props, State> {
                       {this.state.isFavorite ? (
                         <FavoriteIcon style={{ fontSize: 26 }} />
                       ) : (
-                        <FavoriteBorderIcon style={{ fontSize: 26 }} />
-                      )}
+                          <FavoriteBorderIcon style={{ fontSize: 26 }} />
+                        )}
                       {this.state.favoritecount}
                     </Button>
-                    ​
+
                     <Button
                       disabled
                       style={{
@@ -268,7 +269,7 @@ export default class Tip extends Component<Props, State> {
                       <ChatIcon style={{ fontSize: 26 }}></ChatIcon>{" "}
                       {this.state.commintscount}
                     </Button>
-                    ​
+
                     <TimeAgo
                       style={{
                         marginTop: "10px",
@@ -304,7 +305,7 @@ export default class Tip extends Component<Props, State> {
                       )}
                     </tr>
                   </thead>
-                  ​{/* <div className="d-flex justify-content-around " > */}
+                  {/* <div className="d-flex justify-content-around " > */}
                   <tbody>
                     {this.state.commints &&
                       this.state.commints
@@ -350,12 +351,12 @@ export default class Tip extends Component<Props, State> {
             </div>
           </div>
         ) : (
-          <img
-            src="https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif"
-            alt="theimg"
-            style={{ width: "20%", marginLeft: "40%", marginRight: "40%" }}
-          ></img>
-        )}
+            <img
+              src="https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif"
+              alt="theimg"
+              style={{ width: "20%", marginLeft: "40%", marginRight: "40%" }}
+            ></img>
+          )}
       </div>
     );
   }
