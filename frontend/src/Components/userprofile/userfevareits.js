@@ -25,12 +25,10 @@ class UserFevareits extends React.Component {
             })
 
         })
-        console.log(this.state.UserFevareits)
     }
 
 
     render() {
-        console.log(this.state.UserFevareits)
 
         return (
             <div div className="profile-body">

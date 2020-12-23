@@ -33,7 +33,6 @@ class UserTips extends React.Component {
 
 
     render() {
-        console.log(this.state.UserTips)
 
         return (
             <div className="profile-body">

@@ -11,20 +11,17 @@ import { Link } from "react-router-dom";
 
 var postreq = async (file1, tip_text, tip_title) => {
     var userinfo = JSON.parse(store.getState().UserReducer.userinfo);
-    console.log(userinfo)
     const data = new FormData()
     data.append('file', file1[0])
     data.append('upload_preset', 'appimgs')
 
     axios.post("https://api.cloudinary.com/v1_1/dve46qnma/image/upload", data)
         .then(res => {
-            console.log(res.data.secure_url)
             axios.post("/api/tips/", {
                 tip_title: tip_title, tip_text: tip_text, tip_img: res.data.secure_url,
                 user_id: userinfo._id, user_name: userinfo.user_name
             }, configdata)
                 .then(res => {
-                    console.log(res.data)
                     window.location.href = '/tips'
 
                 })

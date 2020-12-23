@@ -6,7 +6,6 @@ import './user.css'
 
 class UserFev extends React.Component {
     constructor(props) {
-        console.log(props)
         super(props)
 
 
