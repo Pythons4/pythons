@@ -1,10 +1,27 @@
 #forForm{
-    height: auto !important;
+    height: 375px !important;
     text-align: center !important;
 }
 
 #forButton{
-    width: 35% !important;
+    width: 48% !important;
     height: 40px !important;
     font-size: medium !important;
 }
+
+.MuiInputBase-input {
+    font-size: 18px !important;
+}
+
+.MuiInputLabel-animated{
+    /* font-size: 17px !important; */
+    color: rgba(0, 0, 0, 0.801) !important;
+}
+
+  .formShadow {
+    /* border: 1px solid #3f51b5; */
+    /* padding: 10px; */
+    box-shadow: -10px -10px #337ab7;
+    margin-top: 30px;
+    font-family: 'Poly', serif !important;
+  }

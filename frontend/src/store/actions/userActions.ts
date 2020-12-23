@@ -92,7 +92,7 @@ export const updateuserimg = (file1: any, userinfo: any) => {
                 }, config)
                     .then(res => {
                         console.log(res.data)
-                        addnot('image updated')
+                        addnot('image updated', 'default')
 
                         dispatch({
                             type: 'UPDATE_IMG',
@@ -123,7 +123,7 @@ export const updateuserinfo = (userinfo: any, newinfo: any) => {
         }, config)
             .then(res => {
                 console.log(res.data)
-                addnot('Your information updated')
+                addnot('Your information updated', 'default')
 
                 dispatch({
                     type: 'UPDATE_IMG',

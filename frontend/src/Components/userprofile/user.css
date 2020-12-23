@@ -60,10 +60,6 @@
   color: black;
 }
 
-/* .profile-nav-inf .company p{
-	margin-right: 5px;
-} */
-
 .main-bd {
   /* width: 100vw; */
   display: flex;
@@ -271,3 +267,4 @@ justify-items: ;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
+
