@@ -15,7 +15,7 @@
   height: 190px;
   position: relative;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
-  margin-left: -205px;
+  margin-left: -139px;
 }
 
 .profile-img {
@@ -61,7 +61,7 @@
 }
 
 .main-bd {
-  width: 100%;
+  /* width: 100vw; */
   display: flex;
   padding-right: 15px;
 }
@@ -123,14 +123,14 @@ justify-items: ;
 } */
 
 .logout_button {
-  margin: 5px 2px;
+  /* margin: 5px 2px; */
   cursor: pointer;
   outline: none;
 
   width: 100% !important;
-  height: 50px !important;
+  height: 30px !important;
   font-size: smaller !important;
-  margin-right: 150px;
+  /* margin-right: 150px; */
 }
 
 .nav {
@@ -188,7 +188,7 @@ justify-items: ;
 
 .ser_card {
   color: #fff;
-  width: 240px;
+  width: 250px;
   height: 160px;
   margin: 30px auto;
   display: -webkit-box;
@@ -222,7 +222,7 @@ justify-items: ;
   font-size: 15px;
   font-family: "Times New Roman", Times, serif;
   color: black;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .fev_card {
