@@ -28,30 +28,25 @@ export class Tips extends Component<{}, any> {
     // console.log(this.state.user_id);
     return (
       <div>
-        <div
+        <div ><div
           style={{
             display: "inline-block",
             fontFamily: "Poly",
             color: "#A04D25",
+            width: '50vw',
+            marginRight: 'auto',
+            marginLeft: 'auto'
           }}
         >
           {this.state.user_id && this.state.tips.tips && (
-            <h3>Share your tip</h3>
+            <h3 onClick={(event) => (window.location.href = "/tip/add")}>Share your tip  <PostAddSharpIcon
+              color="primary"
+              style={{ fontSize: 30, cursor: 'pointer' }}
+
+            /></h3>
           )}
         </div>
-        <div
-          style={{
-            display: "inline-block",
-            paddingLeft: "10px",
-          }}
-        >
-          {this.state.user_id && this.state.tips.tips && (
-            <PostAddSharpIcon
-              color="primary"
-              style={{ fontSize: 30 }}
-              onClick={(event) => (window.location.href = "/tip/add")}
-            />
-          )}
+
         </div>
         <div
           className="d-flex flex-wrap justify-content-around "
@@ -103,6 +98,8 @@ export class Tips extends Component<{}, any> {
                           position: "relative",
                           borderTopLeftRadius: "15px",
                           borderTopRightRadius: "15px",
+                          objectFit: 'cover'
+
                         }}
                         alt="tip"
                       // className="imgstyle"

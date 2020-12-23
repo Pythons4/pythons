@@ -1,54 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Sail&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sail&display=swap");
 .shadow {
-    border: 1px solid #B2D3EF;
-    /* padding: 10px; */
-    box-shadow: 10px 10px #B2D3EF;
-    margin-top: 30px;
-   
-  }
-  .shadowtip{
-    border: 1px solid #ffffff00;
-    /* padding: 10px; */
-    margin-top: 30px;
-  }
-  .shadowtable{
-    box-shadow: 10px 10px #B2D3EF;
-    margin-top: 50px;
-   
-  }
+  border: 1px solid #b2d3ef;
+  /* padding: 10px; */
+  box-shadow: 10px 10px #b2d3ef;
+  margin-top: 25px;
+}
+.shadowtip {
+  border: 1px solid #ffffff00;
+  /* padding: 10px; */
+  margin-top: 30px;
+}
+.shadowtable {
+  box-shadow: 10px 10px #b2d3ef;
+  margin-top: 50px;
+}
 
-  .backimg{
-      background-image: url('https://res.cloudinary.com/dve46qnma/image/upload/v1608366628/appimgs/qtqqb8lygpm2ssvb5cwj.jpg');
-      width:900px;
-      height: 280px;
-      background-size: cover; 
-    
-  }
-  .backimg3{
-    background-image: url('https://cdn.dribbble.com/users/2014543/screenshots/9705946/media/5843e538abeaac1b0e942635bcc9c60b.jpg?compress=1&resize=1200x900');
-    width:900px;
-    height: 320px;
-    background-size: cover; 
-  
+.backimg {
+  background-image: url("https://res.cloudinary.com/dve46qnma/image/uplad/v1608366628/appimgs/qtqqb8lygpm2ssvb5cwj.jpg");
+  width: 900px;
+  height: 280px;
+  background-size: cover;
 }
-  .backimg2{
-    background-image: url('https://res.cloudinary.com/dve46qnma/image/upload/v1608377772/appimgs/idniyx94oj8pkfl4ny7b.jpg');
-    width:400px;
-    height: 414px;
-    background-size: cover; 
-    margin-bottom: '7px'
-   
-  
+.backimg3 {
+  background-image: url("https://cdn.dribbble.com/users/2014543/screenshots/9705946/media/5843e538abeaac1b0e942635bcc9c60b.jpg?compress=1&resize=1200x900");
+  width: 900px;
+  height: 320px;
+  background-size: cover;
 }
-  .incenter{
-    margin-left: 14px;
-     margin-top: 0
-  }
-   
-.h3font{
-    font-family: 'Sail', cursive;
-    font-style: normal;
-    font-weight:300;
-    font-size:xx-large;
-    color:#3F51B5
-  }
+.backimg2 {
+  background-image: url("https://res.cloudinary.com/dve46qnma/image/upload/v1608377772/appimgs/idniyx94oj8pkfl4ny7b.jpg");
+  width: 400px;
+  height: 414px;
+  background-size: cover;
+  margin-bottom: "7px";
+}
+.incenter {
+  margin-left: 14px;
+  margin-top: 0;
+}
+
+.h3font {
+  font-family: "Sail", cursive;
+  font-style: normal;
+  font-weight: 300;
+  font-size: xx-large;
+  color: #3f51b5;
+}

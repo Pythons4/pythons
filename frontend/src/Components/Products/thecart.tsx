@@ -51,7 +51,7 @@ export default class TheCart extends Component<Props, State>{
         var isuser = userid ? true : false
 
         return (
-            <div className='shadowtable' style={{ borderRadius: '5px', width: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+            <div className='shadowtable' style={{ borderRadius: '5px', width: '60vw', marginLeft: 'auto', marginRight: 'auto' }}>
                 <table className="table">
                     <thead className="thead-light" >
                         <tr>

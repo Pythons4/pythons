@@ -35,7 +35,4 @@ export const adminsignin = (userinfo: any) => {
 //admin sign out action
 export const signout = () => {
     return { type: 'SIGN_OUT' }
-
-
-
 }
