@@ -66,7 +66,7 @@ export default class ProductsCard extends Component<Props, State> {
       });
   }
   addtothecart() {
-    console.log("in");
+
     store.dispatch(
       addtocart(
         {
@@ -79,7 +79,7 @@ export default class ProductsCard extends Component<Props, State> {
       )
     );
     var storedata = store.getState();
-    console.log(storedata);
+
     window.location.reload();
   }
   render() {

@@ -6,9 +6,7 @@ import './product.css'
 import store from '../../store';
 import { GET_ALL } from '../../store/actions/getallproduct';
 
-// import axios from "axios";
-// import configdata from '../../csrftoken'
-// import { signin } from '../../store/actions/userActions';
+
 
 export class Product extends Component<{}, any> {
     constructor(props: {} | Readonly<{}>) {

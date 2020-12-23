@@ -98,6 +98,8 @@ export class Tips extends Component<{}, any> {
                           position: "relative",
                           borderTopLeftRadius: "15px",
                           borderTopRightRadius: "15px",
+                          objectFit: 'cover'
+
                         }}
                         alt="tip"
                       // className="imgstyle"

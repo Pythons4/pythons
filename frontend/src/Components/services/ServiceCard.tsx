@@ -12,7 +12,7 @@ interface Props {
 export default class ServicesCard extends Component<Props> {
 
     render() {
-        console.log(this.props)
+
         return (
 
             <div style={{ marginBottom: "28px" }} className="d-flex flex-column  col-4   align-items-center" onClick={() => this.props.onclick({ name: this.props.name, price: this.props.price })} >

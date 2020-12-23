@@ -35,7 +35,7 @@ export default class TheCart extends Component<Props, State>{
     }
 
     render() {
-        console.log(this.state.theproduct.whatincart)
+
         var allproducts = []
         var price = 0
         var count = 0
@@ -45,7 +45,7 @@ export default class TheCart extends Component<Props, State>{
             price += (allproducts[count][1].quantity * allproducts[count][1].price)
             count++
         }
-        console.log(allproducts, price)
+
 
         let { userid } = store.getState().UserReducer
         var isuser = userid ? true : false
@@ -63,7 +63,7 @@ export default class TheCart extends Component<Props, State>{
                         </tr>
                     </thead>
                     <tbody style={{ paddingTop: '15px' }}>
-                        {/* retrive all proudcts that user select in the cart */}
+
                         {allproducts.map((product: any, i: number) =>
                             <tr >
                                 <th scope="row"><img style={{ width: '60px' }} alt='product img' src={product[1].img}></img></th>
