@@ -51,6 +51,7 @@ class UserService(models.Model):
     user_service_approv = models.BooleanField()
     user_service_price = models.TextField()
     user_service_approv = models.BooleanField(default=False)
+    user_phone_No = models.TextField()
 
 
 # tips table

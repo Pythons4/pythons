@@ -72,6 +72,7 @@ export default function StateTextFields(props: data) {
         user_service_hours: state.houres,
         user_service_location: state.location,
         user_service_price: state.price,
+        user_phone_No: state.phoneNumber
       };
       console.log(serviceData);
 
@@ -98,7 +99,6 @@ export default function StateTextFields(props: data) {
             minDate={moment().add(1, 'days').endOf('day')}
             value={selectedDate}
             format="YYYY-MM-DD"
-            // inputValue={inputValue}
             onChange={onDateChange}
             KeyboardButtonProps={{
               "aria-label": "change date",
