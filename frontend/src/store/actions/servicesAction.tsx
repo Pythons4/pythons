@@ -1,21 +1,16 @@
 import axios from 'axios'
 
+//user book services (action)
 const setService = () => async (dispatch: any) => {
     try {
         const res = await axios.get(`/api/services/`)
         dispatch({
             type: 'SET_SERVICES',
             payload: res.data
-
         })
-        console.log(res.data)
-
     }
     catch (e) {
-        // dispatch({
-        //     type: USERS_ERROR,
-        //     payload: console.log(e),
-        // })
+        console.log(e.message)
     }
 }
 export default setService

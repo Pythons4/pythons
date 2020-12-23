@@ -12,7 +12,6 @@ export const approveService = (_id: any, value: any) => {
         console.log(res.data)
     })
         .catch(err => {
-            console.log(err)
-
+            console.log(err.message)
         })
 }

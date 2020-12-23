@@ -9,7 +9,6 @@ export const adminsignin = (userinfo: any) => {
             admin_password: userinfo.user_password
         }
         axios.post("/api/adminLogin", data, config).then(res => {
-            console.log(res.data)
             if (res.data === "wrong email" || res.data === "wrong password")
                 dispatch({
                     type: "SIGN-IN_ERROR",
@@ -23,7 +22,6 @@ export const adminsignin = (userinfo: any) => {
                 })
         })
             .catch(err => {
-                console.log(err)
                 dispatch({
                     type: "SIGN-IN_ERROR",
                     value: 'signinerror'

@@ -13,6 +13,7 @@ export const GET_ALL = () => {
                 else {
                     material.push(res.data[i])
                 }
+            //get material and tool products
             dispatch({
                 type: "GET_ALL",
                 product: product,
