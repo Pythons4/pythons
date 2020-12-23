@@ -1,0 +1,75 @@
+.userimg{
+    width: 35px;
+    height: 35px;
+    object-position: 50% 50%;
+    border-radius: 50%;
+    margin-top: 6px;
+}
+
+.tipimgstyle{
+width: 66%;
+height: auto;
+margin-left:auto;
+margin-right:auto;
+/* box-shadow: 10px 10px rgba(94, 69, 77, 0.815); */
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poly&display=swap');
+.titlestyle{
+    width: 70%;
+    margin-left:auto;
+    margin-right:auto;
+    font-size: 3.6vw;
+    font-family: 'Poly', serif;
+    color: rgb(94, 69, 77);
+}
+.tipdescription{
+    margin-top:18px;
+    width: 63%;
+    margin-left:auto;
+    margin-right:auto;
+    font-size: 1.2vw;    
+    font-family: 'Poly', serif;
+    text-align:justify;
+}
+
+.favdatestyle{
+    width: 62%;
+    margin-left:auto;
+    margin-right:auto;
+    font-family: 'Poly', serif;
+}
+.thefont{
+    font-family: 'Poly', serif;
+}
+
+.thelinestyle{
+    width: 62%;
+    margin-left:auto;
+    margin-right:auto;
+    border-top: 1.5px solid black;
+    margin-bottom: 10px;
+}
+.inputfield{
+    width: 70%;
+    background-color:rgba(255, 255, 255, 0);
+    border:1px solid rgba(255, 255, 255, 0);
+    outline: none;
+    margin-top: 8px;  
+    margin-left: 4%;
+}
+.postbtn{
+    width: 20%;
+    background-color:rgba(255, 255, 255, 0);
+    border:1px solid rgba(255, 255, 255, 0);
+    outline: none;
+    margin-top: 8px;  
+    color: rgb(75, 50, 50);
+    margin-left: 6%;
+}
+.postbtn:hover{
+    color:cornflowerblue
+}
+.postbtn:active
+ { outline: none }

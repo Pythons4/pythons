@@ -23,17 +23,17 @@ class Posts extends Component {
             padding: "10px",
             fontFamily: "'Times New Roman', Times, serif",
             background: "#E4E4E1",
-            width:"283px",
+            width: "340px",
             // paddingLeft: "50px",
             justifyContent: "center",
             cursor: "pointer",
             textAlign: "center",
             // transition: "all .2s ease-in-out",
-            
+
 
         };
 
-       
+
 
 
         const displayPosts = (
