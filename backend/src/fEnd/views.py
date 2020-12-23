@@ -141,6 +141,16 @@ def updateFavorite(request):
     return Response('hi')
 
 
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def updateFavorite(request):
+    print('params')
+    favorite = Fav.objects.get(
+        _id=ObjectId(request.data['_id']))
+    favorite.delete()
+    return Response('hi')
+
+
 @permission_classes([AllowAny])
 class ProductsView(viewsets.ModelViewSet):
     serializer_class = ProductsSerializer

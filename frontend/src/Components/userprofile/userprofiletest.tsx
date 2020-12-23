@@ -7,7 +7,7 @@ import { Button } from "@material-ui/core";
 import EmailIcon from "@material-ui/icons/Email";
 import CallIcon from "@material-ui/icons/Call";
 import Posts from "./tabs";
-
+import MediaQuery from "react-responsive";
 import { signout } from "../../store/actions/userActions";
 import "./user.css";
 import "./profilestyle.css";
@@ -34,7 +34,14 @@ function App() {
   return (
     <div>
       <div className="container">
+        {/* <MediaQuery minDeviceWidth={1300} device={{ deviceWidth: 1900 }}> */}
         <div className="profile-header">
+          {/* <div className="cube"></div>
+          <div className="cube"></div>
+          <div className="cube"></div>
+          <div className="cube"></div>
+          <div className="cube"></div>
+          <div className="cube"></div> */}
           <div className="profile-img">
             <img src={JSON.parse(test.userinfo).user_img} alt="usrimg" />
           </div>
@@ -43,12 +50,17 @@ function App() {
             <div className="address">
               <p className="address">Palestine</p>
             </div>
-            <Button className="logout_button" onClick={() => logOut()}>
+            <Button
+              // className="logout_button"
+              id="buttoun"
+              onClick={() => logOut()}
+            >
               {" "}
               LogOut{" "}
             </Button>
           </div>
         </div>
+        {/* </MediaQuery> */}
       </div>
       <div className="main-bd">
         <div className="left-side">
@@ -70,6 +82,7 @@ function App() {
               <input
                 className="button-img"
                 type="button"
+                id="buttoun1"
                 value="change image"
                 onClick={togglePopup}
               />
@@ -77,6 +90,7 @@ function App() {
               <input
                 className="button-bio"
                 type="button"
+                id="buttoun1"
                 value="change bio"
                 onClick={togglePopupbio}
               />
@@ -88,7 +102,6 @@ function App() {
                 }
               />
             </p>
-            {console.log(new Date())}
           </div>
         </div>
 

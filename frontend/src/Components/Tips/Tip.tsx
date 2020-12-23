@@ -10,7 +10,6 @@ import store from "../../store";
 import configdata from "../../csrftoken";
 import axios from "axios";
 import "./Tip.css";
-
 interface Props {
   title: string;
   imge: string;
@@ -61,7 +60,6 @@ export default class Tip extends Component<Props, State> {
     this.handeltext = this.handeltext.bind(this);
     this.favorite = this.favorite.bind(this);
   }
-
   componentDidMount() {
     var tip_id = this.state.tip._id;
     axios
@@ -77,7 +75,6 @@ export default class Tip extends Component<Props, State> {
     if (userinfo) {
       var user_id = JSON.parse(userinfo)._id;
       //retrive the commints 4 the tip
-
       axios.get(`/api/favorites/${user_id}/`).then((res) => {
         res.data.map((element: any, i: number) => {
           if (element.tip_id === this.state.tip._id) {
@@ -103,20 +100,19 @@ export default class Tip extends Component<Props, State> {
         favoritecount: fav.length,
       });
     });
-
     axios
       .get(`/api/tipcomments/${tip_id}/`)
       .then((res) => {
+        var c = Object.keys(res.data).length;
         this.setState({
           commints: res.data,
-          commintscount: res.data.length,
+          commintscount: c,
         });
       })
       .catch((err) => {
         console.log(err);
       });
   }
-
   handelcliking() {
     var { userinfo }: any = store.getState().UserReducer;
     if (JSON.parse(userinfo).user_name) {
@@ -154,58 +150,57 @@ export default class Tip extends Component<Props, State> {
       text: e.target.value,
     });
   }
-
   favorite() {
     var { userinfo }: any = store.getState().UserReducer;
-    var user_id = JSON.parse(userinfo)._id;
-    if (JSON.parse(userinfo)._id !== null) {
-      if (this.state.isFavorite === false) {
-        // console.log(this.stat);
-        axios
-          .post(`/api/favorites/`, {
-            user_id: user_id,
-            tip_id: this.state.tip._id,
-            tip_img: this.state.tip.tip_img,
-            tip_title: this.state.tip.tip_title,
-            user_name: this.state.tip.user_name,
-          })
-          .then((res) => {
-            this.setState({
-              isFavorite: true,
-              favoritecount: this.state.favoritecount + 1,
+    if (userinfo)
+      if (JSON.parse(userinfo)._id !== null) {
+        var user_id = JSON.parse(userinfo)._id;
+        if (this.state.isFavorite === false) {
+          // console.log(this.stat);
+          axios
+            .post(`/api/favorites/`, {
+              user_id: user_id,
+              tip_id: this.state.tip._id,
+              tip_img: this.state.tip.tip_img,
+              tip_title: this.state.tip.tip_title,
+              user_name: this.state.tip.user_name,
+            })
+            .then((res) => {
+              this.setState({
+                isFavorite: true,
+                favoritecount: this.state.favoritecount + 1,
+              });
+              console.log(res.data);
+            })
+            .catch((err) => {
+              console.log(err);
             });
-            console.log(res.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-      if (this.state.isFavorite === true) {
-        var _id = this.state.favorite[0]["_id"];
-        console.log(_id);
-        axios
-          .post(`/api/updatefavorite`, { _id: _id }, configdata)
-          .then((res) => {
-            console.log(res);
-            this.setState({
-              isFavorite: false,
-              favoritecount: this.state.favoritecount - 1,
+        }
+        if (this.state.isFavorite === true) {
+          var _id = this.state.favorite[0]["_id"];
+          console.log(_id);
+          axios
+            .post(`/api/updatefavorite`, { _id: _id }, configdata)
+            .then((res) => {
+              console.log(res);
+              this.setState({
+                isFavorite: false,
+                favoritecount: this.state.favoritecount - 1,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
             });
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        }
       }
-    }
-    // this.componentDidMount();
+    this.componentDidMount();
   }
-
   render() {
     var { userid } = store.getState().UserReducer;
     return (
       <div>
         {" "}
-        {this.state.tip.user_name && (
+        {this.state.tip.user_name ? (
           <div
             className="shadowtip"
             style={{
@@ -260,7 +255,7 @@ export default class Tip extends Component<Props, State> {
                       )}
                       {this.state.favoritecount}
                     </Button>
-
+                    ​
                     <Button
                       disabled
                       style={{
@@ -273,7 +268,7 @@ export default class Tip extends Component<Props, State> {
                       <ChatIcon style={{ fontSize: 26 }}></ChatIcon>{" "}
                       {this.state.commintscount}
                     </Button>
-
+                    ​
                     <TimeAgo
                       style={{
                         marginTop: "10px",
@@ -284,9 +279,7 @@ export default class Tip extends Component<Props, State> {
                     />
                   </div>
                 </div>
-                <div className="thelinestyle"></div>
-
-                {/* the tip commints*/}
+                <div className="thelinestyle"></div>​{/* the tip commints*/}
                 <table className="table favdatestyle">
                   <thead className="thead-light">
                     <tr>
@@ -311,8 +304,7 @@ export default class Tip extends Component<Props, State> {
                       )}
                     </tr>
                   </thead>
-
-                  {/* <div className="d-flex justify-content-around " > */}
+                  ​{/* <div className="d-flex justify-content-around " > */}
                   <tbody>
                     {this.state.commints &&
                       this.state.commints
@@ -357,6 +349,12 @@ export default class Tip extends Component<Props, State> {
               </div>
             </div>
           </div>
+        ) : (
+          <img
+            src="https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif"
+            alt="theimg"
+            style={{ width: "20%", marginLeft: "40%", marginRight: "40%" }}
+          ></img>
         )}
       </div>
     );

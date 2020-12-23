@@ -52,6 +52,9 @@ export default class ProductsCard extends Component<Props, State> {
   }
 
   incrementQuantity() {
+    if (this.state.quantity + 1 > theproduct.product_quantity) {
+      return alert("you reach the limit")
+    }
     this.setState({
       quantity: this.state.quantity + 1,
     });
@@ -149,5 +152,3 @@ export default class ProductsCard extends Component<Props, State> {
     );
   }
 }
-
-

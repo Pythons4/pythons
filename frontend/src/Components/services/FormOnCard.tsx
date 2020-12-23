@@ -12,11 +12,14 @@ import store from "../../store";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: "25ch",
+      marginBottom: theme.spacing(1),
+      width: "30ch",
     },
   },
 }));
+
+
+// interface for props
 interface data {
   data: {
     name: string;
@@ -25,6 +28,7 @@ interface data {
 }
 
 export default function StateTextFields(props: data) {
+
   const [selectedDate, setDate] = React.useState(moment().add(1, 'days').endOf('day'));
   const [inputValue, setInputValue] = React.useState(moment().format("YYYY-MM-DD"));
   const onDateChange = (date: any, value: any) => {
@@ -34,14 +38,18 @@ export default function StateTextFields(props: data) {
   };
 
   const classes = useStyles();
+
+  // hooks state to get data from user (form)
   const [state, setState] = React.useState({
     location: "",
     houres: "",
     date: "",
+    phoneNumber: "",
     name: props.data.name,
     price: props.data.price,
   });
 
+  //  to save data from user on state (form)
   const handleChange = (e: any) => {
     setState((currentState) => ({
       ...currentState,
@@ -51,7 +59,11 @@ export default function StateTextFields(props: data) {
   };
 
   let { userid }: any = store.getState().UserReducer;
+
+  // send post req after book using axios
   const book = () => {
+
+    // check if there is user login
     if (userid) {
       let serviceData = {
         user_id: JSON.parse(userid),
@@ -66,16 +78,18 @@ export default function StateTextFields(props: data) {
       axios.post("/api/userservice/", serviceData).then(function (response) {
         console.log(response);
       });
-    } else {
+    }
+
+    else {
       alert("you should login");
     }
   };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form id="formShadow" className={classes.root} noValidate autoComplete="off" style={{ width: "430px", height: "400px" }}>
       <div id="forForm">
-        <h3>{props.data.name}</h3>
-        <h4>{props.data.price} / hour</h4>
+        <h3 style={{ color: "#337ab7" }}>{props.data.name}</h3>
+        <h4 style={{ color: "#337ab7", fontSize: "22px", marginBottom: "30px" }}>  {props.data.price} / hour</h4>
         <MuiPickersUtilsProvider utils={MomentUtils}>
           <KeyboardDatePicker
             id="outlined-name"
@@ -89,6 +103,7 @@ export default function StateTextFields(props: data) {
             KeyboardButtonProps={{
               "aria-label": "change date",
             }}
+
           />
         </MuiPickersUtilsProvider>
 
@@ -97,24 +112,38 @@ export default function StateTextFields(props: data) {
           label="Hours"
           type="number"
           name="houres"
+          InputProps={{ inputProps: { min: 0, max: 6 } }}
           onChange={handleChange}
+
+        />
+
+        <TextField
+          id="standard-secondary"
+          label="number"
+          type="number"
+          name="phoneNumber"
+          onChange={handleChange}
+
         />
         <TextField
           id="standard-secondary"
           label="Location"
           name="location"
           onChange={handleChange}
+          style={{ color: "white" }}
+
+
         />
         <br />
         <Button
           onClick={book}
           id="forButton"
           variant="contained"
-          color="primary"
+          style={{ marginTop: "26px", background: "#337ab7", color: "white" }}
         >
           Submit
         </Button>
       </div>
-    </form>
+    </form >
   );
 }
