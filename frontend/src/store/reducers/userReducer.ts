@@ -31,9 +31,9 @@ const userReducer = (state: any, action: any) => {
 
             }
         case 'MY_APPREVED_SERVICES':
-            if (JSON.parse(localStorage.getItem('provedServicses') || '{}').length !== action.userinfo.length) {
-                addnot('new approved service')
-            }
+            // if (JSON.parse(localStorage.getItem('provedServicses') || '{}').length !== action.userinfo.length) {
+            //     addnot('new approved service')
+            // }
             localStorage.setItem('provedServicses', JSON.stringify(action.userinfo))
             return {
                 token: localStorage.getItem('token'), userid: localStorage.getItem('userid'),

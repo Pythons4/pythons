@@ -3,8 +3,10 @@ import ServicesCard from "./ServiceCard"
 import setService from "../../store/actions/servicesAction"
 import { connect } from "react-redux"
 import Popup from './popupinfoedit'
+import Footer from '../Homepage/Footer';
 
 class Services extends Component<{ services: any, setService: any }> {
+    // to send data to the form to know which servid
     state = {
         data: {
             name: "choose service",
@@ -14,6 +16,8 @@ class Services extends Component<{ services: any, setService: any }> {
         isShow: false
 
     }
+
+    // to edit the state with clicked service info
     onclick = (data: any) => {
         this.setState({
             data,
@@ -34,6 +38,7 @@ class Services extends Component<{ services: any, setService: any }> {
             name = serv.service_name;
             check = false
             return < ServicesCard price={price} imge={imge} name={name} onclick={this.onclick} />
+
         }))
 
         return (
@@ -48,6 +53,7 @@ class Services extends Component<{ services: any, setService: any }> {
                         handleClose={this.onclick}
                     />
                 )}
+
             </div >
         )
     }

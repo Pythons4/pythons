@@ -9,10 +9,17 @@ const prodictsReducer = (state = [], action) => {
             var currentProduct = JSON.parse(localStorage.getItem('product'))
             console.log(currentProduct)
             if (currentProduct)
-                if (currentProduct.length !== action.product.length) {
+                if (currentProduct.length < action.product.length) {
                     // localStorage.setItem('notivecation', 'tool')
                     var notification = { value: 'tool' }
-                    addnot()
+                    addnot("new Tool Product added to the store")
+                }
+            var currentProduct2 = JSON.parse(localStorage.getItem('material'))
+            if (currentProduct2)
+                if (currentProduct2.length < action.material.length) {
+                    // localStorage.setItem('notivecation', 'tool')
+                    notification = { value: 'material' }
+                    addnot("new material Product added to the store")
                 }
             localStorage.setItem('product', JSON.stringify(action.product))
             localStorage.setItem('material', JSON.stringify(action.material))
@@ -34,8 +41,8 @@ export default prodictsReducer;
 
 var addnot = (text) => {
     store.addNotification({
-        title: "Wonderful!",
-        message: 'text',
+        title: "New Product!",
+        message: text,
         type: "default",
         insert: "top",
         container: "top-right",
