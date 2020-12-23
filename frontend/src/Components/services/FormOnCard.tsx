@@ -9,6 +9,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 
 import axios from "axios";
 import store from "../../store";
+import { addnot } from "../../notife";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -76,8 +77,9 @@ export default function StateTextFields(props: data) {
       };
       console.log(serviceData);
 
-      axios.post("/api/userservice/", serviceData).then(function (response) {
-        console.log(response);
+      axios.post("/api/userservice/", serviceData).then((response) => {
+        addnot(`${state.name} Service has been Booked`, 'default')
+        console.log(response.data);
       });
     }
 
@@ -113,6 +115,7 @@ export default function StateTextFields(props: data) {
           type="number"
           name="houres"
           InputProps={{ inputProps: { min: 0, max: 6 } }}
+          error={parseInt(state.houres) > 6}
           onChange={handleChange}
 
         />
