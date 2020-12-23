@@ -24,11 +24,8 @@ function App() {
   };
   var test: any = store.getState().UserReducer;
 
-  console.log(test);
-
   const logOut = () => {
     store.dispatch(signout());
-    console.log("hhhh");
   };
 
   return (
@@ -51,7 +48,7 @@ function App() {
         </div>
       </div>
       <div className="main-bd">
-        <div className="left-side">
+        <div className="left-side" style={{ height: '100vh' }}>
           <div className="profile-side">
             <p className="user-maile">
               {/* <i className="fas fa-envelope"></i> */}

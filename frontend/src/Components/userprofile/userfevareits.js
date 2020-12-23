@@ -53,7 +53,7 @@ class UserFevareits extends React.Component {
                                     >
                                         <div className="fev_card" key={id}>
 
-                                            <div className="fev_datails" >
+                                            <div style={{ objectPosition: ' 50% 50%' }} >
                                                 <img
                                                     src={fev.tip_img}
                                                     alt="tipimage"

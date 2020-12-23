@@ -23,14 +23,12 @@ class Posts extends Component {
             padding: "10px",
             fontFamily: "'Times New Roman', Times, serif",
             background: "#E4E4E1",
-            width: "340px",
-            // paddingLeft: "50px",
+            width: "24vw",
             justifyContent: "center",
             cursor: "pointer",
             textAlign: "center",
-            // transition: "all .2s ease-in-out",
-
-
+            borderTopLeftRadius: '12px',
+            borderTopRightRadius: '12px'
         };
 
 
@@ -38,17 +36,12 @@ class Posts extends Component {
 
         const displayPosts = (
             <Tabs defaultIndex={1} onSelect={index => console.log(index)}>
-
-
                 <TabList   >
                     <Tab style={mystyle} > Posts</Tab>
                     <Tab style={mystyle}> Serveces   </Tab>
                     <Tab style={mystyle}>  Fevarets  </Tab>
-
-
-
-
                 </TabList >
+
                 <TabPanel><UserTips /></TabPanel>
                 <TabPanel ><UserServeces /></TabPanel>
                 <TabPanel><UserFevarets /></TabPanel>
