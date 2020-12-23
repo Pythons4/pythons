@@ -20,7 +20,7 @@ class SignInPage extends React.Component<
     username: string;
     userphone: string;
   }
-> {
+  > {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -93,8 +93,7 @@ class SignInPage extends React.Component<
         style={{
           borderRadius: "5px",
           paddingTop: "20px",
-          width: "800px",
-          marginLeft: "auto",
+          width: '60vw', marginLeft: "auto",
           marginRight: "auto",
           marginBottom: "30px",
         }}
@@ -140,7 +139,6 @@ class SignInPage extends React.Component<
                       label="User Phone Number"
                       name="phone"
                       size="small"
-                      type="password"
                       onChange={(e) =>
                         this.setState({ userphone: e.target.value })
                       }

@@ -5,7 +5,7 @@ import './Homepage.css'
 export default class Footer extends Component {
     render() {
         return (
-            <div className='footer'>
+            <div data-test="footer" className='footer'>
 
                 <div className="row d-flex justify-content-between" >
 

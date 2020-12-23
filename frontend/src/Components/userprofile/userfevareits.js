@@ -3,6 +3,7 @@ import axios from 'axios';
 import store from "../../store"
 import './user.css'
 
+import { Link } from "react-router-dom";
 
 
 
@@ -39,26 +40,34 @@ class UserFevareits extends React.Component {
                             this.state.UserFevareits.length !== 0 ?
                                 this.state.UserFevareits.map((fev, id) => {
 
-                                    return <div class="fev_card" key={id}>
+                                    return <Link
+                                        to={{
+                                            pathname: `/tips/tip/${fev.tip_id}`,
+                                            state: {
+                                                tip: {
+                                                    _id: fev.tip_id, tip_img: fev.tip_img, tip_title: fev.tip_title,
+                                                    user_id: fev.user_id
+                                                }
+                                            },
+                                        }}
+                                    >
+                                        <div className="fev_card" key={id}>
 
-                                        <div class="fev_datails" >
-                                            <img
-                                                src={fev.tip_img}
-                                                alt="tipimage"
-                                            />
+                                            <div style={{ objectPosition: ' 50% 50%' }} >
+                                                <img
+                                                    src={fev.tip_img}
+                                                    alt="tipimage"
+                                                />
 
-                                            <h1>{fev.tip_title}</h1>
-                                            <p> By:{fev.user_name}</p>
+                                                <h1>{fev.tip_title}</h1>
+                                                <p> By:{fev.user_name}</p>
 
 
 
+                                            </div>
                                         </div>
-                                    </div>
 
-
-
-
-
+                                    </Link>
 
                                 })
                                 : <div ></div>

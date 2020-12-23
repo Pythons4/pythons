@@ -51,16 +51,20 @@ class UserService(models.Model):
     user_service_approv = models.BooleanField()
     user_service_price = models.TextField()
     user_service_approv = models.BooleanField(default=False)
+    user_phone_No = models.TextField()
 
 
 # tips table
 class Tip(models.Model):
     _id = models.ObjectIdField()
-    tip_title = models.CharField(max_length=40)
+    tip_title = models.CharField(max_length=50)
     tip_text = models.TextField()
     tip_img = models.TextField()
     user_id = models.TextField()
     user_name = models.TextField()
+    tip_date = models.DateTimeField(auto_now_add=True)
+    tip_comments = models.IntegerField(default=0)
+    tip_fav = models.IntegerField(default=0)
 
     def __str__(self):
         return self.tip_title
@@ -81,7 +85,9 @@ class TipCommints(models.Model):
     _id = models.ObjectIdField()
     tip_id = models.TextField()
     user_name = models.TextField()
+    user_img = models.TextField()
     commint_text = models.TextField()
+    commint_date = models.DateTimeField(auto_now=True)
     objects = models.DjongoManager()
 
 

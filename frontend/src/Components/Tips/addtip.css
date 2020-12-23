@@ -1,40 +1,38 @@
-@import url("https://fonts.googleapis.com/css2?family=Sail&display=swap");
-.shadow {
-  border: 1px solid #b2d3ef;
-  /* padding: 10px; */
-  box-shadow: 10px 10px #b2d3ef;
-  margin-top: 30px;
-}
-/* .sideimg { */
-/* background-image: url("https://i.imgur.com/Fr1Gj9b.png"); */
-/* background-color: blueviolet;
-  width: 55%;
-  height: 80%; */
-/* background-size: cover; */
-/* margin: 0;
-}
-#sideimg {
-  width: 100%;
-  height: 100%;
-  margin: 0%;
-} */
+@import url("https://fonts.googleapis.com/css2?family=Pridi:wght@300&display=swap");
 
+.cont {
+  margin: unset;
+  background: url("https://i.imgur.com/QpTKnYk.png") center center/cover
+    no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+  z-index: 1;
+  background-position: center;
+}
 .incenter {
   margin-left: 14px;
   margin-top: 0;
 }
 
-.h3font {
-  font-family: "Sail", cursive;
-  font-style: normal;
-  font-weight: 300;
-  font-size: xx-large;
-  color: #3f51b5;
-  text-align: center;
-}
 #cloudimg {
   max-width: 90%;
   max-height: 90%;
   margin-left: 20px;
   padding-top: 20px;
+}
+
+#share {
+  height: 30px;
+  font-size: medium;
+}
+
+#grid3 {
+  max-width: 100vw;
+  max-height: 50vh;
 }

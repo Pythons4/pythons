@@ -2,6 +2,7 @@ import React from "react";
 import './profilestyle.css'
 import store from "../../store";
 import { updateuserimg } from "../../store/actions/userActions";
+import { Button } from "@material-ui/core";
 interface State {
     reviwesoursw: any,
     takethis: string,
@@ -55,18 +56,21 @@ class Popup extends React.Component<Props, State> {
     render() {
         return (
             <div className="popup-box">
-                <div className="box">
+                <div className="box shadowpopup" >
                     <span className="close-icon" onClick={this.props.handleClose}>x</span>
-                    <input type='file' name='img' onChange={this.handelimguplode}></input>
-                    {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                    {this.state.reviwesoursw && (<img style={{ width: '260px' }} src={this.state.reviwesoursw}></img>)}
-                    <div>
-                        <button onClick={() => {
-                            console.log('change image')
-                            this.handelclikckimg()
-                        }}>Test button</button>
+                    <div >
+                        <img alt='choosenimg' style={{ height: '50vh' }} src={this.state.reviwesoursw || 'https://www.flaticon.com/svg/static/icons/svg/964/964073.svg'}></img>
+                        <br></br>
+                        <input type='file' id='actual-btn' name='img' accept="image/png, image/jpeg" onChange={this.handelimguplode} hidden></input>
+                        <label htmlFor="actual-btn" className='uplodeimgbtn'> Choose Image</label>
+                        {/* eslint-disable-next-line jsx-a11y/alt-text */}
+                        <div>
+                            <Button className='uplodeimgbtn' style={{ background: '#337BA7', color: 'white', fontSize: '12px', fontFamily: "'Poly', serif" }} onClick={() => {
+                                console.log('change image')
+                                this.handelclikckimg()
+                            }}>Confirm</Button>
+                        </div>
                     </div>
-
                 </div>
             </div>
         );
