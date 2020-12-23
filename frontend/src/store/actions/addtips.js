@@ -6,7 +6,6 @@ export const ADD_TIP = () => {
         axios
             .get("/api/products/")
             .then(res => {
-                console.log(res.data)
                 return {
                     type: 'ADD_TIP',
                     payload: res.data

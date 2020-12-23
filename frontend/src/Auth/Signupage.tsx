@@ -1,26 +1,23 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import store from "../store";
-import Alert from "@material-ui/lab/Alert";
-import { signup } from "../store/actions/userActions";
-import { Link } from "react-router-dom";
 import { validateEmail, validatePassword } from "./validation";
+import { signup } from "../store/actions/userActions";
+import Container from "@material-ui/core/Container";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Alert from "@material-ui/lab/Alert";
+import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
+import store from "../store";
+import React from "react";
 import "./signpage.css";
 
-class SignInPage extends React.Component<
-  {},
-  {
-    value: string;
-    alert: boolean;
-    useremail: string;
-    userpass: string;
-    username: string;
-    userphone: string;
-  }
-  > {
+class SignInPage extends React.Component<{}, {
+  value: string;
+  alert: boolean;
+  useremail: string;
+  userpass: string;
+  username: string;
+  userphone: string;
+}>{
   constructor(props: any) {
     super(props);
     this.state = {
@@ -49,7 +46,7 @@ class SignInPage extends React.Component<
       else if (!validatePassword(this.state.userpass)) {
         this.setState({
           value:
-            "Password should contain letters and numbers and should be more than 8 digit",
+            "Password should contain capital and small letters and numbers and should be more than 8 digits",
           alert: true,
         });
       }
@@ -88,18 +85,15 @@ class SignInPage extends React.Component<
 
   render() {
     return (
-      <div
-        className="d-flex justify-content-center shadow"
+      <div className="d-flex justify-content-center shadow"
         style={{
-          borderRadius: "5px",
-          paddingTop: "20px",
-          width: '60vw', marginLeft: "auto",
-          marginRight: "auto",
-          marginBottom: "30px",
-        }}
-      >
+          borderRadius: "5px", paddingTop: "20px", width: '60vw',
+          marginLeft: "auto", marginRight: "auto", marginBottom: "30px",
+        }}>
+
         <div className="backimg2"></div>
 
+        {/* Signup form */}
         <Container
           maxWidth="xs"
           style={{ marginRight: "0", marginLeft: "0", marginTop: "35px" }}
@@ -173,10 +167,7 @@ class SignInPage extends React.Component<
                   color="primary"
                   fullWidth
                   type="button"
-                  variant="contained"
-                >
-                  Sgin Up
-                </Button>
+                  variant="contained">Sgin Up</Button>
               </Grid>
             </Grid>
           </form>
