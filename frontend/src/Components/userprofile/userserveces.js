@@ -71,7 +71,7 @@ class UserServeces extends React.Component {
                 <div className="d-flex row align-items-center ">
                     <div className=" d-flex row  col-12 ">
                         {
-                            this.state.UserService.length !== 0 ?
+                            this.state.userwaitingservices.length !== 0 ?
                                 this.state.userwaitingservices.map((ser, id) => {
 
                                     return <div className="ser_card_not" key={id}>
