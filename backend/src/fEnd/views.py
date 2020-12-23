@@ -1,21 +1,21 @@
-from rest_framework.authtoken.models import Token
-from django.contrib.auth import authenticate
-from django.http import HttpResponse
-from bson.objectid import ObjectId
-from rest_framework.views import APIView
-from django.shortcuts import render
-from rest_framework import viewsets
-from rest_framework.response import Response
+from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, ProductsSerializer, UserProductsSerializer, FavSerializer
+from .models import Tip, Users, Admin, Service, UserService, TipCommints,  Products, UserProducts, Fav
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
-import jwt
-import bcrypt
-from django.conf import settings
-from .serializers import TipsSerializer, UsersSerializer, AdminSerializer, TipCommintsSerializer, ServiceSerializer, UserServiceSerializer, ProductsSerializer, UserProductsSerializer, FavSerializer
-from cloudinary.forms import cl_init_js_callbacks
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.authtoken.models import Token
+from cloudinary.forms import cl_init_js_callbacks
+from django.contrib.auth import authenticate
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from django.http import HttpResponse
+from bson.objectid import ObjectId
+from django.shortcuts import render
+from rest_framework import viewsets
+from django.conf import settings
+import bcrypt
 import json
-from .models import Tip, Users, Admin, Service, UserService, TipCommints,  Products, UserProducts, Fav
+import jwt
 
 
 # tips view/requests (getall and get by user id )
@@ -28,27 +28,15 @@ class TipsView(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         params = kwargs
-        print(params)
+        # print(params)
         thetips = Tip.objects.filter(
             user_id=params['pk'])
         serializer = TipsSerializer(thetips, many=True)
-        print(serializer.data)
+        # print(serializer.data)
         return Response(serializer.data)
 
-# update the tip favarray
-# @api_view(['PUT'])
-# @permission_classes([AllowAny])
-# def updateTipFavorite(request):
-#     # print('params')
-#     tip = Tip.objects.get(
-#         _id=ObjectId(request.data['tip_id']))
-#     tip.favorite = request.data['favorite']
-#     tip.save()
-#     serializer = TipsSerializer(tip)
-#     # print(serializer.data)
-#     return Response(serializer.data)
 
-
+# tipscomments view/requests (getall and get by user tip_id )
 class TipCommintsView(viewsets.ModelViewSet):
     serializer_class = TipCommintsSerializer
 
@@ -58,11 +46,11 @@ class TipCommintsView(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         params = kwargs
-        print(params)
+        # print(params)
         thetipcommint = TipCommints.objects.filter(
             tip_id=params['pk'])
         serializer = TipCommintsSerializer(thetipcommint, many=True)
-        print(serializer.data)
+        # print(serializer.data)
         return Response(serializer.data)
 
 
@@ -79,11 +67,11 @@ class UsersView(viewsets.ModelViewSet):
         theuser = Users.objects.filter(user_email=request.data['user_email'])
         if(theuser):
             return Response('already existed user')
-        print('theuser')
+        # print('theuser')
         userdata = request.data
         hashed = bcrypt.hashpw(
             userdata['user_password'].encode('utf-8'), bcrypt.gensalt())
-        print(hashed)
+        # print(hashed)
         newuser = Users.objects.create(user_email=userdata['user_email'],
                                        user_password=hashed.decode(),
                                        user_name=userdata['user_name'],
@@ -117,11 +105,11 @@ class UserServiceView(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         params = kwargs
-        print(params)
+        # print(params)
         userServices = UserService.objects.filter(
             user_id=ObjectId(params['pk']))
         serializer = UserServiceSerializer(userServices, many=True)
-        print(serializer.data)
+        # print(serializer.data)
         return Response(serializer.data)
 
 
@@ -135,18 +123,18 @@ class FavView(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         params = kwargs
-        print(params)
+        # print(params)
         userFav = Fav.objects.filter(
             user_id=ObjectId(params['pk']))
         serializer = FavSerializer(userFav, many=True)
-        print(serializer.data)
+        # print(serializer.data)
         return Response(serializer.data)
 
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def updateFavorite(request):
-    print('params')
+    # print('params')
     favorite = Fav.objects.get(
         _id=ObjectId(request.data['_id']))
     favorite.delete()
@@ -164,12 +152,12 @@ class ProductsView(viewsets.ModelViewSet):
     def retrieve(self, request, *args, **kwargs):
         print(request.method)
         params = kwargs
-        print(params)
+        # print(params)
         products = Products.objects.filter(
             _id=ObjectId(params['pk']))
         products.product_quantity = request.data['product_quantity']
         serializer = ProductsSerializer(products, many=True)
-        print(serializer.data)
+        # print(serializer.data)
         return Response(serializer.data)
 
 
@@ -182,7 +170,7 @@ class UserProductsView(viewsets.ModelViewSet):
 @api_view(['PUT'])
 @permission_classes([AllowAny])
 def updateProductQuantity(request):
-    print('params')
+    # print('params')
     products = Products.objects.get(
         _id=ObjectId(request.data['product_id']))
     products.product_quantity = products.product_quantity - \
@@ -200,7 +188,7 @@ def updateProductQuantity(request):
 def getuserinfologin(request):
     theuser = Users.objects.filter(
         user_email=request.data['user_email'])
-    print(theuser)
+    # print(theuser)
     if(theuser):
         serializer = UsersSerializer(theuser, many=True)
         tuple_list = serializer.data[0]
@@ -247,7 +235,7 @@ def getAdminInfoLogin(request):
         serializer = AdminSerializer(theadmin, many=True)
         tuple_list = serializer.data[0]
         tuple_list = list(tuple_list.items())
-        print(tuple_list[3][1])
+        # print(tuple_list[3][1])
         if(tuple_list[3][1] != request.data['admin_password']):
             return Response('wrong password')
         else:
@@ -270,4 +258,13 @@ def updateUserServicesApprove(request):
     userservice.user_service_approv = request.data['approve']
     userservice.save()
     serializer = UserServiceSerializer(userservice)
+    return Response(serializer.data)
+
+
+@ api_view(['POST'])
+@ permission_classes([AllowAny])
+def gettipbyid(request):
+    thetip = Tip.objects.get(
+        _id=ObjectId(request.data['tip_id']))
+    serializer = TipsSerializer(thetip)
     return Response(serializer.data)

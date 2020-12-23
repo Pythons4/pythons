@@ -4,6 +4,8 @@ import PopUp from './addProductPopUp'
 import AdminTabs from './admintabs'
 import './adminprofile.css';
 import EmailIcon from '@material-ui/icons/Email';
+import { Button } from "@material-ui/core";
+import { signout } from "../../store/actions/adminActions";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +17,12 @@ function App() {
     var test: any = store.getState().AdminReduser
 
     console.log(test.admininfo)
+
+    const logOut = () => {
+        store.dispatch(signout());
+        console.log("hhhh");
+    };
+
     return <div>
         <div className="container-admin">
             <div className="admin-header">
@@ -26,6 +34,10 @@ function App() {
                     <div className="admin-address">
                         <p className="address">Palestine</p>
                     </div>
+                    <Button className="logout_button" onClick={() => logOut()}>
+                        {" "}
+              LogOut{" "}
+                    </Button>
                 </div>
             </div>
         </div>
@@ -38,7 +50,7 @@ function App() {
                         {JSON.parse(test.admininfo).admin_email}
                     </p>
 
-                    {/* <div className="button"> */}
+
                     <input className="button-add"
                         type="button"
                         value="Add Product"
@@ -47,7 +59,7 @@ function App() {
 
 
 
-                    {/* </div> */}
+
 
 
                 </div>

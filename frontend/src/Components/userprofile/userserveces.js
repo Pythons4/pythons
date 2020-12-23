@@ -54,7 +54,7 @@ class UserServeces extends React.Component {
 
                                         <div className="ser_datails">
                                             <h1>{ser.service_name}</h1>
-                                            <h6>{ser.user_service_price}</h6>
+                                            <h6>{ser.user_service_price}/ hour</h6>
 
                                             <p className="disc"><ul>
                                                 <li>Date : {ser.user_service_date}</li>
