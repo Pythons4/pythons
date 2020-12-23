@@ -49,7 +49,7 @@ export class Tips extends Component<{}, any> {
             <PostAddSharpIcon
               color="primary"
               style={{ fontSize: 30 }}
-              onClick={(event) => (window.location.href = "tip/add")}
+              onClick={(event) => (window.location.href = "/tip/add")}
             />
           )}
         </div>
@@ -105,7 +105,7 @@ export class Tips extends Component<{}, any> {
                           borderTopRightRadius: "15px",
                         }}
                         alt="tip"
-                        // className="imgstyle"
+                      // className="imgstyle"
                       ></img>
                       <div
                         style={{
@@ -126,7 +126,7 @@ export class Tips extends Component<{}, any> {
                             paddingTop: "10px",
                           }}
                         >
-                          {element.tip_title}
+                          {element.tip_title.slice(0, 24)}...
                         </p>
                         <p
                           style={{
@@ -144,12 +144,12 @@ export class Tips extends Component<{}, any> {
                 )
               )
           ) : (
-            <img
-              src="https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif"
-              alt="theimg"
-              style={{ width: "230px" }}
-            ></img>
-          )}
+              <img
+                src="https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif"
+                alt="theimg"
+                style={{ width: "230px" }}
+              ></img>
+            )}
         </div>
       </div>
     );

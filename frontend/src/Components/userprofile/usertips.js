@@ -40,7 +40,7 @@ class UserTips extends React.Component {
                 <div className="profile-posts tap">
                     {
                         this.state.UserTips.length !== 0 ?
-                            this.state.UserTips.map((tip, id) => {
+                            this.state.UserTips.slice(0).reverse().map((tip, id) => {
 
                                 return <Link
                                     to={{

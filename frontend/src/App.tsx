@@ -8,7 +8,7 @@ import ProductTools from "./Components/Products/tools";
 import ProductMaterials from "./Components/Products/materials";
 import Services from "./Components/services/Services";
 import AddTip from "./Components/Tips/addtip.js";
-import Navbar from "./Components/Navbar/Navbar";
+import Navbar from "./Components/Navbar/testnav";
 import ProductsCard from "./Components/Products/productcard";
 import TheCart from "./Components/Products/thecart";
 import CofirmBuy from "./Components/Products/confirmbuying";
@@ -20,7 +20,7 @@ import AdminProfile from "./Components/Admin/adminprofile";
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 
-
+// import AdminSignIn from "./Components/Admin/Signinpage";
 
 class App extends React.Component<{}, any> {
   constructor(props: {} | Readonly<{}>) {
@@ -59,7 +59,7 @@ class App extends React.Component<{}, any> {
 
           <Route path="/adminSignin" exact component={AdminSignIn} />
         </Switch>
-      </Router>
+      </Router >
     );
   }
 }
