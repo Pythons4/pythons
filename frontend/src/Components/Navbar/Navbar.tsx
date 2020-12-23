@@ -14,7 +14,6 @@ const Navbar = () => {
   }
   var { userid }: any = store.getState().UserReducer;
   var { userinfo }: any = store.getState().UserReducer;
-
   var { adminid }: any = store.getState().AdminReduser;
   var adminID = JSON.parse(adminid);
   var id = JSON.parse(userid);
@@ -33,75 +32,75 @@ const Navbar = () => {
     theimg = adminimg;
   }
   return (
-    <>
-      <nav>
-        <div className="logo">
-          <Link to="/homepage">
-            <h4>Sparkles</h4>
+    <nav>
+      <div className="logo">
+        <Link to="/homepage" style={{ textDecoration: "none" }}>
+          <h4>Sparkles</h4>
+        </Link>
+      </div>
+      <ul className="nav-links">
+        <li>
+          <Link to="/homepage" className="nav-link">
+            <h4>Home</h4>
           </Link>
-        </div>
-        <ul className="nav-links">
-          <li>
-            <Link to="/homepage" className="nav-link">
-              <h4>Home</h4>
-            </Link>
-          </li>
-          <li>
-            <Link to="/services" className="nav-link">
-              <h4>Services</h4>
-            </Link>
-          </li>
+        </li>
+        <li>
+          <Link to="/services" className="nav-link">
+            <h4>Services</h4>
+          </Link>
+        </li>
 
-          <li>
-            <Link to="/product" className="nav-link">
-              <h4>Products</h4>
-            </Link>
-          </li>
-          <li>
-            <Link to="/tips" className="nav-link">
-              <h4>Tips</h4>
-            </Link>
-          </li>
+        <li>
+          <Link to="/product" className="nav-link">
+            <h4>Products</h4>
+          </Link>
+        </li>
+        <li>
+          <Link to="/tips" className="nav-link">
+            <h4>Tips</h4>
+          </Link>
+        </li>
 
-          {id ? (
-            <div className="header__profile">
-              <Link to={pathname} style={{ textDecoration: "none" }}>
-                {/* <AccountCircleSharpIcon className='header__avatar' style={{ fontSize: 50 }}></AccountCircleSharpIcon> */}
-                <Avatar
-                  style={{ marginTop: "6px" }}
-                  className="header__avatar"
-                  src={theimg}
-                />
-              </Link>
-            </div>
-          ) : (
+        {id ? (
+          <div className="header__profile">
+            <Link to={pathname} style={{ textDecoration: "none" }}>
+              {/* <AccountCircleSharpIcon className='header__avatar' style={{ fontSize: 50 }}></AccountCircleSharpIcon> */}
+              <Avatar
+                style={{ marginTop: "6px" }}
+                className="header__avatar"
+                src={theimg}
+              />
+            </Link>
+
+          </div>
+        ) : (
             <Link to="/signin" className="nav-link">
               login
             </Link>
           )}
-          <Link to={{ pathname: `/cart` }}>
-            {/* <IconButton color="primary" component="span"> */}
+        <Link to={{ pathname: `/cart` }}>
+          {/* <IconButton color="primary" component="span"> */}
+          <Badge
+            badgeContent={count}
+            color="secondary"
+            style={{ marginTop: "10px" }}
+          >
+            <ShoppingCartIcon
+              className="header__avatar"
+              style={{ fontSize: 30 }}
+            />
+          </Badge>
+          {/* </ShoppingCartIcon> */}
+          {/* </IconButton> */}
+        </Link>
 
-            <Badge
-              badgeContent={count}
-              color="secondary"
-              style={{ marginTop: "10px" }}
-            >
-              <ShoppingCartIcon
-                className="header__avatar"
-                style={{ fontSize: 30 }}
-              />
-            </Badge>
-            {/* </ShoppingCartIcon> */}
-            {/* </IconButton> */}
-          </Link>
-
-          {/* <li>
+        {/* <li>
                     <Link to='/signin' className='nav-link'>login</Link>
                 </li> */}
-        </ul>
-      </nav>
-    </>
+
+      </ul>
+
+    </nav>
   );
 };
 export default Navbar;

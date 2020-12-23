@@ -16,7 +16,7 @@ export default class ServicesCard extends Component<Props> {
         return (
 
             <div style={{ marginBottom: "28px" }} className="d-flex flex-column  col-4   align-items-center" onClick={() => this.props.onclick({ name: this.props.name, price: this.props.price })} >
-                <div style={{ width: "200px", height: "200px" }}> <img id="imgCard" style={{ width: "200px", height: "200px" }} className="rounded-circle d-inline-block" alt="100x100" src={this.props.imge}
+                <div style={{ width: "200px", height: "200px", cursor: 'pointer' }}> <img id="imgCard" style={{ width: "200px", height: "200px" }} className="rounded-circle d-inline-block" alt="100x100" src={this.props.imge}
                     data-holder-rendered="true" /> </div>
                 <h4 >{this.props.name}</h4>
                 <h4 >{this.props.price}</h4>

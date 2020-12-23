@@ -27,7 +27,7 @@ export default class ServecesNApproved extends Component<State, Props> {
     componentDidMount() {
         axios.get('/api/userservice/', config)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.setState({
                     services: res.data.filter((service: { user_service_approv: any; }) => !service.user_service_approv)
                 })

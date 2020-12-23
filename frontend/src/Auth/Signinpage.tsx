@@ -52,7 +52,7 @@ class SignInPage extends React.Component<{}, { value: string; alert: boolean; us
 
     render() {
         return (
-            <div className="d-flex justify-content-center shadow" style={{ borderRadius: '5px', paddingTop: '20px', width: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
+            <div className="d-flex justify-content-center shadow" style={{ borderRadius: '5px', paddingTop: '20px', width: '60vw', marginLeft: 'auto', marginRight: 'auto' }}>
 
                 <div className="backimg2">
 

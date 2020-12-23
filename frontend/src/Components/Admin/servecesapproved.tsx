@@ -25,7 +25,7 @@ export default class ServecesApproved extends Component<State, Props> {
     componentDidMount() {
         axios.get('/api/userservice/', config)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.setState({
                     services: res.data.filter((service: { user_service_approv: any; }) => service.user_service_approv)
                 })
@@ -48,7 +48,7 @@ export default class ServecesApproved extends Component<State, Props> {
                                         classes={{ root: 'custom-checkbox-root' }}
                                         defaultChecked={element.user_service_approv}
                                         onChange={(e) => {
-                                            console.log('hii')
+                                            // console.log('hii')
                                             approveService(element._id, e.target.checked)
                                             this.componentDidMount()
                                         }}
