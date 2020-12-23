@@ -7,7 +7,7 @@ import { Button } from "@material-ui/core";
 import EmailIcon from "@material-ui/icons/Email";
 import CallIcon from "@material-ui/icons/Call";
 import Posts from "./tabs";
-
+import MediaQuery from "react-responsive";
 import { signout } from "../../store/actions/userActions";
 import "./user.css";
 import "./profilestyle.css";
@@ -34,21 +34,33 @@ function App() {
   return (
     <div>
       <div className="container">
+        {/* <MediaQuery minDeviceWidth={1300} device={{ deviceWidth: 1900 }}> */}
         <div className="profile-header">
+          {/* <div className="cube"></div>
+          <div className="cube"></div>
+          <div className="cube"></div>
+          <div className="cube"></div>
+          <div className="cube"></div>
+          <div className="cube"></div> */}
           <div className="profile-img">
-            <img src={JSON.parse(test.userinfo).user_img} alt='usrimg' />
+            <img src={JSON.parse(test.userinfo).user_img} alt="usrimg" />
           </div>
           <div className="profile-nav-inf">
             <h3 className="user-name">{JSON.parse(test.userinfo).user_name}</h3>
             <div className="address">
               <p className="address">Palestine</p>
             </div>
-            <Button className="logout_button" onClick={() => logOut()}>
+            <Button
+              // className="logout_button"
+              id="buttoun"
+              onClick={() => logOut()}
+            >
               {" "}
               LogOut{" "}
             </Button>
           </div>
         </div>
+        {/* </MediaQuery> */}
       </div>
       <div className="main-bd">
         <div className="left-side">
@@ -56,11 +68,11 @@ function App() {
             <p className="user-maile">
               {/* <i className="fas fa-envelope"></i> */}
               {/* <FontAwesomeIcon icon={['fab', 'microsoft']} /> */}
-              <EmailIcon id='icon'></EmailIcon>
+              <EmailIcon id="icon"></EmailIcon>
               {JSON.parse(test.userinfo).user_email}
             </p>
             <p className="mobile-no">
-              <CallIcon id='icon' ></CallIcon>
+              <CallIcon id="icon"></CallIcon>
               {JSON.parse(test.userinfo).user_phon}
             </p>
             <div className="user-pio">
@@ -70,18 +82,18 @@ function App() {
               <input
                 className="button-img"
                 type="button"
+                id="buttoun1"
                 value="change image"
                 onClick={togglePopup}
               />
 
-
               <input
                 className="button-bio"
                 type="button"
+                id="buttoun1"
                 value="change bio"
                 onClick={togglePopupbio}
               />
-
             </div>
             <p className="date">
               <TimeAgo
@@ -96,9 +108,7 @@ function App() {
         <div className="right-side">
           <div className="nav">
             <Posts />
-
           </div>
-
         </div>
       </div>
       {isOpen && (
