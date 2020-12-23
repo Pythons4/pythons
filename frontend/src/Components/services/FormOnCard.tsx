@@ -4,11 +4,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import "./server.css";
 import MomentUtils from "@date-io/moment";
-import moment from 'moment'
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
+import moment from "moment";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
 
 import axios from "axios";
 import store from "../../store";
+import { addnot } from "../../notife";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -17,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
 
 // interface for props
 interface data {
@@ -28,13 +31,16 @@ interface data {
 }
 
 export default function StateTextFields(props: data) {
-
-  const [selectedDate, setDate] = React.useState(moment().add(1, 'days').endOf('day'));
-  const [inputValue, setInputValue] = React.useState(moment().format("YYYY-MM-DD"));
+  const [selectedDate, setDate] = React.useState(
+    moment().add(1, "days").endOf("day")
+  );
+  const [inputValue, setInputValue] = React.useState(
+    moment().format("YYYY-MM-DD")
+  );
   const onDateChange = (date: any, value: any) => {
     setDate(date);
     setInputValue(value);
-    console.log(inputValue)
+    console.log(inputValue);
   };
 
   const classes = useStyles();
@@ -62,7 +68,6 @@ export default function StateTextFields(props: data) {
 
   // send post req after book using axios
   const book = () => {
-
     // check if there is user login
     if (userid) {
       let serviceData = {
@@ -72,9 +77,10 @@ export default function StateTextFields(props: data) {
         user_service_hours: state.houres,
         user_service_location: state.location,
         user_service_price: state.price,
-        user_phone_No: state.phoneNumber
+        user_phone_No: state.phoneNumber,
       };
       console.log(serviceData);
+
 
       axios.post("/api/userservice/", serviceData).then(function (response) {
         console.log(response);
@@ -89,31 +95,39 @@ export default function StateTextFields(props: data) {
         }));
         alert(`booking done`)
       });
-    }
-
-    else {
+    } else {
       alert("you should login");
     }
   };
 
   return (
-    <form id="formShadow" className={classes.root} noValidate autoComplete="off" style={{ width: "430px", height: "390px" }}>
+    <form
+      id="formShadow"
+      className={classes.root}
+      noValidate
+      autoComplete="off"
+      style={{ width: "430px", height: "390px" }}
+    >
       <div id="forForm">
         <h3 style={{ color: "#337ab7" }}>{props.data.name}</h3>
-        <h4 style={{ color: "#337ab7", fontSize: "22px", marginBottom: "30px" }}>  {props.data.price} / hour</h4>
+        <h4
+          style={{ color: "#337ab7", fontSize: "22px", marginBottom: "30px" }}
+        >
+          {" "}
+          {props.data.price} / hour
+        </h4>
         <MuiPickersUtilsProvider utils={MomentUtils}>
           <KeyboardDatePicker
             id="outlined-name"
             label="Date"
             name="date"
-            minDate={moment().add(1, 'days').endOf('day')}
+            minDate={moment().add(1, "days").endOf("day")}
             value={selectedDate}
             format="YYYY-MM-DD"
             onChange={onDateChange}
             KeyboardButtonProps={{
               "aria-label": "change date",
             }}
-
           />
         </MuiPickersUtilsProvider>
 
@@ -124,8 +138,8 @@ export default function StateTextFields(props: data) {
           name="houres"
           value={state.houres}
           InputProps={{ inputProps: { min: 0, max: 6 } }}
+          error={parseInt(state.houres) > 6}
           onChange={handleChange}
-
         />
 
         <TextField
@@ -134,6 +148,7 @@ export default function StateTextFields(props: data) {
           type="number"
           name="phoneNumber"
           onChange={handleChange}
+
           value={state.phoneNumber}
 
 
@@ -144,10 +159,8 @@ export default function StateTextFields(props: data) {
           name="location"
           onChange={handleChange}
           style={{ color: "white" }}
+
           value={state.location}
-
-
-
         />
         <br />
         <Button
@@ -159,6 +172,6 @@ export default function StateTextFields(props: data) {
           Submit
         </Button>
       </div>
-    </form >
+    </form>
   );
 }

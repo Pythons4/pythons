@@ -25,17 +25,15 @@ class UserFevareits extends React.Component {
             })
 
         })
-        console.log(this.state.UserFevareits)
     }
 
 
     render() {
-        console.log(this.state.UserFevareits)
 
         return (
             <div div className="profile-body">
                 <div className="d-flex row align-items-center ">
-                    <div className=" d-flex row  col-12 ">
+                    <div className="d-flex row  col-12 " style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                         {
                             this.state.UserFevareits.length !== 0 ?
                                 this.state.UserFevareits.map((fev, id) => {
@@ -53,7 +51,7 @@ class UserFevareits extends React.Component {
                                     >
                                         <div className="fev_card" key={id}>
 
-                                            <div className="fev_datails" >
+                                            <div  >
                                                 <img
                                                     src={fev.tip_img}
                                                     alt="tipimage"

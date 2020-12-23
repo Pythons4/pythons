@@ -1,8 +1,8 @@
 import StripeCheckOut from "react-stripe-checkout";
 import buyWhatInCart from "../../store/actions/buywhatincart";
 import store from "../../store";
-import './stylestrip.css'
-import { Button } from '@material-ui/core';
+import "./stylestrip.css";
+import { Button } from "@material-ui/core";
 
 interface Props {
   price: any;
@@ -18,18 +18,7 @@ function StripeCheckOutButton(props: Props) {
   let onToken = (token: any) => {
     let user_location = `country : ${token.card.address_country}, city : ${token.card.address_country} ,  address_line1 : ${token.card.address_line1}`;
 
-    // let data = {
-    //     user_id: userid,
-    //     user_product_location: user_location,
-    //     user_products: JSON.parse(whatincart)
-
-    // }
-
     store.dispatch(buyWhatInCart(whatincart, userid, user_location));
-
-    // console.log(data, "data");
-    console.log(token, "payment");
-    console.log(whatincart, "whaticart");
 
     alert("payment sucsse");
   };
@@ -45,9 +34,17 @@ function StripeCheckOutButton(props: Props) {
       panelLabel="Give Money"
       token={onToken}
       stripeKey={key}
-
     >
-      <Button style={{ color: 'white', fontWeight: 600, fontSize: '10px', outline: 'none' }} >Checkout</Button>
+      <Button
+        style={{
+          color: "white",
+          fontWeight: 600,
+          fontSize: "10px",
+          outline: "none",
+        }}
+      >
+        Checkout
+      </Button>
     </StripeCheckOut>
   );
 }

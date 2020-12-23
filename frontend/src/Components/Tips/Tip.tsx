@@ -26,14 +26,7 @@ interface Props {
     };
   };
 }
-// //tip type
-// interface Tip0 {
-//   tip_title: string;
-//   tip_img: string;
-//   tip_text: string;
-//   _id: string;
-//   tip_date: any
-// }
+
 interface State {
   text: string;
   tip: any;
@@ -66,8 +59,6 @@ export default class Tip extends Component<Props, State> {
       .post("/api/getbyid", { tip_id: tip_id }, configdata)
       .then((res: any) => {
         this.setState({
-          // tipuser: res.data.user_name,
-          // tipdesc: res.data.tip_text
           tip: res.data,
         });
       });
@@ -79,7 +70,6 @@ export default class Tip extends Component<Props, State> {
         res.data.map((element: any, i: number) => {
           if (element.tip_id === this.state.tip._id) {
             this.state.favorite.push(res.data[i]);
-            console.log(this.state.favorite);
             this.setState({
               isFavorite: true,
             });
@@ -88,8 +78,6 @@ export default class Tip extends Component<Props, State> {
       });
     }
     axios.get(`/api/favorites/`).then((res) => {
-      console.log(res.data);
-      // var length=0;
       var fav = [];
       res.data.map((element: any, i: number) => {
         if (element.tip_id === this.state.tip._id) {
@@ -129,7 +117,6 @@ export default class Tip extends Component<Props, State> {
           configdata
         )
         .then((res) => {
-          console.log(res.data);
           this.componentDidMount();
           var x = document.getElementById(
             "cpmmentinput"
@@ -142,10 +129,8 @@ export default class Tip extends Component<Props, State> {
           console.log(err);
         });
     }
-    console.log(this.state.favorite);
   }
   handeltext(e: any) {
-    console.log(e.target.value);
     this.setState({
       text: e.target.value,
     });
@@ -156,29 +141,31 @@ export default class Tip extends Component<Props, State> {
       if (JSON.parse(userinfo)._id !== null) {
         var user_id = JSON.parse(userinfo)._id;
         if (this.state.isFavorite === false) {
-          // console.log(this.stat);
           axios
-            .post(`/api/favorites/`, {
-              user_id: user_id,
-              tip_id: this.state.tip._id,
-              tip_img: this.state.tip.tip_img,
-              tip_title: this.state.tip.tip_title,
-              user_name: this.state.tip.user_name,
-            })
+            .post(
+              `/api/favorites/`,
+              {
+                user_id: user_id,
+                tip_id: this.state.tip._id,
+                tip_img: this.state.tip.tip_img,
+                tip_title: this.state.tip.tip_title,
+                user_name: this.state.tip.user_name,
+              },
+              configdata
+            )
             .then((res) => {
               this.setState({
                 isFavorite: true,
                 favoritecount: this.state.favoritecount + 1,
               });
-              console.log(res.data);
             })
             .catch((err) => {
+              console.log("some errors");
               console.log(err);
             });
         }
         if (this.state.isFavorite === true) {
           var _id = this.state.favorite[0]["_id"];
-          console.log(_id);
           axios
             .post(`/api/updatefavorite`, { _id: _id }, configdata)
             .then((res) => {
@@ -255,7 +242,7 @@ export default class Tip extends Component<Props, State> {
                       )}
                       {this.state.favoritecount}
                     </Button>
-                    ​
+
                     <Button
                       disabled
                       style={{
@@ -268,7 +255,7 @@ export default class Tip extends Component<Props, State> {
                       <ChatIcon style={{ fontSize: 26 }}></ChatIcon>{" "}
                       {this.state.commintscount}
                     </Button>
-                    ​
+
                     <TimeAgo
                       style={{
                         marginTop: "10px",
@@ -304,7 +291,7 @@ export default class Tip extends Component<Props, State> {
                       )}
                     </tr>
                   </thead>
-                  ​{/* <div className="d-flex justify-content-around " > */}
+                  {/* <div className="d-flex justify-content-around " > */}
                   <tbody>
                     {this.state.commints &&
                       this.state.commints
