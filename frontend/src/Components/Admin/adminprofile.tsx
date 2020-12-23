@@ -20,7 +20,7 @@ function App() {
 
     const logOut = () => {
         store.dispatch(signout());
-        console.log("hhhh");
+        // console.log("hhhh");
     };
 
     return <div>

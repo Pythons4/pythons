@@ -39,8 +39,8 @@ function App() {
           <div className="cube"></div>
           <div className="cube"></div>
           <div className="cube"></div> */}
-          <div className="profile-img">
-            <img src={JSON.parse(test.userinfo).user_img} alt="usrimg" />
+          <div className="profile-img" style={{ backgroundImage: `url(${JSON.parse(test.userinfo).user_img})`, backgroundPosition: "center", borderRadius: "50%", backgroundSize: "cover" }}>
+            {/* <img src={JSON.parse(test.userinfo).user_img} alt="usrimg" /> */}
           </div>
           <div className="profile-nav-inf">
             <h3 className="user-name">{JSON.parse(test.userinfo).user_name}</h3>

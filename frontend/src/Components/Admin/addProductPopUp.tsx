@@ -42,7 +42,7 @@ class AddProduct extends React.Component<Props, State> {
     handelimguplode(e: any) {
         const file = e.target.files
         this.previwefile(file)
-        console.log(file.name)
+        // console.log(file.name)
         this.setState({
             takethis: file.name,
             file: file,
@@ -76,7 +76,7 @@ class AddProduct extends React.Component<Props, State> {
 
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <div className="popup-box">
                 <div className="box">
@@ -154,7 +154,7 @@ class AddProduct extends React.Component<Props, State> {
                     {this.state.reviwesoursw && (<img style={{ width: '260px' }} src={this.state.reviwesoursw}></img>)}
                     <div>
                         <button onClick={() => {
-                            console.log('change image')
+                            // console.log('change image')
                             this.handelclikckimg()
                         }}>Test button</button>
                     </div>
