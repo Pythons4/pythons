@@ -93,8 +93,7 @@ class SignInPage extends React.Component<
         style={{
           borderRadius: "5px",
           paddingTop: "20px",
-          width: "800px",
-          marginLeft: "auto",
+          width: '60vw', marginLeft: "auto",
           marginRight: "auto",
           marginBottom: "30px",
         }}
