@@ -8,7 +8,8 @@ class UserServeces extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            UserService: []
+            UserService: [],
+            userwaitingservices: []
         }
     }
     componentDidMount() {
@@ -18,6 +19,7 @@ class UserServeces extends React.Component {
             .then(res => {
                 console.log(res.data);
                 var approvedServices = res.data.filter(service => service.user_service_approv)
+                var notapprovedServices = res.data.filter(service => !service.user_service_approv)
                 if (localStorage.getItem('approvedservices')) {
                     var oldservices = JSON.parse(localStorage.getItem('approvedservices'))
                     if (oldservices.length < approvedServices.length) {
@@ -28,7 +30,8 @@ class UserServeces extends React.Component {
                 }
                 localStorage.setItem('approvedservices', JSON.stringify(approvedServices))
                 this.setState({
-                    UserService: approvedServices
+                    UserService: approvedServices,
+                    userwaitingservices: notapprovedServices
                 })
             })
             .catch((error) => {
@@ -57,6 +60,30 @@ class UserServeces extends React.Component {
                                                 <li>Duration :{ser.user_service_hours} Hours</li>
                                                 <li>Location :{ser.user_service_location} </li>
 
+                                            </ul></p>
+                                        </div>
+                                    </div>
+                                })
+                                : <div></div>
+                        }
+                    </div>
+                </div>
+                <div className="d-flex row align-items-center ">
+                    <div className=" d-flex row  col-12 ">
+                        {
+                            this.state.UserService.length !== 0 ?
+                                this.state.userwaitingservices.map((ser, id) => {
+
+                                    return <div className="ser_card_not" key={id}>
+
+                                        <div className="ser_datails">
+                                            <h1>{ser.service_name}</h1>
+                                            <h6>{ser.user_service_price}/ hour</h6>
+
+                                            <p className="disc"><ul>
+                                                <li>Date : {ser.user_service_date}</li>
+                                                <li>Duration :{ser.user_service_hours} Hours</li>
+                                                <li>Location :{ser.user_service_location} </li>
                                             </ul></p>
                                         </div>
                                     </div>

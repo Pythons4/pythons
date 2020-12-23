@@ -59,7 +59,7 @@ class UserTips extends React.Component {
                                         </div>
                                         <div class="card_right">
                                             <div class="img_container">
-                                                <img src={tip.tip_img} alt="tipimage" />
+                                                <img style={{ objectFit: 'cover' }} src={tip.tip_img} alt="tipimage" />
                                             </div>
 
 
